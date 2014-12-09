@@ -1,0 +1,8 @@
+bin/
+obj/
+packages/
+TestResults/
+*.dll
+*.suo
+*.user
+appSettings.config
