@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<instrumentationManifest    xmlns="http://schemas.microsoft.com/win/2004/08/events"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events"
+    xmlns:trace="http://schemas.microsoft.com/win/2004/08/events/trace"
+    xsi:schemaLocation="http://schemas.microsoft.com/win/2004/08/events eventman.xsd"
+    >
+  <instrumentation>
+    <events>
+      <provider name="IIS_IsapiTrace" symbol="provider1" guid="{a1c2040e-8840-4c31-ba11-9871031a19ea}" source="Wbem" messageFileName="noMessageFile" resourceFileName="noResourceFile">
+        <events>
+          <event value="0" version="1" template="tid_0" opcode="opcode10" task="task1" />
+          <event value="1" version="1" template="tid_1" opcode="opcode11" task="task1" />
+          <event value="2" version="1" template="tid_0" opcode="opcode12" task="task1" />
+        </events>
+        <tasks>
+          <task value="1" eventGUID="{acade3b2-b7d7-4339-956c-811b4edb1b24}" name="task1" message="$(string.string62)" />
+        </tasks>
+        <opcodes>
+          <opcode value="10" name="opcode10" mofValue="2" message="$(string.string61)"/>
+          <opcode value="11" name="opcode11" mofValue="1" message="$(string.string63)"/>
+          <opcode value="12" name="opcode12" mofValue="3" message="$(string.string64)"/>
+        </opcodes>
+        <templates>
+          <template tid="tid_0">
+            <data name="ContextId" inType="win:GUID"></data>
+          </template>
+          <template tid="tid_1">
+            <data name="ContextId" inType="win:GUID"></data>
+            <data name="DllName" inType="win:UnicodeString"></data>
+          </template>
+        </templates>
+      </provider>
+    </events>
+  </instrumentation>
+  <localization>
+    <resources culture="en-US">
+      <stringTable>
+        <string id="string0" value="GENERAL_CGI_HANDLER" />
+        <string id="string1" value="IISGeneral" />
+        <string id="string2" value="HANDLER_CHANGED" />
+        <string id="string3" value="GENERAL_DAV_HANDLER" />
+        <string id="string4" value="GENERAL_READ_ENTITY_START" />
+        <string id="string5" value="GENERAL_RESPONSE_ENTITY_FILE" />
+        <string id="string6" value="GENERAL_SET_REQUEST_HEADER" />
+        <string id="string7" value="GENERAL_CHILD_REQUEST_START" />
+        <string id="string8" value="URL_CHANGED" />
+        <string id="string9" value="GENERAL_ENDPOINT_INFORMATION" />
+        <string id="string10" value="GENERAL_REDIRECTION_HANDLER" />
+        <string id="string11" value="GENERAL_NOT_SEND_CUSTOM_ERROR" />
+        <string id="string12" value="GENERAL_READ_ENTITY_END" />
+        <string id="string13" value="GENERAL_OOP_ISAPI_HANDLER" />
+        <string id="string14" value="GENERAL_SET_RESPONSE_HEADER" />
+        <string id="string15" value="MODULE_PRECONDITION_NOT_MATCH" />
+        <string id="string16" value="GENERAL_REQUEST_HEADERS" />
+        <string id="string17" value="CONFIG_CHANGE_NOTIFICATION" />
+        <string id="string18" value="USER_SET" />
+        <string id="string19" value="GENERAL_FLUSH_RESPONSE_START" />
+        <string id="string20" value="GENERAL_OPTIONS_HANDLER" />
+        <string id="string21" value="GENERAL_MAP_HANDLER" />
+        <string id="string22" value="GENERAL_TRACE_HANDLER" />
+        <string id="string23" value="GENERAL_REQUEST_ENTITY" />
+        <string id="string24" value="GENERAL_FLUSH_RESPONSE_END" />
+        <string id="string25" value="GENERAL_GET_URL_METADATA" />
+        <string id="string26" value="GENERAL_STATIC_FILE_HANDLER" />
+        <string id="string27" value="GENERAL_RESPONSE_ENTITY_BUFFER" />
+        <string id="string28" value="GENERAL_REQUEST_END" />
+        <string id="string29" value="GENERAL_MODULE_FACTORY_FAILED" />
+        <string id="string30" value="HANDLER_PRECONDITION_NOT_MATCH" />
+        <string id="string31" value="GENERAL_CHILD_REQUEST_END" />
+        <string id="string32" value="GENERAL_REQUEST_START" />
+        <string id="string33" value="VIRTUAL_MODULE_UNRESOLVED" />
+        <string id="string34" value="FILE_CHANGE_NOTIFICATION" />
+        <string id="string35" value="GENERAL_SEND_CUSTOM_ERROR" />
+        <string id="string36" value="GENERAL_RESPONSE_HEADERS" />
+        <string id="string37" value="GENERAL_ISAPI_HANDLER" />
+        <string id="string38" value="ISAPI_END" />
+        <string id="string39" value="IISISAPI" />
+        <string id="string40" value="ISAPI_START" />
+        <string id="string41" value="UNKNOWN" />
+        <string id="string42" value="SETSTATUS_SUCCESS" />
+        <string id="string43" value="SETSTATUS_TRYSKIP" />
+        <string id="string44" value="EXISTINGRESPONSE_PASSTHROUGH" />
+        <string id="string45" value="EXISTINGRESPONSE_AUTO" />
+        <string id="string46" value="Read" />
+        <string id="string47" value="Write" />
+        <string id="string48" value="Exec" />
+        <string id="string49" value="Source" />
+        <string id="string50" value="Script" />
+        <string id="string51" value="NoRemoteWrite" />
+        <string id="string52" value="NoRemoteRead" />
+        <string id="string53" value="NoRemoteExec" />
+        <string id="string54" value="NoRemoteScript" />
+        <string id="string55" value="NoPhysicalDir" />
+        <string id="string56" value="SSL" />
+        <string id="string57" value="CliCert" />
+        <string id="string58" value="ReqCliCert" />
+        <string id="string59" value="MapCliCert" />
+        <string id="string60" value="SSL128" />
+        <string id="string61" value="ISAPI_EXTENSION_DONE" />
+        <string id="string62" value="W3Isapi" />
+        <string id="string63" value="CALL_ISAPI_EXTENSION" />
+        <string id="string64" value="NOTIFY_ISAPI_COMPLETION" />
+        <string id="string65" value="ASP_START_REQUEST" />
+        <string id="string66" value="AspReq" />
+        <string id="string67" value="ASP_END_REQUEST" />
+        <string id="string68" value="ASP_FIRST_REQUEST_FOR_ASP" />
+        <string id="string69" value="ASP_INIT_FAILURE" />
+        <string id="string70" value="ASP_UNHEALTHY_FAILURE" />
+        <string id="string71" value="ASP_FIRST_REQUEST_FOR_APPLICATION" />
+        <string id="string72" value="ASP_START_GLOBAL_ASA_CHECK" />
+        <string id="string73" value="ASP_END_GLOBAL_ASA_CHECK" />
+        <string id="string74" value="ASP_GLOBAL_ASA_DOES_NOT_EXIST" />
+        <string id="string75" value="ASP_GLOBAL_ASA_ACCESS_DENIED" />
+        <string id="string76" value="ASP_GLOBAL_ASA_ACCESS_SUCCESS" />
+        <string id="string77" value="ASP_NEW_SESSION_CREATED" />
+        <string id="string78" value="ASP_SECURE_SESSION_ID_SET" />
+        <string id="string79" value="ASP_START_SCRIPTLESS_SEND" />
+        <string id="string80" value="ASP_END_SCRIPTLESS_SEND" />
+        <string id="string81" value="ASP_SERVER_TOO_BUSY_TO_QUEUE" />
+        <string id="string82" value="ASP_QUEUE_REQUEST" />
+        <string id="string83" value="ASP_DEQUEUE_REQUEST" />
+        <string id="string84" value="ASP_QUEUE_REQUEST_FAILED" />
+        <string id="string85" value="ASP_CLIENT_DISCONNECTED" />
+        <string id="string86" value="ASP_REQUEST_TIMEOUT" />
+        <string id="string87" value="ASP_FILE_ACCESS_DENIED" />
+        <string id="string88" value="ASP_FILE_NOT_FOUND" />
+        <string id="string89" value="ASP_READ_FILE" />
+        <string id="string90" value="ASP_COMPILE_FAILED" />
+        <string id="string91" value="ASP_START_APPLICATION_ONSTART" />
+        <string id="string92" value="ASP_END_APPLICATION_ONSTART" />
+        <string id="string93" value="ASP_APPLICATION_ONSTART_SUCCESS" />
+        <string id="string94" value="ASP_APPLICATION_ONSTART_ERROR" />
+        <string id="string95" value="ASP_START_SESSION_ONSTART" />
+        <string id="string96" value="ASP_END_SESSION_ONSTART" />
+        <string id="string97" value="ASP_SESSION_ONSTART_SUCCESS" />
+        <string id="string98" value="ASP_SESSION_ONSTART_ERROR" />
+        <string id="string99" value="ASP_START_SCRIPT_EXECUTION" />
+        <string id="string100" value="ASP_END_SCRIPT_EXECUTION" />
+        <string id="string101" value="ASP_TRANSACTION_ABORTED" />
+        <string id="string102" value="ASP_TRANSACTION_COMMITED" />
+        <string id="string103" value="ASP_START_COMPILE" />
+        <string id="string104" value="ASP_END_COMPILE" />
+        <string id="string105" value="ASP_START_CACHE_ACCESS" />
+        <string id="string106" value="ASP_END_CACHE_ACCESS" />
+        <string id="string107" value="ASP_CURRENT_SESSION" />
+        <string id="string108" value="ASP_DONE_PROCESSING" />
+        <string id="string109" value="ASP_SCRIPT_TRACE_START" />
+        <string id="string110" value="ASP_SCRIPT_TRACE_END" />
+        <string id="string111" value="ASP_SCRIPT_TRACE_COM_CALL_START" />
+        <string id="string112" value="ASP_SCRIPT_TRACE_COM_CALL_END" />
+        <string id="string113" value="ASP_SCRIPT_TRACE_CREATE_OBJECT_START" />
+        <string id="string114" value="ASP_SCRIPT_TRACE_CREATE_OBJECT_END" />
+        <string id="string115" value="ASP_SCRIPT_TRACE_GET_OBJECT_START" />
+        <string id="string116" value="ASP_SCRIPT_TRACE_GET_OBJECT_END" />
+        <string id="string117" value="ASP_LOG_ERROR" />
+        <string id="string118" value="METABASE_READ_FAILURE" />
+        <string id="string119" value="PERSISTED_CACHE_INIT_FAILURE" />
+        <string id="string120" value="COM_INIT_FAILURE" />
+        <string id="string121" value="METABASE_CHANGE_NOTIF_LISTENER_INIT_FAILURE" />
+        <string id="string122" value="DEADLOCK_DETECTED" />
+        <string id="string123" value="OUT_OF_MEMORY" />
+        <string id="string124" value="NOT_SERVED" />
+        <string id="string125" value="SERVED_CACHE_MISS" />
+        <string id="string126" value="SERVED_CACHE_HIT_CHANGENOTIF" />
+        <string id="string127" value="SERVED_CACHE_HIT_LASTMOD" />
+        <string id="string128" value="SERVED_CACHE_HIT_LASTMOD_NOACCESS" />
+      </stringTable>
+    </resources>
+  </localization>
+</instrumentationManifest>

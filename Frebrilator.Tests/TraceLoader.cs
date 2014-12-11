@@ -10,7 +10,7 @@ namespace Frebrilator.Tests {
     const String DefaultTrace = "freb.etl";
 
     public static ETWTraceEventSource Load(String traceFile = DefaultTrace) {
-      return new ETWTraceEventSource(traceFile);
+      return new ETWTraceEventSource(traceFile, TraceEventSourceType.FileOnly);
     }
   }
 }

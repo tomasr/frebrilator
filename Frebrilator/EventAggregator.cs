@@ -1,4 +1,7 @@
 ﻿using Microsoft.Diagnostics.Tracing;
+using Microsoft.Diagnostics.Tracing.Parsers;
+using Microsoft.Diagnostics.Tracing.Parsers.AspNet;
+using Microsoft.Diagnostics.Tracing.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +12,19 @@ namespace Winterdom.Frebrilator {
   public class EventAggregator : IObserver<TraceEvent>, IDisposable {
 
     private IDisposable subscription;
+    private IStreamHandlerProvider handlerProvider;
 
-    public void Start(IObservable<TraceEvent> events) {
+    public EventAggregator(IStreamHandlerProvider provider) {
+      this.handlerProvider = provider;
+    }
+
+    public void Start(ETWTraceEventSource eventSource) {
       if ( this.subscription != null ) {
         throw new InvalidOperationException("Observation already started");
       }
-      this.subscription = events.Subscribe(this);
-    }
 
-    public IEnumerable<RequestStream> AllRequests() {
-      throw new NotImplementedException();
+      var parser = new RegisteredTraceEventParser(eventSource);
+      this.subscription = parser.ObserveAll().Subscribe(this);
     }
 
     public void Dispose() {
@@ -28,13 +34,29 @@ namespace Winterdom.Frebrilator {
       }
     }
 
+    void IObserver<TraceEvent>.OnNext(TraceEvent obj) {
+      bool include = obj.ProviderGuid == IIS_TraceTraceEventParser.ProviderGuid
+                  || obj.ProviderGuid == IIS_IsapiTraceTraceEventParser.ProviderGuid
+                  || obj.ProviderGuid == ASP_TraceTraceEventParser.ProviderGuid
+                  || obj.ProviderGuid == AspNetTraceEventParser.ProviderGuid;
+      if ( include ) {
+        // All entries logged into FREB traces
+        // will contain a ContextId value that links all related
+        // events together.
+        // Normally TraceEvent.ActivityId would do this
+        // but that will always be Guid.Empty because
+        // these are "classic" providers
+        Guid activityId = (Guid)obj.PayloadByName("ContextId");
+        var handler = this.handlerProvider.Get(activityId);
+        handler.AddEvent(obj);
+      }
+    }
+
     void IObserver<TraceEvent>.OnCompleted() {
     }
 
     void IObserver<TraceEvent>.OnError(Exception error) {
     }
 
-    void IObserver<TraceEvent>.OnNext(TraceEvent value) {
-    }
   }
 }
