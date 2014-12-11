@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="EventAggregator.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FrebWriter.cs" />
     <Compile Include="IStreamHandler.cs" />
     <Compile Include="IStreamHandlerProvider.cs" />
     <Compile Include="Parsers\ASP_Trace.cs" />
