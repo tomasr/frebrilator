@@ -41,7 +41,44 @@ namespace Frebrilator.Tests {
       Assert.Equal(e.ProcessID.ToString(), exec.Attribute("ProcessID").Value);
       Assert.Equal(e.ThreadID.ToString(), exec.Attribute("ThreadID").Value);
       Assert.Equal("DOMINION", root.Element(freb+"Computer").Value);
+    }
 
+    [Fact]
+    public void WriteEventDataTest() {
+      var trace = TraceLoader.LoadAllEvents();
+      var e = trace[2];
+      Guid activityId = Guid.NewGuid();
+
+      StringWriter sw = new StringWriter();
+      using ( XmlWriter xw = XmlWriter.Create(sw) ) {
+        FrebWriter.WriteEventData(xw, e);
+      }
+
+      XDocument doc = XDocument.Parse(sw.ToString());
+      XElement root = doc.Root;
+      XNamespace freb = FrebWriter.EtwNS;
+
+      Assert.Equal(freb + "EventData", root.Name);
+      Assert.Equal("{800000a9-0001-b100-b63f-84710c7967bb}",
+        FindDataElement(root, freb+"Data", "ContextId").Value);
+      Assert.Equal("1",
+        FindDataElement(root, freb+"Data", "SiteId").Value);
+      Assert.Equal("DefaultAppPool",
+        FindDataElement(root, freb+"Data", "AppPoolId").Value);
+      Assert.Equal("12754194150618824872",
+        FindDataElement(root, freb+"Data", "ConnId").Value);
+      Assert.Equal("0",
+        FindDataElement(root, freb+"Data", "RawConnId").Value);
+      Assert.Equal("http://localhost:80/test1.aspx",
+        FindDataElement(root, freb+"Data", "RequestURL").Value);
+      Assert.Equal("GET",
+        FindDataElement(root, freb+"Data", "RequestVerb").Value);
+    }
+
+    private XElement FindDataElement(XElement root, XName name, String propName) {
+      return root.Elements(name)
+                 .Where(x => x.Attribute("Name").Value == propName)
+                 .FirstOrDefault();
     }
   }
 }

@@ -44,6 +44,33 @@ namespace Winterdom.Frebrilator {
       xw.WriteEndElement();
     }
 
+    public static void WriteEventData(XmlWriter xw, TraceEvent traceEvent) {
+      xw.WriteStartElement("EventData", EtwNS);
+      foreach ( String name in traceEvent.PayloadNames ) {
+        xw.WriteStartElement("Data", EtwNS);
+        xw.WriteAttributeString("Name", name);
+        xw.WriteString(ConvertValue(traceEvent.PayloadByName(name)));
+        xw.WriteEndElement();
+      }
+      xw.WriteEndElement();
+    }
+
+    private static String ConvertValue(object value) {
+      if ( value == null ) return "";
+      Type type = value.GetType();
+      if ( type == typeof(long) ) {
+        // ugly workaround.... there are many ulong values in there
+        return Convert.ToString((ulong)(long)value);
+      }
+      if ( type == typeof(DateTime) ) {
+        return FormatDate((DateTime)value);
+      }
+      if ( type == typeof(Guid) ) {
+        return ((Guid)value).ToString("B");
+      }
+      return Convert.ToString(value);
+    }
+
     private static String FormatDate(DateTime dateTime) {
       return dateTime.ToUniversalTime()
                      .ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
