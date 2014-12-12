@@ -13,6 +13,7 @@ namespace Winterdom.Frebrilator {
 
     private IDisposable subscription;
     private IStreamHandlerProvider handlerProvider;
+    private String computerName;
 
     public EventAggregator(IStreamHandlerProvider provider) {
       this.handlerProvider = provider;
@@ -23,6 +24,7 @@ namespace Winterdom.Frebrilator {
         throw new InvalidOperationException("Observation already started");
       }
 
+      this.computerName = Environment.MachineName.ToUpper();
       var parser = new RegisteredTraceEventParser(eventSource);
       this.subscription = parser.ObserveAll().Subscribe(this);
     }
@@ -35,6 +37,11 @@ namespace Winterdom.Frebrilator {
     }
 
     void IObserver<TraceEvent>.OnNext(TraceEvent obj) {
+      if ( obj.ProviderGuid == KernelTraceEventParser.ProviderGuid ) {
+        if ( obj.EventName == "SystemConfig/CPU" ) {
+          this.computerName = (String)obj.PayloadByName("ComputerName");
+        }
+      }
       bool include = obj.ProviderGuid == IIS_TraceTraceEventParser.ProviderGuid
                   || obj.ProviderGuid == IIS_IsapiTraceTraceEventParser.ProviderGuid
                   || obj.ProviderGuid == ASP_TraceTraceEventParser.ProviderGuid
