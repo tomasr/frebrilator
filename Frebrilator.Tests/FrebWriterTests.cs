@@ -25,7 +25,7 @@ namespace Frebrilator.Tests {
 
       XDocument doc = XDocument.Parse(sw.ToString());
       XElement root = doc.Root;
-      XNamespace freb = FrebWriter.EtwNS;
+      XNamespace freb = FrebWriter.EtwNs;
       Assert.Equal(freb + "System", root.Name);
       Assert.Equal("WWW Server", root.Element(freb+"Provider").Attribute("Name").Value);
       Assert.Equal("{3a2a4e84-4c21-4981-ae10-3fda0d9b0f83}", root.Element(freb + "Provider").Attribute("Guid").Value);
@@ -56,7 +56,7 @@ namespace Frebrilator.Tests {
 
       XDocument doc = XDocument.Parse(sw.ToString());
       XElement root = doc.Root;
-      XNamespace freb = FrebWriter.EtwNS;
+      XNamespace freb = FrebWriter.EtwNs;
 
       Assert.Equal(freb + "EventData", root.Name);
       Assert.Equal("{800000a9-0001-b100-b63f-84710c7967bb}",
@@ -88,11 +88,50 @@ namespace Frebrilator.Tests {
 
       XDocument doc = XDocument.Parse(sw.ToString());
       XElement root = doc.Root;
-      XNamespace freb = FrebWriter.EtwNS;
+      XNamespace freb = FrebWriter.EtwNs;
 
       Assert.Equal(freb + "RenderingInfo", root.Name);
       Assert.Equal("en-US", root.Attribute("Culture").Value);
       Assert.Equal("GENERAL_REQUEST_START", root.Element(freb + "OpCode").Value);
+    }
+
+    [Fact(Skip="No TaskGuid available")]
+    public void WriteExtendedTracingInfoTest() {
+      var trace = TraceLoader.LoadAllEvents();
+      var e = trace[2];
+      Guid activityId = Guid.NewGuid();
+
+      StringWriter sw = new StringWriter();
+      using ( XmlWriter xw = XmlWriter.Create(sw) ) {
+        FrebWriter.WriteExtendedTracingInfo(xw, e);
+      }
+
+      XDocument doc = XDocument.Parse(sw.ToString());
+      XElement root = doc.Root;
+      XNamespace freb = FrebWriter.EtwTraceNs;
+
+      Assert.Equal(freb + "ExtendedTracingInfo", root.Name);
+      // Won't pass at this time
+      Assert.Equal("{D42CF7EF-DE92-473E-8B6C-621EA663113A}", root.Element(freb + "EventGuid").Value);
+    }
+
+    [Fact]
+    public void WriteEventTest() {
+      var trace = TraceLoader.LoadAllEvents();
+      var e = trace[2];
+      Guid activityId = Guid.NewGuid();
+
+      StringWriter sw = new StringWriter();
+      using ( XmlWriter xw = XmlWriter.Create(sw) ) {
+        FrebWriter.WriteEvent(xw, activityId, e, "DOMINION");
+      }
+
+      XDocument doc = XDocument.Parse(sw.ToString());
+      XElement root = doc.Root;
+      XNamespace freb = FrebWriter.EtwNs;
+
+      Assert.Equal(freb + "Event", root.Name);
+      Assert.Equal(4, root.Elements().Count());
     }
 
     private XElement FindDataElement(XElement root, XName name, String propName) {
