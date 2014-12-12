@@ -54,6 +54,12 @@ namespace Winterdom.Frebrilator {
       }
       xw.WriteEndElement();
     }
+    public static void WriteRenderingInfo(XmlWriter xw, TraceEvent traceEvent) {
+      xw.WriteStartElement("RenderingInfo", EtwNS);
+      xw.WriteAttributeString("Culture", "en-US");
+      xw.WriteElementString("OpCode", traceEvent.OpcodeName);
+      xw.WriteEndElement();
+    }
 
     private static String ConvertValue(object value) {
       if ( value == null ) return "";

@@ -75,6 +75,26 @@ namespace Frebrilator.Tests {
         FindDataElement(root, freb+"Data", "RequestVerb").Value);
     }
 
+    [Fact]
+    public void WriteRenderingInfoTest() {
+      var trace = TraceLoader.LoadAllEvents();
+      var e = trace[2];
+      Guid activityId = Guid.NewGuid();
+
+      StringWriter sw = new StringWriter();
+      using ( XmlWriter xw = XmlWriter.Create(sw) ) {
+        FrebWriter.WriteRenderingInfo(xw, e);
+      }
+
+      XDocument doc = XDocument.Parse(sw.ToString());
+      XElement root = doc.Root;
+      XNamespace freb = FrebWriter.EtwNS;
+
+      Assert.Equal(freb + "RenderingInfo", root.Name);
+      Assert.Equal("en-US", root.Attribute("Culture").Value);
+      Assert.Equal("GENERAL_REQUEST_START", root.Element(freb + "OpCode").Value);
+    }
+
     private XElement FindDataElement(XElement root, XName name, String propName) {
       return root.Elements(name)
                  .Where(x => x.Attribute("Name").Value == propName)
