@@ -24,6 +24,8 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         public ASP_TraceTraceEventParser(TraceEventSource source) : base(source) {}
 
+        private static Guid AspReqTaskGuid = new Guid("{1fc299fa-3fc4-4c37-910d-de5b911d0270}");
+
         public event Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> AspReqASP_APPLICATION_ONSTART_ERROR
         {
             add
@@ -32,7 +34,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 28, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> AspReqASP_APPLICATION_ONSTART_SUCCESS
@@ -43,7 +45,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 27, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_CLIENT_DISCONNECTEDArgs> AspReqASP_CLIENT_DISCONNECTED
@@ -54,7 +56,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 19, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_COMPILE_FAILEDArgs> AspReqASP_COMPILE_FAILED
@@ -65,7 +67,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 24, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_CURRENT_SESSIONArgs> AspReqASP_CURRENT_SESSION
@@ -76,7 +78,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 41, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_DEQUEUE_REQUESTArgs> AspReqASP_DEQUEUE_REQUEST
@@ -87,7 +89,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 17, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_DONE_PROCESSINGArgs> AspReqASP_DONE_PROCESSING
@@ -98,7 +100,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 42, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_APPLICATION_ONSTARTArgs> AspReqASP_END_APPLICATION_ONSTART
@@ -109,7 +111,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 26, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_CACHE_ACCESSArgs> AspReqASP_END_CACHE_ACCESS
@@ -120,7 +122,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 40, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_COMPILEArgs> AspReqASP_END_COMPILE
@@ -131,7 +133,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 38, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> AspReqASP_END_GLOBAL_ASA_CHECK
@@ -142,7 +144,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 7, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_REQUESTArgs> AspReqASP_END_REQUEST
@@ -153,7 +155,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 1, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> AspReqASP_END_SCRIPT_EXECUTION
@@ -164,7 +166,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 34, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_SCRIPTLESS_SENDArgs> AspReqASP_END_SCRIPTLESS_SEND
@@ -175,7 +177,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 14, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_END_SESSION_ONSTARTArgs> AspReqASP_END_SESSION_ONSTART
@@ -186,7 +188,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 30, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_FILE_ACCESS_DENIEDArgs> AspReqASP_FILE_ACCESS_DENIED
@@ -197,7 +199,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 21, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_FILE_NOT_FOUNDArgs> AspReqASP_FILE_NOT_FOUND
@@ -208,7 +210,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 22, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> AspReqASP_FIRST_REQUEST_FOR_APPLICATION
@@ -219,7 +221,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 5, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> AspReqASP_FIRST_REQUEST_FOR_ASP
@@ -230,7 +232,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 2, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> AspReqASP_GLOBAL_ASA_ACCESS_DENIED
@@ -241,7 +243,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 9, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> AspReqASP_GLOBAL_ASA_ACCESS_SUCCESS
@@ -252,7 +254,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 10, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> AspReqASP_GLOBAL_ASA_DOES_NOT_EXIST
@@ -263,7 +265,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 8, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_INIT_FAILUREArgs> AspReqASP_INIT_FAILURE
@@ -274,7 +276,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 3, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_LOG_ERRORArgs> AspReqASP_LOG_ERROR
@@ -285,7 +287,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 51, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_NEW_SESSION_CREATEDArgs> AspReqASP_NEW_SESSION_CREATED
@@ -296,7 +298,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 11, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_QUEUE_REQUESTArgs> AspReqASP_QUEUE_REQUEST
@@ -307,7 +309,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 16, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> AspReqASP_QUEUE_REQUEST_FAILED
@@ -318,7 +320,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 18, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_READ_FILEArgs> AspReqASP_READ_FILE
@@ -329,7 +331,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 23, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_REQUEST_TIMEOUTArgs> AspReqASP_REQUEST_TIMEOUT
@@ -340,7 +342,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 20, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> AspReqASP_SCRIPT_TRACE_COM_CALL_END
@@ -351,7 +353,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 46, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> AspReqASP_SCRIPT_TRACE_COM_CALL_START
@@ -362,7 +364,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 45, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_END
@@ -373,7 +375,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 48, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_START
@@ -384,7 +386,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 47, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_ENDArgs> AspReqASP_SCRIPT_TRACE_END
@@ -395,7 +397,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 44, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> AspReqASP_SCRIPT_TRACE_GET_OBJECT_END
@@ -406,7 +408,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 50, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> AspReqASP_SCRIPT_TRACE_GET_OBJECT_START
@@ -417,7 +419,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 49, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SCRIPT_TRACE_STARTArgs> AspReqASP_SCRIPT_TRACE_START
@@ -428,7 +430,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 43, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SECURE_SESSION_ID_SETArgs> AspReqASP_SECURE_SESSION_ID_SET
@@ -439,7 +441,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 12, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> AspReqASP_SERVER_TOO_BUSY_TO_QUEUE
@@ -450,7 +452,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 15, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SESSION_ONSTART_ERRORArgs> AspReqASP_SESSION_ONSTART_ERROR
@@ -461,7 +463,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 32, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> AspReqASP_SESSION_ONSTART_SUCCESS
@@ -472,7 +474,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 31, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_APPLICATION_ONSTARTArgs> AspReqASP_START_APPLICATION_ONSTART
@@ -483,7 +485,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 25, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_CACHE_ACCESSArgs> AspReqASP_START_CACHE_ACCESS
@@ -494,7 +496,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 39, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_COMPILEArgs> AspReqASP_START_COMPILE
@@ -505,7 +507,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 37, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> AspReqASP_START_GLOBAL_ASA_CHECK
@@ -516,7 +518,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 6, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_REQUESTArgs> AspReqASP_START_REQUEST
@@ -527,7 +529,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 0, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> AspReqASP_START_SCRIPT_EXECUTION
@@ -538,7 +540,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 33, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_SCRIPTLESS_SENDArgs> AspReqASP_START_SCRIPTLESS_SEND
@@ -549,7 +551,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 13, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_START_SESSION_ONSTARTArgs> AspReqASP_START_SESSION_ONSTART
@@ -560,7 +562,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 29, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_TRANSACTION_ABORTEDArgs> AspReqASP_TRANSACTION_ABORTED
@@ -571,7 +573,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 35, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_TRANSACTION_COMMITEDArgs> AspReqASP_TRANSACTION_COMMITED
@@ -582,7 +584,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 36, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<AspReqASP_UNHEALTHY_FAILUREArgs> AspReqASP_UNHEALTHY_FAILURE
@@ -593,7 +595,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 4, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
 
@@ -602,211 +604,211 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         static private AspReqASP_APPLICATION_ONSTART_ERRORArgs AspReqASP_APPLICATION_ONSTART_ERRORTemplate(Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_APPLICATION_ONSTART_ERRORArgs(action, 28, 1, "AspReq", Guid.Empty, 38, "ASP_APPLICATION_ONSTART_ERROR", ProviderGuid, ProviderName );
+            return new AspReqASP_APPLICATION_ONSTART_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 57, "ASP_APPLICATION_ONSTART_ERROR", ProviderGuid, ProviderName );
         }
         static private AspReqASP_APPLICATION_ONSTART_SUCCESSArgs AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_APPLICATION_ONSTART_SUCCESSArgs(action, 27, 1, "AspReq", Guid.Empty, 37, "ASP_APPLICATION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
+            return new AspReqASP_APPLICATION_ONSTART_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 13, "ASP_APPLICATION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
         }
         static private AspReqASP_CLIENT_DISCONNECTEDArgs AspReqASP_CLIENT_DISCONNECTEDTemplate(Action<AspReqASP_CLIENT_DISCONNECTEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_CLIENT_DISCONNECTEDArgs(action, 19, 1, "AspReq", Guid.Empty, 29, "ASP_CLIENT_DISCONNECTED", ProviderGuid, ProviderName );
+            return new AspReqASP_CLIENT_DISCONNECTEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 16, "ASP_CLIENT_DISCONNECTED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_COMPILE_FAILEDArgs AspReqASP_COMPILE_FAILEDTemplate(Action<AspReqASP_COMPILE_FAILEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_COMPILE_FAILEDArgs(action, 24, 1, "AspReq", Guid.Empty, 34, "ASP_COMPILE_FAILED", ProviderGuid, ProviderName );
+            return new AspReqASP_COMPILE_FAILEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 39, "ASP_COMPILE_FAILED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_CURRENT_SESSIONArgs AspReqASP_CURRENT_SESSIONTemplate(Action<AspReqASP_CURRENT_SESSIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_CURRENT_SESSIONArgs(action, 41, 1, "AspReq", Guid.Empty, 51, "ASP_CURRENT_SESSION", ProviderGuid, ProviderName );
+            return new AspReqASP_CURRENT_SESSIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 49, "ASP_CURRENT_SESSION", ProviderGuid, ProviderName );
         }
         static private AspReqASP_DEQUEUE_REQUESTArgs AspReqASP_DEQUEUE_REQUESTTemplate(Action<AspReqASP_DEQUEUE_REQUESTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_DEQUEUE_REQUESTArgs(action, 17, 1, "AspReq", Guid.Empty, 27, "ASP_DEQUEUE_REQUEST", ProviderGuid, ProviderName );
+            return new AspReqASP_DEQUEUE_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 22, "ASP_DEQUEUE_REQUEST", ProviderGuid, ProviderName );
         }
         static private AspReqASP_DONE_PROCESSINGArgs AspReqASP_DONE_PROCESSINGTemplate(Action<AspReqASP_DONE_PROCESSINGArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_DONE_PROCESSINGArgs(action, 42, 1, "AspReq", Guid.Empty, 52, "ASP_DONE_PROCESSING", ProviderGuid, ProviderName );
+            return new AspReqASP_DONE_PROCESSINGArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 43, "ASP_DONE_PROCESSING", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_APPLICATION_ONSTARTArgs AspReqASP_END_APPLICATION_ONSTARTTemplate(Action<AspReqASP_END_APPLICATION_ONSTARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_APPLICATION_ONSTARTArgs(action, 26, 1, "AspReq", Guid.Empty, 36, "ASP_END_APPLICATION_ONSTART", ProviderGuid, ProviderName );
+            return new AspReqASP_END_APPLICATION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 21, "ASP_END_APPLICATION_ONSTART", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_CACHE_ACCESSArgs AspReqASP_END_CACHE_ACCESSTemplate(Action<AspReqASP_END_CACHE_ACCESSArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_CACHE_ACCESSArgs(action, 40, 1, "AspReq", Guid.Empty, 50, "ASP_END_CACHE_ACCESS", ProviderGuid, ProviderName );
+            return new AspReqASP_END_CACHE_ACCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 11, "ASP_END_CACHE_ACCESS", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_COMPILEArgs AspReqASP_END_COMPILETemplate(Action<AspReqASP_END_COMPILEArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_COMPILEArgs(action, 38, 1, "AspReq", Guid.Empty, 48, "ASP_END_COMPILE", ProviderGuid, ProviderName );
+            return new AspReqASP_END_COMPILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 36, "ASP_END_COMPILE", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_GLOBAL_ASA_CHECKArgs AspReqASP_END_GLOBAL_ASA_CHECKTemplate(Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_GLOBAL_ASA_CHECKArgs(action, 7, 1, "AspReq", Guid.Empty, 17, "ASP_END_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
+            return new AspReqASP_END_GLOBAL_ASA_CHECKArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 48, "ASP_END_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_REQUESTArgs AspReqASP_END_REQUESTTemplate(Action<AspReqASP_END_REQUESTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_REQUESTArgs(action, 1, 1, "AspReq", Guid.Empty, 11, "ASP_END_REQUEST", ProviderGuid, ProviderName );
+            return new AspReqASP_END_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 24, "ASP_END_REQUEST", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_SCRIPT_EXECUTIONArgs AspReqASP_END_SCRIPT_EXECUTIONTemplate(Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SCRIPT_EXECUTIONArgs(action, 34, 1, "AspReq", Guid.Empty, 44, "ASP_END_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
+            return new AspReqASP_END_SCRIPT_EXECUTIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 14, "ASP_END_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_SCRIPTLESS_SENDArgs AspReqASP_END_SCRIPTLESS_SENDTemplate(Action<AspReqASP_END_SCRIPTLESS_SENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SCRIPTLESS_SENDArgs(action, 14, 1, "AspReq", Guid.Empty, 24, "ASP_END_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
+            return new AspReqASP_END_SCRIPTLESS_SENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 42, "ASP_END_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
         }
         static private AspReqASP_END_SESSION_ONSTARTArgs AspReqASP_END_SESSION_ONSTARTTemplate(Action<AspReqASP_END_SESSION_ONSTARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SESSION_ONSTARTArgs(action, 30, 1, "AspReq", Guid.Empty, 40, "ASP_END_SESSION_ONSTART", ProviderGuid, ProviderName );
+            return new AspReqASP_END_SESSION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 15, "ASP_END_SESSION_ONSTART", ProviderGuid, ProviderName );
         }
         static private AspReqASP_FILE_ACCESS_DENIEDArgs AspReqASP_FILE_ACCESS_DENIEDTemplate(Action<AspReqASP_FILE_ACCESS_DENIEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FILE_ACCESS_DENIEDArgs(action, 21, 1, "AspReq", Guid.Empty, 31, "ASP_FILE_ACCESS_DENIED", ProviderGuid, ProviderName );
+            return new AspReqASP_FILE_ACCESS_DENIEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 44, "ASP_FILE_ACCESS_DENIED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_FILE_NOT_FOUNDArgs AspReqASP_FILE_NOT_FOUNDTemplate(Action<AspReqASP_FILE_NOT_FOUNDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FILE_NOT_FOUNDArgs(action, 22, 1, "AspReq", Guid.Empty, 32, "ASP_FILE_NOT_FOUND", ProviderGuid, ProviderName );
+            return new AspReqASP_FILE_NOT_FOUNDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 61, "ASP_FILE_NOT_FOUND", ProviderGuid, ProviderName );
         }
         static private AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs(action, 5, 1, "AspReq", Guid.Empty, 15, "ASP_FIRST_REQUEST_FOR_APPLICATION", ProviderGuid, ProviderName );
+            return new AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 38, "ASP_FIRST_REQUEST_FOR_APPLICATION", ProviderGuid, ProviderName );
         }
         static private AspReqASP_FIRST_REQUEST_FOR_ASPArgs AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FIRST_REQUEST_FOR_ASPArgs(action, 2, 1, "AspReq", Guid.Empty, 12, "ASP_FIRST_REQUEST_FOR_ASP", ProviderGuid, ProviderName );
+            return new AspReqASP_FIRST_REQUEST_FOR_ASPArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 37, "ASP_FIRST_REQUEST_FOR_ASP", ProviderGuid, ProviderName );
         }
         static private AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs(action, 9, 1, "AspReq", Guid.Empty, 19, "ASP_GLOBAL_ASA_ACCESS_DENIED", ProviderGuid, ProviderName );
+            return new AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 18, "ASP_GLOBAL_ASA_ACCESS_DENIED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs(action, 10, 1, "AspReq", Guid.Empty, 20, "ASP_GLOBAL_ASA_ACCESS_SUCCESS", ProviderGuid, ProviderName );
+            return new AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 58, "ASP_GLOBAL_ASA_ACCESS_SUCCESS", ProviderGuid, ProviderName );
         }
         static private AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs(action, 8, 1, "AspReq", Guid.Empty, 18, "ASP_GLOBAL_ASA_DOES_NOT_EXIST", ProviderGuid, ProviderName );
+            return new AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 41, "ASP_GLOBAL_ASA_DOES_NOT_EXIST", ProviderGuid, ProviderName );
         }
         static private AspReqASP_INIT_FAILUREArgs AspReqASP_INIT_FAILURETemplate(Action<AspReqASP_INIT_FAILUREArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_INIT_FAILUREArgs(action, 3, 1, "AspReq", Guid.Empty, 13, "ASP_INIT_FAILURE", ProviderGuid, ProviderName );
+            return new AspReqASP_INIT_FAILUREArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 59, "ASP_INIT_FAILURE", ProviderGuid, ProviderName );
         }
         static private AspReqASP_LOG_ERRORArgs AspReqASP_LOG_ERRORTemplate(Action<AspReqASP_LOG_ERRORArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_LOG_ERRORArgs(action, 51, 1, "AspReq", Guid.Empty, 61, "ASP_LOG_ERROR", ProviderGuid, ProviderName );
+            return new AspReqASP_LOG_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 60, "ASP_LOG_ERROR", ProviderGuid, ProviderName );
         }
         static private AspReqASP_NEW_SESSION_CREATEDArgs AspReqASP_NEW_SESSION_CREATEDTemplate(Action<AspReqASP_NEW_SESSION_CREATEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_NEW_SESSION_CREATEDArgs(action, 11, 1, "AspReq", Guid.Empty, 21, "ASP_NEW_SESSION_CREATED", ProviderGuid, ProviderName );
+            return new AspReqASP_NEW_SESSION_CREATEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 47, "ASP_NEW_SESSION_CREATED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_QUEUE_REQUESTArgs AspReqASP_QUEUE_REQUESTTemplate(Action<AspReqASP_QUEUE_REQUESTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_QUEUE_REQUESTArgs(action, 16, 1, "AspReq", Guid.Empty, 26, "ASP_QUEUE_REQUEST", ProviderGuid, ProviderName );
+            return new AspReqASP_QUEUE_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 56, "ASP_QUEUE_REQUEST", ProviderGuid, ProviderName );
         }
         static private AspReqASP_QUEUE_REQUEST_FAILEDArgs AspReqASP_QUEUE_REQUEST_FAILEDTemplate(Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_QUEUE_REQUEST_FAILEDArgs(action, 18, 1, "AspReq", Guid.Empty, 28, "ASP_QUEUE_REQUEST_FAILED", ProviderGuid, ProviderName );
+            return new AspReqASP_QUEUE_REQUEST_FAILEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 30, "ASP_QUEUE_REQUEST_FAILED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_READ_FILEArgs AspReqASP_READ_FILETemplate(Action<AspReqASP_READ_FILEArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_READ_FILEArgs(action, 23, 1, "AspReq", Guid.Empty, 33, "ASP_READ_FILE", ProviderGuid, ProviderName );
+            return new AspReqASP_READ_FILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 25, "ASP_READ_FILE", ProviderGuid, ProviderName );
         }
         static private AspReqASP_REQUEST_TIMEOUTArgs AspReqASP_REQUEST_TIMEOUTTemplate(Action<AspReqASP_REQUEST_TIMEOUTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_REQUEST_TIMEOUTArgs(action, 20, 1, "AspReq", Guid.Empty, 30, "ASP_REQUEST_TIMEOUT", ProviderGuid, ProviderName );
+            return new AspReqASP_REQUEST_TIMEOUTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 29, "ASP_REQUEST_TIMEOUT", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs(action, 46, 1, "AspReq", Guid.Empty, 56, "ASP_SCRIPT_TRACE_COM_CALL_END", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 51, "ASP_SCRIPT_TRACE_COM_CALL_END", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs(action, 45, 1, "AspReq", Guid.Empty, 55, "ASP_SCRIPT_TRACE_COM_CALL_START", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 50, "ASP_SCRIPT_TRACE_COM_CALL_START", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs(action, 48, 1, "AspReq", Guid.Empty, 58, "ASP_SCRIPT_TRACE_CREATE_OBJECT_END", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 53, "ASP_SCRIPT_TRACE_CREATE_OBJECT_END", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs(action, 47, 1, "AspReq", Guid.Empty, 57, "ASP_SCRIPT_TRACE_CREATE_OBJECT_START", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 52, "ASP_SCRIPT_TRACE_CREATE_OBJECT_START", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_ENDArgs AspReqASP_SCRIPT_TRACE_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_ENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_ENDArgs(action, 44, 1, "AspReq", Guid.Empty, 54, "ASP_SCRIPT_TRACE_END", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 27, "ASP_SCRIPT_TRACE_END", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs(action, 50, 1, "AspReq", Guid.Empty, 60, "ASP_SCRIPT_TRACE_GET_OBJECT_END", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 55, "ASP_SCRIPT_TRACE_GET_OBJECT_END", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs(action, 49, 1, "AspReq", Guid.Empty, 59, "ASP_SCRIPT_TRACE_GET_OBJECT_START", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 54, "ASP_SCRIPT_TRACE_GET_OBJECT_START", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SCRIPT_TRACE_STARTArgs AspReqASP_SCRIPT_TRACE_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_STARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_STARTArgs(action, 43, 1, "AspReq", Guid.Empty, 53, "ASP_SCRIPT_TRACE_START", ProviderGuid, ProviderName );
+            return new AspReqASP_SCRIPT_TRACE_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 26, "ASP_SCRIPT_TRACE_START", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SECURE_SESSION_ID_SETArgs AspReqASP_SECURE_SESSION_ID_SETTemplate(Action<AspReqASP_SECURE_SESSION_ID_SETArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SECURE_SESSION_ID_SETArgs(action, 12, 1, "AspReq", Guid.Empty, 22, "ASP_SECURE_SESSION_ID_SET", ProviderGuid, ProviderName );
+            return new AspReqASP_SECURE_SESSION_ID_SETArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 46, "ASP_SECURE_SESSION_ID_SET", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs(action, 15, 1, "AspReq", Guid.Empty, 25, "ASP_SERVER_TOO_BUSY_TO_QUEUE", ProviderGuid, ProviderName );
+            return new AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 12, "ASP_SERVER_TOO_BUSY_TO_QUEUE", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SESSION_ONSTART_ERRORArgs AspReqASP_SESSION_ONSTART_ERRORTemplate(Action<AspReqASP_SESSION_ONSTART_ERRORArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SESSION_ONSTART_ERRORArgs(action, 32, 1, "AspReq", Guid.Empty, 42, "ASP_SESSION_ONSTART_ERROR", ProviderGuid, ProviderName );
+            return new AspReqASP_SESSION_ONSTART_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 20, "ASP_SESSION_ONSTART_ERROR", ProviderGuid, ProviderName );
         }
         static private AspReqASP_SESSION_ONSTART_SUCCESSArgs AspReqASP_SESSION_ONSTART_SUCCESSTemplate(Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SESSION_ONSTART_SUCCESSArgs(action, 31, 1, "AspReq", Guid.Empty, 41, "ASP_SESSION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
+            return new AspReqASP_SESSION_ONSTART_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 34, "ASP_SESSION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_APPLICATION_ONSTARTArgs AspReqASP_START_APPLICATION_ONSTARTTemplate(Action<AspReqASP_START_APPLICATION_ONSTARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_APPLICATION_ONSTARTArgs(action, 25, 1, "AspReq", Guid.Empty, 35, "ASP_START_APPLICATION_ONSTART", ProviderGuid, ProviderName );
+            return new AspReqASP_START_APPLICATION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 40, "ASP_START_APPLICATION_ONSTART", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_CACHE_ACCESSArgs AspReqASP_START_CACHE_ACCESSTemplate(Action<AspReqASP_START_CACHE_ACCESSArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_CACHE_ACCESSArgs(action, 39, 1, "AspReq", Guid.Empty, 49, "ASP_START_CACHE_ACCESS", ProviderGuid, ProviderName );
+            return new AspReqASP_START_CACHE_ACCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 33, "ASP_START_CACHE_ACCESS", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_COMPILEArgs AspReqASP_START_COMPILETemplate(Action<AspReqASP_START_COMPILEArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_COMPILEArgs(action, 37, 1, "AspReq", Guid.Empty, 47, "ASP_START_COMPILE", ProviderGuid, ProviderName );
+            return new AspReqASP_START_COMPILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 28, "ASP_START_COMPILE", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_GLOBAL_ASA_CHECKArgs AspReqASP_START_GLOBAL_ASA_CHECKTemplate(Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_GLOBAL_ASA_CHECKArgs(action, 6, 1, "AspReq", Guid.Empty, 16, "ASP_START_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
+            return new AspReqASP_START_GLOBAL_ASA_CHECKArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 10, "ASP_START_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_REQUESTArgs AspReqASP_START_REQUESTTemplate(Action<AspReqASP_START_REQUESTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_REQUESTArgs(action, 0, 1, "AspReq", Guid.Empty, 10, "ASP_START_REQUEST", ProviderGuid, ProviderName );
+            return new AspReqASP_START_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 35, "ASP_START_REQUEST", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_SCRIPT_EXECUTIONArgs AspReqASP_START_SCRIPT_EXECUTIONTemplate(Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SCRIPT_EXECUTIONArgs(action, 33, 1, "AspReq", Guid.Empty, 43, "ASP_START_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
+            return new AspReqASP_START_SCRIPT_EXECUTIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 32, "ASP_START_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_SCRIPTLESS_SENDArgs AspReqASP_START_SCRIPTLESS_SENDTemplate(Action<AspReqASP_START_SCRIPTLESS_SENDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SCRIPTLESS_SENDArgs(action, 13, 1, "AspReq", Guid.Empty, 23, "ASP_START_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
+            return new AspReqASP_START_SCRIPTLESS_SENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 45, "ASP_START_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
         }
         static private AspReqASP_START_SESSION_ONSTARTArgs AspReqASP_START_SESSION_ONSTARTTemplate(Action<AspReqASP_START_SESSION_ONSTARTArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SESSION_ONSTARTArgs(action, 29, 1, "AspReq", Guid.Empty, 39, "ASP_START_SESSION_ONSTART", ProviderGuid, ProviderName );
+            return new AspReqASP_START_SESSION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 31, "ASP_START_SESSION_ONSTART", ProviderGuid, ProviderName );
         }
         static private AspReqASP_TRANSACTION_ABORTEDArgs AspReqASP_TRANSACTION_ABORTEDTemplate(Action<AspReqASP_TRANSACTION_ABORTEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_TRANSACTION_ABORTEDArgs(action, 35, 1, "AspReq", Guid.Empty, 45, "ASP_TRANSACTION_ABORTED", ProviderGuid, ProviderName );
+            return new AspReqASP_TRANSACTION_ABORTEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 17, "ASP_TRANSACTION_ABORTED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_TRANSACTION_COMMITEDArgs AspReqASP_TRANSACTION_COMMITEDTemplate(Action<AspReqASP_TRANSACTION_COMMITEDArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_TRANSACTION_COMMITEDArgs(action, 36, 1, "AspReq", Guid.Empty, 46, "ASP_TRANSACTION_COMMITED", ProviderGuid, ProviderName );
+            return new AspReqASP_TRANSACTION_COMMITEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 23, "ASP_TRANSACTION_COMMITED", ProviderGuid, ProviderName );
         }
         static private AspReqASP_UNHEALTHY_FAILUREArgs AspReqASP_UNHEALTHY_FAILURETemplate(Action<AspReqASP_UNHEALTHY_FAILUREArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_UNHEALTHY_FAILUREArgs(action, 4, 1, "AspReq", Guid.Empty, 14, "ASP_UNHEALTHY_FAILURE", ProviderGuid, ProviderName );
+            return new AspReqASP_UNHEALTHY_FAILUREArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 19, "ASP_UNHEALTHY_FAILURE", ProviderGuid, ProviderName );
         }
 
         static private volatile TraceEvent[] s_templates;
@@ -815,58 +817,58 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             if (s_templates == null)
             {
                 var templates = new TraceEvent[52];
-                templates[0] = AspReqASP_START_REQUESTTemplate(null);
-                templates[1] = AspReqASP_END_REQUESTTemplate(null);
-                templates[2] = AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(null);
-                templates[3] = AspReqASP_INIT_FAILURETemplate(null);
-                templates[4] = AspReqASP_UNHEALTHY_FAILURETemplate(null);
-                templates[5] = AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(null);
-                templates[6] = AspReqASP_START_GLOBAL_ASA_CHECKTemplate(null);
-                templates[7] = AspReqASP_END_GLOBAL_ASA_CHECKTemplate(null);
-                templates[8] = AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(null);
-                templates[9] = AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(null);
-                templates[10] = AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(null);
-                templates[11] = AspReqASP_NEW_SESSION_CREATEDTemplate(null);
-                templates[12] = AspReqASP_SECURE_SESSION_ID_SETTemplate(null);
-                templates[13] = AspReqASP_START_SCRIPTLESS_SENDTemplate(null);
-                templates[14] = AspReqASP_END_SCRIPTLESS_SENDTemplate(null);
-                templates[15] = AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(null);
-                templates[16] = AspReqASP_QUEUE_REQUESTTemplate(null);
-                templates[17] = AspReqASP_DEQUEUE_REQUESTTemplate(null);
-                templates[18] = AspReqASP_QUEUE_REQUEST_FAILEDTemplate(null);
-                templates[19] = AspReqASP_CLIENT_DISCONNECTEDTemplate(null);
-                templates[20] = AspReqASP_REQUEST_TIMEOUTTemplate(null);
-                templates[21] = AspReqASP_FILE_ACCESS_DENIEDTemplate(null);
-                templates[22] = AspReqASP_FILE_NOT_FOUNDTemplate(null);
-                templates[23] = AspReqASP_READ_FILETemplate(null);
-                templates[24] = AspReqASP_COMPILE_FAILEDTemplate(null);
-                templates[25] = AspReqASP_START_APPLICATION_ONSTARTTemplate(null);
-                templates[26] = AspReqASP_END_APPLICATION_ONSTARTTemplate(null);
-                templates[27] = AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(null);
-                templates[28] = AspReqASP_APPLICATION_ONSTART_ERRORTemplate(null);
-                templates[29] = AspReqASP_START_SESSION_ONSTARTTemplate(null);
-                templates[30] = AspReqASP_END_SESSION_ONSTARTTemplate(null);
-                templates[31] = AspReqASP_SESSION_ONSTART_SUCCESSTemplate(null);
-                templates[32] = AspReqASP_SESSION_ONSTART_ERRORTemplate(null);
-                templates[33] = AspReqASP_START_SCRIPT_EXECUTIONTemplate(null);
-                templates[34] = AspReqASP_END_SCRIPT_EXECUTIONTemplate(null);
-                templates[35] = AspReqASP_TRANSACTION_ABORTEDTemplate(null);
-                templates[36] = AspReqASP_TRANSACTION_COMMITEDTemplate(null);
-                templates[37] = AspReqASP_START_COMPILETemplate(null);
-                templates[38] = AspReqASP_END_COMPILETemplate(null);
-                templates[39] = AspReqASP_START_CACHE_ACCESSTemplate(null);
-                templates[40] = AspReqASP_END_CACHE_ACCESSTemplate(null);
-                templates[41] = AspReqASP_CURRENT_SESSIONTemplate(null);
-                templates[42] = AspReqASP_DONE_PROCESSINGTemplate(null);
-                templates[43] = AspReqASP_SCRIPT_TRACE_STARTTemplate(null);
-                templates[44] = AspReqASP_SCRIPT_TRACE_ENDTemplate(null);
-                templates[45] = AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(null);
-                templates[46] = AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(null);
-                templates[47] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(null);
-                templates[48] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(null);
-                templates[49] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(null);
-                templates[50] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(null);
-                templates[51] = AspReqASP_LOG_ERRORTemplate(null);
+                templates[0] = AspReqASP_START_GLOBAL_ASA_CHECKTemplate(null);
+                templates[1] = AspReqASP_END_CACHE_ACCESSTemplate(null);
+                templates[2] = AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(null);
+                templates[3] = AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(null);
+                templates[4] = AspReqASP_END_SCRIPT_EXECUTIONTemplate(null);
+                templates[5] = AspReqASP_END_SESSION_ONSTARTTemplate(null);
+                templates[6] = AspReqASP_CLIENT_DISCONNECTEDTemplate(null);
+                templates[7] = AspReqASP_TRANSACTION_ABORTEDTemplate(null);
+                templates[8] = AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(null);
+                templates[9] = AspReqASP_UNHEALTHY_FAILURETemplate(null);
+                templates[10] = AspReqASP_SESSION_ONSTART_ERRORTemplate(null);
+                templates[11] = AspReqASP_END_APPLICATION_ONSTARTTemplate(null);
+                templates[12] = AspReqASP_DEQUEUE_REQUESTTemplate(null);
+                templates[13] = AspReqASP_TRANSACTION_COMMITEDTemplate(null);
+                templates[14] = AspReqASP_END_REQUESTTemplate(null);
+                templates[15] = AspReqASP_READ_FILETemplate(null);
+                templates[16] = AspReqASP_SCRIPT_TRACE_STARTTemplate(null);
+                templates[17] = AspReqASP_SCRIPT_TRACE_ENDTemplate(null);
+                templates[18] = AspReqASP_START_COMPILETemplate(null);
+                templates[19] = AspReqASP_REQUEST_TIMEOUTTemplate(null);
+                templates[20] = AspReqASP_QUEUE_REQUEST_FAILEDTemplate(null);
+                templates[21] = AspReqASP_START_SESSION_ONSTARTTemplate(null);
+                templates[22] = AspReqASP_START_SCRIPT_EXECUTIONTemplate(null);
+                templates[23] = AspReqASP_START_CACHE_ACCESSTemplate(null);
+                templates[24] = AspReqASP_SESSION_ONSTART_SUCCESSTemplate(null);
+                templates[25] = AspReqASP_START_REQUESTTemplate(null);
+                templates[26] = AspReqASP_END_COMPILETemplate(null);
+                templates[27] = AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(null);
+                templates[28] = AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(null);
+                templates[29] = AspReqASP_COMPILE_FAILEDTemplate(null);
+                templates[30] = AspReqASP_START_APPLICATION_ONSTARTTemplate(null);
+                templates[31] = AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(null);
+                templates[32] = AspReqASP_END_SCRIPTLESS_SENDTemplate(null);
+                templates[33] = AspReqASP_DONE_PROCESSINGTemplate(null);
+                templates[34] = AspReqASP_FILE_ACCESS_DENIEDTemplate(null);
+                templates[35] = AspReqASP_START_SCRIPTLESS_SENDTemplate(null);
+                templates[36] = AspReqASP_SECURE_SESSION_ID_SETTemplate(null);
+                templates[37] = AspReqASP_NEW_SESSION_CREATEDTemplate(null);
+                templates[38] = AspReqASP_END_GLOBAL_ASA_CHECKTemplate(null);
+                templates[39] = AspReqASP_CURRENT_SESSIONTemplate(null);
+                templates[40] = AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(null);
+                templates[41] = AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(null);
+                templates[42] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(null);
+                templates[43] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(null);
+                templates[44] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(null);
+                templates[45] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(null);
+                templates[46] = AspReqASP_QUEUE_REQUESTTemplate(null);
+                templates[47] = AspReqASP_APPLICATION_ONSTART_ERRORTemplate(null);
+                templates[48] = AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(null);
+                templates[49] = AspReqASP_INIT_FAILURETemplate(null);
+                templates[50] = AspReqASP_LOG_ERRORTemplate(null);
+                templates[51] = AspReqASP_FILE_NOT_FOUNDTemplate(null);
                 s_templates = templates;
             }
             foreach (var template in s_templates)

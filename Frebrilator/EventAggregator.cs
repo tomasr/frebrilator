@@ -11,28 +11,44 @@ using System.Threading.Tasks;
 namespace Winterdom.Frebrilator {
   public class EventAggregator : IObserver<TraceEvent>, IDisposable {
 
-    private IDisposable subscription;
+    private IList<IDisposable> subscriptions;
     private IStreamHandlerProvider handlerProvider;
     private String computerName;
 
     public EventAggregator(IStreamHandlerProvider provider) {
       this.handlerProvider = provider;
+      this.subscriptions = new List<IDisposable>();
     }
 
     public void Start(ETWTraceEventSource eventSource) {
-      if ( this.subscription != null ) {
+      if ( this.subscriptions.Count > 0 ) {
         throw new InvalidOperationException("Observation already started");
       }
+      this.subscriptions.Clear();
 
       this.computerName = Environment.MachineName.ToUpper();
-      var parser = new RegisteredTraceEventParser(eventSource);
-      this.subscription = parser.ObserveAll().Subscribe(this);
+      TraceEventParser parser = new AspNetTraceEventParser(eventSource);
+      this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
+      //*
+      parser = new IIS_TraceTraceEventParser(eventSource);
+      this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
+      parser = new ASP_TraceTraceEventParser(eventSource);
+      this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
+      parser = new IIS_IsapiTraceTraceEventParser(eventSource);
+      this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
+      //*/
+      /*
+      parser = new RegisteredTraceEventParser(eventSource);
+      this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
+      */
     }
 
     public void Dispose() {
-      if ( this.subscription != null ) {
-        this.subscription.Dispose();
-        this.subscription = null;
+      if ( this.subscriptions.Count > 0 ) {
+        foreach ( var e in this.subscriptions ) {
+          e.Dispose();
+        }
+        this.subscriptions.Clear();
       }
     }
 
@@ -42,10 +58,10 @@ namespace Winterdom.Frebrilator {
           this.computerName = (String)obj.PayloadByName("ComputerName");
         }
       }
-      bool include = obj.ProviderGuid == IIS_TraceTraceEventParser.ProviderGuid
-                  || obj.ProviderGuid == IIS_IsapiTraceTraceEventParser.ProviderGuid
-                  || obj.ProviderGuid == ASP_TraceTraceEventParser.ProviderGuid
-                  || obj.ProviderGuid == AspNetTraceEventParser.ProviderGuid;
+      bool include = obj.ProviderGuid == Providers.IIS_Trace
+                  || obj.ProviderGuid == Providers.IIS_IsapiTrace
+                  || obj.ProviderGuid == Providers.ASP_Trace
+                  || obj.ProviderGuid == Providers.AspNet_Trace;
       if ( include ) {
         // All entries logged into FREB traces
         // will contain a ContextId value that links all related

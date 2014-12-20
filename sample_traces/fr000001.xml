@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <?xml-stylesheet type='text/xsl' href='freb.xsl'?>
-<!-- saved from url=(0014)about:internet -->
 <failedRequest url="http://localhost:80/test1.aspx"
                siteId="1"
                appPoolId="DefaultAppPool"

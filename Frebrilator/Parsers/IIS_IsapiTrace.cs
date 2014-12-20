@@ -24,6 +24,8 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         public IIS_IsapiTraceTraceEventParser(TraceEventSource source) : base(source) {}
 
+        private static Guid W3IsapiTaskGuid = new Guid("{acade3b2-b7d7-4339-956c-811b4edb1b24}");
+
         public event Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> W3IsapiCALL_ISAPI_EXTENSION
         {
             add
@@ -32,7 +34,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 1, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<W3IsapiISAPI_EXTENSION_DONEArgs> W3IsapiISAPI_EXTENSION_DONE
@@ -43,7 +45,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 0, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
         public event Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> W3IsapiNOTIFY_ISAPI_COMPLETION
@@ -54,7 +56,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             }
             remove
             {
-                source.UnregisterEventTemplate(value, 2, ProviderGuid);
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
 
@@ -63,15 +65,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         static private W3IsapiCALL_ISAPI_EXTENSIONArgs W3IsapiCALL_ISAPI_EXTENSIONTemplate(Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiCALL_ISAPI_EXTENSIONArgs(action, 1, 1, "W3Isapi", Guid.Empty, 11, "CALL_ISAPI_EXTENSION", ProviderGuid, ProviderName );
+            return new W3IsapiCALL_ISAPI_EXTENSIONArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 11, "CALL_ISAPI_EXTENSION", ProviderGuid, ProviderName );
         }
         static private W3IsapiISAPI_EXTENSION_DONEArgs W3IsapiISAPI_EXTENSION_DONETemplate(Action<W3IsapiISAPI_EXTENSION_DONEArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiISAPI_EXTENSION_DONEArgs(action, 0, 1, "W3Isapi", Guid.Empty, 10, "ISAPI_EXTENSION_DONE", ProviderGuid, ProviderName );
+            return new W3IsapiISAPI_EXTENSION_DONEArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 10, "ISAPI_EXTENSION_DONE", ProviderGuid, ProviderName );
         }
         static private W3IsapiNOTIFY_ISAPI_COMPLETIONArgs W3IsapiNOTIFY_ISAPI_COMPLETIONTemplate(Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiNOTIFY_ISAPI_COMPLETIONArgs(action, 2, 1, "W3Isapi", Guid.Empty, 12, "NOTIFY_ISAPI_COMPLETION", ProviderGuid, ProviderName );
+            return new W3IsapiNOTIFY_ISAPI_COMPLETIONArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 12, "NOTIFY_ISAPI_COMPLETION", ProviderGuid, ProviderName );
         }
 
         static private volatile TraceEvent[] s_templates;

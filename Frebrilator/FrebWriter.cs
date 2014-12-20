@@ -14,6 +14,42 @@ namespace Winterdom.Frebrilator {
     public const String EtwTraceNs = "http://schemas.microsoft.com/win/2004/08/events/trace";
     public const String FrebNs = "http://schemas.microsoft.com/win/2006/06/iis/freb";
 
+    public static void WriteFrebStream(XmlWriter xw, Guid activityId, String computerName, IEnumerable<TraceEvent> trace) {
+      TraceEvent reqStart = trace.SingleOrDefault(t => IsRequestStart(t));
+      TraceEvent reqEnd = trace.SingleOrDefault(t => IsRequestEnd(t));
+      TraceEvent reqAuth = trace.SingleOrDefault(t => IsAuthSucceeded(t));
+      if ( reqStart == null ) return; // can't write it, incomplete
+
+      xw.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='freb.xsl'");
+      xw.WriteStartElement("failedRequest");
+      xw.WriteAttributeString("url", reqStart.PayloadString(5));
+      xw.WriteAttributeString("siteId", reqStart.PayloadString(1));
+      xw.WriteAttributeString("appPoolId", reqStart.PayloadString(2));
+      xw.WriteAttributeString("processId", ConvertValue(reqStart.ProcessID));
+      xw.WriteAttributeString("verb", reqStart.PayloadString(6));
+
+      xw.WriteAttributeString("remoteUserName", reqAuth != null ? reqAuth.PayloadString(3) : "");
+      xw.WriteAttributeString("userName", reqAuth != null ? reqAuth.PayloadString(4) : "");
+      // We just don't have this information in the trace
+      xw.WriteAttributeString("tokenUserName", ""); 
+      // Needs conversion
+      xw.WriteAttributeString("authenticationType", reqAuth != null ? reqAuth.PayloadString(5) : "");
+
+      xw.WriteAttributeString("activityId", ConvertValue(activityId));
+      xw.WriteAttributeString("failureReason", "STATUS_CODE");
+
+      xw.WriteAttributeString("statusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
+      xw.WriteAttributeString("triggerStatusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
+      xw.WriteAttributeString("timeTaken", reqEnd != null ? 
+        ((long)(reqEnd.TimeStamp - reqStart.TimeStamp).TotalMilliseconds).ToString() : "");
+
+      xw.WriteAttributeString("xmlns", "freb", "", FrebNs);
+      foreach ( var e in trace ) {
+        WriteEvent(xw, activityId, e, computerName);
+      }
+      xw.WriteEndElement();
+    }
+
     public static void WriteEvent(XmlWriter xw, Guid activityId, TraceEvent traceEvent, String computerName) {
       xw.WriteStartElement("Event", EtwNs);
       WriteHeader(xw, activityId, traceEvent, computerName);
@@ -49,17 +85,17 @@ namespace Winterdom.Frebrilator {
       xw.WriteAttributeString("ProcessID", traceEvent.ProcessID.ToString());
       xw.WriteAttributeString("ThreadID", traceEvent.ThreadID.ToString());
       xw.WriteEndElement();
-      xw.WriteElementString("Computer", EtwNs, computerName);
+      xw.WriteElementString("Computer", EtwNs, String.IsNullOrEmpty(computerName) ? Environment.MachineName : computerName);
 
       xw.WriteEndElement();
     }
 
     public static void WriteEventData(XmlWriter xw, TraceEvent traceEvent) {
       xw.WriteStartElement("EventData", EtwNs);
-      foreach ( String name in traceEvent.PayloadNames ) {
+      for ( int i=0; i < traceEvent.PayloadNames.Length; i++ ) {
         xw.WriteStartElement("Data", EtwNs);
-        xw.WriteAttributeString("Name", name);
-        xw.WriteString(ConvertValue(traceEvent.PayloadByName(name)));
+        xw.WriteAttributeString("Name", traceEvent.PayloadNames[i]);
+        xw.WriteString(ConvertValue(traceEvent.PayloadValue(i)));
         xw.WriteEndElement();
       }
       xw.WriteEndElement();
@@ -68,14 +104,45 @@ namespace Winterdom.Frebrilator {
       xw.WriteStartElement("RenderingInfo", EtwNs);
       xw.WriteAttributeString("Culture", "en-US");
       xw.WriteElementString("OpCode", EtwNs, traceEvent.OpcodeName);
+
+      if ( traceEvent.Keywords != TraceEventKeyword.None ) {
+        xw.WriteStartElement("Keywords");
+        xw.WriteEndElement();
+      }
+      TranslateFields(xw, traceEvent);
       xw.WriteEndElement();
     }
+
     public static void WriteExtendedTracingInfo(XmlWriter xw, TraceEvent traceEvent) {
       // We cannot implement this properly at this time
       // because we cannot get at the TaskGuid.
       // Fortunately, this isn't used by the FREB xsl
       xw.WriteStartElement("ExtendedTracingInfo", EtwTraceNs);
       xw.WriteElementString("EventGuid", EtwTraceNs, traceEvent.TaskName);
+      xw.WriteEndElement();
+    }
+
+    private static void TranslateFields(XmlWriter xw, TraceEvent traceEvent) {
+      String[] names = traceEvent.PayloadNames;
+      for ( int i = 0; i < names.Length; i++ ) {
+        if ( names[i] == "ErrorCode" ) {
+          WriteExtraData(xw, names[i], Native.FormatMessage((int)traceEvent.PayloadValue(i)));
+        } else if ( names[i] == "NotificationStatus" ) {
+          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
+        } else if ( names[i] == "Notification" ) {
+          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
+        } else if ( names[i] == "CachePolicy" ) {
+          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
+        } else if ( names[i] == "Result" ) {
+          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
+        }
+      }
+    }
+
+    private static void WriteExtraData(XmlWriter xw, String name, String value) {
+      xw.WriteStartElement("freb", "Description", FrebNs);
+      xw.WriteAttributeString("Data", name);
+      xw.WriteString(value);
       xw.WriteEndElement();
     }
 
@@ -106,17 +173,29 @@ namespace Winterdom.Frebrilator {
     }
 
 
+    public static bool IsRequestStart(TraceEvent e) {
+      return e.ProviderGuid == Providers.IIS_Trace
+          && e.OpcodeName == "GENERAL_REQUEST_START";
+    }
+    public static bool IsRequestEnd(TraceEvent e) {
+      return e.ProviderGuid == Providers.IIS_Trace
+          && e.OpcodeName == "GENERAL_REQUEST_END";
+    }
+    public static bool IsAuthSucceeded(TraceEvent e) {
+      return e.ProviderGuid == Providers.IIS_Trace
+          && e.OpcodeName == "AUTH_SUCCEEDED";
+    }
     public static String MapProviderName(Guid provider) {
-      if ( provider == IIS_TraceTraceEventParser.ProviderGuid ) {
+      if ( provider == Providers.IIS_Trace ) {
         return "WWW Server";
       }
-      if ( provider == IIS_IsapiTraceTraceEventParser.ProviderGuid ) {
+      if ( provider == Providers.IIS_IsapiTrace ) {
         return "ISAPI Extension";
       }
-      if ( provider == ASP_TraceTraceEventParser.ProviderGuid ) {
+      if ( provider == Providers.ASP_Trace ) {
         return "ASP";
       }
-      if ( provider == AspNetTraceEventParser.ProviderGuid ) {
+      if ( provider == Providers.AspNet_Trace ) {
         return "ASPNET";
       }
       throw new InvalidOperationException("Unexpected ETW provider: " + provider);
