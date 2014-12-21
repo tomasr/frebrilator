@@ -1072,21 +1072,21 @@
         </opcodes>
         <maps>
         <valueMap name='GENERAL_GET_URL_METADATA.AccessPerms'>
-          <map value='0x00001' message='MD_ACCESS_READ'/>
-          <map value='0x00002' message='MD_ACCESS_WRITE'/>
-          <map value='0x00004' message='MD_ACCESS_EXECUTE'/>
-          <map value='0x00010' message='MD_ACCESS_SOURCE'/>
-          <map value='0x00200' message='MD_ACCESS_SCRIPT'/>
-          <map value='0x00400' message='MD_ACCESS_NO_REMOTE_WRITE'/>
-          <map value='0x01000' message='MD_ACCESS_NO_REMOTE_READ'/>
-          <map value='0x02000' message='MD_ACCESS_NO_REMOTE_EXECUTE'/>
-          <map value='0x04000' message='MD_ACCESS_NO_REMOTE_SCRIPT'/>
-          <map value='0x08000' message='MD_ACCESS_NO_PHYSICAL_DIR'/>
-          <map value='0x00008' message='MD_ACCESS_SSL'/>
-          <map value='0x00020' message='MD_ACCESS_NEGO_CERT'/>
-          <map value='0x00040' message='MD_ACCESS_REQUIRE_CERT'/>
-          <map value='0x00080' message='MD_ACCESS_MAP_CERT'/>
-          <map value='0x00100' message='MD_ACCESS_SSL128'/>
+          <map value='0x00001' message='Read'/>
+          <map value='0x00002' message='Write'/>
+          <map value='0x00004' message='Exec'/>
+          <map value='0x00010' message='Source'/>
+          <map value='0x00200' message='Script'/>
+          <map value='0x00400' message='NoRemoteWrite'/>
+          <map value='0x01000' message='NoRemoteRead'/>
+          <map value='0x02000' message='NoRemoteExec'/>
+          <map value='0x04000' message='NoRemoteScript'/>
+          <map value='0x08000' message='NoPhysicalDir'/>
+          <map value='0x00008' message='SSL'/>
+          <map value='0x00020' message='CliCert'/>
+          <map value='0x00040' message='ReqCliCert'/>
+          <map value='0x00080' message='MapCliCert'/>
+          <map value='0x00100' message='SSL128'/>
         </valueMap>
         <valueMap name='GENERAL_NOT_SEND_CUSTOM_ERROR.Reason'>
           <map value='0' message='UNKNOWN'/>
@@ -1096,20 +1096,20 @@
           <map value='4' message='EXISTINGRESPONSE_AUTO'/>
         </valueMap>
         <valueMap name='AUTH_START.AuthTypeSupported'>
-          <map value='0x1' message='MD_AUTH_ANONYMOUS'/>
-          <map value='0x2' message='MD_AUTH_BASIC'/>
-          <map value='0x4' message='MD_AUTH_NT'/>
-          <map value='0x10' message='MD_AUTH_MD5'/>
-          <map value='0x40' message='MD_AUTH_PASSPORT'/>
-          <map value='0x80' message='MD_ACCESS_MAP_CERT'/>
+          <map value='0x1' message='Anonymous'/>
+          <map value='0x2' message='Basic'/>
+          <map value='0x4' message='NT'/>
+          <map value='0x10' message='Digest'/>
+          <map value='0x40' message='Passport'/>
+          <map value='0x80' message='MapCliCert'/>
         </valueMap>
         <valueMap name='AUTH_SUCCEEDED.AuthType'>
-          <map value='0x1' message='MD_AUTH_ANONYMOUS'/>
-          <map value='0x2' message='MD_AUTH_BASIC'/>
-          <map value='0x4' message='MD_AUTH_NT'/>
-          <map value='0x10' message='MD_AUTH_MD5'/>
-          <map value='0x40' message='MD_AUTH_PASSPORT'/>
-          <map value='0x80' message='MD_ACCESS_MAP_CERT'/>
+          <map value='0x1' message='Anonymous'/>
+          <map value='0x2' message='Basic'/>
+          <map value='0x4' message='NT'/>
+          <map value='0x10' message='Digest'/>
+          <map value='0x40' message='Passport'/>
+          <map value='0x80' message='CertMap'/>
         </valueMap>
         <valueMap name='AUTH_SUCCEEDED.TokenImpersonationLevel'>
           <map value='0x0' message='IMPERSONATION_LEVEL_ANONYMOUS'/>
@@ -1119,12 +1119,12 @@
           <map value='0x4' message='IMPERSONATION_LEVEL_UNKNOWN'/>
         </valueMap>
         <valueMap name='AUTH_REQUEST_AUTH_TYPE.RequestAuthType'>
-          <map value='0x1' message='MD_AUTH_ANONYMOUS'/>
-          <map value='0x2' message='MD_AUTH_BASIC'/>
-          <map value='0x4' message='MD_AUTH_NT'/>
-          <map value='0x10' message='MD_AUTH_MD5'/>
-          <map value='0x40' message='MD_AUTH_PASSPORT'/>
-          <map value='0x80' message='MD_ACCESS_MAP_CERT'/>
+          <map value='0x1' message='Anonymous'/>
+          <map value='0x2' message='Basic'/>
+          <map value='0x4' message='NT'/>
+          <map value='0x10' message='Digest'/>
+          <map value='0x40' message='Passport'/>
+          <map value='0x80' message='CertMap'/>
         </valueMap>
         <valueMap name='FILTER_END.NotificationStatus'>
           <map value='0x08000000' message='SF_STATUS_REQ_FINISHED'/>

@@ -33,7 +33,7 @@ namespace Winterdom.Frebrilator {
       // We just don't have this information in the trace
       xw.WriteAttributeString("tokenUserName", ""); 
       // Needs conversion
-      xw.WriteAttributeString("authenticationType", reqAuth != null ? reqAuth.PayloadString(5) : "");
+      xw.WriteAttributeString("authenticationType", reqAuth != null ? reqAuth.PayloadString(1) : "");
 
       xw.WriteAttributeString("activityId", ConvertValue(activityId));
       xw.WriteAttributeString("failureReason", "STATUS_CODE");

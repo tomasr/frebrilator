@@ -13927,30 +13927,30 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     }
     public enum AUTH_REQUEST_AUTH_TYPERequestAuthType
     {
-        MD_AUTH_ANONYMOUS = 0x1,
-        MD_AUTH_BASIC = 0x2,
-        MD_AUTH_NT = 0x4,
-        MD_AUTH_MD5 = 0x10,
-        MD_AUTH_PASSPORT = 0x40,
-        MD_ACCESS_MAP_CERT = 0x80,
+        Anonymous = 0x1,
+        Basic = 0x2,
+        NT = 0x4,
+        Digest = 0x10,
+        Passport = 0x40,
+        CertMap = 0x80,
     }
     public enum AUTH_STARTAuthTypeSupported
     {
-        MD_AUTH_ANONYMOUS = 0x1,
-        MD_AUTH_BASIC = 0x2,
-        MD_AUTH_NT = 0x4,
-        MD_AUTH_MD5 = 0x10,
-        MD_AUTH_PASSPORT = 0x40,
-        MD_ACCESS_MAP_CERT = 0x80,
+        Anonymous = 0x1,
+        Basic = 0x2,
+        NT = 0x4,
+        Digest = 0x10,
+        Passport = 0x40,
+        MapCliCert = 0x80,
     }
     public enum AUTH_SUCCEEDEDAuthType
     {
-        MD_AUTH_ANONYMOUS = 0x1,
-        MD_AUTH_BASIC = 0x2,
-        MD_AUTH_NT = 0x4,
-        MD_AUTH_MD5 = 0x10,
-        MD_AUTH_PASSPORT = 0x40,
-        MD_ACCESS_MAP_CERT = 0x80,
+        Anonymous = 0x1,
+        Basic = 0x2,
+        NT = 0x4,
+        Digest = 0x10,
+        Passport = 0x40,
+        CertMap = 0x80,
     }
     public enum AUTH_SUCCEEDEDTokenImpersonationLevel
     {
@@ -14021,21 +14021,21 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     }
     public enum GENERAL_GET_URL_METADATAAccessPerms
     {
-        MD_ACCESS_READ = 0x1,
-        MD_ACCESS_WRITE = 0x2,
-        MD_ACCESS_EXECUTE = 0x4,
-        MD_ACCESS_SSL = 0x8,
-        MD_ACCESS_SOURCE = 0x10,
-        MD_ACCESS_NEGO_CERT = 0x20,
-        MD_ACCESS_REQUIRE_CERT = 0x40,
-        MD_ACCESS_MAP_CERT = 0x80,
-        MD_ACCESS_SSL128 = 0x100,
-        MD_ACCESS_SCRIPT = 0x200,
-        MD_ACCESS_NO_REMOTE_WRITE = 0x400,
-        MD_ACCESS_NO_REMOTE_READ = 0x1000,
-        MD_ACCESS_NO_REMOTE_EXECUTE = 0x2000,
-        MD_ACCESS_NO_REMOTE_SCRIPT = 0x4000,
-        MD_ACCESS_NO_PHYSICAL_DIR = 0x8000,
+        Read = 0x1,
+        Write = 0x2,
+        Exec = 0x4,
+        SSL = 0x8,
+        Source = 0x10,
+        CliCert = 0x20,
+        ReqCliCert = 0x40,
+        MapCliCert = 0x80,
+        SSL128 = 0x100,
+        Script = 0x200,
+        NoRemoteWrite = 0x400,
+        NoRemoteRead = 0x1000,
+        NoRemoteExec = 0x2000,
+        NoRemoteScript = 0x4000,
+        NoPhysicalDir = 0x8000,
     }
     public enum GENERAL_NOT_SEND_CUSTOM_ERRORReason
     {
