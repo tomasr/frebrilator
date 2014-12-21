@@ -24,20 +24,20 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         public IIS_IsapiTraceTraceEventParser(TraceEventSource source) : base(source) {}
 
-        private static Guid W3IsapiTaskGuid = new Guid("{acade3b2-b7d7-4339-956c-811b4edb1b24}");
+        private static Guid W3IsapiTaskGuid = new Guid("{ACADE3B2-B7D7-4339-956C-811B4EDB1B24}");
 
-        public event Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> W3IsapiCALL_ISAPI_EXTENSION
+        public event Action<ISAPI_CALL_EXTENSION> W3IsapiISAPI_CALL_EXTENSION
         {
             add
             {
-                source.RegisterEventTemplate(W3IsapiCALL_ISAPI_EXTENSIONTemplate(value));
+                source.RegisterEventTemplate(W3IsapiISAPI_CALL_EXTENSIONTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<W3IsapiISAPI_EXTENSION_DONEArgs> W3IsapiISAPI_EXTENSION_DONE
+        public event Action<ISAPI_EXTENSION_DONE> W3IsapiISAPI_EXTENSION_DONE
         {
             add
             {
@@ -48,11 +48,11 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> W3IsapiNOTIFY_ISAPI_COMPLETION
+        public event Action<ISAPI_NOTIFY_COMPLETION> W3IsapiISAPI_NOTIFY_COMPLETION
         {
             add
             {
-                source.RegisterEventTemplate(W3IsapiNOTIFY_ISAPI_COMPLETIONTemplate(value));
+                source.RegisterEventTemplate(W3IsapiISAPI_NOTIFY_COMPLETIONTemplate(value));
             }
             remove
             {
@@ -63,17 +63,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         #region private
         protected override string GetProviderName() { return ProviderName; }
 
-        static private W3IsapiCALL_ISAPI_EXTENSIONArgs W3IsapiCALL_ISAPI_EXTENSIONTemplate(Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> action)
+        static private ISAPI_CALL_EXTENSION W3IsapiISAPI_CALL_EXTENSIONTemplate(Action<ISAPI_CALL_EXTENSION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiCALL_ISAPI_EXTENSIONArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 11, "CALL_ISAPI_EXTENSION", ProviderGuid, ProviderName );
+            return new ISAPI_CALL_EXTENSION(action, 65535, 0, "W3Isapi", W3IsapiTaskGuid, 1, "ISAPI_CALL_EXTENSION", ProviderGuid, ProviderName );
         }
-        static private W3IsapiISAPI_EXTENSION_DONEArgs W3IsapiISAPI_EXTENSION_DONETemplate(Action<W3IsapiISAPI_EXTENSION_DONEArgs> action)
+        static private ISAPI_EXTENSION_DONE W3IsapiISAPI_EXTENSION_DONETemplate(Action<ISAPI_EXTENSION_DONE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiISAPI_EXTENSION_DONEArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 10, "ISAPI_EXTENSION_DONE", ProviderGuid, ProviderName );
+            return new ISAPI_EXTENSION_DONE(action, 65535, 0, "W3Isapi", W3IsapiTaskGuid, 2, "ISAPI_EXTENSION_DONE", ProviderGuid, ProviderName );
         }
-        static private W3IsapiNOTIFY_ISAPI_COMPLETIONArgs W3IsapiNOTIFY_ISAPI_COMPLETIONTemplate(Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> action)
+        static private ISAPI_NOTIFY_COMPLETION W3IsapiISAPI_NOTIFY_COMPLETIONTemplate(Action<ISAPI_NOTIFY_COMPLETION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new W3IsapiNOTIFY_ISAPI_COMPLETIONArgs(action, 65535, 1, "W3Isapi", W3IsapiTaskGuid, 12, "NOTIFY_ISAPI_COMPLETION", ProviderGuid, ProviderName );
+            return new ISAPI_NOTIFY_COMPLETION(action, 65535, 0, "W3Isapi", W3IsapiTaskGuid, 3, "ISAPI_NOTIFY_COMPLETION", ProviderGuid, ProviderName );
         }
 
         static private volatile TraceEvent[] s_templates;
@@ -82,9 +82,9 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             if (s_templates == null)
             {
                 var templates = new TraceEvent[3];
-                templates[0] = W3IsapiISAPI_EXTENSION_DONETemplate(null);
-                templates[1] = W3IsapiCALL_ISAPI_EXTENSIONTemplate(null);
-                templates[2] = W3IsapiNOTIFY_ISAPI_COMPLETIONTemplate(null);
+                templates[0] = W3IsapiISAPI_CALL_EXTENSIONTemplate(null);
+                templates[1] = W3IsapiISAPI_NOTIFY_COMPLETIONTemplate(null);
+                templates[2] = W3IsapiISAPI_EXTENSION_DONETemplate(null);
                 s_templates = templates;
             }
             foreach (var template in s_templates)
@@ -98,13 +98,13 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
 namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
 {
-    public sealed class W3IsapiCALL_ISAPI_EXTENSIONArgs : TraceEvent
+    public sealed class ISAPI_CALL_EXTENSION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string DllName { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal W3IsapiCALL_ISAPI_EXTENSIONArgs(Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ISAPI_CALL_EXTENSION(Action<ISAPI_CALL_EXTENSION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -121,7 +121,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<W3IsapiCALL_ISAPI_EXTENSIONArgs>) value; }
+            set { m_target = (Action<ISAPI_CALL_EXTENSION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -156,15 +156,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
             }
         }
 
-        private event Action<W3IsapiCALL_ISAPI_EXTENSIONArgs> m_target;
+        private event Action<ISAPI_CALL_EXTENSION> m_target;
         #endregion
     }
-    public sealed class W3IsapiISAPI_EXTENSION_DONEArgs : TraceEvent
+    public sealed class ISAPI_EXTENSION_DONE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal W3IsapiISAPI_EXTENSION_DONEArgs(Action<W3IsapiISAPI_EXTENSION_DONEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ISAPI_EXTENSION_DONE(Action<ISAPI_EXTENSION_DONE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -181,7 +181,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<W3IsapiISAPI_EXTENSION_DONEArgs>) value; }
+            set { m_target = (Action<ISAPI_EXTENSION_DONE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -213,15 +213,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
             }
         }
 
-        private event Action<W3IsapiISAPI_EXTENSION_DONEArgs> m_target;
+        private event Action<ISAPI_EXTENSION_DONE> m_target;
         #endregion
     }
-    public sealed class W3IsapiNOTIFY_ISAPI_COMPLETIONArgs : TraceEvent
+    public sealed class ISAPI_NOTIFY_COMPLETION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal W3IsapiNOTIFY_ISAPI_COMPLETIONArgs(Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ISAPI_NOTIFY_COMPLETION(Action<ISAPI_NOTIFY_COMPLETION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -238,7 +238,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs>) value; }
+            set { m_target = (Action<ISAPI_NOTIFY_COMPLETION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -270,7 +270,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_IsapiTrace
             }
         }
 
-        private event Action<W3IsapiNOTIFY_ISAPI_COMPLETIONArgs> m_target;
+        private event Action<ISAPI_NOTIFY_COMPLETION> m_target;
         #endregion
     }
 }

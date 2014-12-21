@@ -65,11 +65,15 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Parsers\ASP_Trace.man" />
-    <None Include="Parsers\IIS_IsapiTrace.man" />
+    <None Include="Parsers\ASP_Trace.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Parsers\IIS_IsapiTrace.xml" />
     <None Include="Parsers\IIS_Trace.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Parsers\ASP_Trace_orig.xml" />
+    <Content Include="Parsers\IIS_IsapiTrace_orig.xml" />
     <Content Include="Parsers\IIS_Trace_orig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

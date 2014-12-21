@@ -26,51 +26,51 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
         private static Guid AspReqTaskGuid = new Guid("{1fc299fa-3fc4-4c37-910d-de5b911d0270}");
 
-        public event Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> AspReqASP_APPLICATION_ONSTART_ERROR
+        public event Action<ASP_APPLICATION_ON_START_ERROR> AspReqASP_APPLICATION_ON_START_ERROR
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_APPLICATION_ONSTART_ERRORTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_APPLICATION_ON_START_ERRORTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> AspReqASP_APPLICATION_ONSTART_SUCCESS
+        public event Action<ASP_APPLICATION_ON_START_SUCCESS> AspReqASP_APPLICATION_ON_START_SUCCESS
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_APPLICATION_ON_START_SUCCESSTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_CLIENT_DISCONNECTEDArgs> AspReqASP_CLIENT_DISCONNECTED
+        public event Action<ASP_CLIENT_CONNECTION_DISCONNECTION> AspReqASP_CLIENT_CONNECTION_DISCONNECTION
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_CLIENT_DISCONNECTEDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_CLIENT_CONNECTION_DISCONNECTIONTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_COMPILE_FAILEDArgs> AspReqASP_COMPILE_FAILED
+        public event Action<ASP_COMPILED_FAILED> AspReqASP_COMPILED_FAILED
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_COMPILE_FAILEDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_COMPILED_FAILEDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_CURRENT_SESSIONArgs> AspReqASP_CURRENT_SESSION
+        public event Action<ASP_CURRENT_SESSION> AspReqASP_CURRENT_SESSION
         {
             add
             {
@@ -81,7 +81,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_DEQUEUE_REQUESTArgs> AspReqASP_DEQUEUE_REQUEST
+        public event Action<ASP_DEQUEUE_REQUEST> AspReqASP_DEQUEUE_REQUEST
         {
             add
             {
@@ -92,7 +92,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_DONE_PROCESSINGArgs> AspReqASP_DONE_PROCESSING
+        public event Action<ASP_DONE_PROCESSING> AspReqASP_DONE_PROCESSING
         {
             add
             {
@@ -103,18 +103,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_APPLICATION_ONSTARTArgs> AspReqASP_END_APPLICATION_ONSTART
+        public event Action<ASP_END_APPLICATION_ON_START> AspReqASP_END_APPLICATION_ON_START
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_END_APPLICATION_ONSTARTTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_END_APPLICATION_ON_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_CACHE_ACCESSArgs> AspReqASP_END_CACHE_ACCESS
+        public event Action<ASP_END_CACHE_ACCESS> AspReqASP_END_CACHE_ACCESS
         {
             add
             {
@@ -125,7 +125,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_COMPILEArgs> AspReqASP_END_COMPILE
+        public event Action<ASP_END_COMPILE> AspReqASP_END_COMPILE
         {
             add
             {
@@ -136,18 +136,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> AspReqASP_END_GLOBAL_ASA_CHECK
+        public event Action<ASP_END_GLOBALASA_CHECK> AspReqASP_END_GLOBALASA_CHECK
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_END_GLOBAL_ASA_CHECKTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_END_GLOBALASA_CHECKTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_REQUESTArgs> AspReqASP_END_REQUEST
+        public event Action<ASP_END_REQUEST> AspReqASP_END_REQUEST
         {
             add
             {
@@ -158,7 +158,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> AspReqASP_END_SCRIPT_EXECUTION
+        public event Action<ASP_END_SCRIPT_EXECUTION> AspReqASP_END_SCRIPT_EXECUTION
         {
             add
             {
@@ -169,7 +169,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_SCRIPTLESS_SENDArgs> AspReqASP_END_SCRIPTLESS_SEND
+        public event Action<ASP_END_SCRIPTLESS_SEND> AspReqASP_END_SCRIPTLESS_SEND
         {
             add
             {
@@ -180,18 +180,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_END_SESSION_ONSTARTArgs> AspReqASP_END_SESSION_ONSTART
+        public event Action<ASP_END_SESSION_ON_START> AspReqASP_END_SESSION_ON_START
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_END_SESSION_ONSTARTTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_END_SESSION_ON_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_FILE_ACCESS_DENIEDArgs> AspReqASP_FILE_ACCESS_DENIED
+        public event Action<ASP_FILE_ACCESS_DENIED> AspReqASP_FILE_ACCESS_DENIED
         {
             add
             {
@@ -202,7 +202,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_FILE_NOT_FOUNDArgs> AspReqASP_FILE_NOT_FOUND
+        public event Action<ASP_FILE_NOT_FOUND> AspReqASP_FILE_NOT_FOUND
         {
             add
             {
@@ -213,7 +213,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> AspReqASP_FIRST_REQUEST_FOR_APPLICATION
+        public event Action<ASP_FIRST_REQUEST> AspReqASP_FIRST_REQUEST
+        {
+            add
+            {
+                source.RegisterEventTemplate(AspReqASP_FIRST_REQUESTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<ASP_FIRST_REQUEST_FOR_APPLICATION> AspReqASP_FIRST_REQUEST_FOR_APPLICATION
         {
             add
             {
@@ -224,51 +235,40 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> AspReqASP_FIRST_REQUEST_FOR_ASP
+        public event Action<ASP_GLOBALASA_ACCESS_DENIED> AspReqASP_GLOBALASA_ACCESS_DENIED
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_GLOBALASA_ACCESS_DENIEDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> AspReqASP_GLOBAL_ASA_ACCESS_DENIED
+        public event Action<ASP_GLOBALASA_ACCESS_SUCCESS> AspReqASP_GLOBALASA_ACCESS_SUCCESS
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_GLOBALASA_ACCESS_SUCCESSTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> AspReqASP_GLOBAL_ASA_ACCESS_SUCCESS
+        public event Action<ASP_GLOBALASA_DOES_NOT_EXIST> AspReqASP_GLOBALASA_DOES_NOT_EXIST
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_GLOBALASA_DOES_NOT_EXISTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> AspReqASP_GLOBAL_ASA_DOES_NOT_EXIST
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_INIT_FAILUREArgs> AspReqASP_INIT_FAILURE
+        public event Action<ASP_INIT_FAILURE> AspReqASP_INIT_FAILURE
         {
             add
             {
@@ -279,7 +279,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_LOG_ERRORArgs> AspReqASP_LOG_ERROR
+        public event Action<ASP_LOG_ERROR> AspReqASP_LOG_ERROR
         {
             add
             {
@@ -290,18 +290,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_NEW_SESSION_CREATEDArgs> AspReqASP_NEW_SESSION_CREATED
+        public event Action<ASP_NEW_SESSION> AspReqASP_NEW_SESSION
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_NEW_SESSION_CREATEDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_NEW_SESSIONTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_QUEUE_REQUESTArgs> AspReqASP_QUEUE_REQUEST
+        public event Action<ASP_QUEUE_REQUEST> AspReqASP_QUEUE_REQUEST
         {
             add
             {
@@ -312,7 +312,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> AspReqASP_QUEUE_REQUEST_FAILED
+        public event Action<ASP_QUEUE_REQUEST_FAILED> AspReqASP_QUEUE_REQUEST_FAILED
         {
             add
             {
@@ -323,7 +323,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_READ_FILEArgs> AspReqASP_READ_FILE
+        public event Action<ASP_READ_FILE> AspReqASP_READ_FILE
         {
             add
             {
@@ -334,7 +334,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_REQUEST_TIMEOUTArgs> AspReqASP_REQUEST_TIMEOUT
+        public event Action<ASP_REQUEST_TIMEOUT> AspReqASP_REQUEST_TIMEOUT
         {
             add
             {
@@ -345,150 +345,62 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> AspReqASP_SCRIPT_TRACE_COM_CALL_END
+        public event Action<ASP_SCRIPT_OBJECT_TRACE_INFO> AspReqASP_SCRIPT_OBJECT_TRACE_INFO
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> AspReqASP_SCRIPT_TRACE_COM_CALL_START
+        public event Action<ASP_SCRIPT_TRACE_INFO> AspReqASP_SCRIPT_TRACE_INFO
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_INFOTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_END
+        public event Action<ASP_SECURE_SESSIONID> AspReqASP_SECURE_SESSIONID
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_SECURE_SESSIONIDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_START
+        public event Action<ASP_SERVER_TOO_BUSY> AspReqASP_SERVER_TOO_BUSY
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_SERVER_TOO_BUSYTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_ENDArgs> AspReqASP_SCRIPT_TRACE_END
+        public event Action<ASP_START_APPLICATION_ON_START> AspReqASP_START_APPLICATION_ON_START
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_ENDTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_START_APPLICATION_ON_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> AspReqASP_SCRIPT_TRACE_GET_OBJECT_END
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> AspReqASP_SCRIPT_TRACE_GET_OBJECT_START
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SCRIPT_TRACE_STARTArgs> AspReqASP_SCRIPT_TRACE_START
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SCRIPT_TRACE_STARTTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SECURE_SESSION_ID_SETArgs> AspReqASP_SECURE_SESSION_ID_SET
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SECURE_SESSION_ID_SETTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> AspReqASP_SERVER_TOO_BUSY_TO_QUEUE
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SESSION_ONSTART_ERRORArgs> AspReqASP_SESSION_ONSTART_ERROR
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SESSION_ONSTART_ERRORTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> AspReqASP_SESSION_ONSTART_SUCCESS
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_SESSION_ONSTART_SUCCESSTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_START_APPLICATION_ONSTARTArgs> AspReqASP_START_APPLICATION_ONSTART
-        {
-            add
-            {
-                source.RegisterEventTemplate(AspReqASP_START_APPLICATION_ONSTARTTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<AspReqASP_START_CACHE_ACCESSArgs> AspReqASP_START_CACHE_ACCESS
+        public event Action<ASP_START_CACHE_ACCESS> AspReqASP_START_CACHE_ACCESS
         {
             add
             {
@@ -499,7 +411,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_COMPILEArgs> AspReqASP_START_COMPILE
+        public event Action<ASP_START_COMPILE> AspReqASP_START_COMPILE
         {
             add
             {
@@ -510,18 +422,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> AspReqASP_START_GLOBAL_ASA_CHECK
+        public event Action<ASP_START_GLOBALASA_CHECK> AspReqASP_START_GLOBALASA_CHECK
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_START_GLOBAL_ASA_CHECKTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_START_GLOBALASA_CHECKTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_REQUESTArgs> AspReqASP_START_REQUEST
+        public event Action<ASP_START_REQUEST> AspReqASP_START_REQUEST
         {
             add
             {
@@ -532,7 +444,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> AspReqASP_START_SCRIPT_EXECUTION
+        public event Action<ASP_START_SCRIPT_EXECUTION> AspReqASP_START_SCRIPT_EXECUTION
         {
             add
             {
@@ -543,7 +455,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_SCRIPTLESS_SENDArgs> AspReqASP_START_SCRIPTLESS_SEND
+        public event Action<ASP_START_SCRIPTLESS_SEND> AspReqASP_START_SCRIPTLESS_SEND
         {
             add
             {
@@ -554,18 +466,40 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_START_SESSION_ONSTARTArgs> AspReqASP_START_SESSION_ONSTART
+        public event Action<ASP_START_SESSION_ON_START> AspReqASP_START_SESSION_ON_START
         {
             add
             {
-                source.RegisterEventTemplate(AspReqASP_START_SESSION_ONSTARTTemplate(value));
+                source.RegisterEventTemplate(AspReqASP_START_SESSION_ON_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_TRANSACTION_ABORTEDArgs> AspReqASP_TRANSACTION_ABORTED
+        public event Action<ASP_START_SESSION_ON_START_ERROR> AspReqASP_START_SESSION_ON_START_ERROR
+        {
+            add
+            {
+                source.RegisterEventTemplate(AspReqASP_START_SESSION_ON_START_ERRORTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<ASP_START_SESSION_ON_START_SUCCESS> AspReqASP_START_SESSION_ON_START_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(AspReqASP_START_SESSION_ON_START_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<ASP_TRANSACTION_ABORTED> AspReqASP_TRANSACTION_ABORTED
         {
             add
             {
@@ -576,7 +510,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_TRANSACTION_COMMITEDArgs> AspReqASP_TRANSACTION_COMMITED
+        public event Action<ASP_TRANSACTION_COMMITED> AspReqASP_TRANSACTION_COMMITED
         {
             add
             {
@@ -587,7 +521,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<AspReqASP_UNHEALTHY_FAILUREArgs> AspReqASP_UNHEALTHY_FAILURE
+        public event Action<ASP_UNHEALTHY_FAILURE> AspReqASP_UNHEALTHY_FAILURE
         {
             add
             {
@@ -602,213 +536,189 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         #region private
         protected override string GetProviderName() { return ProviderName; }
 
-        static private AspReqASP_APPLICATION_ONSTART_ERRORArgs AspReqASP_APPLICATION_ONSTART_ERRORTemplate(Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> action)
+        static private ASP_APPLICATION_ON_START_ERROR AspReqASP_APPLICATION_ON_START_ERRORTemplate(Action<ASP_APPLICATION_ON_START_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_APPLICATION_ONSTART_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 57, "ASP_APPLICATION_ONSTART_ERROR", ProviderGuid, ProviderName );
+            return new ASP_APPLICATION_ON_START_ERROR(action, 65535, 0, "AspReq", AspReqTaskGuid, 37, "ASP_APPLICATION_ON_START_ERROR", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_APPLICATION_ONSTART_SUCCESSArgs AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> action)
+        static private ASP_APPLICATION_ON_START_SUCCESS AspReqASP_APPLICATION_ON_START_SUCCESSTemplate(Action<ASP_APPLICATION_ON_START_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_APPLICATION_ONSTART_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 13, "ASP_APPLICATION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
+            return new ASP_APPLICATION_ON_START_SUCCESS(action, 65535, 0, "AspReq", AspReqTaskGuid, 38, "ASP_APPLICATION_ON_START_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_CLIENT_DISCONNECTEDArgs AspReqASP_CLIENT_DISCONNECTEDTemplate(Action<AspReqASP_CLIENT_DISCONNECTEDArgs> action)
+        static private ASP_CLIENT_CONNECTION_DISCONNECTION AspReqASP_CLIENT_CONNECTION_DISCONNECTIONTemplate(Action<ASP_CLIENT_CONNECTION_DISCONNECTION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_CLIENT_DISCONNECTEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 16, "ASP_CLIENT_DISCONNECTED", ProviderGuid, ProviderName );
+            return new ASP_CLIENT_CONNECTION_DISCONNECTION(action, 65535, 0, "AspReq", AspReqTaskGuid, 29, "ASP_CLIENT_CONNECTION_DISCONNECTION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_COMPILE_FAILEDArgs AspReqASP_COMPILE_FAILEDTemplate(Action<AspReqASP_COMPILE_FAILEDArgs> action)
+        static private ASP_COMPILED_FAILED AspReqASP_COMPILED_FAILEDTemplate(Action<ASP_COMPILED_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_COMPILE_FAILEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 39, "ASP_COMPILE_FAILED", ProviderGuid, ProviderName );
+            return new ASP_COMPILED_FAILED(action, 65535, 0, "AspReq", AspReqTaskGuid, 34, "ASP_COMPILED_FAILED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_CURRENT_SESSIONArgs AspReqASP_CURRENT_SESSIONTemplate(Action<AspReqASP_CURRENT_SESSIONArgs> action)
+        static private ASP_CURRENT_SESSION AspReqASP_CURRENT_SESSIONTemplate(Action<ASP_CURRENT_SESSION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_CURRENT_SESSIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 49, "ASP_CURRENT_SESSION", ProviderGuid, ProviderName );
+            return new ASP_CURRENT_SESSION(action, 65535, 0, "AspReq", AspReqTaskGuid, 51, "ASP_CURRENT_SESSION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_DEQUEUE_REQUESTArgs AspReqASP_DEQUEUE_REQUESTTemplate(Action<AspReqASP_DEQUEUE_REQUESTArgs> action)
+        static private ASP_DEQUEUE_REQUEST AspReqASP_DEQUEUE_REQUESTTemplate(Action<ASP_DEQUEUE_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_DEQUEUE_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 22, "ASP_DEQUEUE_REQUEST", ProviderGuid, ProviderName );
+            return new ASP_DEQUEUE_REQUEST(action, 65535, 0, "AspReq", AspReqTaskGuid, 1, "ASP_DEQUEUE_REQUEST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_DONE_PROCESSINGArgs AspReqASP_DONE_PROCESSINGTemplate(Action<AspReqASP_DONE_PROCESSINGArgs> action)
+        static private ASP_DONE_PROCESSING AspReqASP_DONE_PROCESSINGTemplate(Action<ASP_DONE_PROCESSING> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_DONE_PROCESSINGArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 43, "ASP_DONE_PROCESSING", ProviderGuid, ProviderName );
+            return new ASP_DONE_PROCESSING(action, 65535, 0, "AspReq", AspReqTaskGuid, 2, "ASP_DONE_PROCESSING", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_APPLICATION_ONSTARTArgs AspReqASP_END_APPLICATION_ONSTARTTemplate(Action<AspReqASP_END_APPLICATION_ONSTARTArgs> action)
+        static private ASP_END_APPLICATION_ON_START AspReqASP_END_APPLICATION_ON_STARTTemplate(Action<ASP_END_APPLICATION_ON_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_APPLICATION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 21, "ASP_END_APPLICATION_ONSTART", ProviderGuid, ProviderName );
+            return new ASP_END_APPLICATION_ON_START(action, 65535, 0, "AspReq", AspReqTaskGuid, 36, "ASP_END_APPLICATION_ON_START", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_CACHE_ACCESSArgs AspReqASP_END_CACHE_ACCESSTemplate(Action<AspReqASP_END_CACHE_ACCESSArgs> action)
+        static private ASP_END_CACHE_ACCESS AspReqASP_END_CACHE_ACCESSTemplate(Action<ASP_END_CACHE_ACCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_CACHE_ACCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 11, "ASP_END_CACHE_ACCESS", ProviderGuid, ProviderName );
+            return new ASP_END_CACHE_ACCESS(action, 65535, 0, "AspReq", AspReqTaskGuid, 50, "ASP_END_CACHE_ACCESS", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_COMPILEArgs AspReqASP_END_COMPILETemplate(Action<AspReqASP_END_COMPILEArgs> action)
+        static private ASP_END_COMPILE AspReqASP_END_COMPILETemplate(Action<ASP_END_COMPILE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_COMPILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 36, "ASP_END_COMPILE", ProviderGuid, ProviderName );
+            return new ASP_END_COMPILE(action, 65535, 0, "AspReq", AspReqTaskGuid, 48, "ASP_END_COMPILE", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_GLOBAL_ASA_CHECKArgs AspReqASP_END_GLOBAL_ASA_CHECKTemplate(Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> action)
+        static private ASP_END_GLOBALASA_CHECK AspReqASP_END_GLOBALASA_CHECKTemplate(Action<ASP_END_GLOBALASA_CHECK> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_GLOBAL_ASA_CHECKArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 48, "ASP_END_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
+            return new ASP_END_GLOBALASA_CHECK(action, 65535, 0, "AspReq", AspReqTaskGuid, 17, "ASP_END_GLOBALASA_CHECK", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_REQUESTArgs AspReqASP_END_REQUESTTemplate(Action<AspReqASP_END_REQUESTArgs> action)
+        static private ASP_END_REQUEST AspReqASP_END_REQUESTTemplate(Action<ASP_END_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 24, "ASP_END_REQUEST", ProviderGuid, ProviderName );
+            return new ASP_END_REQUEST(action, 65535, 0, "AspReq", AspReqTaskGuid, 11, "ASP_END_REQUEST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_SCRIPT_EXECUTIONArgs AspReqASP_END_SCRIPT_EXECUTIONTemplate(Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> action)
+        static private ASP_END_SCRIPT_EXECUTION AspReqASP_END_SCRIPT_EXECUTIONTemplate(Action<ASP_END_SCRIPT_EXECUTION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SCRIPT_EXECUTIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 14, "ASP_END_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
+            return new ASP_END_SCRIPT_EXECUTION(action, 65535, 0, "AspReq", AspReqTaskGuid, 44, "ASP_END_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_SCRIPTLESS_SENDArgs AspReqASP_END_SCRIPTLESS_SENDTemplate(Action<AspReqASP_END_SCRIPTLESS_SENDArgs> action)
+        static private ASP_END_SCRIPTLESS_SEND AspReqASP_END_SCRIPTLESS_SENDTemplate(Action<ASP_END_SCRIPTLESS_SEND> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SCRIPTLESS_SENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 42, "ASP_END_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
+            return new ASP_END_SCRIPTLESS_SEND(action, 65535, 0, "AspReq", AspReqTaskGuid, 24, "ASP_END_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_END_SESSION_ONSTARTArgs AspReqASP_END_SESSION_ONSTARTTemplate(Action<AspReqASP_END_SESSION_ONSTARTArgs> action)
+        static private ASP_END_SESSION_ON_START AspReqASP_END_SESSION_ON_STARTTemplate(Action<ASP_END_SESSION_ON_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_END_SESSION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 15, "ASP_END_SESSION_ONSTART", ProviderGuid, ProviderName );
+            return new ASP_END_SESSION_ON_START(action, 65535, 0, "AspReq", AspReqTaskGuid, 40, "ASP_END_SESSION_ON_START", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_FILE_ACCESS_DENIEDArgs AspReqASP_FILE_ACCESS_DENIEDTemplate(Action<AspReqASP_FILE_ACCESS_DENIEDArgs> action)
+        static private ASP_FILE_ACCESS_DENIED AspReqASP_FILE_ACCESS_DENIEDTemplate(Action<ASP_FILE_ACCESS_DENIED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FILE_ACCESS_DENIEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 44, "ASP_FILE_ACCESS_DENIED", ProviderGuid, ProviderName );
+            return new ASP_FILE_ACCESS_DENIED(action, 65535, 0, "AspReq", AspReqTaskGuid, 31, "ASP_FILE_ACCESS_DENIED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_FILE_NOT_FOUNDArgs AspReqASP_FILE_NOT_FOUNDTemplate(Action<AspReqASP_FILE_NOT_FOUNDArgs> action)
+        static private ASP_FILE_NOT_FOUND AspReqASP_FILE_NOT_FOUNDTemplate(Action<ASP_FILE_NOT_FOUND> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FILE_NOT_FOUNDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 61, "ASP_FILE_NOT_FOUND", ProviderGuid, ProviderName );
+            return new ASP_FILE_NOT_FOUND(action, 65535, 0, "AspReq", AspReqTaskGuid, 32, "ASP_FILE_NOT_FOUND", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> action)
+        static private ASP_FIRST_REQUEST AspReqASP_FIRST_REQUESTTemplate(Action<ASP_FIRST_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 38, "ASP_FIRST_REQUEST_FOR_APPLICATION", ProviderGuid, ProviderName );
+            return new ASP_FIRST_REQUEST(action, 65535, 0, "AspReq", AspReqTaskGuid, 12, "ASP_FIRST_REQUEST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_FIRST_REQUEST_FOR_ASPArgs AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> action)
+        static private ASP_FIRST_REQUEST_FOR_APPLICATION AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(Action<ASP_FIRST_REQUEST_FOR_APPLICATION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_FIRST_REQUEST_FOR_ASPArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 37, "ASP_FIRST_REQUEST_FOR_ASP", ProviderGuid, ProviderName );
+            return new ASP_FIRST_REQUEST_FOR_APPLICATION(action, 65535, 0, "AspReq", AspReqTaskGuid, 15, "ASP_FIRST_REQUEST_FOR_APPLICATION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> action)
+        static private ASP_GLOBALASA_ACCESS_DENIED AspReqASP_GLOBALASA_ACCESS_DENIEDTemplate(Action<ASP_GLOBALASA_ACCESS_DENIED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 18, "ASP_GLOBAL_ASA_ACCESS_DENIED", ProviderGuid, ProviderName );
+            return new ASP_GLOBALASA_ACCESS_DENIED(action, 65535, 0, "AspReq", AspReqTaskGuid, 19, "ASP_GLOBALASA_ACCESS_DENIED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> action)
+        static private ASP_GLOBALASA_ACCESS_SUCCESS AspReqASP_GLOBALASA_ACCESS_SUCCESSTemplate(Action<ASP_GLOBALASA_ACCESS_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 58, "ASP_GLOBAL_ASA_ACCESS_SUCCESS", ProviderGuid, ProviderName );
+            return new ASP_GLOBALASA_ACCESS_SUCCESS(action, 65535, 0, "AspReq", AspReqTaskGuid, 20, "ASP_GLOBALASA_ACCESS_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> action)
+        static private ASP_GLOBALASA_DOES_NOT_EXIST AspReqASP_GLOBALASA_DOES_NOT_EXISTTemplate(Action<ASP_GLOBALASA_DOES_NOT_EXIST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 41, "ASP_GLOBAL_ASA_DOES_NOT_EXIST", ProviderGuid, ProviderName );
+            return new ASP_GLOBALASA_DOES_NOT_EXIST(action, 65535, 0, "AspReq", AspReqTaskGuid, 18, "ASP_GLOBALASA_DOES_NOT_EXIST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_INIT_FAILUREArgs AspReqASP_INIT_FAILURETemplate(Action<AspReqASP_INIT_FAILUREArgs> action)
+        static private ASP_INIT_FAILURE AspReqASP_INIT_FAILURETemplate(Action<ASP_INIT_FAILURE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_INIT_FAILUREArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 59, "ASP_INIT_FAILURE", ProviderGuid, ProviderName );
+            return new ASP_INIT_FAILURE(action, 65535, 0, "AspReq", AspReqTaskGuid, 13, "ASP_INIT_FAILURE", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_LOG_ERRORArgs AspReqASP_LOG_ERRORTemplate(Action<AspReqASP_LOG_ERRORArgs> action)
+        static private ASP_LOG_ERROR AspReqASP_LOG_ERRORTemplate(Action<ASP_LOG_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_LOG_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 60, "ASP_LOG_ERROR", ProviderGuid, ProviderName );
+            return new ASP_LOG_ERROR(action, 65535, 0, "AspReq", AspReqTaskGuid, 60, "ASP_LOG_ERROR", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_NEW_SESSION_CREATEDArgs AspReqASP_NEW_SESSION_CREATEDTemplate(Action<AspReqASP_NEW_SESSION_CREATEDArgs> action)
+        static private ASP_NEW_SESSION AspReqASP_NEW_SESSIONTemplate(Action<ASP_NEW_SESSION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_NEW_SESSION_CREATEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 47, "ASP_NEW_SESSION_CREATED", ProviderGuid, ProviderName );
+            return new ASP_NEW_SESSION(action, 65535, 0, "AspReq", AspReqTaskGuid, 21, "ASP_NEW_SESSION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_QUEUE_REQUESTArgs AspReqASP_QUEUE_REQUESTTemplate(Action<AspReqASP_QUEUE_REQUESTArgs> action)
+        static private ASP_QUEUE_REQUEST AspReqASP_QUEUE_REQUESTTemplate(Action<ASP_QUEUE_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_QUEUE_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 56, "ASP_QUEUE_REQUEST", ProviderGuid, ProviderName );
+            return new ASP_QUEUE_REQUEST(action, 65535, 0, "AspReq", AspReqTaskGuid, 26, "ASP_QUEUE_REQUEST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_QUEUE_REQUEST_FAILEDArgs AspReqASP_QUEUE_REQUEST_FAILEDTemplate(Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> action)
+        static private ASP_QUEUE_REQUEST_FAILED AspReqASP_QUEUE_REQUEST_FAILEDTemplate(Action<ASP_QUEUE_REQUEST_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_QUEUE_REQUEST_FAILEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 30, "ASP_QUEUE_REQUEST_FAILED", ProviderGuid, ProviderName );
+            return new ASP_QUEUE_REQUEST_FAILED(action, 65535, 0, "AspReq", AspReqTaskGuid, 28, "ASP_QUEUE_REQUEST_FAILED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_READ_FILEArgs AspReqASP_READ_FILETemplate(Action<AspReqASP_READ_FILEArgs> action)
+        static private ASP_READ_FILE AspReqASP_READ_FILETemplate(Action<ASP_READ_FILE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_READ_FILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 25, "ASP_READ_FILE", ProviderGuid, ProviderName );
+            return new ASP_READ_FILE(action, 65535, 0, "AspReq", AspReqTaskGuid, 33, "ASP_READ_FILE", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_REQUEST_TIMEOUTArgs AspReqASP_REQUEST_TIMEOUTTemplate(Action<AspReqASP_REQUEST_TIMEOUTArgs> action)
+        static private ASP_REQUEST_TIMEOUT AspReqASP_REQUEST_TIMEOUTTemplate(Action<ASP_REQUEST_TIMEOUT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_REQUEST_TIMEOUTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 29, "ASP_REQUEST_TIMEOUT", ProviderGuid, ProviderName );
+            return new ASP_REQUEST_TIMEOUT(action, 65535, 0, "AspReq", AspReqTaskGuid, 30, "ASP_REQUEST_TIMEOUT", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> action)
+        static private ASP_SCRIPT_OBJECT_TRACE_INFO AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(Action<ASP_SCRIPT_OBJECT_TRACE_INFO> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 51, "ASP_SCRIPT_TRACE_COM_CALL_END", ProviderGuid, ProviderName );
+            return new ASP_SCRIPT_OBJECT_TRACE_INFO(action, 65535, 0, "AspReq", AspReqTaskGuid, 54, "ASP_SCRIPT_OBJECT_TRACE_INFO", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> action)
+        static private ASP_SCRIPT_TRACE_INFO AspReqASP_SCRIPT_TRACE_INFOTemplate(Action<ASP_SCRIPT_TRACE_INFO> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 50, "ASP_SCRIPT_TRACE_COM_CALL_START", ProviderGuid, ProviderName );
+            return new ASP_SCRIPT_TRACE_INFO(action, 65535, 0, "AspReq", AspReqTaskGuid, 52, "ASP_SCRIPT_TRACE_INFO", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> action)
+        static private ASP_SECURE_SESSIONID AspReqASP_SECURE_SESSIONIDTemplate(Action<ASP_SECURE_SESSIONID> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 53, "ASP_SCRIPT_TRACE_CREATE_OBJECT_END", ProviderGuid, ProviderName );
+            return new ASP_SECURE_SESSIONID(action, 65535, 0, "AspReq", AspReqTaskGuid, 22, "ASP_SECURE_SESSIONID", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> action)
+        static private ASP_SERVER_TOO_BUSY AspReqASP_SERVER_TOO_BUSYTemplate(Action<ASP_SERVER_TOO_BUSY> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 52, "ASP_SCRIPT_TRACE_CREATE_OBJECT_START", ProviderGuid, ProviderName );
+            return new ASP_SERVER_TOO_BUSY(action, 65535, 0, "AspReq", AspReqTaskGuid, 25, "ASP_SERVER_TOO_BUSY", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_ENDArgs AspReqASP_SCRIPT_TRACE_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_ENDArgs> action)
+        static private ASP_START_APPLICATION_ON_START AspReqASP_START_APPLICATION_ON_STARTTemplate(Action<ASP_START_APPLICATION_ON_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 27, "ASP_SCRIPT_TRACE_END", ProviderGuid, ProviderName );
+            return new ASP_START_APPLICATION_ON_START(action, 65535, 0, "AspReq", AspReqTaskGuid, 35, "ASP_START_APPLICATION_ON_START", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> action)
+        static private ASP_START_CACHE_ACCESS AspReqASP_START_CACHE_ACCESSTemplate(Action<ASP_START_CACHE_ACCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 55, "ASP_SCRIPT_TRACE_GET_OBJECT_END", ProviderGuid, ProviderName );
+            return new ASP_START_CACHE_ACCESS(action, 65535, 0, "AspReq", AspReqTaskGuid, 49, "ASP_START_CACHE_ACCESS", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> action)
+        static private ASP_START_COMPILE AspReqASP_START_COMPILETemplate(Action<ASP_START_COMPILE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 54, "ASP_SCRIPT_TRACE_GET_OBJECT_START", ProviderGuid, ProviderName );
+            return new ASP_START_COMPILE(action, 65535, 0, "AspReq", AspReqTaskGuid, 47, "ASP_START_COMPILE", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SCRIPT_TRACE_STARTArgs AspReqASP_SCRIPT_TRACE_STARTTemplate(Action<AspReqASP_SCRIPT_TRACE_STARTArgs> action)
+        static private ASP_START_GLOBALASA_CHECK AspReqASP_START_GLOBALASA_CHECKTemplate(Action<ASP_START_GLOBALASA_CHECK> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SCRIPT_TRACE_STARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 26, "ASP_SCRIPT_TRACE_START", ProviderGuid, ProviderName );
+            return new ASP_START_GLOBALASA_CHECK(action, 65535, 0, "AspReq", AspReqTaskGuid, 16, "ASP_START_GLOBALASA_CHECK", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SECURE_SESSION_ID_SETArgs AspReqASP_SECURE_SESSION_ID_SETTemplate(Action<AspReqASP_SECURE_SESSION_ID_SETArgs> action)
+        static private ASP_START_REQUEST AspReqASP_START_REQUESTTemplate(Action<ASP_START_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SECURE_SESSION_ID_SETArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 46, "ASP_SECURE_SESSION_ID_SET", ProviderGuid, ProviderName );
+            return new ASP_START_REQUEST(action, 65535, 0, "AspReq", AspReqTaskGuid, 10, "ASP_START_REQUEST", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> action)
+        static private ASP_START_SCRIPT_EXECUTION AspReqASP_START_SCRIPT_EXECUTIONTemplate(Action<ASP_START_SCRIPT_EXECUTION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 12, "ASP_SERVER_TOO_BUSY_TO_QUEUE", ProviderGuid, ProviderName );
+            return new ASP_START_SCRIPT_EXECUTION(action, 65535, 0, "AspReq", AspReqTaskGuid, 43, "ASP_START_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SESSION_ONSTART_ERRORArgs AspReqASP_SESSION_ONSTART_ERRORTemplate(Action<AspReqASP_SESSION_ONSTART_ERRORArgs> action)
+        static private ASP_START_SCRIPTLESS_SEND AspReqASP_START_SCRIPTLESS_SENDTemplate(Action<ASP_START_SCRIPTLESS_SEND> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SESSION_ONSTART_ERRORArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 20, "ASP_SESSION_ONSTART_ERROR", ProviderGuid, ProviderName );
+            return new ASP_START_SCRIPTLESS_SEND(action, 65535, 0, "AspReq", AspReqTaskGuid, 23, "ASP_START_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_SESSION_ONSTART_SUCCESSArgs AspReqASP_SESSION_ONSTART_SUCCESSTemplate(Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> action)
+        static private ASP_START_SESSION_ON_START AspReqASP_START_SESSION_ON_STARTTemplate(Action<ASP_START_SESSION_ON_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_SESSION_ONSTART_SUCCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 34, "ASP_SESSION_ONSTART_SUCCESS", ProviderGuid, ProviderName );
+            return new ASP_START_SESSION_ON_START(action, 65535, 0, "AspReq", AspReqTaskGuid, 39, "ASP_START_SESSION_ON_START", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_START_APPLICATION_ONSTARTArgs AspReqASP_START_APPLICATION_ONSTARTTemplate(Action<AspReqASP_START_APPLICATION_ONSTARTArgs> action)
+        static private ASP_START_SESSION_ON_START_ERROR AspReqASP_START_SESSION_ON_START_ERRORTemplate(Action<ASP_START_SESSION_ON_START_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_APPLICATION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 40, "ASP_START_APPLICATION_ONSTART", ProviderGuid, ProviderName );
+            return new ASP_START_SESSION_ON_START_ERROR(action, 65535, 0, "AspReq", AspReqTaskGuid, 41, "ASP_START_SESSION_ON_START_ERROR", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_START_CACHE_ACCESSArgs AspReqASP_START_CACHE_ACCESSTemplate(Action<AspReqASP_START_CACHE_ACCESSArgs> action)
+        static private ASP_START_SESSION_ON_START_SUCCESS AspReqASP_START_SESSION_ON_START_SUCCESSTemplate(Action<ASP_START_SESSION_ON_START_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_CACHE_ACCESSArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 33, "ASP_START_CACHE_ACCESS", ProviderGuid, ProviderName );
+            return new ASP_START_SESSION_ON_START_SUCCESS(action, 65535, 0, "AspReq", AspReqTaskGuid, 42, "ASP_START_SESSION_ON_START_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_START_COMPILEArgs AspReqASP_START_COMPILETemplate(Action<AspReqASP_START_COMPILEArgs> action)
+        static private ASP_TRANSACTION_ABORTED AspReqASP_TRANSACTION_ABORTEDTemplate(Action<ASP_TRANSACTION_ABORTED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_COMPILEArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 28, "ASP_START_COMPILE", ProviderGuid, ProviderName );
+            return new ASP_TRANSACTION_ABORTED(action, 65535, 0, "AspReq", AspReqTaskGuid, 45, "ASP_TRANSACTION_ABORTED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_START_GLOBAL_ASA_CHECKArgs AspReqASP_START_GLOBAL_ASA_CHECKTemplate(Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> action)
+        static private ASP_TRANSACTION_COMMITED AspReqASP_TRANSACTION_COMMITEDTemplate(Action<ASP_TRANSACTION_COMMITED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_GLOBAL_ASA_CHECKArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 10, "ASP_START_GLOBAL_ASA_CHECK", ProviderGuid, ProviderName );
+            return new ASP_TRANSACTION_COMMITED(action, 65535, 0, "AspReq", AspReqTaskGuid, 46, "ASP_TRANSACTION_COMMITED", ProviderGuid, ProviderName );
         }
-        static private AspReqASP_START_REQUESTArgs AspReqASP_START_REQUESTTemplate(Action<AspReqASP_START_REQUESTArgs> action)
+        static private ASP_UNHEALTHY_FAILURE AspReqASP_UNHEALTHY_FAILURETemplate(Action<ASP_UNHEALTHY_FAILURE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_REQUESTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 35, "ASP_START_REQUEST", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_START_SCRIPT_EXECUTIONArgs AspReqASP_START_SCRIPT_EXECUTIONTemplate(Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SCRIPT_EXECUTIONArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 32, "ASP_START_SCRIPT_EXECUTION", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_START_SCRIPTLESS_SENDArgs AspReqASP_START_SCRIPTLESS_SENDTemplate(Action<AspReqASP_START_SCRIPTLESS_SENDArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SCRIPTLESS_SENDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 45, "ASP_START_SCRIPTLESS_SEND", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_START_SESSION_ONSTARTArgs AspReqASP_START_SESSION_ONSTARTTemplate(Action<AspReqASP_START_SESSION_ONSTARTArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_START_SESSION_ONSTARTArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 31, "ASP_START_SESSION_ONSTART", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_TRANSACTION_ABORTEDArgs AspReqASP_TRANSACTION_ABORTEDTemplate(Action<AspReqASP_TRANSACTION_ABORTEDArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_TRANSACTION_ABORTEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 17, "ASP_TRANSACTION_ABORTED", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_TRANSACTION_COMMITEDArgs AspReqASP_TRANSACTION_COMMITEDTemplate(Action<AspReqASP_TRANSACTION_COMMITEDArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_TRANSACTION_COMMITEDArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 23, "ASP_TRANSACTION_COMMITED", ProviderGuid, ProviderName );
-        }
-        static private AspReqASP_UNHEALTHY_FAILUREArgs AspReqASP_UNHEALTHY_FAILURETemplate(Action<AspReqASP_UNHEALTHY_FAILUREArgs> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new AspReqASP_UNHEALTHY_FAILUREArgs(action, 65535, 1, "AspReq", AspReqTaskGuid, 19, "ASP_UNHEALTHY_FAILURE", ProviderGuid, ProviderName );
+            return new ASP_UNHEALTHY_FAILURE(action, 65535, 0, "AspReq", AspReqTaskGuid, 14, "ASP_UNHEALTHY_FAILURE", ProviderGuid, ProviderName );
         }
 
         static private volatile TraceEvent[] s_templates;
@@ -817,58 +727,58 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             if (s_templates == null)
             {
                 var templates = new TraceEvent[52];
-                templates[0] = AspReqASP_START_GLOBAL_ASA_CHECKTemplate(null);
-                templates[1] = AspReqASP_END_CACHE_ACCESSTemplate(null);
-                templates[2] = AspReqASP_SERVER_TOO_BUSY_TO_QUEUETemplate(null);
-                templates[3] = AspReqASP_APPLICATION_ONSTART_SUCCESSTemplate(null);
-                templates[4] = AspReqASP_END_SCRIPT_EXECUTIONTemplate(null);
-                templates[5] = AspReqASP_END_SESSION_ONSTARTTemplate(null);
-                templates[6] = AspReqASP_CLIENT_DISCONNECTEDTemplate(null);
-                templates[7] = AspReqASP_TRANSACTION_ABORTEDTemplate(null);
-                templates[8] = AspReqASP_GLOBAL_ASA_ACCESS_DENIEDTemplate(null);
-                templates[9] = AspReqASP_UNHEALTHY_FAILURETemplate(null);
-                templates[10] = AspReqASP_SESSION_ONSTART_ERRORTemplate(null);
-                templates[11] = AspReqASP_END_APPLICATION_ONSTARTTemplate(null);
-                templates[12] = AspReqASP_DEQUEUE_REQUESTTemplate(null);
-                templates[13] = AspReqASP_TRANSACTION_COMMITEDTemplate(null);
-                templates[14] = AspReqASP_END_REQUESTTemplate(null);
-                templates[15] = AspReqASP_READ_FILETemplate(null);
-                templates[16] = AspReqASP_SCRIPT_TRACE_STARTTemplate(null);
-                templates[17] = AspReqASP_SCRIPT_TRACE_ENDTemplate(null);
-                templates[18] = AspReqASP_START_COMPILETemplate(null);
-                templates[19] = AspReqASP_REQUEST_TIMEOUTTemplate(null);
-                templates[20] = AspReqASP_QUEUE_REQUEST_FAILEDTemplate(null);
-                templates[21] = AspReqASP_START_SESSION_ONSTARTTemplate(null);
-                templates[22] = AspReqASP_START_SCRIPT_EXECUTIONTemplate(null);
-                templates[23] = AspReqASP_START_CACHE_ACCESSTemplate(null);
-                templates[24] = AspReqASP_SESSION_ONSTART_SUCCESSTemplate(null);
-                templates[25] = AspReqASP_START_REQUESTTemplate(null);
-                templates[26] = AspReqASP_END_COMPILETemplate(null);
-                templates[27] = AspReqASP_FIRST_REQUEST_FOR_ASPTemplate(null);
-                templates[28] = AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(null);
-                templates[29] = AspReqASP_COMPILE_FAILEDTemplate(null);
-                templates[30] = AspReqASP_START_APPLICATION_ONSTARTTemplate(null);
-                templates[31] = AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTTemplate(null);
-                templates[32] = AspReqASP_END_SCRIPTLESS_SENDTemplate(null);
-                templates[33] = AspReqASP_DONE_PROCESSINGTemplate(null);
-                templates[34] = AspReqASP_FILE_ACCESS_DENIEDTemplate(null);
-                templates[35] = AspReqASP_START_SCRIPTLESS_SENDTemplate(null);
-                templates[36] = AspReqASP_SECURE_SESSION_ID_SETTemplate(null);
-                templates[37] = AspReqASP_NEW_SESSION_CREATEDTemplate(null);
-                templates[38] = AspReqASP_END_GLOBAL_ASA_CHECKTemplate(null);
-                templates[39] = AspReqASP_CURRENT_SESSIONTemplate(null);
-                templates[40] = AspReqASP_SCRIPT_TRACE_COM_CALL_STARTTemplate(null);
-                templates[41] = AspReqASP_SCRIPT_TRACE_COM_CALL_ENDTemplate(null);
-                templates[42] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTTemplate(null);
-                templates[43] = AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDTemplate(null);
-                templates[44] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTTemplate(null);
-                templates[45] = AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDTemplate(null);
-                templates[46] = AspReqASP_QUEUE_REQUESTTemplate(null);
-                templates[47] = AspReqASP_APPLICATION_ONSTART_ERRORTemplate(null);
-                templates[48] = AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSTemplate(null);
-                templates[49] = AspReqASP_INIT_FAILURETemplate(null);
-                templates[50] = AspReqASP_LOG_ERRORTemplate(null);
-                templates[51] = AspReqASP_FILE_NOT_FOUNDTemplate(null);
+                templates[0] = AspReqASP_START_REQUESTTemplate(null);
+                templates[1] = AspReqASP_END_REQUESTTemplate(null);
+                templates[2] = AspReqASP_FIRST_REQUESTTemplate(null);
+                templates[3] = AspReqASP_INIT_FAILURETemplate(null);
+                templates[4] = AspReqASP_UNHEALTHY_FAILURETemplate(null);
+                templates[5] = AspReqASP_FIRST_REQUEST_FOR_APPLICATIONTemplate(null);
+                templates[6] = AspReqASP_START_GLOBALASA_CHECKTemplate(null);
+                templates[7] = AspReqASP_END_GLOBALASA_CHECKTemplate(null);
+                templates[8] = AspReqASP_GLOBALASA_DOES_NOT_EXISTTemplate(null);
+                templates[9] = AspReqASP_GLOBALASA_ACCESS_DENIEDTemplate(null);
+                templates[10] = AspReqASP_GLOBALASA_ACCESS_SUCCESSTemplate(null);
+                templates[11] = AspReqASP_NEW_SESSIONTemplate(null);
+                templates[12] = AspReqASP_SECURE_SESSIONIDTemplate(null);
+                templates[13] = AspReqASP_START_SCRIPTLESS_SENDTemplate(null);
+                templates[14] = AspReqASP_END_SCRIPTLESS_SENDTemplate(null);
+                templates[15] = AspReqASP_SERVER_TOO_BUSYTemplate(null);
+                templates[16] = AspReqASP_QUEUE_REQUESTTemplate(null);
+                templates[17] = AspReqASP_DEQUEUE_REQUESTTemplate(null);
+                templates[18] = AspReqASP_QUEUE_REQUEST_FAILEDTemplate(null);
+                templates[19] = AspReqASP_CLIENT_CONNECTION_DISCONNECTIONTemplate(null);
+                templates[20] = AspReqASP_REQUEST_TIMEOUTTemplate(null);
+                templates[21] = AspReqASP_FILE_ACCESS_DENIEDTemplate(null);
+                templates[22] = AspReqASP_FILE_NOT_FOUNDTemplate(null);
+                templates[23] = AspReqASP_READ_FILETemplate(null);
+                templates[24] = AspReqASP_COMPILED_FAILEDTemplate(null);
+                templates[25] = AspReqASP_START_APPLICATION_ON_STARTTemplate(null);
+                templates[26] = AspReqASP_END_APPLICATION_ON_STARTTemplate(null);
+                templates[27] = AspReqASP_APPLICATION_ON_START_SUCCESSTemplate(null);
+                templates[28] = AspReqASP_APPLICATION_ON_START_ERRORTemplate(null);
+                templates[29] = AspReqASP_START_SESSION_ON_STARTTemplate(null);
+                templates[30] = AspReqASP_END_SESSION_ON_STARTTemplate(null);
+                templates[31] = AspReqASP_START_SESSION_ON_START_SUCCESSTemplate(null);
+                templates[32] = AspReqASP_START_SESSION_ON_START_ERRORTemplate(null);
+                templates[33] = AspReqASP_START_SCRIPT_EXECUTIONTemplate(null);
+                templates[34] = AspReqASP_END_SCRIPT_EXECUTIONTemplate(null);
+                templates[35] = AspReqASP_TRANSACTION_ABORTEDTemplate(null);
+                templates[36] = AspReqASP_TRANSACTION_COMMITEDTemplate(null);
+                templates[37] = AspReqASP_START_COMPILETemplate(null);
+                templates[38] = AspReqASP_END_COMPILETemplate(null);
+                templates[39] = AspReqASP_START_CACHE_ACCESSTemplate(null);
+                templates[40] = AspReqASP_END_CACHE_ACCESSTemplate(null);
+                templates[41] = AspReqASP_CURRENT_SESSIONTemplate(null);
+                templates[42] = AspReqASP_DONE_PROCESSINGTemplate(null);
+                templates[43] = AspReqASP_SCRIPT_TRACE_INFOTemplate(null);
+                templates[44] = AspReqASP_SCRIPT_TRACE_INFOTemplate(null);
+                templates[45] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[46] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[47] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[48] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[49] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[50] = AspReqASP_SCRIPT_OBJECT_TRACE_INFOTemplate(null);
+                templates[51] = AspReqASP_LOG_ERRORTemplate(null);
                 s_templates = templates;
             }
             foreach (var template in s_templates)
@@ -882,13 +792,13 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
 namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
 {
-    public sealed class AspReqASP_APPLICATION_ONSTART_ERRORArgs : TraceEvent
+    public sealed class ASP_APPLICATION_ON_START_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal AspReqASP_APPLICATION_ONSTART_ERRORArgs(Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_APPLICATION_ON_START_ERROR(Action<ASP_APPLICATION_ON_START_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -905,7 +815,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs>) value; }
+            set { m_target = (Action<ASP_APPLICATION_ON_START_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -940,15 +850,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_APPLICATION_ONSTART_ERRORArgs> m_target;
+        private event Action<ASP_APPLICATION_ON_START_ERROR> m_target;
         #endregion
     }
-    public sealed class AspReqASP_APPLICATION_ONSTART_SUCCESSArgs : TraceEvent
+    public sealed class ASP_APPLICATION_ON_START_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_APPLICATION_ONSTART_SUCCESSArgs(Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_APPLICATION_ON_START_SUCCESS(Action<ASP_APPLICATION_ON_START_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -965,7 +875,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs>) value; }
+            set { m_target = (Action<ASP_APPLICATION_ON_START_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -997,15 +907,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_APPLICATION_ONSTART_SUCCESSArgs> m_target;
+        private event Action<ASP_APPLICATION_ON_START_SUCCESS> m_target;
         #endregion
     }
-    public sealed class AspReqASP_CLIENT_DISCONNECTEDArgs : TraceEvent
+    public sealed class ASP_CLIENT_CONNECTION_DISCONNECTION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_CLIENT_DISCONNECTEDArgs(Action<AspReqASP_CLIENT_DISCONNECTEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_CLIENT_CONNECTION_DISCONNECTION(Action<ASP_CLIENT_CONNECTION_DISCONNECTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1022,7 +932,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_CLIENT_DISCONNECTEDArgs>) value; }
+            set { m_target = (Action<ASP_CLIENT_CONNECTION_DISCONNECTION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1054,17 +964,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_CLIENT_DISCONNECTEDArgs> m_target;
+        private event Action<ASP_CLIENT_CONNECTION_DISCONNECTION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_COMPILE_FAILEDArgs : TraceEvent
+    public sealed class ASP_COMPILED_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
         public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)); } }
 
         #region Private
-        internal AspReqASP_COMPILE_FAILEDArgs(Action<AspReqASP_COMPILE_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_COMPILED_FAILED(Action<ASP_COMPILED_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1081,7 +991,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_COMPILE_FAILEDArgs>) value; }
+            set { m_target = (Action<ASP_COMPILED_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1119,16 +1029,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_COMPILE_FAILEDArgs> m_target;
+        private event Action<ASP_COMPILED_FAILED> m_target;
         #endregion
     }
-    public sealed class AspReqASP_CURRENT_SESSIONArgs : TraceEvent
+    public sealed class ASP_CURRENT_SESSION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string SessionID { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal AspReqASP_CURRENT_SESSIONArgs(Action<AspReqASP_CURRENT_SESSIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_CURRENT_SESSION(Action<ASP_CURRENT_SESSION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1145,7 +1055,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_CURRENT_SESSIONArgs>) value; }
+            set { m_target = (Action<ASP_CURRENT_SESSION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1180,15 +1090,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_CURRENT_SESSIONArgs> m_target;
+        private event Action<ASP_CURRENT_SESSION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_DEQUEUE_REQUESTArgs : TraceEvent
+    public sealed class ASP_DEQUEUE_REQUEST : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_DEQUEUE_REQUESTArgs(Action<AspReqASP_DEQUEUE_REQUESTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_DEQUEUE_REQUEST(Action<ASP_DEQUEUE_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1205,7 +1115,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_DEQUEUE_REQUESTArgs>) value; }
+            set { m_target = (Action<ASP_DEQUEUE_REQUEST>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1237,15 +1147,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_DEQUEUE_REQUESTArgs> m_target;
+        private event Action<ASP_DEQUEUE_REQUEST> m_target;
         #endregion
     }
-    public sealed class AspReqASP_DONE_PROCESSINGArgs : TraceEvent
+    public sealed class ASP_DONE_PROCESSING : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_DONE_PROCESSINGArgs(Action<AspReqASP_DONE_PROCESSINGArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_DONE_PROCESSING(Action<ASP_DONE_PROCESSING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1262,7 +1172,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_DONE_PROCESSINGArgs>) value; }
+            set { m_target = (Action<ASP_DONE_PROCESSING>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1294,15 +1204,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_DONE_PROCESSINGArgs> m_target;
+        private event Action<ASP_DONE_PROCESSING> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_APPLICATION_ONSTARTArgs : TraceEvent
+    public sealed class ASP_END_APPLICATION_ON_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_APPLICATION_ONSTARTArgs(Action<AspReqASP_END_APPLICATION_ONSTARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_APPLICATION_ON_START(Action<ASP_END_APPLICATION_ON_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1319,7 +1229,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_APPLICATION_ONSTARTArgs>) value; }
+            set { m_target = (Action<ASP_END_APPLICATION_ON_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1351,17 +1261,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_APPLICATION_ONSTARTArgs> m_target;
+        private event Action<ASP_END_APPLICATION_ON_START> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_CACHE_ACCESSArgs : TraceEvent
+    public sealed class ASP_END_CACHE_ACCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
-        public AspEndCacheAccessAccessResult AccessResult { get { return (AspEndCacheAccessAccessResult)GetInt32At(20); } }
+        public ASP_END_CACHE_ACCESSAccessResult AccessResult { get { return (ASP_END_CACHE_ACCESSAccessResult)GetInt32At(20); } }
 
         #region Private
-        internal AspReqASP_END_CACHE_ACCESSArgs(Action<AspReqASP_END_CACHE_ACCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_CACHE_ACCESS(Action<ASP_END_CACHE_ACCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1378,7 +1288,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_CACHE_ACCESSArgs>) value; }
+            set { m_target = (Action<ASP_END_CACHE_ACCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1416,15 +1326,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_CACHE_ACCESSArgs> m_target;
+        private event Action<ASP_END_CACHE_ACCESS> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_COMPILEArgs : TraceEvent
+    public sealed class ASP_END_COMPILE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_COMPILEArgs(Action<AspReqASP_END_COMPILEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_COMPILE(Action<ASP_END_COMPILE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1441,7 +1351,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_COMPILEArgs>) value; }
+            set { m_target = (Action<ASP_END_COMPILE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1473,15 +1383,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_COMPILEArgs> m_target;
+        private event Action<ASP_END_COMPILE> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_GLOBAL_ASA_CHECKArgs : TraceEvent
+    public sealed class ASP_END_GLOBALASA_CHECK : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_GLOBAL_ASA_CHECKArgs(Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_GLOBALASA_CHECK(Action<ASP_END_GLOBALASA_CHECK> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1498,7 +1408,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs>) value; }
+            set { m_target = (Action<ASP_END_GLOBALASA_CHECK>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1530,15 +1440,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_GLOBAL_ASA_CHECKArgs> m_target;
+        private event Action<ASP_END_GLOBALASA_CHECK> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_REQUESTArgs : TraceEvent
+    public sealed class ASP_END_REQUEST : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_REQUESTArgs(Action<AspReqASP_END_REQUESTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_REQUEST(Action<ASP_END_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1555,7 +1465,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_REQUESTArgs>) value; }
+            set { m_target = (Action<ASP_END_REQUEST>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1587,15 +1497,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_REQUESTArgs> m_target;
+        private event Action<ASP_END_REQUEST> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_SCRIPT_EXECUTIONArgs : TraceEvent
+    public sealed class ASP_END_SCRIPT_EXECUTION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_SCRIPT_EXECUTIONArgs(Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_SCRIPT_EXECUTION(Action<ASP_END_SCRIPT_EXECUTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1612,7 +1522,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_SCRIPT_EXECUTIONArgs>) value; }
+            set { m_target = (Action<ASP_END_SCRIPT_EXECUTION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1644,15 +1554,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_SCRIPT_EXECUTIONArgs> m_target;
+        private event Action<ASP_END_SCRIPT_EXECUTION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_SCRIPTLESS_SENDArgs : TraceEvent
+    public sealed class ASP_END_SCRIPTLESS_SEND : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_SCRIPTLESS_SENDArgs(Action<AspReqASP_END_SCRIPTLESS_SENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_SCRIPTLESS_SEND(Action<ASP_END_SCRIPTLESS_SEND> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1669,7 +1579,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_SCRIPTLESS_SENDArgs>) value; }
+            set { m_target = (Action<ASP_END_SCRIPTLESS_SEND>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1701,15 +1611,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_SCRIPTLESS_SENDArgs> m_target;
+        private event Action<ASP_END_SCRIPTLESS_SEND> m_target;
         #endregion
     }
-    public sealed class AspReqASP_END_SESSION_ONSTARTArgs : TraceEvent
+    public sealed class ASP_END_SESSION_ON_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_END_SESSION_ONSTARTArgs(Action<AspReqASP_END_SESSION_ONSTARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_END_SESSION_ON_START(Action<ASP_END_SESSION_ON_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1726,7 +1636,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_END_SESSION_ONSTARTArgs>) value; }
+            set { m_target = (Action<ASP_END_SESSION_ON_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1758,16 +1668,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_END_SESSION_ONSTARTArgs> m_target;
+        private event Action<ASP_END_SESSION_ON_START> m_target;
         #endregion
     }
-    public sealed class AspReqASP_FILE_ACCESS_DENIEDArgs : TraceEvent
+    public sealed class ASP_FILE_ACCESS_DENIED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_FILE_ACCESS_DENIEDArgs(Action<AspReqASP_FILE_ACCESS_DENIEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_FILE_ACCESS_DENIED(Action<ASP_FILE_ACCESS_DENIED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1784,7 +1694,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_FILE_ACCESS_DENIEDArgs>) value; }
+            set { m_target = (Action<ASP_FILE_ACCESS_DENIED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1819,16 +1729,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_FILE_ACCESS_DENIEDArgs> m_target;
+        private event Action<ASP_FILE_ACCESS_DENIED> m_target;
         #endregion
     }
-    public sealed class AspReqASP_FILE_NOT_FOUNDArgs : TraceEvent
+    public sealed class ASP_FILE_NOT_FOUND : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_FILE_NOT_FOUNDArgs(Action<AspReqASP_FILE_NOT_FOUNDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_FILE_NOT_FOUND(Action<ASP_FILE_NOT_FOUND> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1845,7 +1755,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_FILE_NOT_FOUNDArgs>) value; }
+            set { m_target = (Action<ASP_FILE_NOT_FOUND>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1880,16 +1790,73 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_FILE_NOT_FOUNDArgs> m_target;
+        private event Action<ASP_FILE_NOT_FOUND> m_target;
         #endregion
     }
-    public sealed class AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs : TraceEvent
+    public sealed class ASP_FIRST_REQUEST : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal ASP_FIRST_REQUEST(Action<ASP_FIRST_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<ASP_FIRST_REQUEST>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<ASP_FIRST_REQUEST> m_target;
+        #endregion
+    }
+    public sealed class ASP_FIRST_REQUEST_FOR_APPLICATION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ApplicationPath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs(Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_FIRST_REQUEST_FOR_APPLICATION(Action<ASP_FIRST_REQUEST_FOR_APPLICATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1906,7 +1873,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs>) value; }
+            set { m_target = (Action<ASP_FIRST_REQUEST_FOR_APPLICATION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1941,15 +1908,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_FIRST_REQUEST_FOR_APPLICATIONArgs> m_target;
+        private event Action<ASP_FIRST_REQUEST_FOR_APPLICATION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_FIRST_REQUEST_FOR_ASPArgs : TraceEvent
+    public sealed class ASP_GLOBALASA_ACCESS_DENIED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_FIRST_REQUEST_FOR_ASPArgs(Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_GLOBALASA_ACCESS_DENIED(Action<ASP_GLOBALASA_ACCESS_DENIED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1966,7 +1933,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs>) value; }
+            set { m_target = (Action<ASP_GLOBALASA_ACCESS_DENIED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1998,15 +1965,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_FIRST_REQUEST_FOR_ASPArgs> m_target;
+        private event Action<ASP_GLOBALASA_ACCESS_DENIED> m_target;
         #endregion
     }
-    public sealed class AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs : TraceEvent
+    public sealed class ASP_GLOBALASA_ACCESS_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs(Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_GLOBALASA_ACCESS_SUCCESS(Action<ASP_GLOBALASA_ACCESS_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2023,7 +1990,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs>) value; }
+            set { m_target = (Action<ASP_GLOBALASA_ACCESS_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2055,15 +2022,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_GLOBAL_ASA_ACCESS_DENIEDArgs> m_target;
+        private event Action<ASP_GLOBALASA_ACCESS_SUCCESS> m_target;
         #endregion
     }
-    public sealed class AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs : TraceEvent
+    public sealed class ASP_GLOBALASA_DOES_NOT_EXIST : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs(Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_GLOBALASA_DOES_NOT_EXIST(Action<ASP_GLOBALASA_DOES_NOT_EXIST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2080,7 +2047,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs>) value; }
+            set { m_target = (Action<ASP_GLOBALASA_DOES_NOT_EXIST>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2112,73 +2079,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_GLOBAL_ASA_ACCESS_SUCCESSArgs> m_target;
+        private event Action<ASP_GLOBALASA_DOES_NOT_EXIST> m_target;
         #endregion
     }
-    public sealed class AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs : TraceEvent
+    public sealed class ASP_INIT_FAILURE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
+        public ASP_INIT_FAILUREReason Reason { get { return (ASP_INIT_FAILUREReason)GetInt32At(16); } }
 
         #region Private
-        internal AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs(Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_GLOBAL_ASA_DOES_NOT_EXISTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_INIT_FAILUREArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public AspInitFailureReason Reason { get { return (AspInitFailureReason)GetInt32At(16); } }
-
-        #region Private
-        internal AspReqASP_INIT_FAILUREArgs(Action<AspReqASP_INIT_FAILUREArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_INIT_FAILURE(Action<ASP_INIT_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2195,7 +2105,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_INIT_FAILUREArgs>) value; }
+            set { m_target = (Action<ASP_INIT_FAILURE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2230,10 +2140,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_INIT_FAILUREArgs> m_target;
+        private event Action<ASP_INIT_FAILURE> m_target;
         #endregion
     }
-    public sealed class AspReqASP_LOG_ERRORArgs : TraceEvent
+    public sealed class ASP_LOG_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string LineNumber { get { return GetUTF8StringAt(16); } }
@@ -2241,7 +2151,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         public string Description { get { return GetUTF8StringAt(SkipUTF8String(SkipUTF8String(16))); } }
 
         #region Private
-        internal AspReqASP_LOG_ERRORArgs(Action<AspReqASP_LOG_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_LOG_ERROR(Action<ASP_LOG_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2258,7 +2168,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_LOG_ERRORArgs>) value; }
+            set { m_target = (Action<ASP_LOG_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2299,16 +2209,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_LOG_ERRORArgs> m_target;
+        private event Action<ASP_LOG_ERROR> m_target;
         #endregion
     }
-    public sealed class AspReqASP_NEW_SESSION_CREATEDArgs : TraceEvent
+    public sealed class ASP_NEW_SESSION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string SessionId { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal AspReqASP_NEW_SESSION_CREATEDArgs(Action<AspReqASP_NEW_SESSION_CREATEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_NEW_SESSION(Action<ASP_NEW_SESSION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2325,7 +2235,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_NEW_SESSION_CREATEDArgs>) value; }
+            set { m_target = (Action<ASP_NEW_SESSION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2360,15 +2270,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_NEW_SESSION_CREATEDArgs> m_target;
+        private event Action<ASP_NEW_SESSION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_QUEUE_REQUESTArgs : TraceEvent
+    public sealed class ASP_QUEUE_REQUEST : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_QUEUE_REQUESTArgs(Action<AspReqASP_QUEUE_REQUESTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_QUEUE_REQUEST(Action<ASP_QUEUE_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2385,7 +2295,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_QUEUE_REQUESTArgs>) value; }
+            set { m_target = (Action<ASP_QUEUE_REQUEST>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2417,16 +2327,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_QUEUE_REQUESTArgs> m_target;
+        private event Action<ASP_QUEUE_REQUEST> m_target;
         #endregion
     }
-    public sealed class AspReqASP_QUEUE_REQUEST_FAILEDArgs : TraceEvent
+    public sealed class ASP_QUEUE_REQUEST_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal AspReqASP_QUEUE_REQUEST_FAILEDArgs(Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_QUEUE_REQUEST_FAILED(Action<ASP_QUEUE_REQUEST_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2443,7 +2353,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs>) value; }
+            set { m_target = (Action<ASP_QUEUE_REQUEST_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2478,16 +2388,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_QUEUE_REQUEST_FAILEDArgs> m_target;
+        private event Action<ASP_QUEUE_REQUEST_FAILED> m_target;
         #endregion
     }
-    public sealed class AspReqASP_READ_FILEArgs : TraceEvent
+    public sealed class ASP_READ_FILE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_READ_FILEArgs(Action<AspReqASP_READ_FILEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_READ_FILE(Action<ASP_READ_FILE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2504,7 +2414,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_READ_FILEArgs>) value; }
+            set { m_target = (Action<ASP_READ_FILE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2539,15 +2449,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_READ_FILEArgs> m_target;
+        private event Action<ASP_READ_FILE> m_target;
         #endregion
     }
-    public sealed class AspReqASP_REQUEST_TIMEOUTArgs : TraceEvent
+    public sealed class ASP_REQUEST_TIMEOUT : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_REQUEST_TIMEOUTArgs(Action<AspReqASP_REQUEST_TIMEOUTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_REQUEST_TIMEOUT(Action<ASP_REQUEST_TIMEOUT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2564,7 +2474,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_REQUEST_TIMEOUTArgs>) value; }
+            set { m_target = (Action<ASP_REQUEST_TIMEOUT>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2596,10 +2506,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_REQUEST_TIMEOUTArgs> m_target;
+        private event Action<ASP_REQUEST_TIMEOUT> m_target;
         #endregion
     }
-    public sealed class AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs : TraceEvent
+    public sealed class ASP_SCRIPT_OBJECT_TRACE_INFO : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
@@ -2608,7 +2518,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
 
         #region Private
-        internal AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_SCRIPT_OBJECT_TRACE_INFO(Action<ASP_SCRIPT_OBJECT_TRACE_INFO> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2620,12 +2530,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override void Validate()
         {
             Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
             Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
         }
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs>) value; }
+            set { m_target = (Action<ASP_SCRIPT_OBJECT_TRACE_INFO>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2669,235 +2584,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_ENDArgs> m_target;
+        private event Action<ASP_SCRIPT_OBJECT_TRACE_INFO> m_target;
         #endregion
     }
-    public sealed class AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-        public int LineNumber { get { return GetInt32At(SkipUnicodeString(16)); } }
-        public string CurrentStatement { get { return GetUnicodeStringAt(SkipUnicodeString(16)+4); } }
-        public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs(Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             XmlAttrib(sb, "LineNumber", LineNumber);
-             XmlAttrib(sb, "CurrentStatement", CurrentStatement);
-             XmlAttrib(sb, "SizeOfStatement", SizeOfStatement);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath", "LineNumber", "CurrentStatement", "SizeOfStatement"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                case 2:
-                    return LineNumber;
-                case 3:
-                    return CurrentStatement;
-                case 4:
-                    return SizeOfStatement;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_COM_CALL_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-        public int LineNumber { get { return GetInt32At(SkipUnicodeString(16)); } }
-        public string CurrentStatement { get { return GetUnicodeStringAt(SkipUnicodeString(16)+4); } }
-        public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             XmlAttrib(sb, "LineNumber", LineNumber);
-             XmlAttrib(sb, "CurrentStatement", CurrentStatement);
-             XmlAttrib(sb, "SizeOfStatement", SizeOfStatement);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath", "LineNumber", "CurrentStatement", "SizeOfStatement"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                case 2:
-                    return LineNumber;
-                case 3:
-                    return CurrentStatement;
-                case 4:
-                    return SizeOfStatement;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_ENDArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-        public int LineNumber { get { return GetInt32At(SkipUnicodeString(16)); } }
-        public string CurrentStatement { get { return GetUnicodeStringAt(SkipUnicodeString(16)+4); } }
-        public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs(Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             XmlAttrib(sb, "LineNumber", LineNumber);
-             XmlAttrib(sb, "CurrentStatement", CurrentStatement);
-             XmlAttrib(sb, "SizeOfStatement", SizeOfStatement);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath", "LineNumber", "CurrentStatement", "SizeOfStatement"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                case 2:
-                    return LineNumber;
-                case 3:
-                    return CurrentStatement;
-                case 4:
-                    return SizeOfStatement;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_CREATE_OBJECT_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SCRIPT_TRACE_ENDArgs : TraceEvent
+    public sealed class ASP_SCRIPT_TRACE_INFO : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_SCRIPT_TRACE_ENDArgs(Action<AspReqASP_SCRIPT_TRACE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_SCRIPT_TRACE_INFO(Action<ASP_SCRIPT_TRACE_INFO> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2909,12 +2605,13 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override void Validate()
         {
             Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
             Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
         }
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_ENDArgs>) value; }
+            set { m_target = (Action<ASP_SCRIPT_TRACE_INFO>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2949,223 +2646,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_SCRIPT_TRACE_ENDArgs> m_target;
+        private event Action<ASP_SCRIPT_TRACE_INFO> m_target;
         #endregion
     }
-    public sealed class AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-        public int LineNumber { get { return GetInt32At(SkipUnicodeString(16)); } }
-        public string CurrentStatement { get { return GetUnicodeStringAt(SkipUnicodeString(16)+4); } }
-        public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             XmlAttrib(sb, "LineNumber", LineNumber);
-             XmlAttrib(sb, "CurrentStatement", CurrentStatement);
-             XmlAttrib(sb, "SizeOfStatement", SizeOfStatement);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath", "LineNumber", "CurrentStatement", "SizeOfStatement"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                case 2:
-                    return LineNumber;
-                case 3:
-                    return CurrentStatement;
-                case 4:
-                    return SizeOfStatement;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_ENDArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-        public int LineNumber { get { return GetInt32At(SkipUnicodeString(16)); } }
-        public string CurrentStatement { get { return GetUnicodeStringAt(SkipUnicodeString(16)+4); } }
-        public int SizeOfStatement { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16)+4)); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs(Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16)+4)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             XmlAttrib(sb, "LineNumber", LineNumber);
-             XmlAttrib(sb, "CurrentStatement", CurrentStatement);
-             XmlAttrib(sb, "SizeOfStatement", SizeOfStatement);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath", "LineNumber", "CurrentStatement", "SizeOfStatement"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                case 2:
-                    return LineNumber;
-                case 3:
-                    return CurrentStatement;
-                case 4:
-                    return SizeOfStatement;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_GET_OBJECT_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SCRIPT_TRACE_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-
-        #region Private
-        internal AspReqASP_SCRIPT_TRACE_STARTArgs(Action<AspReqASP_SCRIPT_TRACE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SCRIPT_TRACE_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SCRIPT_TRACE_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SECURE_SESSION_ID_SETArgs : TraceEvent
+    public sealed class ASP_SECURE_SESSIONID : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string SessionId { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal AspReqASP_SECURE_SESSION_ID_SETArgs(Action<AspReqASP_SECURE_SESSION_ID_SETArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_SECURE_SESSIONID(Action<ASP_SECURE_SESSIONID> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3182,7 +2672,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_SECURE_SESSION_ID_SETArgs>) value; }
+            set { m_target = (Action<ASP_SECURE_SESSIONID>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3217,15 +2707,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_SECURE_SESSION_ID_SETArgs> m_target;
+        private event Action<ASP_SECURE_SESSIONID> m_target;
         #endregion
     }
-    public sealed class AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs : TraceEvent
+    public sealed class ASP_SERVER_TOO_BUSY : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs(Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_SERVER_TOO_BUSY(Action<ASP_SERVER_TOO_BUSY> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3242,7 +2732,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs>) value; }
+            set { m_target = (Action<ASP_SERVER_TOO_BUSY>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3274,76 +2764,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_SERVER_TOO_BUSY_TO_QUEUEArgs> m_target;
+        private event Action<ASP_SERVER_TOO_BUSY> m_target;
         #endregion
     }
-    public sealed class AspReqASP_SESSION_ONSTART_ERRORArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public int ErrorCode { get { return GetInt32At(16); } }
-
-        #region Private
-        internal AspReqASP_SESSION_ONSTART_ERRORArgs(Action<AspReqASP_SESSION_ONSTART_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 20));
-            Debug.Assert(!(Version > 1 && EventDataLength < 20));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_SESSION_ONSTART_ERRORArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ErrorCode", ErrorCode);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ErrorCode"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ErrorCode;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_SESSION_ONSTART_ERRORArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_SESSION_ONSTART_SUCCESSArgs : TraceEvent
+    public sealed class ASP_START_APPLICATION_ON_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_SESSION_ONSTART_SUCCESSArgs(Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_APPLICATION_ON_START(Action<ASP_START_APPLICATION_ON_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3360,7 +2789,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs>) value; }
+            set { m_target = (Action<ASP_START_APPLICATION_ON_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3392,73 +2821,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_SESSION_ONSTART_SUCCESSArgs> m_target;
+        private event Action<ASP_START_APPLICATION_ON_START> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_APPLICATION_ONSTARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-
-        #region Private
-        internal AspReqASP_START_APPLICATION_ONSTARTArgs(Action<AspReqASP_START_APPLICATION_ONSTARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_APPLICATION_ONSTARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_START_APPLICATION_ONSTARTArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_START_CACHE_ACCESSArgs : TraceEvent
+    public sealed class ASP_START_CACHE_ACCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_START_CACHE_ACCESSArgs(Action<AspReqASP_START_CACHE_ACCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_CACHE_ACCESS(Action<ASP_START_CACHE_ACCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3475,7 +2847,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_CACHE_ACCESSArgs>) value; }
+            set { m_target = (Action<ASP_START_CACHE_ACCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3510,16 +2882,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_CACHE_ACCESSArgs> m_target;
+        private event Action<ASP_START_CACHE_ACCESS> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_COMPILEArgs : TraceEvent
+    public sealed class ASP_START_COMPILE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilePath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_START_COMPILEArgs(Action<AspReqASP_START_COMPILEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_COMPILE(Action<ASP_START_COMPILE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3536,7 +2908,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_COMPILEArgs>) value; }
+            set { m_target = (Action<ASP_START_COMPILE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3571,16 +2943,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_COMPILEArgs> m_target;
+        private event Action<ASP_START_COMPILE> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_GLOBAL_ASA_CHECKArgs : TraceEvent
+    public sealed class ASP_START_GLOBALASA_CHECK : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string GlobalASAPath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal AspReqASP_START_GLOBAL_ASA_CHECKArgs(Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_GLOBALASA_CHECK(Action<ASP_START_GLOBALASA_CHECK> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3597,7 +2969,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs>) value; }
+            set { m_target = (Action<ASP_START_GLOBALASA_CHECK>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3632,16 +3004,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_GLOBAL_ASA_CHECKArgs> m_target;
+        private event Action<ASP_START_GLOBALASA_CHECK> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_REQUESTArgs : TraceEvent
+    public sealed class ASP_START_REQUEST : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string PhysicalPath { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal AspReqASP_START_REQUESTArgs(Action<AspReqASP_START_REQUESTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_REQUEST(Action<ASP_START_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3658,7 +3030,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_REQUESTArgs>) value; }
+            set { m_target = (Action<ASP_START_REQUEST>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3693,15 +3065,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_REQUESTArgs> m_target;
+        private event Action<ASP_START_REQUEST> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_SCRIPT_EXECUTIONArgs : TraceEvent
+    public sealed class ASP_START_SCRIPT_EXECUTION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_START_SCRIPT_EXECUTIONArgs(Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_SCRIPT_EXECUTION(Action<ASP_START_SCRIPT_EXECUTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3718,7 +3090,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_SCRIPT_EXECUTIONArgs>) value; }
+            set { m_target = (Action<ASP_START_SCRIPT_EXECUTION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3750,15 +3122,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_SCRIPT_EXECUTIONArgs> m_target;
+        private event Action<ASP_START_SCRIPT_EXECUTION> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_SCRIPTLESS_SENDArgs : TraceEvent
+    public sealed class ASP_START_SCRIPTLESS_SEND : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_START_SCRIPTLESS_SENDArgs(Action<AspReqASP_START_SCRIPTLESS_SENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_SCRIPTLESS_SEND(Action<ASP_START_SCRIPTLESS_SEND> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3775,7 +3147,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_SCRIPTLESS_SENDArgs>) value; }
+            set { m_target = (Action<ASP_START_SCRIPTLESS_SEND>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3807,15 +3179,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_SCRIPTLESS_SENDArgs> m_target;
+        private event Action<ASP_START_SCRIPTLESS_SEND> m_target;
         #endregion
     }
-    public sealed class AspReqASP_START_SESSION_ONSTARTArgs : TraceEvent
+    public sealed class ASP_START_SESSION_ON_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal AspReqASP_START_SESSION_ONSTARTArgs(Action<AspReqASP_START_SESSION_ONSTARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_SESSION_ON_START(Action<ASP_START_SESSION_ON_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3832,7 +3204,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_START_SESSION_ONSTARTArgs>) value; }
+            set { m_target = (Action<ASP_START_SESSION_ON_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3864,130 +3236,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_START_SESSION_ONSTARTArgs> m_target;
+        private event Action<ASP_START_SESSION_ON_START> m_target;
         #endregion
     }
-    public sealed class AspReqASP_TRANSACTION_ABORTEDArgs : TraceEvent
+    public sealed class ASP_START_SESSION_ON_START_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal AspReqASP_TRANSACTION_ABORTEDArgs(Action<AspReqASP_TRANSACTION_ABORTEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_TRANSACTION_ABORTEDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_TRANSACTION_ABORTEDArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_TRANSACTION_COMMITEDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-
-        #region Private
-        internal AspReqASP_TRANSACTION_COMMITEDArgs(Action<AspReqASP_TRANSACTION_COMMITEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<AspReqASP_TRANSACTION_COMMITEDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<AspReqASP_TRANSACTION_COMMITEDArgs> m_target;
-        #endregion
-    }
-    public sealed class AspReqASP_UNHEALTHY_FAILUREArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public AspUnhealthyFailureReason Reason { get { return (AspUnhealthyFailureReason)GetInt32At(16); } }
-
-        #region Private
-        internal AspReqASP_UNHEALTHY_FAILUREArgs(Action<AspReqASP_UNHEALTHY_FAILUREArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ASP_START_SESSION_ON_START_ERROR(Action<ASP_START_SESSION_ON_START_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4004,7 +3262,239 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<AspReqASP_UNHEALTHY_FAILUREArgs>) value; }
+            set { m_target = (Action<ASP_START_SESSION_ON_START_ERROR>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<ASP_START_SESSION_ON_START_ERROR> m_target;
+        #endregion
+    }
+    public sealed class ASP_START_SESSION_ON_START_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal ASP_START_SESSION_ON_START_SUCCESS(Action<ASP_START_SESSION_ON_START_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<ASP_START_SESSION_ON_START_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<ASP_START_SESSION_ON_START_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class ASP_TRANSACTION_ABORTED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal ASP_TRANSACTION_ABORTED(Action<ASP_TRANSACTION_ABORTED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<ASP_TRANSACTION_ABORTED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<ASP_TRANSACTION_ABORTED> m_target;
+        #endregion
+    }
+    public sealed class ASP_TRANSACTION_COMMITED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal ASP_TRANSACTION_COMMITED(Action<ASP_TRANSACTION_COMMITED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<ASP_TRANSACTION_COMMITED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<ASP_TRANSACTION_COMMITED> m_target;
+        #endregion
+    }
+    public sealed class ASP_UNHEALTHY_FAILURE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public ASP_UNHEALTHY_FAILUREReason Reason { get { return (ASP_UNHEALTHY_FAILUREReason)GetInt32At(16); } }
+
+        #region Private
+        internal ASP_UNHEALTHY_FAILURE(Action<ASP_UNHEALTHY_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<ASP_UNHEALTHY_FAILURE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4039,10 +3529,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
             }
         }
 
-        private event Action<AspReqASP_UNHEALTHY_FAILUREArgs> m_target;
+        private event Action<ASP_UNHEALTHY_FAILURE> m_target;
         #endregion
     }
-    public enum AspEndCacheAccessAccessResult
+    public enum ASP_END_CACHE_ACCESSAccessResult
     {
         NOT_SERVED = 0x0,
         SERVED_CACHE_MISS = 0x1,
@@ -4050,14 +3540,14 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.ASP_Trace
         SERVED_CACHE_HIT_LASTMOD = 0x3,
         SERVED_CACHE_HIT_LASTMOD_NOACCESS = 0x4,
     }
-    public enum AspInitFailureReason
+    public enum ASP_INIT_FAILUREReason
     {
         METABASE_READ_FAILURE = 0x1,
         PERSISTED_CACHE_INIT_FAILURE = 0x2,
         COM_INIT_FAILURE = 0x4,
         METABASE_CHANGE_NOTIF_LISTENER_INIT_FAILURE = 0x8,
     }
-    public enum AspUnhealthyFailureReason
+    public enum ASP_UNHEALTHY_FAILUREReason
     {
         DEADLOCK_DETECTED = 0x10,
         OUT_OF_MEMORY = 0x20,

@@ -1,0 +1,312 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider name="ASP_Trace" guid="{06b94d9a-b15e-456e-a4ef-37c984a2cb4b}">
+        <tasks>
+          <task name="AspReq" value="0" eventGUID="{1fc299fa-3fc4-4c37-910d-de5b911d0270}">
+            <opcode value="10" name="AspReq10" mofValue="10" message="ASP_START_REQUEST" />
+            <opcode value="11" name="AspReq11" mofValue="11" message="ASP_END_REQUEST" />
+            <opcode value="12" name="AspReq12" mofValue="12" message="ASP_FIRST_REQUEST" />
+            <opcode value="13" name="AspReq13" mofValue="13" message="ASP_INIT_FAILURE" />
+            <opcode value="14" name="AspReq14" mofValue="14" message="ASP_UNHEALTHY_FAILURE" />
+            <opcode value="15" name="AspReq15" mofValue="15" message="ASP_FIRST_REQUEST_FOR_APPLICATION" />
+            <opcode value="16" name="AspReq16" mofValue="16" message="ASP_START_GLOBALASA_CHECK" />
+            <opcode value="17" name="AspReq17" mofValue="17" message="ASP_END_GLOBALASA_CHECK" />
+            <opcode value="18" name="AspReq18" mofValue="18" message="ASP_GLOBALASA_DOES_NOT_EXIST" />
+            <opcode value="19" name="AspReq19" mofValue="19" message="ASP_GLOBALASA_ACCESS_DENIED" />
+            <opcode value="20" name="AspReq20" mofValue="20" message="ASP_GLOBALASA_ACCESS_SUCCESS" />
+            <opcode value="21" name="AspReq21" mofValue="21" message="ASP_NEW_SESSION" />
+            <opcode value="22" name="AspReq22" mofValue="22" message="ASP_SECURE_SESSIONID" />
+            <opcode value="23" name="AspReq23" mofValue="23" message="ASP_START_SCRIPTLESS_SEND" />
+            <opcode value="24" name="AspReq24" mofValue="24" message="ASP_END_SCRIPTLESS_SEND" />
+            <opcode value="25" name="AspReq25" mofValue="25" message="ASP_SERVER_TOO_BUSY" />
+            <opcode value="26" name="AspReq26" mofValue="26" message="ASP_QUEUE_REQUEST" />
+            <opcode value="1" name="AspReq1" mofValue="1" message="ASP_DEQUEUE_REQUEST" />
+            <opcode value="28" name="AspReq28" mofValue="28" message="ASP_QUEUE_REQUEST_FAILED" />
+            <opcode value="29" name="AspReq29" mofValue="29" message="ASP_CLIENT_CONNECTION_DISCONNECTION" />
+            <opcode value="30" name="AspReq30" mofValue="30" message="ASP_REQUEST_TIMEOUT" />
+            <opcode value="31" name="AspReq31" mofValue="31" message="ASP_FILE_ACCESS_DENIED" />
+            <opcode value="32" name="AspReq32" mofValue="32" message="ASP_FILE_NOT_FOUND" />
+            <opcode value="33" name="AspReq33" mofValue="33" message="ASP_READ_FILE" />
+            <opcode value="34" name="AspReq34" mofValue="34" message="ASP_COMPILED_FAILED" />
+            <opcode value="35" name="AspReq35" mofValue="35" message="ASP_START_APPLICATION_ON_START" />
+            <opcode value="36" name="AspReq36" mofValue="36" message="ASP_END_APPLICATION_ON_START" />
+            <opcode value="38" name="AspReq38" mofValue="38" message="ASP_APPLICATION_ON_START_SUCCESS" />
+            <opcode value="37" name="AspReq37" mofValue="37" message="ASP_APPLICATION_ON_START_ERROR" />
+            <opcode value="39" name="AspReq39" mofValue="39" message="ASP_START_SESSION_ON_START" />
+            <opcode value="40" name="AspReq40" mofValue="40" message="ASP_END_SESSION_ON_START" />
+            <opcode value="42" name="AspReq42" mofValue="42" message="ASP_START_SESSION_ON_START_SUCCESS" />
+            <opcode value="41" name="AspReq41" mofValue="41" message="ASP_START_SESSION_ON_START_ERROR" />
+            <opcode value="43" name="AspReq43" mofValue="43" message="ASP_START_SCRIPT_EXECUTION" />
+            <opcode value="44" name="AspReq44" mofValue="44" message="ASP_END_SCRIPT_EXECUTION" />
+            <opcode value="45" name="AspReq45" mofValue="45" message="ASP_TRANSACTION_ABORTED" />
+            <opcode value="46" name="AspReq46" mofValue="46" message="ASP_TRANSACTION_COMMITED" />
+            <opcode value="47" name="AspReq47" mofValue="47" message="ASP_START_COMPILE" />
+            <opcode value="48" name="AspReq48" mofValue="48" message="ASP_END_COMPILE" />
+            <opcode value="49" name="AspReq49" mofValue="49" message="ASP_START_CACHE_ACCESS" />
+            <opcode value="50" name="AspReq50" mofValue="50" message="ASP_END_CACHE_ACCESS" />
+            <opcode value="51" name="AspReq51" mofValue="51" message="ASP_CURRENT_SESSION" />
+            <opcode value="2" name="AspReq2" mofValue="2" message="ASP_DONE_PROCESSING" />
+            <opcode value="52" name="AspReq52" mofValue="52" message="ASP_SCRIPT_TRACE_INFO" />
+            <opcode value="53" name="AspReq53" mofValue="53" message="ASP_SCRIPT_TRACE_INFO" />
+            <opcode value="54" name="AspReq54" mofValue="54" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="55" name="AspReq55" mofValue="55" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="56" name="AspReq56" mofValue="56" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="57" name="AspReq57" mofValue="57" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="58" name="AspReq58" mofValue="58" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="59" name="AspReq59" mofValue="59" message="ASP_SCRIPT_OBJECT_TRACE_INFO" />
+            <opcode value="60" name="AspReq60" mofValue="60" message="ASP_LOG_ERROR" />
+          </task>
+        </tasks>
+        <templates>
+          <template tid="AspRequest">
+            <data name="ConnID" inType="win:Pointer" />
+          </template>
+          <template tid="ASP_START_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="PhysicalPath" inType="win:AnsiString" />
+          </template>
+          <template tid="ASP_END_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_FIRST_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_INIT_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" outType="win:hexInt32" map="ASP_INIT_FAILURE.Reason" />/&gt;
+          </template>
+          <template tid="ASP_UNHEALTHY_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" outType="win:hexInt32" map="ASP_UNHEALTHY_FAILURE.Reason" />/&gt;
+          </template>
+          <template tid="ASP_FIRST_REQUEST_FOR_APPLICATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ApplicationPath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_START_GLOBALASA_CHECK">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="GlobalASAPath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_END_GLOBALASA_CHECK">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_GLOBALASA_DOES_NOT_EXIST">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_GLOBALASA_ACCESS_DENIED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_GLOBALASA_ACCESS_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_NEW_SESSION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="SessionId" inType="win:AnsiString" />
+          </template>
+          <template tid="ASP_SECURE_SESSIONID">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="SessionId" inType="win:AnsiString" />
+          </template>
+          <template tid="ASP_START_SCRIPTLESS_SEND">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_END_SCRIPTLESS_SEND">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_SERVER_TOO_BUSY">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_QUEUE_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_DEQUEUE_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_QUEUE_REQUEST_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="ASP_CLIENT_CONNECTION_DISCONNECTION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_REQUEST_TIMEOUT">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_FILE_ACCESS_DENIED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_FILE_NOT_FOUND">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_READ_FILE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_COMPILED_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="ASP_START_APPLICATION_ON_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_END_APPLICATION_ON_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_APPLICATION_ON_START_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_APPLICATION_ON_START_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="ASP_START_SESSION_ON_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_END_SESSION_ON_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_START_SESSION_ON_START_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_START_SESSION_ON_START_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="ASP_START_SCRIPT_EXECUTION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_END_SCRIPT_EXECUTION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_TRANSACTION_ABORTED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_TRANSACTION_COMMITED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_START_COMPILE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_END_COMPILE">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_START_CACHE_ACCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_END_CACHE_ACCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="AccessResult" inType="win:UInt32" map="ASP_END_CACHE_ACCESS.AccessResult" />/&gt;
+          </template>
+          <template tid="ASP_CURRENT_SESSION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="SessionID" inType="win:AnsiString" />
+          </template>
+          <template tid="ASP_DONE_PROCESSING">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ASP_SCRIPT_TRACE_INFO">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="ASP_SCRIPT_OBJECT_TRACE_INFO">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+            <data name="LineNumber" inType="win:UInt32" />
+            <data name="CurrentStatement" inType="win:UnicodeString" />
+            <data name="SizeOfStatement" inType="win:UInt32" />
+          </template>
+          <template tid="ASP_LOG_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="LineNumber" inType="win:AnsiString" />
+            <data name="ErrorCode" inType="win:AnsiString" />
+            <data name="Description" inType="win:AnsiString" />
+          </template>
+        </templates>
+        <events>
+          <!--
+          <event value="10000" version="0" template="AspRequest" opcode="1" task="AspReq" symbol="AspReqAspRequest"/>
+          <event value="10000" version="0" template="AspRequest" opcode="2" task="AspReq" symbol="AspReqAspRequest"/>
+          -->
+          <event value="10001" version="1" template="ASP_START_REQUEST" opcode="AspReq10" task="AspReq" symbol="AspReqASP_START_REQUEST" />
+          <event value="10002" version="1" template="ASP_END_REQUEST" opcode="AspReq11" task="AspReq" symbol="AspReqASP_END_REQUEST" />
+          <event value="10003" version="1" template="ASP_FIRST_REQUEST" opcode="AspReq12" task="AspReq" symbol="AspReqASP_FIRST_REQUEST" />
+          <event value="10004" version="1" template="ASP_INIT_FAILURE" opcode="AspReq13" task="AspReq" symbol="AspReqASP_INIT_FAILURE" />
+          <event value="10005" version="1" template="ASP_UNHEALTHY_FAILURE" opcode="AspReq14" task="AspReq" symbol="AspReqASP_UNHEALTHY_FAILURE" />
+          <event value="10006" version="1" template="ASP_FIRST_REQUEST_FOR_APPLICATION" opcode="AspReq15" task="AspReq" symbol="AspReqASP_FIRST_REQUEST_FOR_APPLICATION" />
+          <event value="10007" version="1" template="ASP_START_GLOBALASA_CHECK" opcode="AspReq16" task="AspReq" symbol="AspReqASP_START_GLOBALASA_CHECK" />
+          <event value="10008" version="1" template="ASP_END_GLOBALASA_CHECK" opcode="AspReq17" task="AspReq" symbol="AspReqASP_END_GLOBALASA_CHECK" />
+          <event value="10009" version="1" template="ASP_GLOBALASA_DOES_NOT_EXIST" opcode="AspReq18" task="AspReq" symbol="AspReqASP_GLOBALASA_DOES_NOT_EXIST" />
+          <event value="10010" version="1" template="ASP_GLOBALASA_ACCESS_DENIED" opcode="AspReq19" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_DENIED" />
+          <event value="10011" version="1" template="ASP_GLOBALASA_ACCESS_SUCCESS" opcode="AspReq20" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_SUCCESS" />
+          <event value="10012" version="1" template="ASP_NEW_SESSION" opcode="AspReq21" task="AspReq" symbol="AspReqASP_NEW_SESSION" />
+          <event value="10013" version="1" template="ASP_SECURE_SESSIONID" opcode="AspReq22" task="AspReq" symbol="AspReqASP_SECURE_SESSIONID" />
+          <event value="10014" version="1" template="ASP_START_SCRIPTLESS_SEND" opcode="AspReq23" task="AspReq" symbol="AspReqASP_START_SCRIPTLESS_SEND" />
+          <event value="10015" version="1" template="ASP_END_SCRIPTLESS_SEND" opcode="AspReq24" task="AspReq" symbol="AspReqASP_END_SCRIPTLESS_SEND" />
+          <event value="10016" version="1" template="ASP_SERVER_TOO_BUSY" opcode="AspReq25" task="AspReq" symbol="AspReqASP_SERVER_TOO_BUSY" />
+          <event value="10017" version="1" template="ASP_QUEUE_REQUEST" opcode="AspReq26" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST" />
+          <event value="10018" version="1" template="ASP_DEQUEUE_REQUEST" opcode="AspReq1" task="AspReq" symbol="AspReqASP_DEQUEUE_REQUEST" />
+          <event value="10019" version="1" template="ASP_QUEUE_REQUEST_FAILED" opcode="AspReq28" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST_FAILED" />
+          <event value="10020" version="1" template="ASP_CLIENT_CONNECTION_DISCONNECTION" opcode="AspReq29" task="AspReq" symbol="AspReqASP_CLIENT_CONNECTION_DISCONNECTION" />
+          <event value="10021" version="1" template="ASP_REQUEST_TIMEOUT" opcode="AspReq30" task="AspReq" symbol="AspReqASP_REQUEST_TIMEOUT" />
+          <event value="10022" version="1" template="ASP_FILE_ACCESS_DENIED" opcode="AspReq31" task="AspReq" symbol="AspReqASP_FILE_ACCESS_DENIED" />
+          <event value="10023" version="1" template="ASP_FILE_NOT_FOUND" opcode="AspReq32" task="AspReq" symbol="AspReqASP_FILE_NOT_FOUND" />
+          <event value="10024" version="1" template="ASP_READ_FILE" opcode="AspReq33" task="AspReq" symbol="AspReqASP_READ_FILE" />
+          <event value="10025" version="1" template="ASP_COMPILED_FAILED" opcode="AspReq34" task="AspReq" symbol="AspReqASP_COMPILED_FAILED" />
+          <event value="10026" version="1" template="ASP_START_APPLICATION_ON_START" opcode="AspReq35" task="AspReq" symbol="AspReqASP_START_APPLICATION_ON_START" />
+          <event value="10027" version="1" template="ASP_END_APPLICATION_ON_START" opcode="AspReq36" task="AspReq" symbol="AspReqASP_END_APPLICATION_ON_START" />
+          <event value="10028" version="1" template="ASP_APPLICATION_ON_START_SUCCESS" opcode="AspReq38" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_SUCCESS" />
+          <event value="10029" version="1" template="ASP_APPLICATION_ON_START_ERROR" opcode="AspReq37" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_ERROR" />
+          <event value="10030" version="1" template="ASP_START_SESSION_ON_START" opcode="AspReq39" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START" />
+          <event value="10031" version="1" template="ASP_END_SESSION_ON_START" opcode="AspReq40" task="AspReq" symbol="AspReqASP_END_SESSION_ON_START" />
+          <event value="10032" version="1" template="ASP_START_SESSION_ON_START_SUCCESS" opcode="AspReq42" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_SUCCESS" />
+          <event value="10033" version="1" template="ASP_START_SESSION_ON_START_ERROR" opcode="AspReq41" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_ERROR" />
+          <event value="10034" version="1" template="ASP_START_SCRIPT_EXECUTION" opcode="AspReq43" task="AspReq" symbol="AspReqASP_START_SCRIPT_EXECUTION" />
+          <event value="10035" version="1" template="ASP_END_SCRIPT_EXECUTION" opcode="AspReq44" task="AspReq" symbol="AspReqASP_END_SCRIPT_EXECUTION" />
+          <event value="10036" version="1" template="ASP_TRANSACTION_ABORTED" opcode="AspReq45" task="AspReq" symbol="AspReqASP_TRANSACTION_ABORTED" />
+          <event value="10037" version="1" template="ASP_TRANSACTION_COMMITED" opcode="AspReq46" task="AspReq" symbol="AspReqASP_TRANSACTION_COMMITED" />
+          <event value="10038" version="1" template="ASP_START_COMPILE" opcode="AspReq47" task="AspReq" symbol="AspReqAspStartCompile" />
+          <event value="10039" version="1" template="ASP_END_COMPILE" opcode="AspReq48" task="AspReq" symbol="AspReqAspEndCompile" />
+          <event value="10040" version="1" template="ASP_START_CACHE_ACCESS" opcode="AspReq49" task="AspReq" symbol="AspReqASP_START_CACHE_ACCESS" />
+          <event value="10041" version="1" template="ASP_END_CACHE_ACCESS" opcode="AspReq50" task="AspReq" symbol="AspReqASP_END_CACHE_ACCESS" />
+          <event value="10042" version="1" template="ASP_CURRENT_SESSION" opcode="AspReq51" task="AspReq" symbol="AspReqASP_CURRENT_SESSION" />
+          <event value="10043" version="1" template="ASP_DONE_PROCESSING" opcode="AspReq2" task="AspReq" symbol="AspReqASP_DONE_PROCESSING" />
+          <event value="10044" version="1" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq52" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
+          <event value="10044" version="1" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq53" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq54" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq55" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq56" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq57" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq58" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq59" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10046" version="1" template="ASP_LOG_ERROR" opcode="AspReq60" task="AspReq" symbol="AspReqASP_LOG_ERROR" />
+        </events>
+        <maps>
+          <valueMap name="ASP_INIT_FAILURE.Reason">
+            <map value="1" message="METABASE_READ_FAILURE" />
+            <map value="2" message="PERSISTED_CACHE_INIT_FAILURE" />
+            <map value="4" message="COM_INIT_FAILURE" />
+            <map value="8" message="METABASE_CHANGE_NOTIF_LISTENER_INIT_FAILURE" />
+          </valueMap>
+          <valueMap name="ASP_UNHEALTHY_FAILURE.Reason">
+            <map value="0x10" message="DEADLOCK_DETECTED" />
+            <map value="0x20" message="OUT_OF_MEMORY" />
+          </valueMap>
+          <valueMap name="ASP_END_CACHE_ACCESS.AccessResult">
+            <map value="0" message="NOT_SERVED" />
+            <map value="1" message="SERVED_CACHE_MISS" />
+            <map value="2" message="SERVED_CACHE_HIT_CHANGENOTIF" />
+            <map value="3" message="SERVED_CACHE_HIT_LASTMOD" />
+            <map value="4" message="SERVED_CACHE_HIT_LASTMOD_NOACCESS" />
+          </valueMap>
+        </maps>
+      </provider>
+    </events>
+  </instrumentation>
+</instrumentationManifest>
