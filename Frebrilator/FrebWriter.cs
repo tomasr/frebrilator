@@ -70,7 +70,7 @@ namespace Winterdom.Frebrilator {
       xw.WriteElementString("EventID", traceEvent.ID == TraceEventID.Illegal ? "0" : traceEvent.ID.ToString("d"));
       xw.WriteElementString("Version", traceEvent.Version.ToString());
       xw.WriteElementString("Level", traceEvent.Level.ToString("d"));
-      xw.WriteElementString("OpCode", traceEvent.Opcode.ToString("d"));
+      xw.WriteElementString("Opcode", traceEvent.Opcode.ToString("d"));
       xw.WriteElementString("Keywords", AsHex((long)traceEvent.Keywords));
 		  //<TimeCreated SystemTime="2014-12-07T21:49:33.268706800Z" />
       xw.WriteStartElement("TimeCreated", EtwNs);
@@ -127,13 +127,10 @@ namespace Winterdom.Frebrilator {
       for ( int i = 0; i < names.Length; i++ ) {
         if ( names[i] == "ErrorCode" ) {
           WriteExtraData(xw, names[i], Native.FormatMessage((int)traceEvent.PayloadValue(i)));
-        } else if ( names[i] == "NotificationStatus" ) {
-          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
-        } else if ( names[i] == "Notification" ) {
-          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
-        } else if ( names[i] == "CachePolicy" ) {
-          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
-        } else if ( names[i] == "Result" ) {
+          return;
+        }
+        object value = traceEvent.PayloadValue(i);
+        if ( value != null && value.GetType().IsEnum ) {
           WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
         }
       }
@@ -149,6 +146,9 @@ namespace Winterdom.Frebrilator {
     private static String ConvertValue(object value) {
       if ( value == null ) return "";
       Type type = value.GetType();
+      if ( type.IsEnum ) {
+        return Convert.ToInt32(value).ToString();
+      }
       if ( type == typeof(long) ) {
         // ugly workaround.... there are many ulong values in there
         return Convert.ToString((ulong)(long)value);

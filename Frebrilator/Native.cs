@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace Winterdom.Frebrilator {
   public static class Native {
     public static String FormatMessage(int errorCode) {
-      return new Win32Exception(errorCode).Message;
+      String msg = new Win32Exception(errorCode).Message;
+      return String.Format("{0} (0x{1:x})", msg, errorCode);
     }
   }
 }
