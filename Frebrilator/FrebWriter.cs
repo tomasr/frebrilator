@@ -108,7 +108,7 @@ namespace Winterdom.Frebrilator {
     public static void WriteRenderingInfo(XmlWriter xw, TraceEvent traceEvent) {
       xw.WriteStartElement("RenderingInfo", EtwNs);
       xw.WriteAttributeString("Culture", "en-US");
-      xw.WriteElementString("OpCode", EtwNs, traceEvent.OpcodeName);
+      xw.WriteElementString("Opcode", EtwNs, traceEvent.OpcodeName);
 
       if ( traceEvent.Keywords != TraceEventKeyword.None ) {
         xw.WriteStartElement("Keywords");

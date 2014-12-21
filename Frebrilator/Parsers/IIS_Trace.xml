@@ -27,8 +27,8 @@
             <opcode value="40" name="IISGeneral40" mofValue="40" message="GENERAL_CONFIG_CHANGE_NOTIFICATION" />
             <opcode value="41" name="IISGeneral41" mofValue="41" message="GENERAL_VIRTUAL_MODULE_UNRESOLVED" />
             <opcode value="42" name="IISGeneral42" mofValue="42" message="GENERAL_URL_CHANGED" />
-            <opcode value="43" name="IISGeneral43" mofValue="43" message="GENERAL_HANDLER_CHANGED" />
-            <opcode value="44" name="IISGeneral44" mofValue="44" message="GENERAL_USER_SET" />
+            <opcode value="43" name="IISGeneral43" mofValue="43" message="HANDLER_CHANGED" />
+            <opcode value="44" name="IISGeneral44" mofValue="44" message="USER_SET" />
             <opcode value="45" name="IISGeneral45" mofValue="45" message="GENERAL_MODULE_PRECONDITION_NOT_MATCH" />
             <opcode value="46" name="IISGeneral46" mofValue="46" message="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
             <opcode value="47" name="IISGeneral47" mofValue="47" message="GENERAL_RESPONSE_HEADERS" />
@@ -77,8 +77,8 @@
             <opcode value="1" name="IISFilter1" mofValue="1" message="FILTER_START" />
             <opcode value="2" name="IISFilter2" mofValue="2" message="FILTER_END" />
             <opcode value="12" name="IISFilter12" mofValue="12" message="FILTER_ERROR" />
-            <opcode value="13" name="IISFilter13" mofValue="13" message="FILTER_PREPROC_START" />
-            <opcode value="14" name="IISFilter14" mofValue="14" message="FILTER_PREPROC_END" />
+            <opcode value="13" name="IISFilter13" mofValue="13" message="FILTER_PREPROC_HEADERS_START" />
+            <opcode value="14" name="IISFilter14" mofValue="14" message="FILTER_PREPROC_HEADERS_END" />
             <opcode value="15" name="IISFilter15" mofValue="15" message="FILTER_URL_MAP_START" />
             <opcode value="16" name="IISFilter16" mofValue="16" message="FILTER_URL_MAP_END" />
             <opcode value="17" name="IISFilter17" mofValue="17" message="FILTER_AUTHENTICATION_START" />
@@ -171,17 +171,17 @@
             <opcode value="11" name="IISCompression11" mofValue="11" message="STATIC_COMPRESSION_END" />
           </task>
           <task name="IISCache" value="10" eventGUID="{ac1d69f1-bf33-4ca0-9313-bca13873e1dc}">
-            <opcode value="10" name="IISCache10" mofValue="10" message="CACHE_FILE_CACHE_ACCESS_START" />
-            <opcode value="11" name="IISCache11" mofValue="11" message="CACHE_FILE_CACHE_ACCESS_END" />
-            <opcode value="12" name="IISCache12" mofValue="12" message="CACHE_URL_CACHE_ACCESS_START" />
-            <opcode value="13" name="IISCache13" mofValue="13" message="CACHE_URL_CACHE_ACCESS_END" />
-            <opcode value="14" name="IISCache14" mofValue="14" message="CACHE_HTTPSYS_CACHEABLE" />
+            <opcode value="10" name="IISCache10" mofValue="10" message="FILE_CACHE_ACCESS_START" />
+            <opcode value="11" name="IISCache11" mofValue="11" message="FILE_CACHE_ACCESS_END" />
+            <opcode value="12" name="IISCache12" mofValue="12" message="URL_CACHE_ACCESS_START" />
+            <opcode value="13" name="IISCache13" mofValue="13" message="URL_CACHE_ACCESS_END" />
+            <opcode value="14" name="IISCache14" mofValue="14" message="HTTPSYS_CACHEABLE" />
             <opcode value="15" name="IISCache15" mofValue="15" message="OUTPUT_CACHE_LOOKUP_START" />
             <opcode value="16" name="IISCache16" mofValue="16" message="OUTPUT_CACHE_LOOKUP_END" />
             <opcode value="17" name="IISCache17" mofValue="17" message="OUTPUT_CACHE_UPDATE_START" />
             <opcode value="18" name="IISCache18" mofValue="18" message="OUTPUT_CACHE_UPDATE_END" />
             <opcode value="19" name="IISCache19" mofValue="19" message="OUTPUT_CACHE_DISABLED" />
-            <opcode value="20" name="IISCache20" mofValue="20" message="CACHE_FILE_CACHE_CREATE_FILE" />
+            <opcode value="20" name="IISCache20" mofValue="20" message="FILE_CACHE_CREATE_FILE" />
           </task>
           <task name="RequestNotifications" value="11" eventGUID="{002e91e3-e7ae-44ab-8e07-99230ffa6ade}">
             <opcode value="1" name="RequestNotifications1" mofValue="1" message="NOTIFY_MODULE_START" />
@@ -312,7 +312,7 @@
             <data name="OldUrl" inType="win:UnicodeString" />
             <data name="NewUrl" inType="win:UnicodeString" />
           </template>
-          <template tid="GENERAL_HANDLER_CHANGED">
+          <template tid="HANDLER_CHANGED">
             <data name="ContextId" inType="win:GUID" />
             <data name="OldHandlerName" inType="win:UnicodeString" />
             <data name="NewHandlerName" inType="win:UnicodeString" />
@@ -320,7 +320,7 @@
             <data name="NewHandlerScriptProcessor" inType="win:UnicodeString" />
             <data name="NewHandlerType" inType="win:UnicodeString" />
           </template>
-          <template tid="GENERAL_USER_SET">
+          <template tid="USER_SET">
             <data name="ContextId" inType="win:GUID" />
             <data name="AuthType" inType="win:UnicodeString" />
             <data name="UserName" inType="win:UnicodeString" />
@@ -509,10 +509,10 @@
             <data name="ContextId" inType="win:GUID" />
             <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
           </template>
-          <template tid="FILTER_PREPROC_START">
+          <template tid="FILTER_PREPROC_HEADERS_START">
             <data name="ContextId" inType="win:GUID" />
           </template>
-          <template tid="FILTER_PREPROC_END">
+          <template tid="FILTER_PREPROC_HEADERS_END">
             <data name="ContextId" inType="win:GUID" />
           </template>
           <template tid="FILTER_URL_MAP_START">
@@ -837,13 +837,13 @@
           <template tid="STATIC_COMPRESSION_END">
             <data name="ContextId" inType="win:GUID" />
           </template>
-          <template tid="CACHE_FILE_CACHE_ACCESS_START">
+          <template tid="FILE_CACHE_ACCESS_START">
             <data name="ContextId" inType="win:GUID" />
             <data name="FileName" inType="win:UnicodeString" />
             <data name="UserName" inType="win:UnicodeString" />
             <data name="DomainName" inType="win:UnicodeString" />
           </template>
-          <template tid="CACHE_FILE_CACHE_ACCESS_END">
+          <template tid="FILE_CACHE_ACCESS_END">
             <data name="ContextId" inType="win:GUID" />
             <data name="Successful" inType="win:Boolean" />
             <data name="FileFromCache" inType="win:Boolean" />
@@ -853,22 +853,22 @@
             <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
             <data name="LastModifiedTime" inType="win:AnsiString" />
           </template>
-          <template tid="CACHE_URL_CACHE_ACCESS_START">
+          <template tid="URL_CACHE_ACCESS_START">
             <data name="ContextId" inType="win:GUID" />
             <data name="RequestURL" inType="win:UnicodeString" />
           </template>
-          <template tid="CACHE_URL_CACHE_ACCESS_END">
+          <template tid="URL_CACHE_ACCESS_END">
             <data name="ContextId" inType="win:GUID" />
             <data name="PhysicalPath" inType="win:UnicodeString" />
             <data name="URLInfoFromCache" inType="win:Boolean" />
             <data name="URLInfoAddedToCache" inType="win:Boolean" />
             <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
           </template>
-          <template tid="CACHE_HTTPSYS_CACHEABLE">
+          <template tid="HTTPSYS_CACHEABLE">
             <data name="ContextId" inType="win:GUID" />
             <data name="HttpsysCacheable" inType="win:Boolean" />
-            <data name="Reason" inType="win:UInt32" map="CACHE_HTTPSYS_CACHEABLE.Reason" />
-            <data name="CachePolicy" inType="win:UInt32" map="CACHE_HTTPSYS_CACHEABLE.CachePolicy" />
+            <data name="Reason" inType="win:UInt32" map="HTTPSYS_CACHEABLE.Reason" />
+            <data name="CachePolicy" inType="win:UInt32" map="HTTPSYS_CACHEABLE.CachePolicy" />
             <data name="TimeToLive" inType="win:UInt32" />
           </template>
           <template tid="OUTPUT_CACHE_LOOKUP_START">
@@ -890,7 +890,7 @@
           <template tid="OUTPUT_CACHE_DISABLED">
             <data name="ContextId" inType="win:GUID" />
           </template>
-          <template tid="CACHE_FILE_CACHE_CREATE_FILE">
+          <template tid="FILE_CACHE_CREATE_FILE">
             <data name="ContextId" inType="win:GUID" />
             <data name="FileName" inType="win:UnicodeString" />
             <data name="UserName" inType="win:UnicodeString" />
@@ -1070,8 +1070,8 @@
           <event value="10020" version="1" template="GENERAL_CONFIG_CHANGE_NOTIFICATION" opcode="IISGeneral40" task="IISGeneral" symbol="IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATION" />
           <event value="10021" version="1" template="GENERAL_VIRTUAL_MODULE_UNRESOLVED" opcode="IISGeneral41" task="IISGeneral" symbol="IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVED" />
           <event value="10022" version="1" template="GENERAL_URL_CHANGED" opcode="IISGeneral42" task="IISGeneral" symbol="IISGeneralGENERAL_URL_CHANGED" />
-          <event value="10023" version="1" template="GENERAL_HANDLER_CHANGED" opcode="IISGeneral43" task="IISGeneral" symbol="IISGeneralGENERAL_HANDLER_CHANGED" />
-          <event value="10024" version="1" template="GENERAL_USER_SET" opcode="IISGeneral44" task="IISGeneral" symbol="IISGeneralGENERAL_USER_SET" />
+          <event value="10023" version="1" template="HANDLER_CHANGED" opcode="IISGeneral43" task="IISGeneral" symbol="IISGeneralHANDLER_CHANGED" />
+          <event value="10024" version="1" template="USER_SET" opcode="IISGeneral44" task="IISGeneral" symbol="IISGeneralUSER_SET" />
           <event value="10025" version="1" template="GENERAL_MODULE_PRECONDITION_NOT_MATCH" opcode="IISGeneral45" task="IISGeneral" symbol="IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCH" />
           <event value="10026" version="1" template="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" opcode="IISGeneral46" task="IISGeneral" symbol="IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
           <event value="10027" version="1" template="GENERAL_RESPONSE_HEADERS" opcode="IISGeneral47" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_HEADERS" />
@@ -1114,8 +1114,8 @@
           <event value="10064" version="1" template="FILTER_START" opcode="IISFilter1" task="IISFilter" symbol="IISFilterFILTER_START" />
           <event value="10065" version="1" template="FILTER_END" opcode="IISFilter2" task="IISFilter" symbol="IISFilterFILTER_END" />
           <event value="10066" version="1" template="FILTER_ERROR" opcode="IISFilter12" task="IISFilter" symbol="IISFilterFILTER_ERROR" />
-          <event value="10067" version="1" template="FILTER_PREPROC_START" opcode="IISFilter13" task="IISFilter" symbol="IISFilterFILTER_PREPROC_START" />
-          <event value="10068" version="1" template="FILTER_PREPROC_END" opcode="IISFilter14" task="IISFilter" symbol="IISFilterFILTER_PREPROC_END" />
+          <event value="10067" version="1" template="FILTER_PREPROC_HEADERS_START" opcode="IISFilter13" task="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_START" />
+          <event value="10068" version="1" template="FILTER_PREPROC_HEADERS_END" opcode="IISFilter14" task="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_END" />
           <event value="10069" version="1" template="FILTER_URL_MAP_START" opcode="IISFilter15" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_START" />
           <event value="10070" version="1" template="FILTER_URL_MAP_END" opcode="IISFilter16" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_END" />
           <event value="10071" version="1" template="FILTER_AUTHENTICATION_START" opcode="IISFilter17" task="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_START" />
@@ -1195,17 +1195,17 @@
           <event value="10145" version="1" template="DYNAMIC_COMPRESSION_DO" opcode="IISCompression9" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_DO" />
           <event value="10146" version="1" template="DYNAMIC_COMPRESSION_END" opcode="IISCompression10" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_END" />
           <event value="10147" version="1" template="STATIC_COMPRESSION_END" opcode="IISCompression11" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_END" />
-          <event value="10148" version="1" template="CACHE_FILE_CACHE_ACCESS_START" opcode="IISCache10" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_ACCESS_START" />
-          <event value="10149" version="1" template="CACHE_FILE_CACHE_ACCESS_END" opcode="IISCache11" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_ACCESS_END" />
-          <event value="10150" version="1" template="CACHE_URL_CACHE_ACCESS_START" opcode="IISCache12" task="IISCache" symbol="IISCacheCACHE_URL_CACHE_ACCESS_START" />
-          <event value="10151" version="1" template="CACHE_URL_CACHE_ACCESS_END" opcode="IISCache13" task="IISCache" symbol="IISCacheCACHE_URL_CACHE_ACCESS_END" />
-          <event value="10152" version="1" template="CACHE_HTTPSYS_CACHEABLE" opcode="IISCache14" task="IISCache" symbol="IISCacheCACHE_HTTPSYS_CACHEABLE" />
+          <event value="10148" version="1" template="FILE_CACHE_ACCESS_START" opcode="IISCache10" task="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_START" />
+          <event value="10149" version="1" template="FILE_CACHE_ACCESS_END" opcode="IISCache11" task="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_END" />
+          <event value="10150" version="1" template="URL_CACHE_ACCESS_START" opcode="IISCache12" task="IISCache" symbol="IISCacheURL_CACHE_ACCESS_START" />
+          <event value="10151" version="1" template="URL_CACHE_ACCESS_END" opcode="IISCache13" task="IISCache" symbol="IISCacheURL_CACHE_ACCESS_END" />
+          <event value="10152" version="1" template="HTTPSYS_CACHEABLE" opcode="IISCache14" task="IISCache" symbol="IISCacheHTTPSYS_CACHEABLE" />
           <event value="10153" version="1" template="OUTPUT_CACHE_LOOKUP_START" opcode="IISCache15" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_START" />
           <event value="10154" version="1" template="OUTPUT_CACHE_LOOKUP_END" opcode="IISCache16" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_END" />
           <event value="10155" version="1" template="OUTPUT_CACHE_UPDATE_START" opcode="IISCache17" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_START" />
           <event value="10156" version="1" template="OUTPUT_CACHE_UPDATE_END" opcode="IISCache18" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_END" />
           <event value="10157" version="1" template="OUTPUT_CACHE_DISABLED" opcode="IISCache19" task="IISCache" symbol="IISCacheOUTPUT_CACHE_DISABLED" />
-          <event value="10158" version="1" template="CACHE_FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_CREATE_FILE" />
+          <event value="10158" version="1" template="FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" symbol="IISCacheFILE_CACHE_CREATE_FILE" />
           <event value="10159" version="1" template="NOTIFY_MODULE_START" opcode="RequestNotifications1" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_START" />
           <event value="10160" version="1" template="NOTIFY_MODULE_END" opcode="RequestNotifications2" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_END" />
           <event value="10161" version="1" template="NOTIFY_MODULE_COMPLETION" opcode="RequestNotifications3" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_COMPLETION" />
@@ -1350,7 +1350,7 @@
             <map value="11" message="NO_COMPRESSION_RANGE" />
             <map value="12" message="NO_MATCHING_CONTENT_TYPE" />
           </valueMap>
-          <valueMap name="CACHE_HTTPSYS_CACHEABLE.Reason">
+          <valueMap name="HTTPSYS_CACHEABLE.Reason">
             <map value="0" message="OK" />
             <map value="1" message="NO_METADATA" />
             <map value="2" message="HTTPSYS_CACHE_DISABLED" />
@@ -1378,7 +1378,7 @@
             <map value="24" message="HANDLER_CHANGED" />
             <map value="25" message="REQUEST_FILTER_RULE" />
           </valueMap>
-          <valueMap name="CACHE_HTTPSYS_CACHEABLE.CachePolicy">
+          <valueMap name="HTTPSYS_CACHEABLE.CachePolicy">
             <map value="0" message="NO_CACHE" />
             <map value="1" message="USER_INVALIDATES" />
             <map value="2" message="TIME_TO_LIVE" />
