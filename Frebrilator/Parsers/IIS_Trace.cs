@@ -25,14 +25,20 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         public IIS_TraceTraceEventParser(TraceEventSource source) : base(source) {}
 
         private static Guid IISGeneralTaskGuid = new Guid("{d42cf7ef-de92-473e-8b6c-621ea663113a}");
-        private static Guid IISRequestNotificationTaskGuid = new Guid("{002e91e3-e7ae-44ab-8e07-99230ffa6ade}");
-        private static Guid IISFilterTaskGuid = new Guid("{00237f0d-73eb-4bcf-a232-126693595847}");
-        private static Guid IISCacheTaskGuid = new Guid("{ac1d69f1-bf33-4ca0-9313-bca13873e1dc}");
         private static Guid IISAuthenticationTaskGuid = new Guid("{c33bbe8f-985b-4080-81e6-005f1a06b9e2}");
-        private static Guid IISCompressionTaskGuid = new Guid("{e60cee96-4472-448d-a13c-2170b18220ec}");
+        private static Guid IISSecurityTaskGuid = new Guid("{29347ffb-ba48-41e6-bffd-469c5e543ca5}");
+        private static Guid IISFilterTaskGuid = new Guid("{00237f0d-73eb-4bcf-a232-126693595847}");
+        private static Guid IISStaticFileTaskGuid = new Guid("{79b02104-0db9-4cda-a552-058d97c2ecfd}");
         private static Guid IISISAPITaskGuid = new Guid("{2e94e6c7-eda0-4b73-9010-2529edce1c27}");
+        private static Guid IISCGITaskGuid = new Guid("{e2e55403-0d2e-4609-a470-be0da04013c0}");
+        private static Guid IISFastCGITaskGuid = new Guid("{e3642acc-3627-42b0-8372-867baa033b07}");
+        private static Guid IISWebSocketTaskGuid = new Guid("{2ce74327-08be-425c-bfc5-1534fe7fefa6}");
+        private static Guid IISCompressionTaskGuid = new Guid("{e60cee96-4472-448d-a13c-2170b18220ec}");
+        private static Guid IISCacheTaskGuid = new Guid("{ac1d69f1-bf33-4ca0-9313-bca13873e1dc}");
+        private static Guid IISRequestNotificationTaskGuid = new Guid("{002e91e3-e7ae-44ab-8e07-99230ffa6ade}");
+        private static Guid IISModuleEventsTaskGuid = new Guid("{d79a948e-95f1-417b-a731-b7a79dec7ae5}");
 
-        public event Action<IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs> IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDED
+        public event Action<AUTH_ANON_PASSWD_CHANGE_NEEDED> IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDED
         {
             add
             {
@@ -43,7 +49,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_BAD_BASIC_HEADERArgs> IISAuthenticationAUTH_BAD_BASIC_HEADER
+        public event Action<AUTH_BAD_BASIC_HEADER> IISAuthenticationAUTH_BAD_BASIC_HEADER
         {
             add
             {
@@ -54,7 +60,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs> IISAuthenticationAUTH_BASIC_LOGON_FAILED
+        public event Action<AUTH_BASIC_LOGON_FAILED> IISAuthenticationAUTH_BASIC_LOGON_FAILED
         {
             add
             {
@@ -65,7 +71,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_ENDArgs> IISAuthenticationAUTH_END
+        public event Action<AUTH_END> IISAuthenticationAUTH_END
         {
             add
             {
@@ -76,7 +82,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs> IISAuthenticationAUTH_IISDIGEST_LOGON_FAILED
+        public event Action<AUTH_IISDIGEST_LOGON_FAILED> IISAuthenticationAUTH_IISDIGEST_LOGON_FAILED
         {
             add
             {
@@ -87,7 +93,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs> IISAuthenticationAUTH_INVALID_ANON_ACCOUNT
+        public event Action<AUTH_INVALID_ANON_ACCOUNT> IISAuthenticationAUTH_INVALID_ANON_ACCOUNT
         {
             add
             {
@@ -98,7 +104,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_KERBEROS_FAILEDArgs> IISAuthenticationAUTH_KERBEROS_FAILED
+        public event Action<AUTH_KERBEROS_FAILED> IISAuthenticationAUTH_KERBEROS_FAILED
         {
             add
             {
@@ -109,7 +115,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs> IISAuthenticationAUTH_NTLM_NULL_SESSION
+        public event Action<AUTH_NTLM_NULL_SESSION> IISAuthenticationAUTH_NTLM_NULL_SESSION
         {
             add
             {
@@ -120,7 +126,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs> IISAuthenticationAUTH_PASSPORT_LOGON_FAILED
+        public event Action<AUTH_PASSPORT_LOGON_FAILED> IISAuthenticationAUTH_PASSPORT_LOGON_FAILED
         {
             add
             {
@@ -131,7 +137,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs> IISAuthenticationAUTH_PASSWD_CHANGE_DISABLED
+        public event Action<AUTH_PASSWD_CHANGE_DISABLED> IISAuthenticationAUTH_PASSWD_CHANGE_DISABLED
         {
             add
             {
@@ -142,7 +148,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs> IISAuthenticationAUTH_PASSWD_CHANGE_NEEDED
+        public event Action<AUTH_PASSWD_CHANGE_NEEDED> IISAuthenticationAUTH_PASSWD_CHANGE_NEEDED
         {
             add
             {
@@ -153,7 +159,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs> IISAuthenticationAUTH_REQUEST_AUTH_TYPE
+        public event Action<AUTH_REQUEST_AUTH_TYPE> IISAuthenticationAUTH_REQUEST_AUTH_TYPE
         {
             add
             {
@@ -164,7 +170,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs> IISAuthenticationAUTH_SSPI_CONTINUE_NEEDED
+        public event Action<AUTH_SSPI_CONTINUE_NEEDED> IISAuthenticationAUTH_SSPI_CONTINUE_NEEDED
         {
             add
             {
@@ -175,7 +181,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs> IISAuthenticationAUTH_SSPI_LOGON_FAILED
+        public event Action<AUTH_SSPI_LOGON_FAILED> IISAuthenticationAUTH_SSPI_LOGON_FAILED
         {
             add
             {
@@ -186,7 +192,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_STARTArgs> IISAuthenticationAUTH_START
+        public event Action<AUTH_START> IISAuthenticationAUTH_START
         {
             add
             {
@@ -197,7 +203,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_SUCCEEDEDArgs> IISAuthenticationAUTH_SUCCEEDED
+        public event Action<AUTH_SUCCEEDED> IISAuthenticationAUTH_SUCCEEDED
         {
             add
             {
@@ -208,7 +214,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs> IISAuthenticationAUTH_TYPE_NOT_SUPPORTED
+        public event Action<AUTH_TYPE_NOT_SUPPORTED> IISAuthenticationAUTH_TYPE_NOT_SUPPORTED
         {
             add
             {
@@ -219,7 +225,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs> IISAuthenticationAUTH_WDIGEST_LOGON_FAILED
+        public event Action<AUTH_WDIGEST_LOGON_FAILED> IISAuthenticationAUTH_WDIGEST_LOGON_FAILED
         {
             add
             {
@@ -230,51 +236,73 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheFILE_CACHE_ACCESS_ENDArgs> IISCacheFILE_CACHE_ACCESS_END
+        public event Action<CACHE_FILE_CACHE_ACCESS_END> IISCacheCACHE_FILE_CACHE_ACCESS_END
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheFILE_CACHE_ACCESS_ENDTemplate(value));
+                source.RegisterEventTemplate(IISCacheCACHE_FILE_CACHE_ACCESS_ENDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheFILE_CACHE_ACCESS_STARTArgs> IISCacheFILE_CACHE_ACCESS_START
+        public event Action<CACHE_FILE_CACHE_ACCESS_START> IISCacheCACHE_FILE_CACHE_ACCESS_START
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheFILE_CACHE_ACCESS_STARTTemplate(value));
+                source.RegisterEventTemplate(IISCacheCACHE_FILE_CACHE_ACCESS_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheFILE_CACHE_CREATE_FILEArgs> IISCacheFILE_CACHE_CREATE_FILE
+        public event Action<CACHE_FILE_CACHE_CREATE_FILE> IISCacheCACHE_FILE_CACHE_CREATE_FILE
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheFILE_CACHE_CREATE_FILETemplate(value));
+                source.RegisterEventTemplate(IISCacheCACHE_FILE_CACHE_CREATE_FILETemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheHTTPSYS_CACHEABLEArgs> IISCacheHTTPSYS_CACHEABLE
+        public event Action<CACHE_HTTPSYS_CACHEABLE> IISCacheCACHE_HTTPSYS_CACHEABLE
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheHTTPSYS_CACHEABLETemplate(value));
+                source.RegisterEventTemplate(IISCacheCACHE_HTTPSYS_CACHEABLETemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheOUTPUT_CACHE_DISABLEDArgs> IISCacheOUTPUT_CACHE_DISABLED
+        public event Action<CACHE_URL_CACHE_ACCESS_END> IISCacheCACHE_URL_CACHE_ACCESS_END
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCacheCACHE_URL_CACHE_ACCESS_ENDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CACHE_URL_CACHE_ACCESS_START> IISCacheCACHE_URL_CACHE_ACCESS_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCacheCACHE_URL_CACHE_ACCESS_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<OUTPUT_CACHE_DISABLED> IISCacheOUTPUT_CACHE_DISABLED
         {
             add
             {
@@ -285,7 +313,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs> IISCacheOUTPUT_CACHE_LOOKUP_END
+        public event Action<OUTPUT_CACHE_LOOKUP_END> IISCacheOUTPUT_CACHE_LOOKUP_END
         {
             add
             {
@@ -296,7 +324,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs> IISCacheOUTPUT_CACHE_LOOKUP_START
+        public event Action<OUTPUT_CACHE_LOOKUP_START> IISCacheOUTPUT_CACHE_LOOKUP_START
         {
             add
             {
@@ -307,7 +335,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheOUTPUT_CACHE_UPDATE_ENDArgs> IISCacheOUTPUT_CACHE_UPDATE_END
+        public event Action<OUTPUT_CACHE_UPDATE_END> IISCacheOUTPUT_CACHE_UPDATE_END
         {
             add
             {
@@ -318,7 +346,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheOUTPUT_CACHE_UPDATE_STARTArgs> IISCacheOUTPUT_CACHE_UPDATE_START
+        public event Action<OUTPUT_CACHE_UPDATE_START> IISCacheOUTPUT_CACHE_UPDATE_START
         {
             add
             {
@@ -329,29 +357,84 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheURL_CACHE_ACCESS_ENDArgs> IISCacheURL_CACHE_ACCESS_END
+        public event Action<CGI_END> IISCGICGI_END
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheURL_CACHE_ACCESS_ENDTemplate(value));
+                source.RegisterEventTemplate(IISCGICGI_ENDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCacheURL_CACHE_ACCESS_STARTArgs> IISCacheURL_CACHE_ACCESS_START
+        public event Action<CGI_HEADERS_RECEIVED> IISCGICGI_HEADERS_RECEIVED
         {
             add
             {
-                source.RegisterEventTemplate(IISCacheURL_CACHE_ACCESS_STARTTemplate(value));
+                source.RegisterEventTemplate(IISCGICGI_HEADERS_RECEIVEDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionDYNAMIC_COMPRESSION_DOArgs> IISCompressionDYNAMIC_COMPRESSION_DO
+        public event Action<CGI_LAUNCH> IISCGICGI_LAUNCH
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCGICGI_LAUNCHTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGI_PREMATURE_TERMINATION> IISCGICGI_PREMATURE_TERMINATION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCGICGI_PREMATURE_TERMINATIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGI_REQUEST_ENTITY_START> IISCGICGI_REQUEST_ENTITY_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCGICGI_REQUEST_ENTITY_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGI_START> IISCGICGI_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCGICGI_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGI_TIMEOUT> IISCGICGI_TIMEOUT
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISCGICGI_TIMEOUTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<DYNAMIC_COMPRESSION_DO> IISCompressionDYNAMIC_COMPRESSION_DO
         {
             add
             {
@@ -362,7 +445,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionDYNAMIC_COMPRESSION_ENDArgs> IISCompressionDYNAMIC_COMPRESSION_END
+        public event Action<DYNAMIC_COMPRESSION_END> IISCompressionDYNAMIC_COMPRESSION_END
         {
             add
             {
@@ -373,7 +456,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs> IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESS
+        public event Action<DYNAMIC_COMPRESSION_NOT_SUCCESS> IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESS
         {
             add
             {
@@ -384,7 +467,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionDYNAMIC_COMPRESSION_STARTArgs> IISCompressionDYNAMIC_COMPRESSION_START
+        public event Action<DYNAMIC_COMPRESSION_START> IISCompressionDYNAMIC_COMPRESSION_START
         {
             add
             {
@@ -395,7 +478,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs> IISCompressionDYNAMIC_COMPRESSION_SUCCESS
+        public event Action<DYNAMIC_COMPRESSION_SUCCESS> IISCompressionDYNAMIC_COMPRESSION_SUCCESS
         {
             add
             {
@@ -406,7 +489,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs> IISCompressionSTATIC_COMPRESSION_CREATE_END
+        public event Action<STATIC_COMPRESSION_CREATE_END> IISCompressionSTATIC_COMPRESSION_CREATE_END
         {
             add
             {
@@ -417,7 +500,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs> IISCompressionSTATIC_COMPRESSION_CREATE_START
+        public event Action<STATIC_COMPRESSION_CREATE_START> IISCompressionSTATIC_COMPRESSION_CREATE_START
         {
             add
             {
@@ -428,7 +511,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_ENDArgs> IISCompressionSTATIC_COMPRESSION_END
+        public event Action<STATIC_COMPRESSION_END> IISCompressionSTATIC_COMPRESSION_END
         {
             add
             {
@@ -439,7 +522,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs> IISCompressionSTATIC_COMPRESSION_NOT_SUCCESS
+        public event Action<STATIC_COMPRESSION_NOT_SUCCESS> IISCompressionSTATIC_COMPRESSION_NOT_SUCCESS
         {
             add
             {
@@ -450,7 +533,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_STARTArgs> IISCompressionSTATIC_COMPRESSION_START
+        public event Action<STATIC_COMPRESSION_START> IISCompressionSTATIC_COMPRESSION_START
         {
             add
             {
@@ -461,7 +544,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISCompressionSTATIC_COMPRESSION_SUCCESSArgs> IISCompressionSTATIC_COMPRESSION_SUCCESS
+        public event Action<STATIC_COMPRESSION_SUCCESS> IISCompressionSTATIC_COMPRESSION_SUCCESS
         {
             add
             {
@@ -472,7 +555,216 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ACCESS_DENIED_ENDArgs> IISFilterFILTER_ACCESS_DENIED_END
+        public event Action<CGIF_ACTIVITY_TIMEOUT> IISFastCGICGIF_ACTIVITY_TIMEOUT
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_ACTIVITY_TIMEOUTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_ADD_JOB_OBJECT_FAIL> IISFastCGICGIF_ADD_JOB_OBJECT_FAIL
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_ADD_JOB_OBJECT_FAILTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_APPMGR_SHUTDOWN> IISFastCGICGIF_APPMGR_SHUTDOWN
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_APPMGR_SHUTDOWNTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_ASSIGN_PROCESS> IISFastCGICGIF_ASSIGN_PROCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_ASSIGN_PROCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_END> IISFastCGICGIF_END
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_ENDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_PATH_NOT_FOUND> IISFastCGICGIF_PATH_NOT_FOUND
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_PATH_NOT_FOUNDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_QUEUE_FULL> IISFastCGICGIF_QUEUE_FULL
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_QUEUE_FULLTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_QUEUE_REQUEST> IISFastCGICGIF_QUEUE_REQUEST
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_QUEUE_REQUESTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_RAPID_FAILURE_PROTECTION> IISFastCGICGIF_RAPID_FAILURE_PROTECTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_RAPID_FAILURE_PROTECTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_REQUEST_TIMEOUT> IISFastCGICGIF_REQUEST_TIMEOUT
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_REQUEST_TIMEOUTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_RESPONSE_WRITTEN> IISFastCGICGIF_RESPONSE_WRITTEN
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_RESPONSE_WRITTENTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_SCRIPT_PROCESSOR_MISSING> IISFastCGICGIF_SCRIPT_PROCESSOR_MISSING
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_SCRIPT_PROCESSOR_MISSINGTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_START> IISFastCGICGIF_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_TRACE_ERROR> IISFastCGICGIF_TRACE_ERROR
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_TRACE_ERRORTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_TRACE_INFO> IISFastCGICGIF_TRACE_INFO
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_TRACE_INFOTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_TRACE_WARNING> IISFastCGICGIF_TRACE_WARNING
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_TRACE_WARNINGTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_UNEXPECTED_EXIT> IISFastCGICGIF_UNEXPECTED_EXIT
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_UNEXPECTED_EXITTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_UNKNOWN_ERROR> IISFastCGICGIF_UNKNOWN_ERROR
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_UNKNOWN_ERRORTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<CGIF_WAITING_FOR_RESPONSE> IISFastCGICGIF_WAITING_FOR_RESPONSE
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISFastCGICGIF_WAITING_FOR_RESPONSETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<FILTER_ACCESS_DENIED_END> IISFilterFILTER_ACCESS_DENIED_END
         {
             add
             {
@@ -483,7 +775,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ACCESS_DENIED_STARTArgs> IISFilterFILTER_ACCESS_DENIED_START
+        public event Action<FILTER_ACCESS_DENIED_START> IISFilterFILTER_ACCESS_DENIED_START
         {
             add
             {
@@ -494,7 +786,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ADD_REQ_HEADERArgs> IISFilterFILTER_ADD_REQ_HEADER
+        public event Action<FILTER_ADD_REQ_HEADER> IISFilterFILTER_ADD_REQ_HEADER
         {
             add
             {
@@ -505,7 +797,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ADD_RESP_HEADERArgs> IISFilterFILTER_ADD_RESP_HEADER
+        public event Action<FILTER_ADD_RESP_HEADER> IISFilterFILTER_ADD_RESP_HEADER
         {
             add
             {
@@ -516,7 +808,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_AUTH_COMPLETE_ENDArgs> IISFilterFILTER_AUTH_COMPLETE_END
+        public event Action<FILTER_AUTH_COMPLETE_END> IISFilterFILTER_AUTH_COMPLETE_END
         {
             add
             {
@@ -527,7 +819,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_AUTH_COMPLETE_STARTArgs> IISFilterFILTER_AUTH_COMPLETE_START
+        public event Action<FILTER_AUTH_COMPLETE_START> IISFilterFILTER_AUTH_COMPLETE_START
         {
             add
             {
@@ -538,7 +830,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_AUTHENTICATION_ENDArgs> IISFilterFILTER_AUTHENTICATION_END
+        public event Action<FILTER_AUTHENTICATION_END> IISFilterFILTER_AUTHENTICATION_END
         {
             add
             {
@@ -549,7 +841,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_AUTHENTICATION_STARTArgs> IISFilterFILTER_AUTHENTICATION_START
+        public event Action<FILTER_AUTHENTICATION_START> IISFilterFILTER_AUTHENTICATION_START
         {
             add
             {
@@ -560,7 +852,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ENDArgs> IISFilterFILTER_END
+        public event Action<FILTER_END> IISFilterFILTER_END
         {
             add
             {
@@ -571,7 +863,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_END_OF_REQUEST_ENDArgs> IISFilterFILTER_END_OF_REQUEST_END
+        public event Action<FILTER_END_OF_REQUEST_END> IISFilterFILTER_END_OF_REQUEST_END
         {
             add
             {
@@ -582,7 +874,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_END_OF_REQUEST_STARTArgs> IISFilterFILTER_END_OF_REQUEST_START
+        public event Action<FILTER_END_OF_REQUEST_START> IISFilterFILTER_END_OF_REQUEST_START
         {
             add
             {
@@ -593,7 +885,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_ERRORArgs> IISFilterFILTER_ERROR
+        public event Action<FILTER_ERROR> IISFilterFILTER_ERROR
         {
             add
             {
@@ -604,7 +896,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_LOG_ENDArgs> IISFilterFILTER_LOG_END
+        public event Action<FILTER_LOG_END> IISFilterFILTER_LOG_END
         {
             add
             {
@@ -615,7 +907,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_LOG_STARTArgs> IISFilterFILTER_LOG_START
+        public event Action<FILTER_LOG_START> IISFilterFILTER_LOG_START
         {
             add
             {
@@ -626,29 +918,29 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_PREPROC_HEADERS_ENDArgs> IISFilterFILTER_PREPROC_HEADERS_END
+        public event Action<FILTER_PREPROC_END> IISFilterFILTER_PREPROC_END
         {
             add
             {
-                source.RegisterEventTemplate(IISFilterFILTER_PREPROC_HEADERS_ENDTemplate(value));
+                source.RegisterEventTemplate(IISFilterFILTER_PREPROC_ENDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_PREPROC_HEADERS_STARTArgs> IISFilterFILTER_PREPROC_HEADERS_START
+        public event Action<FILTER_PREPROC_START> IISFilterFILTER_PREPROC_START
         {
             add
             {
-                source.RegisterEventTemplate(IISFilterFILTER_PREPROC_HEADERS_STARTTemplate(value));
+                source.RegisterEventTemplate(IISFilterFILTER_PREPROC_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SEND_RAW_DATA_ENDArgs> IISFilterFILTER_SEND_RAW_DATA_END
+        public event Action<FILTER_SEND_RAW_DATA_END> IISFilterFILTER_SEND_RAW_DATA_END
         {
             add
             {
@@ -659,7 +951,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SEND_RAW_DATA_STARTArgs> IISFilterFILTER_SEND_RAW_DATA_START
+        public event Action<FILTER_SEND_RAW_DATA_START> IISFilterFILTER_SEND_RAW_DATA_START
         {
             add
             {
@@ -670,7 +962,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SEND_RESPONSE_ENDArgs> IISFilterFILTER_SEND_RESPONSE_END
+        public event Action<FILTER_SEND_RESPONSE_END> IISFilterFILTER_SEND_RESPONSE_END
         {
             add
             {
@@ -681,7 +973,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SEND_RESPONSE_STARTArgs> IISFilterFILTER_SEND_RESPONSE_START
+        public event Action<FILTER_SEND_RESPONSE_START> IISFilterFILTER_SEND_RESPONSE_START
         {
             add
             {
@@ -692,7 +984,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SET_REQ_HEADERArgs> IISFilterFILTER_SET_REQ_HEADER
+        public event Action<FILTER_SET_REQ_HEADER> IISFilterFILTER_SET_REQ_HEADER
         {
             add
             {
@@ -703,7 +995,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_SET_RESP_HEADERArgs> IISFilterFILTER_SET_RESP_HEADER
+        public event Action<FILTER_SET_RESP_HEADER> IISFilterFILTER_SET_RESP_HEADER
         {
             add
             {
@@ -714,7 +1006,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_STARTArgs> IISFilterFILTER_START
+        public event Action<FILTER_START> IISFilterFILTER_START
         {
             add
             {
@@ -725,7 +1017,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_URL_MAP_ENDArgs> IISFilterFILTER_URL_MAP_END
+        public event Action<FILTER_URL_MAP_END> IISFilterFILTER_URL_MAP_END
         {
             add
             {
@@ -736,7 +1028,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISFilterFILTER_URL_MAP_STARTArgs> IISFilterFILTER_URL_MAP_START
+        public event Action<FILTER_URL_MAP_START> IISFilterFILTER_URL_MAP_START
         {
             add
             {
@@ -747,29 +1039,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs> IISGeneralCONFIG_CHANGE_NOTIFICATION
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralCONFIG_CHANGE_NOTIFICATIONTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<IISGeneralFILE_CHANGE_NOTIFICATIONArgs> IISGeneralFILE_CHANGE_NOTIFICATION
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralFILE_CHANGE_NOTIFICATIONTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<IISGeneralGENERAL_CGI_HANDLERArgs> IISGeneralGENERAL_CGI_HANDLER
+        public event Action<GENERAL_CGI_HANDLER> IISGeneralGENERAL_CGI_HANDLER
         {
             add
             {
@@ -780,7 +1050,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_CHILD_REQUEST_ENDArgs> IISGeneralGENERAL_CHILD_REQUEST_END
+        public event Action<GENERAL_CHILD_REQUEST_END> IISGeneralGENERAL_CHILD_REQUEST_END
         {
             add
             {
@@ -791,7 +1061,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_CHILD_REQUEST_STARTArgs> IISGeneralGENERAL_CHILD_REQUEST_START
+        public event Action<GENERAL_CHILD_REQUEST_START> IISGeneralGENERAL_CHILD_REQUEST_START
         {
             add
             {
@@ -802,7 +1072,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_DAV_HANDLERArgs> IISGeneralGENERAL_DAV_HANDLER
+        public event Action<GENERAL_CONFIG_CHANGE_NOTIFICATION> IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<GENERAL_DAV_HANDLER> IISGeneralGENERAL_DAV_HANDLER
         {
             add
             {
@@ -813,7 +1094,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs> IISGeneralGENERAL_ENDPOINT_INFORMATION
+        public event Action<GENERAL_ENDPOINT_INFORMATION> IISGeneralGENERAL_ENDPOINT_INFORMATION
         {
             add
             {
@@ -824,7 +1105,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs> IISGeneralGENERAL_FLUSH_RESPONSE_END
+        public event Action<GENERAL_FILE_CHANGE_NOTIFICATION> IISGeneralGENERAL_FILE_CHANGE_NOTIFICATION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralGENERAL_FILE_CHANGE_NOTIFICATIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<GENERAL_FLUSH_RESPONSE_END> IISGeneralGENERAL_FLUSH_RESPONSE_END
         {
             add
             {
@@ -835,7 +1127,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs> IISGeneralGENERAL_FLUSH_RESPONSE_START
+        public event Action<GENERAL_FLUSH_RESPONSE_START> IISGeneralGENERAL_FLUSH_RESPONSE_START
         {
             add
             {
@@ -846,7 +1138,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_GET_URL_METADATAArgs> IISGeneralGENERAL_GET_URL_METADATA
+        public event Action<GENERAL_GET_URL_METADATA> IISGeneralGENERAL_GET_URL_METADATA
         {
             add
             {
@@ -857,7 +1149,29 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_ISAPI_HANDLERArgs> IISGeneralGENERAL_ISAPI_HANDLER
+        public event Action<GENERAL_HANDLER_CHANGED> IISGeneralGENERAL_HANDLER_CHANGED
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralGENERAL_HANDLER_CHANGEDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCH
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<GENERAL_ISAPI_HANDLER> IISGeneralGENERAL_ISAPI_HANDLER
         {
             add
             {
@@ -868,7 +1182,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_MAP_HANDLERArgs> IISGeneralGENERAL_MAP_HANDLER
+        public event Action<GENERAL_MAP_HANDLER> IISGeneralGENERAL_MAP_HANDLER
         {
             add
             {
@@ -879,7 +1193,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs> IISGeneralGENERAL_MODULE_FACTORY_FAILED
+        public event Action<GENERAL_MODULE_FACTORY_FAILED> IISGeneralGENERAL_MODULE_FACTORY_FAILED
         {
             add
             {
@@ -890,7 +1204,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs> IISGeneralGENERAL_NOT_SEND_CUSTOM_ERROR
+        public event Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCH
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<GENERAL_NOT_SEND_CUSTOM_ERROR> IISGeneralGENERAL_NOT_SEND_CUSTOM_ERROR
         {
             add
             {
@@ -901,7 +1226,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs> IISGeneralGENERAL_OOP_ISAPI_HANDLER
+        public event Action<GENERAL_OOP_ISAPI_HANDLER> IISGeneralGENERAL_OOP_ISAPI_HANDLER
         {
             add
             {
@@ -912,7 +1237,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_OPTIONS_HANDLERArgs> IISGeneralGENERAL_OPTIONS_HANDLER
+        public event Action<GENERAL_OPTIONS_HANDLER> IISGeneralGENERAL_OPTIONS_HANDLER
         {
             add
             {
@@ -923,7 +1248,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_READ_ENTITY_ENDArgs> IISGeneralGENERAL_READ_ENTITY_END
+        public event Action<GENERAL_READ_ENTITY_END> IISGeneralGENERAL_READ_ENTITY_END
         {
             add
             {
@@ -934,7 +1259,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_READ_ENTITY_STARTArgs> IISGeneralGENERAL_READ_ENTITY_START
+        public event Action<GENERAL_READ_ENTITY_START> IISGeneralGENERAL_READ_ENTITY_START
         {
             add
             {
@@ -945,7 +1270,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_REDIRECTION_HANDLERArgs> IISGeneralGENERAL_REDIRECTION_HANDLER
+        public event Action<GENERAL_REDIRECTION_HANDLER> IISGeneralGENERAL_REDIRECTION_HANDLER
         {
             add
             {
@@ -956,7 +1281,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_REQUEST_ENDArgs> IISGeneralGENERAL_REQUEST_END
+        public event Action<GENERAL_REQUEST_END> IISGeneralGENERAL_REQUEST_END
         {
             add
             {
@@ -967,7 +1292,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_REQUEST_ENTITYArgs> IISGeneralGENERAL_REQUEST_ENTITY
+        public event Action<GENERAL_REQUEST_ENTITY> IISGeneralGENERAL_REQUEST_ENTITY
         {
             add
             {
@@ -978,7 +1303,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_REQUEST_HEADERSArgs> IISGeneralGENERAL_REQUEST_HEADERS
+        public event Action<GENERAL_REQUEST_HEADERS> IISGeneralGENERAL_REQUEST_HEADERS
         {
             add
             {
@@ -989,7 +1314,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_REQUEST_STARTArgs> IISGeneralGENERAL_REQUEST_START
+        public event Action<GENERAL_REQUEST_START> IISGeneralGENERAL_REQUEST_START
         {
             add
             {
@@ -1000,7 +1325,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs> IISGeneralGENERAL_RESPONSE_ENTITY_BUFFER
+        public event Action<GENERAL_RESPONSE_ENTITY_BUFFER> IISGeneralGENERAL_RESPONSE_ENTITY_BUFFER
         {
             add
             {
@@ -1011,7 +1336,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs> IISGeneralGENERAL_RESPONSE_ENTITY_FILE
+        public event Action<GENERAL_RESPONSE_ENTITY_FILE> IISGeneralGENERAL_RESPONSE_ENTITY_FILE
         {
             add
             {
@@ -1022,7 +1347,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_RESPONSE_HEADERSArgs> IISGeneralGENERAL_RESPONSE_HEADERS
+        public event Action<GENERAL_RESPONSE_HEADERS> IISGeneralGENERAL_RESPONSE_HEADERS
         {
             add
             {
@@ -1033,7 +1358,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs> IISGeneralGENERAL_SEND_CUSTOM_ERROR
+        public event Action<GENERAL_SEND_CUSTOM_ERROR> IISGeneralGENERAL_SEND_CUSTOM_ERROR
         {
             add
             {
@@ -1044,7 +1369,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_SET_REQUEST_HEADERArgs> IISGeneralGENERAL_SET_REQUEST_HEADER
+        public event Action<GENERAL_SET_REQUEST_HEADER> IISGeneralGENERAL_SET_REQUEST_HEADER
         {
             add
             {
@@ -1055,7 +1380,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_SET_RESPONSE_HEADERArgs> IISGeneralGENERAL_SET_RESPONSE_HEADER
+        public event Action<GENERAL_SET_RESPONSE_HEADER> IISGeneralGENERAL_SET_RESPONSE_HEADER
         {
             add
             {
@@ -1066,7 +1391,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_STATIC_FILE_HANDLERArgs> IISGeneralGENERAL_STATIC_FILE_HANDLER
+        public event Action<GENERAL_STATIC_FILE_HANDLER> IISGeneralGENERAL_STATIC_FILE_HANDLER
         {
             add
             {
@@ -1077,7 +1402,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralGENERAL_TRACE_HANDLERArgs> IISGeneralGENERAL_TRACE_HANDLER
+        public event Action<GENERAL_TRACE_HANDLER> IISGeneralGENERAL_TRACE_HANDLER
         {
             add
             {
@@ -1088,73 +1413,40 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralHANDLER_CHANGEDArgs> IISGeneralHANDLER_CHANGED
+        public event Action<GENERAL_URL_CHANGED> IISGeneralGENERAL_URL_CHANGED
         {
             add
             {
-                source.RegisterEventTemplate(IISGeneralHANDLER_CHANGEDTemplate(value));
+                source.RegisterEventTemplate(IISGeneralGENERAL_URL_CHANGEDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs> IISGeneralHANDLER_PRECONDITION_NOT_MATCH
+        public event Action<GENERAL_USER_SET> IISGeneralGENERAL_USER_SET
         {
             add
             {
-                source.RegisterEventTemplate(IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(value));
+                source.RegisterEventTemplate(IISGeneralGENERAL_USER_SETTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs> IISGeneralMODULE_PRECONDITION_NOT_MATCH
+        public event Action<GENERAL_VIRTUAL_MODULE_UNRESOLVED> IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVED
         {
             add
             {
-                source.RegisterEventTemplate(IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(value));
+                source.RegisterEventTemplate(IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVEDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISGeneralURL_CHANGEDArgs> IISGeneralURL_CHANGED
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralURL_CHANGEDTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<IISGeneralUSER_SETArgs> IISGeneralUSER_SET
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralUSER_SETTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs> IISGeneralVIRTUAL_MODULE_UNRESOLVED
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralVIRTUAL_MODULE_UNRESOLVEDTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<IISISAPIISAPI_ENDArgs> IISISAPIISAPI_END
+        public event Action<ISAPI_END> IISISAPIISAPI_END
         {
             add
             {
@@ -1165,7 +1457,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISISAPIISAPI_STARTArgs> IISISAPIISAPI_START
+        public event Action<ISAPI_START> IISISAPIISAPI_START
         {
             add
             {
@@ -1176,88 +1468,495 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs> IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUS
+        public event Action<MODULE_EVENTS_MODULE_CRITICAL_ERROR> IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERROR
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERRORTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs> IISRequestNotificationNOTIFY_MODULE_COMPLETION
+        public event Action<MODULE_EVENTS_MODULE_END> IISModuleEventsMODULE_EVENTS_MODULE_END
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationNOTIFY_MODULE_COMPLETIONTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_ENDTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationNOTIFY_MODULE_ENDArgs> IISRequestNotificationNOTIFY_MODULE_END
+        public event Action<MODULE_EVENTS_MODULE_ERROR> IISModuleEventsMODULE_EVENTS_MODULE_ERROR
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationNOTIFY_MODULE_ENDTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_ERRORTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationNOTIFY_MODULE_STARTArgs> IISRequestNotificationNOTIFY_MODULE_START
+        public event Action<MODULE_EVENTS_MODULE_INFORMATION> IISModuleEventsMODULE_EVENTS_MODULE_INFORMATION
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationNOTIFY_MODULE_STARTTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_INFORMATIONTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs> IISRequestNotificationPRE_BEGIN_REQUEST_END
+        public event Action<MODULE_EVENTS_MODULE_START> IISModuleEventsMODULE_EVENTS_MODULE_START
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationPRE_BEGIN_REQUEST_ENDTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_STARTTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs> IISRequestNotificationPRE_BEGIN_REQUEST_START
+        public event Action<MODULE_EVENTS_MODULE_VERBOSE> IISModuleEventsMODULE_EVENTS_MODULE_VERBOSE
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationPRE_BEGIN_REQUEST_STARTTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_VERBOSETemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationREQUEST_PROCESSING_ERRORArgs> IISRequestNotificationREQUEST_PROCESSING_ERROR
+        public event Action<MODULE_EVENTS_MODULE_WARNING> IISModuleEventsMODULE_EVENTS_MODULE_WARNING
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationREQUEST_PROCESSING_ERRORTemplate(value));
+                source.RegisterEventTemplate(IISModuleEventsMODULE_EVENTS_MODULE_WARNINGTemplate(value));
             }
             remove
             {
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs> IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTION
+        public event Action<REQUEST_NOTIFICATION_EVENTS_COMPLETION> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETION
         {
             add
             {
-                source.RegisterEventTemplate(IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONTemplate(value));
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_END> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_END
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ENDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_ERROR> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERROR
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERRORTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_EVENTS_START> IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_PRE_BEGIN_END> IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_END
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_ENDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<REQUEST_NOTIFICATION_PRE_BEGIN_START> IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_DENIED_BY_ACCESS_FLAGS> IISSecuritySEC_DENIED_BY_ACCESS_FLAGS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_DENIED_BY_ACCESS_FLAGSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_DENIED_BY_CGI_RESTRICTION> IISSecuritySEC_DENIED_BY_CGI_RESTRICTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_DENIED_BY_CGI_RESTRICTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_DENIED_BY_ISAPI_RESTRICTION> IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_DENIED_BY_MIMEMAP> IISSecuritySEC_DENIED_BY_MIMEMAP
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_DENIED_BY_MIMEMAPTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_FILE_ACCESS_DENIED> IISSecuritySEC_FILE_ACCESS_DENIED
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_FILE_ACCESS_DENIEDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_ILLEGAL_SHORT_FILENAME> IISSecuritySEC_ILLEGAL_SHORT_FILENAME
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_ILLEGAL_SHORT_FILENAMETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_REJECTED_HOSTNAME> IISSecuritySEC_REJECTED_HOSTNAME
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_REJECTED_HOSTNAMETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_REJECTED_IP> IISSecuritySEC_REJECTED_IP
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_REJECTED_IPTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<SEC_REQUIRE_SSL_128> IISSecuritySEC_REQUIRE_SSL_128
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISSecuritySEC_REQUIRE_SSL_128Template(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_APPLICATION_CLOSE_CONNECTION> IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_CLOSE_RECEIVED> IISWebSocketWEBSOCKET_CLOSE_RECEIVED
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_CLOSE_RECEIVEDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_CLOSE_SEND_FAILURE> IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURE
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_CLOSE_SEND_START> IISWebSocketWEBSOCKET_CLOSE_SEND_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_CLOSE_SEND_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_CLOSE_SEND_SUCCESS> IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_END_FAILURE> IISWebSocketWEBSOCKET_END_FAILURE
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_END_FAILURETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_END_SUCCESS> IISWebSocketWEBSOCKET_END_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_END_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_INITIALIZE_NOT_SUCCESS> IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_MODULE_CLOSE_CONNECTION> IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTION
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTIONTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_READ_FRAGMENT_END_FAILURE> IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURE
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_READ_FRAGMENT_END_PENDING> IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDING
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDINGTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_READ_FRAGMENT_END_SUCCESS> IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_READ_FRAGMENT_START> IISWebSocketWEBSOCKET_READ_FRAGMENT_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_READ_FRAGMENT_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_READ_IO_FAILED> IISWebSocketWEBSOCKET_READ_IO_FAILED
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_READ_IO_FAILEDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_START> IISWebSocketWEBSOCKET_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_WRITE_FRAGMENT_END_FAILURE> IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURE
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURETemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_WRITE_FRAGMENT_END_PENDING> IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDING
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDINGTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS> IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESS
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_WRITE_FRAGMENT_START> IISWebSocketWEBSOCKET_WRITE_FRAGMENT_START
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_WRITE_FRAGMENT_STARTTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<WEBSOCKET_WRITE_IO_FAILED> IISWebSocketWEBSOCKET_WRITE_IO_FAILED
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISWebSocketWEBSOCKET_WRITE_IO_FAILEDTemplate(value));
             }
             remove
             {
@@ -1268,453 +1967,705 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         #region private
         protected override string GetProviderName() { return ProviderName; }
 
-        static private IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDTemplate(Action<IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs> action)
+        static private AUTH_ANON_PASSWD_CHANGE_NEEDED IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDTemplate(Action<AUTH_ANON_PASSWD_CHANGE_NEEDED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 97, "AUTH_ANON_PASSWD_CHANGE_NEEDED", ProviderGuid, ProviderName );
+            return new AUTH_ANON_PASSWD_CHANGE_NEEDED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 24, "AUTH_ANON_PASSWD_CHANGE_NEEDED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_BAD_BASIC_HEADERArgs IISAuthenticationAUTH_BAD_BASIC_HEADERTemplate(Action<IISAuthenticationAUTH_BAD_BASIC_HEADERArgs> action)
+        static private AUTH_BAD_BASIC_HEADER IISAuthenticationAUTH_BAD_BASIC_HEADERTemplate(Action<AUTH_BAD_BASIC_HEADER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_BAD_BASIC_HEADERArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 95, "AUTH_BAD_BASIC_HEADER", ProviderGuid, ProviderName );
+            return new AUTH_BAD_BASIC_HEADER(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 16, "AUTH_BAD_BASIC_HEADER", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs IISAuthenticationAUTH_BASIC_LOGON_FAILEDTemplate(Action<IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs> action)
+        static private AUTH_BASIC_LOGON_FAILED IISAuthenticationAUTH_BASIC_LOGON_FAILEDTemplate(Action<AUTH_BASIC_LOGON_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 104, "AUTH_BASIC_LOGON_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_BASIC_LOGON_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 17, "AUTH_BASIC_LOGON_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_ENDArgs IISAuthenticationAUTH_ENDTemplate(Action<IISAuthenticationAUTH_ENDArgs> action)
+        static private AUTH_END IISAuthenticationAUTH_ENDTemplate(Action<AUTH_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_ENDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 99, "AUTH_END", ProviderGuid, ProviderName );
+            return new AUTH_END(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 28, "AUTH_END", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDTemplate(Action<IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs> action)
+        static private AUTH_IISDIGEST_LOGON_FAILED IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDTemplate(Action<AUTH_IISDIGEST_LOGON_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 96, "AUTH_IISDIGEST_LOGON_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_IISDIGEST_LOGON_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 19, "AUTH_IISDIGEST_LOGON_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs IISAuthenticationAUTH_INVALID_ANON_ACCOUNTTemplate(Action<IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs> action)
+        static private AUTH_INVALID_ANON_ACCOUNT IISAuthenticationAUTH_INVALID_ANON_ACCOUNTTemplate(Action<AUTH_INVALID_ANON_ACCOUNT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 103, "AUTH_INVALID_ANON_ACCOUNT", ProviderGuid, ProviderName );
+            return new AUTH_INVALID_ANON_ACCOUNT(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 13, "AUTH_INVALID_ANON_ACCOUNT", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_KERBEROS_FAILEDArgs IISAuthenticationAUTH_KERBEROS_FAILEDTemplate(Action<IISAuthenticationAUTH_KERBEROS_FAILEDArgs> action)
+        static private AUTH_KERBEROS_FAILED IISAuthenticationAUTH_KERBEROS_FAILEDTemplate(Action<AUTH_KERBEROS_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_KERBEROS_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 105, "AUTH_KERBEROS_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_KERBEROS_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 55, "AUTH_KERBEROS_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs IISAuthenticationAUTH_NTLM_NULL_SESSIONTemplate(Action<IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs> action)
+        static private AUTH_NTLM_NULL_SESSION IISAuthenticationAUTH_NTLM_NULL_SESSIONTemplate(Action<AUTH_NTLM_NULL_SESSION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 102, "AUTH_NTLM_NULL_SESSION", ProviderGuid, ProviderName );
+            return new AUTH_NTLM_NULL_SESSION(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 22, "AUTH_NTLM_NULL_SESSION", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDTemplate(Action<IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs> action)
+        static private AUTH_PASSPORT_LOGON_FAILED IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDTemplate(Action<AUTH_PASSPORT_LOGON_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 93, "AUTH_PASSPORT_LOGON_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_PASSPORT_LOGON_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 20, "AUTH_PASSPORT_LOGON_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDTemplate(Action<IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs> action)
+        static private AUTH_PASSWD_CHANGE_DISABLED IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDTemplate(Action<AUTH_PASSWD_CHANGE_DISABLED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 108, "AUTH_PASSWD_CHANGE_DISABLED", ProviderGuid, ProviderName );
+            return new AUTH_PASSWD_CHANGE_DISABLED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 15, "AUTH_PASSWD_CHANGE_DISABLED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDTemplate(Action<IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs> action)
+        static private AUTH_PASSWD_CHANGE_NEEDED IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDTemplate(Action<AUTH_PASSWD_CHANGE_NEEDED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 109, "AUTH_PASSWD_CHANGE_NEEDED", ProviderGuid, ProviderName );
+            return new AUTH_PASSWD_CHANGE_NEEDED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 14, "AUTH_PASSWD_CHANGE_NEEDED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs IISAuthenticationAUTH_REQUEST_AUTH_TYPETemplate(Action<IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs> action)
+        static private AUTH_REQUEST_AUTH_TYPE IISAuthenticationAUTH_REQUEST_AUTH_TYPETemplate(Action<AUTH_REQUEST_AUTH_TYPE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 100, "AUTH_REQUEST_AUTH_TYPE", ProviderGuid, ProviderName );
+            return new AUTH_REQUEST_AUTH_TYPE(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 27, "AUTH_REQUEST_AUTH_TYPE", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDTemplate(Action<IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs> action)
+        static private AUTH_SSPI_CONTINUE_NEEDED IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDTemplate(Action<AUTH_SSPI_CONTINUE_NEEDED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 107, "AUTH_SSPI_CONTINUE_NEEDED", ProviderGuid, ProviderName );
+            return new AUTH_SSPI_CONTINUE_NEEDED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 23, "AUTH_SSPI_CONTINUE_NEEDED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs IISAuthenticationAUTH_SSPI_LOGON_FAILEDTemplate(Action<IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs> action)
+        static private AUTH_SSPI_LOGON_FAILED IISAuthenticationAUTH_SSPI_LOGON_FAILEDTemplate(Action<AUTH_SSPI_LOGON_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 92, "AUTH_SSPI_LOGON_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_SSPI_LOGON_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 21, "AUTH_SSPI_LOGON_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_STARTArgs IISAuthenticationAUTH_STARTTemplate(Action<IISAuthenticationAUTH_STARTArgs> action)
+        static private AUTH_START IISAuthenticationAUTH_STARTTemplate(Action<AUTH_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_STARTArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 98, "AUTH_START", ProviderGuid, ProviderName );
+            return new AUTH_START(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 10, "AUTH_START", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_SUCCEEDEDArgs IISAuthenticationAUTH_SUCCEEDEDTemplate(Action<IISAuthenticationAUTH_SUCCEEDEDArgs> action)
+        static private AUTH_SUCCEEDED IISAuthenticationAUTH_SUCCEEDEDTemplate(Action<AUTH_SUCCEEDED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_SUCCEEDEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 94, "AUTH_SUCCEEDED", ProviderGuid, ProviderName );
+            return new AUTH_SUCCEEDED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 11, "AUTH_SUCCEEDED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDTemplate(Action<IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs> action)
+        static private AUTH_TYPE_NOT_SUPPORTED IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDTemplate(Action<AUTH_TYPE_NOT_SUPPORTED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 101, "AUTH_TYPE_NOT_SUPPORTED", ProviderGuid, ProviderName );
+            return new AUTH_TYPE_NOT_SUPPORTED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 12, "AUTH_TYPE_NOT_SUPPORTED", ProviderGuid, ProviderName );
         }
-        static private IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDTemplate(Action<IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs> action)
+        static private AUTH_WDIGEST_LOGON_FAILED IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDTemplate(Action<AUTH_WDIGEST_LOGON_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs(action, 65535, 5, "IISAuthentication", IISAuthenticationTaskGuid, 106, "AUTH_WDIGEST_LOGON_FAILED", ProviderGuid, ProviderName );
+            return new AUTH_WDIGEST_LOGON_FAILED(action, 65535, 1, "IISAuthentication", IISAuthenticationTaskGuid, 18, "AUTH_WDIGEST_LOGON_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISCacheFILE_CACHE_ACCESS_ENDArgs IISCacheFILE_CACHE_ACCESS_ENDTemplate(Action<IISCacheFILE_CACHE_ACCESS_ENDArgs> action)
+        static private CACHE_FILE_CACHE_ACCESS_END IISCacheCACHE_FILE_CACHE_ACCESS_ENDTemplate(Action<CACHE_FILE_CACHE_ACCESS_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheFILE_CACHE_ACCESS_ENDArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 81, "FILE_CACHE_ACCESS_END", ProviderGuid, ProviderName );
+            return new CACHE_FILE_CACHE_ACCESS_END(action, 65535, 10, "IISCache", IISCacheTaskGuid, 11, "CACHE_FILE_CACHE_ACCESS_END", ProviderGuid, ProviderName );
         }
-        static private IISCacheFILE_CACHE_ACCESS_STARTArgs IISCacheFILE_CACHE_ACCESS_STARTTemplate(Action<IISCacheFILE_CACHE_ACCESS_STARTArgs> action)
+        static private CACHE_FILE_CACHE_ACCESS_START IISCacheCACHE_FILE_CACHE_ACCESS_STARTTemplate(Action<CACHE_FILE_CACHE_ACCESS_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheFILE_CACHE_ACCESS_STARTArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 84, "FILE_CACHE_ACCESS_START", ProviderGuid, ProviderName );
+            return new CACHE_FILE_CACHE_ACCESS_START(action, 65535, 10, "IISCache", IISCacheTaskGuid, 10, "CACHE_FILE_CACHE_ACCESS_START", ProviderGuid, ProviderName );
         }
-        static private IISCacheFILE_CACHE_CREATE_FILEArgs IISCacheFILE_CACHE_CREATE_FILETemplate(Action<IISCacheFILE_CACHE_CREATE_FILEArgs> action)
+        static private CACHE_FILE_CACHE_CREATE_FILE IISCacheCACHE_FILE_CACHE_CREATE_FILETemplate(Action<CACHE_FILE_CACHE_CREATE_FILE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheFILE_CACHE_CREATE_FILEArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 90, "FILE_CACHE_CREATE_FILE", ProviderGuid, ProviderName );
+            return new CACHE_FILE_CACHE_CREATE_FILE(action, 65535, 10, "IISCache", IISCacheTaskGuid, 20, "CACHE_FILE_CACHE_CREATE_FILE", ProviderGuid, ProviderName );
         }
-        static private IISCacheHTTPSYS_CACHEABLEArgs IISCacheHTTPSYS_CACHEABLETemplate(Action<IISCacheHTTPSYS_CACHEABLEArgs> action)
+        static private CACHE_HTTPSYS_CACHEABLE IISCacheCACHE_HTTPSYS_CACHEABLETemplate(Action<CACHE_HTTPSYS_CACHEABLE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheHTTPSYS_CACHEABLEArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 82, "HTTPSYS_CACHEABLE", ProviderGuid, ProviderName );
+            return new CACHE_HTTPSYS_CACHEABLE(action, 65535, 10, "IISCache", IISCacheTaskGuid, 14, "CACHE_HTTPSYS_CACHEABLE", ProviderGuid, ProviderName );
         }
-        static private IISCacheOUTPUT_CACHE_DISABLEDArgs IISCacheOUTPUT_CACHE_DISABLEDTemplate(Action<IISCacheOUTPUT_CACHE_DISABLEDArgs> action)
+        static private CACHE_URL_CACHE_ACCESS_END IISCacheCACHE_URL_CACHE_ACCESS_ENDTemplate(Action<CACHE_URL_CACHE_ACCESS_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheOUTPUT_CACHE_DISABLEDArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 85, "OUTPUT_CACHE_DISABLED", ProviderGuid, ProviderName );
+            return new CACHE_URL_CACHE_ACCESS_END(action, 65535, 10, "IISCache", IISCacheTaskGuid, 13, "CACHE_URL_CACHE_ACCESS_END", ProviderGuid, ProviderName );
         }
-        static private IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs IISCacheOUTPUT_CACHE_LOOKUP_ENDTemplate(Action<IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs> action)
+        static private CACHE_URL_CACHE_ACCESS_START IISCacheCACHE_URL_CACHE_ACCESS_STARTTemplate(Action<CACHE_URL_CACHE_ACCESS_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 89, "OUTPUT_CACHE_LOOKUP_END", ProviderGuid, ProviderName );
+            return new CACHE_URL_CACHE_ACCESS_START(action, 65535, 10, "IISCache", IISCacheTaskGuid, 12, "CACHE_URL_CACHE_ACCESS_START", ProviderGuid, ProviderName );
         }
-        static private IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs IISCacheOUTPUT_CACHE_LOOKUP_STARTTemplate(Action<IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs> action)
+        static private OUTPUT_CACHE_DISABLED IISCacheOUTPUT_CACHE_DISABLEDTemplate(Action<OUTPUT_CACHE_DISABLED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 86, "OUTPUT_CACHE_LOOKUP_START", ProviderGuid, ProviderName );
+            return new OUTPUT_CACHE_DISABLED(action, 65535, 10, "IISCache", IISCacheTaskGuid, 19, "OUTPUT_CACHE_DISABLED", ProviderGuid, ProviderName );
         }
-        static private IISCacheOUTPUT_CACHE_UPDATE_ENDArgs IISCacheOUTPUT_CACHE_UPDATE_ENDTemplate(Action<IISCacheOUTPUT_CACHE_UPDATE_ENDArgs> action)
+        static private OUTPUT_CACHE_LOOKUP_END IISCacheOUTPUT_CACHE_LOOKUP_ENDTemplate(Action<OUTPUT_CACHE_LOOKUP_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheOUTPUT_CACHE_UPDATE_ENDArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 83, "OUTPUT_CACHE_UPDATE_END", ProviderGuid, ProviderName );
+            return new OUTPUT_CACHE_LOOKUP_END(action, 65535, 10, "IISCache", IISCacheTaskGuid, 16, "OUTPUT_CACHE_LOOKUP_END", ProviderGuid, ProviderName );
         }
-        static private IISCacheOUTPUT_CACHE_UPDATE_STARTArgs IISCacheOUTPUT_CACHE_UPDATE_STARTTemplate(Action<IISCacheOUTPUT_CACHE_UPDATE_STARTArgs> action)
+        static private OUTPUT_CACHE_LOOKUP_START IISCacheOUTPUT_CACHE_LOOKUP_STARTTemplate(Action<OUTPUT_CACHE_LOOKUP_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheOUTPUT_CACHE_UPDATE_STARTArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 87, "OUTPUT_CACHE_UPDATE_START", ProviderGuid, ProviderName );
+            return new OUTPUT_CACHE_LOOKUP_START(action, 65535, 10, "IISCache", IISCacheTaskGuid, 15, "OUTPUT_CACHE_LOOKUP_START", ProviderGuid, ProviderName );
         }
-        static private IISCacheURL_CACHE_ACCESS_ENDArgs IISCacheURL_CACHE_ACCESS_ENDTemplate(Action<IISCacheURL_CACHE_ACCESS_ENDArgs> action)
+        static private OUTPUT_CACHE_UPDATE_END IISCacheOUTPUT_CACHE_UPDATE_ENDTemplate(Action<OUTPUT_CACHE_UPDATE_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheURL_CACHE_ACCESS_ENDArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 88, "URL_CACHE_ACCESS_END", ProviderGuid, ProviderName );
+            return new OUTPUT_CACHE_UPDATE_END(action, 65535, 10, "IISCache", IISCacheTaskGuid, 18, "OUTPUT_CACHE_UPDATE_END", ProviderGuid, ProviderName );
         }
-        static private IISCacheURL_CACHE_ACCESS_STARTArgs IISCacheURL_CACHE_ACCESS_STARTTemplate(Action<IISCacheURL_CACHE_ACCESS_STARTArgs> action)
+        static private OUTPUT_CACHE_UPDATE_START IISCacheOUTPUT_CACHE_UPDATE_STARTTemplate(Action<OUTPUT_CACHE_UPDATE_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCacheURL_CACHE_ACCESS_STARTArgs(action, 65535, 4, "IISCache", IISCacheTaskGuid, 91, "URL_CACHE_ACCESS_START", ProviderGuid, ProviderName );
+            return new OUTPUT_CACHE_UPDATE_START(action, 65535, 10, "IISCache", IISCacheTaskGuid, 17, "OUTPUT_CACHE_UPDATE_START", ProviderGuid, ProviderName );
         }
-        static private IISCompressionDYNAMIC_COMPRESSION_DOArgs IISCompressionDYNAMIC_COMPRESSION_DOTemplate(Action<IISCompressionDYNAMIC_COMPRESSION_DOArgs> action)
+        static private CGI_END IISCGICGI_ENDTemplate(Action<CGI_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionDYNAMIC_COMPRESSION_DOArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 110, "DYNAMIC_COMPRESSION_DO", ProviderGuid, ProviderName );
+            return new CGI_END(action, 65535, 6, "IISCGI", IISCGITaskGuid, 2, "CGI_END", ProviderGuid, ProviderName );
         }
-        static private IISCompressionDYNAMIC_COMPRESSION_ENDArgs IISCompressionDYNAMIC_COMPRESSION_ENDTemplate(Action<IISCompressionDYNAMIC_COMPRESSION_ENDArgs> action)
+        static private CGI_HEADERS_RECEIVED IISCGICGI_HEADERS_RECEIVEDTemplate(Action<CGI_HEADERS_RECEIVED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionDYNAMIC_COMPRESSION_ENDArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 115, "DYNAMIC_COMPRESSION_END", ProviderGuid, ProviderName );
+            return new CGI_HEADERS_RECEIVED(action, 65535, 6, "IISCGI", IISCGITaskGuid, 7, "CGI_HEADERS_RECEIVED", ProviderGuid, ProviderName );
         }
-        static private IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSTemplate(Action<IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs> action)
+        static private CGI_LAUNCH IISCGICGI_LAUNCHTemplate(Action<CGI_LAUNCH> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 118, "DYNAMIC_COMPRESSION_NOT_SUCCESS", ProviderGuid, ProviderName );
+            return new CGI_LAUNCH(action, 65535, 6, "IISCGI", IISCGITaskGuid, 3, "CGI_LAUNCH", ProviderGuid, ProviderName );
         }
-        static private IISCompressionDYNAMIC_COMPRESSION_STARTArgs IISCompressionDYNAMIC_COMPRESSION_STARTTemplate(Action<IISCompressionDYNAMIC_COMPRESSION_STARTArgs> action)
+        static private CGI_PREMATURE_TERMINATION IISCGICGI_PREMATURE_TERMINATIONTemplate(Action<CGI_PREMATURE_TERMINATION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionDYNAMIC_COMPRESSION_STARTArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 114, "DYNAMIC_COMPRESSION_START", ProviderGuid, ProviderName );
+            return new CGI_PREMATURE_TERMINATION(action, 65535, 6, "IISCGI", IISCGITaskGuid, 5, "CGI_PREMATURE_TERMINATION", ProviderGuid, ProviderName );
         }
-        static private IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs IISCompressionDYNAMIC_COMPRESSION_SUCCESSTemplate(Action<IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs> action)
+        static private CGI_REQUEST_ENTITY_START IISCGICGI_REQUEST_ENTITY_STARTTemplate(Action<CGI_REQUEST_ENTITY_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 116, "DYNAMIC_COMPRESSION_SUCCESS", ProviderGuid, ProviderName );
+            return new CGI_REQUEST_ENTITY_START(action, 65535, 6, "IISCGI", IISCGITaskGuid, 6, "CGI_REQUEST_ENTITY_START", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs IISCompressionSTATIC_COMPRESSION_CREATE_ENDTemplate(Action<IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs> action)
+        static private CGI_START IISCGICGI_STARTTemplate(Action<CGI_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 112, "STATIC_COMPRESSION_CREATE_END", ProviderGuid, ProviderName );
+            return new CGI_START(action, 65535, 6, "IISCGI", IISCGITaskGuid, 1, "CGI_START", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs IISCompressionSTATIC_COMPRESSION_CREATE_STARTTemplate(Action<IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs> action)
+        static private CGI_TIMEOUT IISCGICGI_TIMEOUTTemplate(Action<CGI_TIMEOUT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 119, "STATIC_COMPRESSION_CREATE_START", ProviderGuid, ProviderName );
+            return new CGI_TIMEOUT(action, 65535, 6, "IISCGI", IISCGITaskGuid, 4, "CGI_TIMEOUT", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_ENDArgs IISCompressionSTATIC_COMPRESSION_ENDTemplate(Action<IISCompressionSTATIC_COMPRESSION_ENDArgs> action)
+        static private DYNAMIC_COMPRESSION_DO IISCompressionDYNAMIC_COMPRESSION_DOTemplate(Action<DYNAMIC_COMPRESSION_DO> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_ENDArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 111, "STATIC_COMPRESSION_END", ProviderGuid, ProviderName );
+            return new DYNAMIC_COMPRESSION_DO(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 9, "DYNAMIC_COMPRESSION_DO", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSTemplate(Action<IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs> action)
+        static private DYNAMIC_COMPRESSION_END IISCompressionDYNAMIC_COMPRESSION_ENDTemplate(Action<DYNAMIC_COMPRESSION_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 120, "STATIC_COMPRESSION_NOT_SUCCESS", ProviderGuid, ProviderName );
+            return new DYNAMIC_COMPRESSION_END(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 10, "DYNAMIC_COMPRESSION_END", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_STARTArgs IISCompressionSTATIC_COMPRESSION_STARTTemplate(Action<IISCompressionSTATIC_COMPRESSION_STARTArgs> action)
+        static private DYNAMIC_COMPRESSION_NOT_SUCCESS IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSTemplate(Action<DYNAMIC_COMPRESSION_NOT_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_STARTArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 117, "STATIC_COMPRESSION_START", ProviderGuid, ProviderName );
+            return new DYNAMIC_COMPRESSION_NOT_SUCCESS(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 8, "DYNAMIC_COMPRESSION_NOT_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private IISCompressionSTATIC_COMPRESSION_SUCCESSArgs IISCompressionSTATIC_COMPRESSION_SUCCESSTemplate(Action<IISCompressionSTATIC_COMPRESSION_SUCCESSArgs> action)
+        static private DYNAMIC_COMPRESSION_START IISCompressionDYNAMIC_COMPRESSION_STARTTemplate(Action<DYNAMIC_COMPRESSION_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISCompressionSTATIC_COMPRESSION_SUCCESSArgs(action, 65535, 6, "IISCompression", IISCompressionTaskGuid, 113, "STATIC_COMPRESSION_SUCCESS", ProviderGuid, ProviderName );
+            return new DYNAMIC_COMPRESSION_START(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 6, "DYNAMIC_COMPRESSION_START", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ACCESS_DENIED_ENDArgs IISFilterFILTER_ACCESS_DENIED_ENDTemplate(Action<IISFilterFILTER_ACCESS_DENIED_ENDArgs> action)
+        static private DYNAMIC_COMPRESSION_SUCCESS IISCompressionDYNAMIC_COMPRESSION_SUCCESSTemplate(Action<DYNAMIC_COMPRESSION_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ACCESS_DENIED_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 66, "FILTER_ACCESS_DENIED_END", ProviderGuid, ProviderName );
+            return new DYNAMIC_COMPRESSION_SUCCESS(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 7, "DYNAMIC_COMPRESSION_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ACCESS_DENIED_STARTArgs IISFilterFILTER_ACCESS_DENIED_STARTTemplate(Action<IISFilterFILTER_ACCESS_DENIED_STARTArgs> action)
+        static private STATIC_COMPRESSION_CREATE_END IISCompressionSTATIC_COMPRESSION_CREATE_ENDTemplate(Action<STATIC_COMPRESSION_CREATE_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ACCESS_DENIED_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 78, "FILTER_ACCESS_DENIED_START", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_CREATE_END(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 5, "STATIC_COMPRESSION_CREATE_END", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ADD_REQ_HEADERArgs IISFilterFILTER_ADD_REQ_HEADERTemplate(Action<IISFilterFILTER_ADD_REQ_HEADERArgs> action)
+        static private STATIC_COMPRESSION_CREATE_START IISCompressionSTATIC_COMPRESSION_CREATE_STARTTemplate(Action<STATIC_COMPRESSION_CREATE_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ADD_REQ_HEADERArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 79, "FILTER_ADD_REQ_HEADER", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_CREATE_START(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 4, "STATIC_COMPRESSION_CREATE_START", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ADD_RESP_HEADERArgs IISFilterFILTER_ADD_RESP_HEADERTemplate(Action<IISFilterFILTER_ADD_RESP_HEADERArgs> action)
+        static private STATIC_COMPRESSION_END IISCompressionSTATIC_COMPRESSION_ENDTemplate(Action<STATIC_COMPRESSION_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ADD_RESP_HEADERArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 56, "FILTER_ADD_RESP_HEADER", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_END(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 11, "STATIC_COMPRESSION_END", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_AUTH_COMPLETE_ENDArgs IISFilterFILTER_AUTH_COMPLETE_ENDTemplate(Action<IISFilterFILTER_AUTH_COMPLETE_ENDArgs> action)
+        static private STATIC_COMPRESSION_NOT_SUCCESS IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSTemplate(Action<STATIC_COMPRESSION_NOT_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_AUTH_COMPLETE_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 57, "FILTER_AUTH_COMPLETE_END", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_NOT_SUCCESS(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 3, "STATIC_COMPRESSION_NOT_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_AUTH_COMPLETE_STARTArgs IISFilterFILTER_AUTH_COMPLETE_STARTTemplate(Action<IISFilterFILTER_AUTH_COMPLETE_STARTArgs> action)
+        static private STATIC_COMPRESSION_START IISCompressionSTATIC_COMPRESSION_STARTTemplate(Action<STATIC_COMPRESSION_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_AUTH_COMPLETE_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 69, "FILTER_AUTH_COMPLETE_START", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_START(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 1, "STATIC_COMPRESSION_START", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_AUTHENTICATION_ENDArgs IISFilterFILTER_AUTHENTICATION_ENDTemplate(Action<IISFilterFILTER_AUTHENTICATION_ENDArgs> action)
+        static private STATIC_COMPRESSION_SUCCESS IISCompressionSTATIC_COMPRESSION_SUCCESSTemplate(Action<STATIC_COMPRESSION_SUCCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_AUTHENTICATION_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 72, "FILTER_AUTHENTICATION_END", ProviderGuid, ProviderName );
+            return new STATIC_COMPRESSION_SUCCESS(action, 65535, 9, "IISCompression", IISCompressionTaskGuid, 2, "STATIC_COMPRESSION_SUCCESS", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_AUTHENTICATION_STARTArgs IISFilterFILTER_AUTHENTICATION_STARTTemplate(Action<IISFilterFILTER_AUTHENTICATION_STARTArgs> action)
+        static private CGIF_ACTIVITY_TIMEOUT IISFastCGICGIF_ACTIVITY_TIMEOUTTemplate(Action<CGIF_ACTIVITY_TIMEOUT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_AUTHENTICATION_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 73, "FILTER_AUTHENTICATION_START", ProviderGuid, ProviderName );
+            return new CGIF_ACTIVITY_TIMEOUT(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 1, "CGIF_ACTIVITY_TIMEOUT", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ENDArgs IISFilterFILTER_ENDTemplate(Action<IISFilterFILTER_ENDArgs> action)
+        static private CGIF_ADD_JOB_OBJECT_FAIL IISFastCGICGIF_ADD_JOB_OBJECT_FAILTemplate(Action<CGIF_ADD_JOB_OBJECT_FAIL> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 63, "FILTER_END", ProviderGuid, ProviderName );
+            return new CGIF_ADD_JOB_OBJECT_FAIL(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 7, "CGIF_ADD_JOB_OBJECT_FAIL", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_END_OF_REQUEST_ENDArgs IISFilterFILTER_END_OF_REQUEST_ENDTemplate(Action<IISFilterFILTER_END_OF_REQUEST_ENDArgs> action)
+        static private CGIF_APPMGR_SHUTDOWN IISFastCGICGIF_APPMGR_SHUTDOWNTemplate(Action<CGIF_APPMGR_SHUTDOWN> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_END_OF_REQUEST_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 64, "FILTER_END_OF_REQUEST_END", ProviderGuid, ProviderName );
+            return new CGIF_APPMGR_SHUTDOWN(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 8, "CGIF_APPMGR_SHUTDOWN", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_END_OF_REQUEST_STARTArgs IISFilterFILTER_END_OF_REQUEST_STARTTemplate(Action<IISFilterFILTER_END_OF_REQUEST_STARTArgs> action)
+        static private CGIF_ASSIGN_PROCESS IISFastCGICGIF_ASSIGN_PROCESSTemplate(Action<CGIF_ASSIGN_PROCESS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_END_OF_REQUEST_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 74, "FILTER_END_OF_REQUEST_START", ProviderGuid, ProviderName );
+            return new CGIF_ASSIGN_PROCESS(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 17, "CGIF_ASSIGN_PROCESS", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_ERRORArgs IISFilterFILTER_ERRORTemplate(Action<IISFilterFILTER_ERRORArgs> action)
+        static private CGIF_END IISFastCGICGIF_ENDTemplate(Action<CGIF_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_ERRORArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 68, "FILTER_ERROR", ProviderGuid, ProviderName );
+            return new CGIF_END(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 19, "CGIF_END", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_LOG_ENDArgs IISFilterFILTER_LOG_ENDTemplate(Action<IISFilterFILTER_LOG_ENDArgs> action)
+        static private CGIF_PATH_NOT_FOUND IISFastCGICGIF_PATH_NOT_FOUNDTemplate(Action<CGIF_PATH_NOT_FOUND> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_LOG_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 77, "FILTER_LOG_END", ProviderGuid, ProviderName );
+            return new CGIF_PATH_NOT_FOUND(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 5, "CGIF_PATH_NOT_FOUND", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_LOG_STARTArgs IISFilterFILTER_LOG_STARTTemplate(Action<IISFilterFILTER_LOG_STARTArgs> action)
+        static private CGIF_QUEUE_FULL IISFastCGICGIF_QUEUE_FULLTemplate(Action<CGIF_QUEUE_FULL> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_LOG_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 65, "FILTER_LOG_START", ProviderGuid, ProviderName );
+            return new CGIF_QUEUE_FULL(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 9, "CGIF_QUEUE_FULL", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_PREPROC_HEADERS_ENDArgs IISFilterFILTER_PREPROC_HEADERS_ENDTemplate(Action<IISFilterFILTER_PREPROC_HEADERS_ENDArgs> action)
+        static private CGIF_QUEUE_REQUEST IISFastCGICGIF_QUEUE_REQUESTTemplate(Action<CGIF_QUEUE_REQUEST> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_PREPROC_HEADERS_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 75, "FILTER_PREPROC_HEADERS_END", ProviderGuid, ProviderName );
+            return new CGIF_QUEUE_REQUEST(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 16, "CGIF_QUEUE_REQUEST", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_PREPROC_HEADERS_STARTArgs IISFilterFILTER_PREPROC_HEADERS_STARTTemplate(Action<IISFilterFILTER_PREPROC_HEADERS_STARTArgs> action)
+        static private CGIF_RAPID_FAILURE_PROTECTION IISFastCGICGIF_RAPID_FAILURE_PROTECTIONTemplate(Action<CGIF_RAPID_FAILURE_PROTECTION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_PREPROC_HEADERS_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 67, "FILTER_PREPROC_HEADERS_START", ProviderGuid, ProviderName );
+            return new CGIF_RAPID_FAILURE_PROTECTION(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 4, "CGIF_RAPID_FAILURE_PROTECTION", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SEND_RAW_DATA_ENDArgs IISFilterFILTER_SEND_RAW_DATA_ENDTemplate(Action<IISFilterFILTER_SEND_RAW_DATA_ENDArgs> action)
+        static private CGIF_REQUEST_TIMEOUT IISFastCGICGIF_REQUEST_TIMEOUTTemplate(Action<CGIF_REQUEST_TIMEOUT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SEND_RAW_DATA_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 71, "FILTER_SEND_RAW_DATA_END", ProviderGuid, ProviderName );
+            return new CGIF_REQUEST_TIMEOUT(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 2, "CGIF_REQUEST_TIMEOUT", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SEND_RAW_DATA_STARTArgs IISFilterFILTER_SEND_RAW_DATA_STARTTemplate(Action<IISFilterFILTER_SEND_RAW_DATA_STARTArgs> action)
+        static private CGIF_RESPONSE_WRITTEN IISFastCGICGIF_RESPONSE_WRITTENTemplate(Action<CGIF_RESPONSE_WRITTEN> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SEND_RAW_DATA_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 61, "FILTER_SEND_RAW_DATA_START", ProviderGuid, ProviderName );
+            return new CGIF_RESPONSE_WRITTEN(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 11, "CGIF_RESPONSE_WRITTEN", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SEND_RESPONSE_ENDArgs IISFilterFILTER_SEND_RESPONSE_ENDTemplate(Action<IISFilterFILTER_SEND_RESPONSE_ENDArgs> action)
+        static private CGIF_SCRIPT_PROCESSOR_MISSING IISFastCGICGIF_SCRIPT_PROCESSOR_MISSINGTemplate(Action<CGIF_SCRIPT_PROCESSOR_MISSING> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SEND_RESPONSE_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 58, "FILTER_SEND_RESPONSE_END", ProviderGuid, ProviderName );
+            return new CGIF_SCRIPT_PROCESSOR_MISSING(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 6, "CGIF_SCRIPT_PROCESSOR_MISSING", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SEND_RESPONSE_STARTArgs IISFilterFILTER_SEND_RESPONSE_STARTTemplate(Action<IISFilterFILTER_SEND_RESPONSE_STARTArgs> action)
+        static private CGIF_START IISFastCGICGIF_STARTTemplate(Action<CGIF_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SEND_RESPONSE_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 62, "FILTER_SEND_RESPONSE_START", ProviderGuid, ProviderName );
+            return new CGIF_START(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 18, "CGIF_START", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SET_REQ_HEADERArgs IISFilterFILTER_SET_REQ_HEADERTemplate(Action<IISFilterFILTER_SET_REQ_HEADERArgs> action)
+        static private CGIF_TRACE_ERROR IISFastCGICGIF_TRACE_ERRORTemplate(Action<CGIF_TRACE_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SET_REQ_HEADERArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 80, "FILTER_SET_REQ_HEADER", ProviderGuid, ProviderName );
+            return new CGIF_TRACE_ERROR(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 13, "CGIF_TRACE_ERROR", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_SET_RESP_HEADERArgs IISFilterFILTER_SET_RESP_HEADERTemplate(Action<IISFilterFILTER_SET_RESP_HEADERArgs> action)
+        static private CGIF_TRACE_INFO IISFastCGICGIF_TRACE_INFOTemplate(Action<CGIF_TRACE_INFO> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_SET_RESP_HEADERArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 76, "FILTER_SET_RESP_HEADER", ProviderGuid, ProviderName );
+            return new CGIF_TRACE_INFO(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 15, "CGIF_TRACE_INFO", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_STARTArgs IISFilterFILTER_STARTTemplate(Action<IISFilterFILTER_STARTArgs> action)
+        static private CGIF_TRACE_WARNING IISFastCGICGIF_TRACE_WARNINGTemplate(Action<CGIF_TRACE_WARNING> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 59, "FILTER_START", ProviderGuid, ProviderName );
+            return new CGIF_TRACE_WARNING(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 14, "CGIF_TRACE_WARNING", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_URL_MAP_ENDArgs IISFilterFILTER_URL_MAP_ENDTemplate(Action<IISFilterFILTER_URL_MAP_ENDArgs> action)
+        static private CGIF_UNEXPECTED_EXIT IISFastCGICGIF_UNEXPECTED_EXITTemplate(Action<CGIF_UNEXPECTED_EXIT> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_URL_MAP_ENDArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 70, "FILTER_URL_MAP_END", ProviderGuid, ProviderName );
+            return new CGIF_UNEXPECTED_EXIT(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 3, "CGIF_UNEXPECTED_EXIT", ProviderGuid, ProviderName );
         }
-        static private IISFilterFILTER_URL_MAP_STARTArgs IISFilterFILTER_URL_MAP_STARTTemplate(Action<IISFilterFILTER_URL_MAP_STARTArgs> action)
+        static private CGIF_UNKNOWN_ERROR IISFastCGICGIF_UNKNOWN_ERRORTemplate(Action<CGIF_UNKNOWN_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISFilterFILTER_URL_MAP_STARTArgs(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 60, "FILTER_URL_MAP_START", ProviderGuid, ProviderName );
+            return new CGIF_UNKNOWN_ERROR(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 10, "CGIF_UNKNOWN_ERROR", ProviderGuid, ProviderName );
         }
-        static private IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs IISGeneralCONFIG_CHANGE_NOTIFICATIONTemplate(Action<IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs> action)
+        static private CGIF_WAITING_FOR_RESPONSE IISFastCGICGIF_WAITING_FOR_RESPONSETemplate(Action<CGIF_WAITING_FOR_RESPONSE> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 26, "CONFIG_CHANGE_NOTIFICATION", ProviderGuid, ProviderName );
+            return new CGIF_WAITING_FOR_RESPONSE(action, 65535, 7, "IISFastCGI", IISFastCGITaskGuid, 12, "CGIF_WAITING_FOR_RESPONSE", ProviderGuid, ProviderName );
         }
-        static private IISGeneralFILE_CHANGE_NOTIFICATIONArgs IISGeneralFILE_CHANGE_NOTIFICATIONTemplate(Action<IISGeneralFILE_CHANGE_NOTIFICATIONArgs> action)
+        static private FILTER_ACCESS_DENIED_END IISFilterFILTER_ACCESS_DENIED_ENDTemplate(Action<FILTER_ACCESS_DENIED_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralFILE_CHANGE_NOTIFICATIONArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 43, "FILE_CHANGE_NOTIFICATION", ProviderGuid, ProviderName );
+            return new FILTER_ACCESS_DENIED_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 30, "FILTER_ACCESS_DENIED_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_CGI_HANDLERArgs IISGeneralGENERAL_CGI_HANDLERTemplate(Action<IISGeneralGENERAL_CGI_HANDLERArgs> action)
+        static private FILTER_ACCESS_DENIED_START IISFilterFILTER_ACCESS_DENIED_STARTTemplate(Action<FILTER_ACCESS_DENIED_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_CGI_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 10, "GENERAL_CGI_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_ACCESS_DENIED_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 29, "FILTER_ACCESS_DENIED_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_CHILD_REQUEST_ENDArgs IISGeneralGENERAL_CHILD_REQUEST_ENDTemplate(Action<IISGeneralGENERAL_CHILD_REQUEST_ENDArgs> action)
+        static private FILTER_ADD_REQ_HEADER IISFilterFILTER_ADD_REQ_HEADERTemplate(Action<FILTER_ADD_REQ_HEADER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_CHILD_REQUEST_ENDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 40, "GENERAL_CHILD_REQUEST_END", ProviderGuid, ProviderName );
+            return new FILTER_ADD_REQ_HEADER(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 32, "FILTER_ADD_REQ_HEADER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_CHILD_REQUEST_STARTArgs IISGeneralGENERAL_CHILD_REQUEST_STARTTemplate(Action<IISGeneralGENERAL_CHILD_REQUEST_STARTArgs> action)
+        static private FILTER_ADD_RESP_HEADER IISFilterFILTER_ADD_RESP_HEADERTemplate(Action<FILTER_ADD_RESP_HEADER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_CHILD_REQUEST_STARTArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 16, "GENERAL_CHILD_REQUEST_START", ProviderGuid, ProviderName );
+            return new FILTER_ADD_RESP_HEADER(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 34, "FILTER_ADD_RESP_HEADER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_DAV_HANDLERArgs IISGeneralGENERAL_DAV_HANDLERTemplate(Action<IISGeneralGENERAL_DAV_HANDLERArgs> action)
+        static private FILTER_AUTH_COMPLETE_END IISFilterFILTER_AUTH_COMPLETE_ENDTemplate(Action<FILTER_AUTH_COMPLETE_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_DAV_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 12, "GENERAL_DAV_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_AUTH_COMPLETE_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 20, "FILTER_AUTH_COMPLETE_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs IISGeneralGENERAL_ENDPOINT_INFORMATIONTemplate(Action<IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs> action)
+        static private FILTER_AUTH_COMPLETE_START IISFilterFILTER_AUTH_COMPLETE_STARTTemplate(Action<FILTER_AUTH_COMPLETE_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 18, "GENERAL_ENDPOINT_INFORMATION", ProviderGuid, ProviderName );
+            return new FILTER_AUTH_COMPLETE_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 19, "FILTER_AUTH_COMPLETE_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs IISGeneralGENERAL_FLUSH_RESPONSE_ENDTemplate(Action<IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs> action)
+        static private FILTER_AUTHENTICATION_END IISFilterFILTER_AUTHENTICATION_ENDTemplate(Action<FILTER_AUTHENTICATION_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 33, "GENERAL_FLUSH_RESPONSE_END", ProviderGuid, ProviderName );
+            return new FILTER_AUTHENTICATION_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 18, "FILTER_AUTHENTICATION_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs IISGeneralGENERAL_FLUSH_RESPONSE_STARTTemplate(Action<IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs> action)
+        static private FILTER_AUTHENTICATION_START IISFilterFILTER_AUTHENTICATION_STARTTemplate(Action<FILTER_AUTHENTICATION_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 28, "GENERAL_FLUSH_RESPONSE_START", ProviderGuid, ProviderName );
+            return new FILTER_AUTHENTICATION_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 17, "FILTER_AUTHENTICATION_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_GET_URL_METADATAArgs IISGeneralGENERAL_GET_URL_METADATATemplate(Action<IISGeneralGENERAL_GET_URL_METADATAArgs> action)
+        static private FILTER_END IISFilterFILTER_ENDTemplate(Action<FILTER_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_GET_URL_METADATAArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 34, "GENERAL_GET_URL_METADATA", ProviderGuid, ProviderName );
+            return new FILTER_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 2, "FILTER_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_ISAPI_HANDLERArgs IISGeneralGENERAL_ISAPI_HANDLERTemplate(Action<IISGeneralGENERAL_ISAPI_HANDLERArgs> action)
+        static private FILTER_END_OF_REQUEST_END IISFilterFILTER_END_OF_REQUEST_ENDTemplate(Action<FILTER_END_OF_REQUEST_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_ISAPI_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 46, "GENERAL_ISAPI_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_END_OF_REQUEST_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 24, "FILTER_END_OF_REQUEST_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_MAP_HANDLERArgs IISGeneralGENERAL_MAP_HANDLERTemplate(Action<IISGeneralGENERAL_MAP_HANDLERArgs> action)
+        static private FILTER_END_OF_REQUEST_START IISFilterFILTER_END_OF_REQUEST_STARTTemplate(Action<FILTER_END_OF_REQUEST_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_MAP_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 30, "GENERAL_MAP_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_END_OF_REQUEST_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 23, "FILTER_END_OF_REQUEST_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(Action<IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs> action)
+        static private FILTER_ERROR IISFilterFILTER_ERRORTemplate(Action<FILTER_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 38, "GENERAL_MODULE_FACTORY_FAILED", ProviderGuid, ProviderName );
+            return new FILTER_ERROR(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 12, "FILTER_ERROR", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORTemplate(Action<IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs> action)
+        static private FILTER_LOG_END IISFilterFILTER_LOG_ENDTemplate(Action<FILTER_LOG_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 20, "GENERAL_NOT_SEND_CUSTOM_ERROR", ProviderGuid, ProviderName );
+            return new FILTER_LOG_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 26, "FILTER_LOG_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs IISGeneralGENERAL_OOP_ISAPI_HANDLERTemplate(Action<IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs> action)
+        static private FILTER_LOG_START IISFilterFILTER_LOG_STARTTemplate(Action<FILTER_LOG_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 22, "GENERAL_OOP_ISAPI_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_LOG_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 25, "FILTER_LOG_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_OPTIONS_HANDLERArgs IISGeneralGENERAL_OPTIONS_HANDLERTemplate(Action<IISGeneralGENERAL_OPTIONS_HANDLERArgs> action)
+        static private FILTER_PREPROC_END IISFilterFILTER_PREPROC_ENDTemplate(Action<FILTER_PREPROC_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_OPTIONS_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 29, "GENERAL_OPTIONS_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_PREPROC_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 14, "FILTER_PREPROC_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_READ_ENTITY_ENDArgs IISGeneralGENERAL_READ_ENTITY_ENDTemplate(Action<IISGeneralGENERAL_READ_ENTITY_ENDArgs> action)
+        static private FILTER_PREPROC_START IISFilterFILTER_PREPROC_STARTTemplate(Action<FILTER_PREPROC_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_READ_ENTITY_ENDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 21, "GENERAL_READ_ENTITY_END", ProviderGuid, ProviderName );
+            return new FILTER_PREPROC_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 13, "FILTER_PREPROC_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_READ_ENTITY_STARTArgs IISGeneralGENERAL_READ_ENTITY_STARTTemplate(Action<IISGeneralGENERAL_READ_ENTITY_STARTArgs> action)
+        static private FILTER_SEND_RAW_DATA_END IISFilterFILTER_SEND_RAW_DATA_ENDTemplate(Action<FILTER_SEND_RAW_DATA_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_READ_ENTITY_STARTArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 13, "GENERAL_READ_ENTITY_START", ProviderGuid, ProviderName );
+            return new FILTER_SEND_RAW_DATA_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 28, "FILTER_SEND_RAW_DATA_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_REDIRECTION_HANDLERArgs IISGeneralGENERAL_REDIRECTION_HANDLERTemplate(Action<IISGeneralGENERAL_REDIRECTION_HANDLERArgs> action)
+        static private FILTER_SEND_RAW_DATA_START IISFilterFILTER_SEND_RAW_DATA_STARTTemplate(Action<FILTER_SEND_RAW_DATA_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_REDIRECTION_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 19, "GENERAL_REDIRECTION_HANDLER", ProviderGuid, ProviderName );
+            return new FILTER_SEND_RAW_DATA_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 27, "FILTER_SEND_RAW_DATA_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_REQUEST_ENDArgs IISGeneralGENERAL_REQUEST_ENDTemplate(Action<IISGeneralGENERAL_REQUEST_ENDArgs> action)
+        static private FILTER_SEND_RESPONSE_END IISFilterFILTER_SEND_RESPONSE_ENDTemplate(Action<FILTER_SEND_RESPONSE_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_REQUEST_ENDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 37, "GENERAL_REQUEST_END", ProviderGuid, ProviderName );
+            return new FILTER_SEND_RESPONSE_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 22, "FILTER_SEND_RESPONSE_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_REQUEST_ENTITYArgs IISGeneralGENERAL_REQUEST_ENTITYTemplate(Action<IISGeneralGENERAL_REQUEST_ENTITYArgs> action)
+        static private FILTER_SEND_RESPONSE_START IISFilterFILTER_SEND_RESPONSE_STARTTemplate(Action<FILTER_SEND_RESPONSE_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_REQUEST_ENTITYArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 32, "GENERAL_REQUEST_ENTITY", ProviderGuid, ProviderName );
+            return new FILTER_SEND_RESPONSE_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 21, "FILTER_SEND_RESPONSE_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_REQUEST_HEADERSArgs IISGeneralGENERAL_REQUEST_HEADERSTemplate(Action<IISGeneralGENERAL_REQUEST_HEADERSArgs> action)
+        static private FILTER_SET_REQ_HEADER IISFilterFILTER_SET_REQ_HEADERTemplate(Action<FILTER_SET_REQ_HEADER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_REQUEST_HEADERSArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 25, "GENERAL_REQUEST_HEADERS", ProviderGuid, ProviderName );
+            return new FILTER_SET_REQ_HEADER(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 31, "FILTER_SET_REQ_HEADER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_REQUEST_STARTArgs IISGeneralGENERAL_REQUEST_STARTTemplate(Action<IISGeneralGENERAL_REQUEST_STARTArgs> action)
+        static private FILTER_SET_RESP_HEADER IISFilterFILTER_SET_RESP_HEADERTemplate(Action<FILTER_SET_RESP_HEADER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_REQUEST_STARTArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 41, "GENERAL_REQUEST_START", ProviderGuid, ProviderName );
+            return new FILTER_SET_RESP_HEADER(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 33, "FILTER_SET_RESP_HEADER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERTemplate(Action<IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs> action)
+        static private FILTER_START IISFilterFILTER_STARTTemplate(Action<FILTER_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 36, "GENERAL_RESPONSE_ENTITY_BUFFER", ProviderGuid, ProviderName );
+            return new FILTER_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 1, "FILTER_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs IISGeneralGENERAL_RESPONSE_ENTITY_FILETemplate(Action<IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs> action)
+        static private FILTER_URL_MAP_END IISFilterFILTER_URL_MAP_ENDTemplate(Action<FILTER_URL_MAP_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 14, "GENERAL_RESPONSE_ENTITY_FILE", ProviderGuid, ProviderName );
+            return new FILTER_URL_MAP_END(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 16, "FILTER_URL_MAP_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_RESPONSE_HEADERSArgs IISGeneralGENERAL_RESPONSE_HEADERSTemplate(Action<IISGeneralGENERAL_RESPONSE_HEADERSArgs> action)
+        static private FILTER_URL_MAP_START IISFilterFILTER_URL_MAP_STARTTemplate(Action<FILTER_URL_MAP_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_RESPONSE_HEADERSArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 45, "GENERAL_RESPONSE_HEADERS", ProviderGuid, ProviderName );
+            return new FILTER_URL_MAP_START(action, 65535, 3, "IISFilter", IISFilterTaskGuid, 15, "FILTER_URL_MAP_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs IISGeneralGENERAL_SEND_CUSTOM_ERRORTemplate(Action<IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs> action)
+        static private GENERAL_CGI_HANDLER IISGeneralGENERAL_CGI_HANDLERTemplate(Action<GENERAL_CGI_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 44, "GENERAL_SEND_CUSTOM_ERROR", ProviderGuid, ProviderName );
+            return new GENERAL_CGI_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 11, "GENERAL_CGI_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_SET_REQUEST_HEADERArgs IISGeneralGENERAL_SET_REQUEST_HEADERTemplate(Action<IISGeneralGENERAL_SET_REQUEST_HEADERArgs> action)
+        static private GENERAL_CHILD_REQUEST_END IISGeneralGENERAL_CHILD_REQUEST_ENDTemplate(Action<GENERAL_CHILD_REQUEST_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_SET_REQUEST_HEADERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 15, "GENERAL_SET_REQUEST_HEADER", ProviderGuid, ProviderName );
+            return new GENERAL_CHILD_REQUEST_END(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 32, "GENERAL_CHILD_REQUEST_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_SET_RESPONSE_HEADERArgs IISGeneralGENERAL_SET_RESPONSE_HEADERTemplate(Action<IISGeneralGENERAL_SET_RESPONSE_HEADERArgs> action)
+        static private GENERAL_CHILD_REQUEST_START IISGeneralGENERAL_CHILD_REQUEST_STARTTemplate(Action<GENERAL_CHILD_REQUEST_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_SET_RESPONSE_HEADERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 23, "GENERAL_SET_RESPONSE_HEADER", ProviderGuid, ProviderName );
+            return new GENERAL_CHILD_REQUEST_START(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 31, "GENERAL_CHILD_REQUEST_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_STATIC_FILE_HANDLERArgs IISGeneralGENERAL_STATIC_FILE_HANDLERTemplate(Action<IISGeneralGENERAL_STATIC_FILE_HANDLERArgs> action)
+        static private GENERAL_CONFIG_CHANGE_NOTIFICATION IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATIONTemplate(Action<GENERAL_CONFIG_CHANGE_NOTIFICATION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_STATIC_FILE_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 35, "GENERAL_STATIC_FILE_HANDLER", ProviderGuid, ProviderName );
+            return new GENERAL_CONFIG_CHANGE_NOTIFICATION(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 40, "GENERAL_CONFIG_CHANGE_NOTIFICATION", ProviderGuid, ProviderName );
         }
-        static private IISGeneralGENERAL_TRACE_HANDLERArgs IISGeneralGENERAL_TRACE_HANDLERTemplate(Action<IISGeneralGENERAL_TRACE_HANDLERArgs> action)
+        static private GENERAL_DAV_HANDLER IISGeneralGENERAL_DAV_HANDLERTemplate(Action<GENERAL_DAV_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralGENERAL_TRACE_HANDLERArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 31, "GENERAL_TRACE_HANDLER", ProviderGuid, ProviderName );
+            return new GENERAL_DAV_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 15, "GENERAL_DAV_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISGeneralHANDLER_CHANGEDArgs IISGeneralHANDLER_CHANGEDTemplate(Action<IISGeneralHANDLER_CHANGEDArgs> action)
+        static private GENERAL_ENDPOINT_INFORMATION IISGeneralGENERAL_ENDPOINT_INFORMATIONTemplate(Action<GENERAL_ENDPOINT_INFORMATION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralHANDLER_CHANGEDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 11, "HANDLER_CHANGED", ProviderGuid, ProviderName );
+            return new GENERAL_ENDPOINT_INFORMATION(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 55, "GENERAL_ENDPOINT_INFORMATION", ProviderGuid, ProviderName );
         }
-        static private IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(Action<IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs> action)
+        static private GENERAL_FILE_CHANGE_NOTIFICATION IISGeneralGENERAL_FILE_CHANGE_NOTIFICATIONTemplate(Action<GENERAL_FILE_CHANGE_NOTIFICATION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 39, "HANDLER_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
+            return new GENERAL_FILE_CHANGE_NOTIFICATION(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 39, "GENERAL_FILE_CHANGE_NOTIFICATION", ProviderGuid, ProviderName );
         }
-        static private IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(Action<IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs> action)
+        static private GENERAL_FLUSH_RESPONSE_END IISGeneralGENERAL_FLUSH_RESPONSE_ENDTemplate(Action<GENERAL_FLUSH_RESPONSE_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 24, "MODULE_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
+            return new GENERAL_FLUSH_RESPONSE_END(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 36, "GENERAL_FLUSH_RESPONSE_END", ProviderGuid, ProviderName );
         }
-        static private IISGeneralURL_CHANGEDArgs IISGeneralURL_CHANGEDTemplate(Action<IISGeneralURL_CHANGEDArgs> action)
+        static private GENERAL_FLUSH_RESPONSE_START IISGeneralGENERAL_FLUSH_RESPONSE_STARTTemplate(Action<GENERAL_FLUSH_RESPONSE_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralURL_CHANGEDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 17, "URL_CHANGED", ProviderGuid, ProviderName );
+            return new GENERAL_FLUSH_RESPONSE_START(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 35, "GENERAL_FLUSH_RESPONSE_START", ProviderGuid, ProviderName );
         }
-        static private IISGeneralUSER_SETArgs IISGeneralUSER_SETTemplate(Action<IISGeneralUSER_SETArgs> action)
+        static private GENERAL_GET_URL_METADATA IISGeneralGENERAL_GET_URL_METADATATemplate(Action<GENERAL_GET_URL_METADATA> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralUSER_SETArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 27, "USER_SET", ProviderGuid, ProviderName );
+            return new GENERAL_GET_URL_METADATA(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 30, "GENERAL_GET_URL_METADATA", ProviderGuid, ProviderName );
         }
-        static private IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs IISGeneralVIRTUAL_MODULE_UNRESOLVEDTemplate(Action<IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs> action)
+        static private GENERAL_HANDLER_CHANGED IISGeneralGENERAL_HANDLER_CHANGEDTemplate(Action<GENERAL_HANDLER_CHANGED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs(action, 65535, 1, "IISGeneral", IISGeneralTaskGuid, 42, "VIRTUAL_MODULE_UNRESOLVED", ProviderGuid, ProviderName );
+            return new GENERAL_HANDLER_CHANGED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 43, "GENERAL_HANDLER_CHANGED", ProviderGuid, ProviderName );
         }
-        static private IISISAPIISAPI_ENDArgs IISISAPIISAPI_ENDTemplate(Action<IISISAPIISAPI_ENDArgs> action)
+        static private GENERAL_HANDLER_PRECONDITION_NOT_MATCH IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISISAPIISAPI_ENDArgs(action, 65535, 7, "IISISAPI", IISISAPITaskGuid, 121, "ISAPI_END", ProviderGuid, ProviderName );
+            return new GENERAL_HANDLER_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 46, "GENERAL_HANDLER_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
         }
-        static private IISISAPIISAPI_STARTArgs IISISAPIISAPI_STARTTemplate(Action<IISISAPIISAPI_STARTArgs> action)
+        static private GENERAL_ISAPI_HANDLER IISGeneralGENERAL_ISAPI_HANDLERTemplate(Action<GENERAL_ISAPI_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISISAPIISAPI_STARTArgs(action, 65535, 7, "IISISAPI", IISISAPITaskGuid, 122, "ISAPI_START", ProviderGuid, ProviderName );
+            return new GENERAL_ISAPI_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 12, "GENERAL_ISAPI_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSTemplate(Action<IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs> action)
+        static private GENERAL_MAP_HANDLER IISGeneralGENERAL_MAP_HANDLERTemplate(Action<GENERAL_MAP_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 54, "MODULE_SET_RESPONSE_SUCCESS_STATUS", ProviderGuid, ProviderName );
+            return new GENERAL_MAP_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 34, "GENERAL_MAP_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs IISRequestNotificationNOTIFY_MODULE_COMPLETIONTemplate(Action<IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs> action)
+        static private GENERAL_MODULE_FACTORY_FAILED IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(Action<GENERAL_MODULE_FACTORY_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 51, "NOTIFY_MODULE_COMPLETION", ProviderGuid, ProviderName );
+            return new GENERAL_MODULE_FACTORY_FAILED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 54, "GENERAL_MODULE_FACTORY_FAILED", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationNOTIFY_MODULE_ENDArgs IISRequestNotificationNOTIFY_MODULE_ENDTemplate(Action<IISRequestNotificationNOTIFY_MODULE_ENDArgs> action)
+        static private GENERAL_MODULE_PRECONDITION_NOT_MATCH IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationNOTIFY_MODULE_ENDArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 55, "NOTIFY_MODULE_END", ProviderGuid, ProviderName );
+            return new GENERAL_MODULE_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 45, "GENERAL_MODULE_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationNOTIFY_MODULE_STARTArgs IISRequestNotificationNOTIFY_MODULE_STARTTemplate(Action<IISRequestNotificationNOTIFY_MODULE_STARTArgs> action)
+        static private GENERAL_NOT_SEND_CUSTOM_ERROR IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORTemplate(Action<GENERAL_NOT_SEND_CUSTOM_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationNOTIFY_MODULE_STARTArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 50, "NOTIFY_MODULE_START", ProviderGuid, ProviderName );
+            return new GENERAL_NOT_SEND_CUSTOM_ERROR(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 52, "GENERAL_NOT_SEND_CUSTOM_ERROR", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs IISRequestNotificationPRE_BEGIN_REQUEST_ENDTemplate(Action<IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs> action)
+        static private GENERAL_OOP_ISAPI_HANDLER IISGeneralGENERAL_OOP_ISAPI_HANDLERTemplate(Action<GENERAL_OOP_ISAPI_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 52, "PRE_BEGIN_REQUEST_END", ProviderGuid, ProviderName );
+            return new GENERAL_OOP_ISAPI_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 13, "GENERAL_OOP_ISAPI_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs IISRequestNotificationPRE_BEGIN_REQUEST_STARTTemplate(Action<IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs> action)
+        static private GENERAL_OPTIONS_HANDLER IISGeneralGENERAL_OPTIONS_HANDLERTemplate(Action<GENERAL_OPTIONS_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 48, "PRE_BEGIN_REQUEST_START", ProviderGuid, ProviderName );
+            return new GENERAL_OPTIONS_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 16, "GENERAL_OPTIONS_HANDLER", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationREQUEST_PROCESSING_ERRORArgs IISRequestNotificationREQUEST_PROCESSING_ERRORTemplate(Action<IISRequestNotificationREQUEST_PROCESSING_ERRORArgs> action)
+        static private GENERAL_READ_ENTITY_END IISGeneralGENERAL_READ_ENTITY_ENDTemplate(Action<GENERAL_READ_ENTITY_END> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationREQUEST_PROCESSING_ERRORArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 49, "REQUEST_PROCESSING_ERROR", ProviderGuid, ProviderName );
+            return new GENERAL_READ_ENTITY_END(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 38, "GENERAL_READ_ENTITY_END", ProviderGuid, ProviderName );
         }
-        static private IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONTemplate(Action<IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs> action)
+        static private GENERAL_READ_ENTITY_START IISGeneralGENERAL_READ_ENTITY_STARTTemplate(Action<GENERAL_READ_ENTITY_START> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs(action, 65535, 2, "IISRequestNotification", IISRequestNotificationTaskGuid, 53, "SET_RESPONSE_ERROR_DESCRIPTION", ProviderGuid, ProviderName );
+            return new GENERAL_READ_ENTITY_START(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 37, "GENERAL_READ_ENTITY_START", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_REDIRECTION_HANDLER IISGeneralGENERAL_REDIRECTION_HANDLERTemplate(Action<GENERAL_REDIRECTION_HANDLER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_REDIRECTION_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 14, "GENERAL_REDIRECTION_HANDLER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_REQUEST_END IISGeneralGENERAL_REQUEST_ENDTemplate(Action<GENERAL_REQUEST_END> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_REQUEST_END(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 2, "GENERAL_REQUEST_END", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_REQUEST_ENTITY IISGeneralGENERAL_REQUEST_ENTITYTemplate(Action<GENERAL_REQUEST_ENTITY> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_REQUEST_ENTITY(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 51, "GENERAL_REQUEST_ENTITY", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_REQUEST_HEADERS IISGeneralGENERAL_REQUEST_HEADERSTemplate(Action<GENERAL_REQUEST_HEADERS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_REQUEST_HEADERS(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 50, "GENERAL_REQUEST_HEADERS", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_REQUEST_START IISGeneralGENERAL_REQUEST_STARTTemplate(Action<GENERAL_REQUEST_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_REQUEST_START(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 1, "GENERAL_REQUEST_START", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_RESPONSE_ENTITY_BUFFER IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERTemplate(Action<GENERAL_RESPONSE_ENTITY_BUFFER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_RESPONSE_ENTITY_BUFFER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 49, "GENERAL_RESPONSE_ENTITY_BUFFER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_RESPONSE_ENTITY_FILE IISGeneralGENERAL_RESPONSE_ENTITY_FILETemplate(Action<GENERAL_RESPONSE_ENTITY_FILE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_RESPONSE_ENTITY_FILE(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 48, "GENERAL_RESPONSE_ENTITY_FILE", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_RESPONSE_HEADERS IISGeneralGENERAL_RESPONSE_HEADERSTemplate(Action<GENERAL_RESPONSE_HEADERS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_RESPONSE_HEADERS(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 47, "GENERAL_RESPONSE_HEADERS", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_SEND_CUSTOM_ERROR IISGeneralGENERAL_SEND_CUSTOM_ERRORTemplate(Action<GENERAL_SEND_CUSTOM_ERROR> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_SEND_CUSTOM_ERROR(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 33, "GENERAL_SEND_CUSTOM_ERROR", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_SET_REQUEST_HEADER IISGeneralGENERAL_SET_REQUEST_HEADERTemplate(Action<GENERAL_SET_REQUEST_HEADER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_SET_REQUEST_HEADER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 53, "GENERAL_SET_REQUEST_HEADER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_SET_RESPONSE_HEADER IISGeneralGENERAL_SET_RESPONSE_HEADERTemplate(Action<GENERAL_SET_RESPONSE_HEADER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_SET_RESPONSE_HEADER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 56, "GENERAL_SET_RESPONSE_HEADER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_STATIC_FILE_HANDLER IISGeneralGENERAL_STATIC_FILE_HANDLERTemplate(Action<GENERAL_STATIC_FILE_HANDLER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_STATIC_FILE_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 10, "GENERAL_STATIC_FILE_HANDLER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_TRACE_HANDLER IISGeneralGENERAL_TRACE_HANDLERTemplate(Action<GENERAL_TRACE_HANDLER> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_TRACE_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 17, "GENERAL_TRACE_HANDLER", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_URL_CHANGED IISGeneralGENERAL_URL_CHANGEDTemplate(Action<GENERAL_URL_CHANGED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_URL_CHANGED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 42, "GENERAL_URL_CHANGED", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_USER_SET IISGeneralGENERAL_USER_SETTemplate(Action<GENERAL_USER_SET> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_USER_SET(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 44, "GENERAL_USER_SET", ProviderGuid, ProviderName );
+        }
+        static private GENERAL_VIRTUAL_MODULE_UNRESOLVED IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVEDTemplate(Action<GENERAL_VIRTUAL_MODULE_UNRESOLVED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new GENERAL_VIRTUAL_MODULE_UNRESOLVED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 41, "GENERAL_VIRTUAL_MODULE_UNRESOLVED", ProviderGuid, ProviderName );
+        }
+        static private ISAPI_END IISISAPIISAPI_ENDTemplate(Action<ISAPI_END> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new ISAPI_END(action, 65535, 5, "IISISAPI", IISISAPITaskGuid, 2, "ISAPI_END", ProviderGuid, ProviderName );
+        }
+        static private ISAPI_START IISISAPIISAPI_STARTTemplate(Action<ISAPI_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new ISAPI_START(action, 65535, 5, "IISISAPI", IISISAPITaskGuid, 1, "ISAPI_START", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_CRITICAL_ERROR IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERRORTemplate(Action<MODULE_EVENTS_MODULE_CRITICAL_ERROR> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_CRITICAL_ERROR(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 3, "MODULE_EVENTS_MODULE_CRITICAL_ERROR", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_END IISModuleEventsMODULE_EVENTS_MODULE_ENDTemplate(Action<MODULE_EVENTS_MODULE_END> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_END(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 2, "MODULE_EVENTS_MODULE_END", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_ERROR IISModuleEventsMODULE_EVENTS_MODULE_ERRORTemplate(Action<MODULE_EVENTS_MODULE_ERROR> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_ERROR(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 4, "MODULE_EVENTS_MODULE_ERROR", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_INFORMATION IISModuleEventsMODULE_EVENTS_MODULE_INFORMATIONTemplate(Action<MODULE_EVENTS_MODULE_INFORMATION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_INFORMATION(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 6, "MODULE_EVENTS_MODULE_INFORMATION", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_START IISModuleEventsMODULE_EVENTS_MODULE_STARTTemplate(Action<MODULE_EVENTS_MODULE_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_START(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 1, "MODULE_EVENTS_MODULE_START", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_VERBOSE IISModuleEventsMODULE_EVENTS_MODULE_VERBOSETemplate(Action<MODULE_EVENTS_MODULE_VERBOSE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_VERBOSE(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 7, "MODULE_EVENTS_MODULE_VERBOSE", ProviderGuid, ProviderName );
+        }
+        static private MODULE_EVENTS_MODULE_WARNING IISModuleEventsMODULE_EVENTS_MODULE_WARNINGTemplate(Action<MODULE_EVENTS_MODULE_WARNING> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_EVENTS_MODULE_WARNING(action, 65535, 12, "IISModuleEvents", IISModuleEventsTaskGuid, 5, "MODULE_EVENTS_MODULE_WARNING", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_COMPLETION IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETIONTemplate(Action<REQUEST_NOTIFICATION_EVENTS_COMPLETION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_COMPLETION(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 3, "REQUEST_NOTIFICATION_EVENTS_COMPLETION", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_END IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ENDTemplate(Action<REQUEST_NOTIFICATION_EVENTS_END> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_END(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 2, "REQUEST_NOTIFICATION_EVENTS_END", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_ERROR IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERRORTemplate(Action<REQUEST_NOTIFICATION_EVENTS_ERROR> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_ERROR(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 15, "REQUEST_NOTIFICATION_EVENTS_ERROR", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 18, "REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 16, "REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 17, "REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_EVENTS_START IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_STARTTemplate(Action<REQUEST_NOTIFICATION_EVENTS_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_EVENTS_START(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 1, "REQUEST_NOTIFICATION_EVENTS_START", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_PRE_BEGIN_END IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_ENDTemplate(Action<REQUEST_NOTIFICATION_PRE_BEGIN_END> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_PRE_BEGIN_END(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 5, "REQUEST_NOTIFICATION_PRE_BEGIN_END", ProviderGuid, ProviderName );
+        }
+        static private REQUEST_NOTIFICATION_PRE_BEGIN_START IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_STARTTemplate(Action<REQUEST_NOTIFICATION_PRE_BEGIN_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new REQUEST_NOTIFICATION_PRE_BEGIN_START(action, 65535, 11, "IISRequestNotification", IISRequestNotificationTaskGuid, 4, "REQUEST_NOTIFICATION_PRE_BEGIN_START", ProviderGuid, ProviderName );
+        }
+        static private SEC_DENIED_BY_ACCESS_FLAGS IISSecuritySEC_DENIED_BY_ACCESS_FLAGSTemplate(Action<SEC_DENIED_BY_ACCESS_FLAGS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_DENIED_BY_ACCESS_FLAGS(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 18, "SEC_DENIED_BY_ACCESS_FLAGS", ProviderGuid, ProviderName );
+        }
+        static private SEC_DENIED_BY_CGI_RESTRICTION IISSecuritySEC_DENIED_BY_CGI_RESTRICTIONTemplate(Action<SEC_DENIED_BY_CGI_RESTRICTION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_DENIED_BY_CGI_RESTRICTION(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 17, "SEC_DENIED_BY_CGI_RESTRICTION", ProviderGuid, ProviderName );
+        }
+        static private SEC_DENIED_BY_ISAPI_RESTRICTION IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTIONTemplate(Action<SEC_DENIED_BY_ISAPI_RESTRICTION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_DENIED_BY_ISAPI_RESTRICTION(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 16, "SEC_DENIED_BY_ISAPI_RESTRICTION", ProviderGuid, ProviderName );
+        }
+        static private SEC_DENIED_BY_MIMEMAP IISSecuritySEC_DENIED_BY_MIMEMAPTemplate(Action<SEC_DENIED_BY_MIMEMAP> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_DENIED_BY_MIMEMAP(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 15, "SEC_DENIED_BY_MIMEMAP", ProviderGuid, ProviderName );
+        }
+        static private SEC_FILE_ACCESS_DENIED IISSecuritySEC_FILE_ACCESS_DENIEDTemplate(Action<SEC_FILE_ACCESS_DENIED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_FILE_ACCESS_DENIED(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 14, "SEC_FILE_ACCESS_DENIED", ProviderGuid, ProviderName );
+        }
+        static private SEC_ILLEGAL_SHORT_FILENAME IISSecuritySEC_ILLEGAL_SHORT_FILENAMETemplate(Action<SEC_ILLEGAL_SHORT_FILENAME> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_ILLEGAL_SHORT_FILENAME(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 10, "SEC_ILLEGAL_SHORT_FILENAME", ProviderGuid, ProviderName );
+        }
+        static private SEC_REJECTED_HOSTNAME IISSecuritySEC_REJECTED_HOSTNAMETemplate(Action<SEC_REJECTED_HOSTNAME> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_REJECTED_HOSTNAME(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 12, "SEC_REJECTED_HOSTNAME", ProviderGuid, ProviderName );
+        }
+        static private SEC_REJECTED_IP IISSecuritySEC_REJECTED_IPTemplate(Action<SEC_REJECTED_IP> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_REJECTED_IP(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 11, "SEC_REJECTED_IP", ProviderGuid, ProviderName );
+        }
+        static private SEC_REQUIRE_SSL_128 IISSecuritySEC_REQUIRE_SSL_128Template(Action<SEC_REQUIRE_SSL_128> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new SEC_REQUIRE_SSL_128(action, 65535, 2, "IISSecurity", IISSecurityTaskGuid, 13, "SEC_REQUIRE_SSL_128", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_APPLICATION_CLOSE_CONNECTION IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTIONTemplate(Action<WEBSOCKET_APPLICATION_CLOSE_CONNECTION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_APPLICATION_CLOSE_CONNECTION(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 13, "WEBSOCKET_APPLICATION_CLOSE_CONNECTION", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_CLOSE_RECEIVED IISWebSocketWEBSOCKET_CLOSE_RECEIVEDTemplate(Action<WEBSOCKET_CLOSE_RECEIVED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_CLOSE_RECEIVED(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 17, "WEBSOCKET_CLOSE_RECEIVED", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_CLOSE_SEND_FAILURE IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURETemplate(Action<WEBSOCKET_CLOSE_SEND_FAILURE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_CLOSE_SEND_FAILURE(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 20, "WEBSOCKET_CLOSE_SEND_FAILURE", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_CLOSE_SEND_START IISWebSocketWEBSOCKET_CLOSE_SEND_STARTTemplate(Action<WEBSOCKET_CLOSE_SEND_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_CLOSE_SEND_START(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 18, "WEBSOCKET_CLOSE_SEND_START", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_CLOSE_SEND_SUCCESS IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESSTemplate(Action<WEBSOCKET_CLOSE_SEND_SUCCESS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_CLOSE_SEND_SUCCESS(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 19, "WEBSOCKET_CLOSE_SEND_SUCCESS", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_END_FAILURE IISWebSocketWEBSOCKET_END_FAILURETemplate(Action<WEBSOCKET_END_FAILURE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_END_FAILURE(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 4, "WEBSOCKET_END_FAILURE", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_END_SUCCESS IISWebSocketWEBSOCKET_END_SUCCESSTemplate(Action<WEBSOCKET_END_SUCCESS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_END_SUCCESS(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 3, "WEBSOCKET_END_SUCCESS", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_INITIALIZE_NOT_SUCCESS IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESSTemplate(Action<WEBSOCKET_INITIALIZE_NOT_SUCCESS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_INITIALIZE_NOT_SUCCESS(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 1, "WEBSOCKET_INITIALIZE_NOT_SUCCESS", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_MODULE_CLOSE_CONNECTION IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTIONTemplate(Action<WEBSOCKET_MODULE_CLOSE_CONNECTION> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_MODULE_CLOSE_CONNECTION(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 14, "WEBSOCKET_MODULE_CLOSE_CONNECTION", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_READ_FRAGMENT_END_FAILURE IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURETemplate(Action<WEBSOCKET_READ_FRAGMENT_END_FAILURE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_READ_FRAGMENT_END_FAILURE(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 8, "WEBSOCKET_READ_FRAGMENT_END_FAILURE", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_READ_FRAGMENT_END_PENDING IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDINGTemplate(Action<WEBSOCKET_READ_FRAGMENT_END_PENDING> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_READ_FRAGMENT_END_PENDING(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 6, "WEBSOCKET_READ_FRAGMENT_END_PENDING", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_READ_FRAGMENT_END_SUCCESS IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESSTemplate(Action<WEBSOCKET_READ_FRAGMENT_END_SUCCESS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_READ_FRAGMENT_END_SUCCESS(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 7, "WEBSOCKET_READ_FRAGMENT_END_SUCCESS", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_READ_FRAGMENT_START IISWebSocketWEBSOCKET_READ_FRAGMENT_STARTTemplate(Action<WEBSOCKET_READ_FRAGMENT_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_READ_FRAGMENT_START(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 5, "WEBSOCKET_READ_FRAGMENT_START", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_READ_IO_FAILED IISWebSocketWEBSOCKET_READ_IO_FAILEDTemplate(Action<WEBSOCKET_READ_IO_FAILED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_READ_IO_FAILED(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 15, "WEBSOCKET_READ_IO_FAILED", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_START IISWebSocketWEBSOCKET_STARTTemplate(Action<WEBSOCKET_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_START(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 2, "WEBSOCKET_START", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_WRITE_FRAGMENT_END_FAILURE IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURETemplate(Action<WEBSOCKET_WRITE_FRAGMENT_END_FAILURE> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_WRITE_FRAGMENT_END_FAILURE(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 12, "WEBSOCKET_WRITE_FRAGMENT_END_FAILURE", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_WRITE_FRAGMENT_END_PENDING IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDINGTemplate(Action<WEBSOCKET_WRITE_FRAGMENT_END_PENDING> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_WRITE_FRAGMENT_END_PENDING(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 10, "WEBSOCKET_WRITE_FRAGMENT_END_PENDING", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESSTemplate(Action<WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 11, "WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_WRITE_FRAGMENT_START IISWebSocketWEBSOCKET_WRITE_FRAGMENT_STARTTemplate(Action<WEBSOCKET_WRITE_FRAGMENT_START> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_WRITE_FRAGMENT_START(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 9, "WEBSOCKET_WRITE_FRAGMENT_START", ProviderGuid, ProviderName );
+        }
+        static private WEBSOCKET_WRITE_IO_FAILED IISWebSocketWEBSOCKET_WRITE_IO_FAILEDTemplate(Action<WEBSOCKET_WRITE_IO_FAILED> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new WEBSOCKET_WRITE_IO_FAILED(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 16, "WEBSOCKET_WRITE_IO_FAILED", ProviderGuid, ProviderName );
         }
 
         static private volatile TraceEvent[] s_templates;
@@ -1722,119 +2673,182 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         {
             if (s_templates == null)
             {
-                var templates = new TraceEvent[112];
-                templates[0] = IISGeneralGENERAL_CGI_HANDLERTemplate(null);
-                templates[1] = IISGeneralHANDLER_CHANGEDTemplate(null);
-                templates[2] = IISGeneralGENERAL_DAV_HANDLERTemplate(null);
-                templates[3] = IISGeneralGENERAL_READ_ENTITY_STARTTemplate(null);
-                templates[4] = IISGeneralGENERAL_RESPONSE_ENTITY_FILETemplate(null);
-                templates[5] = IISGeneralGENERAL_SET_REQUEST_HEADERTemplate(null);
-                templates[6] = IISGeneralGENERAL_CHILD_REQUEST_STARTTemplate(null);
-                templates[7] = IISGeneralURL_CHANGEDTemplate(null);
-                templates[8] = IISGeneralGENERAL_ENDPOINT_INFORMATIONTemplate(null);
-                templates[9] = IISGeneralGENERAL_REDIRECTION_HANDLERTemplate(null);
-                templates[10] = IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORTemplate(null);
-                templates[11] = IISGeneralGENERAL_READ_ENTITY_ENDTemplate(null);
-                templates[12] = IISGeneralGENERAL_OOP_ISAPI_HANDLERTemplate(null);
-                templates[13] = IISGeneralGENERAL_SET_RESPONSE_HEADERTemplate(null);
-                templates[14] = IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(null);
-                templates[15] = IISGeneralGENERAL_REQUEST_HEADERSTemplate(null);
-                templates[16] = IISGeneralCONFIG_CHANGE_NOTIFICATIONTemplate(null);
-                templates[17] = IISGeneralUSER_SETTemplate(null);
-                templates[18] = IISGeneralGENERAL_FLUSH_RESPONSE_STARTTemplate(null);
-                templates[19] = IISGeneralGENERAL_OPTIONS_HANDLERTemplate(null);
-                templates[20] = IISGeneralGENERAL_MAP_HANDLERTemplate(null);
-                templates[21] = IISGeneralGENERAL_TRACE_HANDLERTemplate(null);
-                templates[22] = IISGeneralGENERAL_REQUEST_ENTITYTemplate(null);
-                templates[23] = IISGeneralGENERAL_FLUSH_RESPONSE_ENDTemplate(null);
-                templates[24] = IISGeneralGENERAL_GET_URL_METADATATemplate(null);
-                templates[25] = IISGeneralGENERAL_STATIC_FILE_HANDLERTemplate(null);
-                templates[26] = IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERTemplate(null);
-                templates[27] = IISGeneralGENERAL_REQUEST_ENDTemplate(null);
-                templates[28] = IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(null);
-                templates[29] = IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(null);
-                templates[30] = IISGeneralGENERAL_CHILD_REQUEST_ENDTemplate(null);
-                templates[31] = IISGeneralGENERAL_REQUEST_STARTTemplate(null);
-                templates[32] = IISGeneralVIRTUAL_MODULE_UNRESOLVEDTemplate(null);
-                templates[33] = IISGeneralFILE_CHANGE_NOTIFICATIONTemplate(null);
-                templates[34] = IISGeneralGENERAL_SEND_CUSTOM_ERRORTemplate(null);
-                templates[35] = IISGeneralGENERAL_RESPONSE_HEADERSTemplate(null);
-                templates[36] = IISGeneralGENERAL_ISAPI_HANDLERTemplate(null);
-                templates[37] = IISRequestNotificationPRE_BEGIN_REQUEST_STARTTemplate(null);
-                templates[38] = IISRequestNotificationREQUEST_PROCESSING_ERRORTemplate(null);
-                templates[39] = IISRequestNotificationNOTIFY_MODULE_STARTTemplate(null);
-                templates[40] = IISRequestNotificationNOTIFY_MODULE_COMPLETIONTemplate(null);
-                templates[41] = IISRequestNotificationPRE_BEGIN_REQUEST_ENDTemplate(null);
-                templates[42] = IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONTemplate(null);
-                templates[43] = IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSTemplate(null);
-                templates[44] = IISRequestNotificationNOTIFY_MODULE_ENDTemplate(null);
-                templates[45] = IISFilterFILTER_ADD_RESP_HEADERTemplate(null);
-                templates[46] = IISFilterFILTER_AUTH_COMPLETE_ENDTemplate(null);
-                templates[47] = IISFilterFILTER_SEND_RESPONSE_ENDTemplate(null);
-                templates[48] = IISFilterFILTER_STARTTemplate(null);
-                templates[49] = IISFilterFILTER_URL_MAP_STARTTemplate(null);
-                templates[50] = IISFilterFILTER_SEND_RAW_DATA_STARTTemplate(null);
-                templates[51] = IISFilterFILTER_SEND_RESPONSE_STARTTemplate(null);
-                templates[52] = IISFilterFILTER_ENDTemplate(null);
-                templates[53] = IISFilterFILTER_END_OF_REQUEST_ENDTemplate(null);
-                templates[54] = IISFilterFILTER_LOG_STARTTemplate(null);
-                templates[55] = IISFilterFILTER_ACCESS_DENIED_ENDTemplate(null);
-                templates[56] = IISFilterFILTER_PREPROC_HEADERS_STARTTemplate(null);
-                templates[57] = IISFilterFILTER_ERRORTemplate(null);
-                templates[58] = IISFilterFILTER_AUTH_COMPLETE_STARTTemplate(null);
-                templates[59] = IISFilterFILTER_URL_MAP_ENDTemplate(null);
-                templates[60] = IISFilterFILTER_SEND_RAW_DATA_ENDTemplate(null);
-                templates[61] = IISFilterFILTER_AUTHENTICATION_ENDTemplate(null);
-                templates[62] = IISFilterFILTER_AUTHENTICATION_STARTTemplate(null);
-                templates[63] = IISFilterFILTER_END_OF_REQUEST_STARTTemplate(null);
-                templates[64] = IISFilterFILTER_PREPROC_HEADERS_ENDTemplate(null);
-                templates[65] = IISFilterFILTER_SET_RESP_HEADERTemplate(null);
-                templates[66] = IISFilterFILTER_LOG_ENDTemplate(null);
-                templates[67] = IISFilterFILTER_ACCESS_DENIED_STARTTemplate(null);
-                templates[68] = IISFilterFILTER_ADD_REQ_HEADERTemplate(null);
-                templates[69] = IISFilterFILTER_SET_REQ_HEADERTemplate(null);
-                templates[70] = IISCacheFILE_CACHE_ACCESS_ENDTemplate(null);
-                templates[71] = IISCacheHTTPSYS_CACHEABLETemplate(null);
-                templates[72] = IISCacheOUTPUT_CACHE_UPDATE_ENDTemplate(null);
-                templates[73] = IISCacheFILE_CACHE_ACCESS_STARTTemplate(null);
-                templates[74] = IISCacheOUTPUT_CACHE_DISABLEDTemplate(null);
-                templates[75] = IISCacheOUTPUT_CACHE_LOOKUP_STARTTemplate(null);
-                templates[76] = IISCacheOUTPUT_CACHE_UPDATE_STARTTemplate(null);
-                templates[77] = IISCacheURL_CACHE_ACCESS_ENDTemplate(null);
-                templates[78] = IISCacheOUTPUT_CACHE_LOOKUP_ENDTemplate(null);
-                templates[79] = IISCacheFILE_CACHE_CREATE_FILETemplate(null);
-                templates[80] = IISCacheURL_CACHE_ACCESS_STARTTemplate(null);
-                templates[81] = IISAuthenticationAUTH_SSPI_LOGON_FAILEDTemplate(null);
-                templates[82] = IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDTemplate(null);
-                templates[83] = IISAuthenticationAUTH_SUCCEEDEDTemplate(null);
-                templates[84] = IISAuthenticationAUTH_BAD_BASIC_HEADERTemplate(null);
-                templates[85] = IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDTemplate(null);
-                templates[86] = IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDTemplate(null);
-                templates[87] = IISAuthenticationAUTH_STARTTemplate(null);
-                templates[88] = IISAuthenticationAUTH_ENDTemplate(null);
-                templates[89] = IISAuthenticationAUTH_REQUEST_AUTH_TYPETemplate(null);
-                templates[90] = IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDTemplate(null);
-                templates[91] = IISAuthenticationAUTH_NTLM_NULL_SESSIONTemplate(null);
-                templates[92] = IISAuthenticationAUTH_INVALID_ANON_ACCOUNTTemplate(null);
-                templates[93] = IISAuthenticationAUTH_BASIC_LOGON_FAILEDTemplate(null);
-                templates[94] = IISAuthenticationAUTH_KERBEROS_FAILEDTemplate(null);
-                templates[95] = IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDTemplate(null);
-                templates[96] = IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDTemplate(null);
-                templates[97] = IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDTemplate(null);
-                templates[98] = IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDTemplate(null);
-                templates[99] = IISCompressionDYNAMIC_COMPRESSION_DOTemplate(null);
-                templates[100] = IISCompressionSTATIC_COMPRESSION_ENDTemplate(null);
-                templates[101] = IISCompressionSTATIC_COMPRESSION_CREATE_ENDTemplate(null);
-                templates[102] = IISCompressionSTATIC_COMPRESSION_SUCCESSTemplate(null);
-                templates[103] = IISCompressionDYNAMIC_COMPRESSION_STARTTemplate(null);
-                templates[104] = IISCompressionDYNAMIC_COMPRESSION_ENDTemplate(null);
-                templates[105] = IISCompressionDYNAMIC_COMPRESSION_SUCCESSTemplate(null);
-                templates[106] = IISCompressionSTATIC_COMPRESSION_STARTTemplate(null);
-                templates[107] = IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSTemplate(null);
-                templates[108] = IISCompressionSTATIC_COMPRESSION_CREATE_STARTTemplate(null);
-                templates[109] = IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSTemplate(null);
-                templates[110] = IISISAPIISAPI_ENDTemplate(null);
-                templates[111] = IISISAPIISAPI_STARTTemplate(null);
+                var templates = new TraceEvent[175];
+                templates[0] = IISGeneralGENERAL_REQUEST_STARTTemplate(null);
+                templates[1] = IISGeneralGENERAL_REQUEST_ENDTemplate(null);
+                templates[2] = IISGeneralGENERAL_STATIC_FILE_HANDLERTemplate(null);
+                templates[3] = IISGeneralGENERAL_CGI_HANDLERTemplate(null);
+                templates[4] = IISGeneralGENERAL_ISAPI_HANDLERTemplate(null);
+                templates[5] = IISGeneralGENERAL_OOP_ISAPI_HANDLERTemplate(null);
+                templates[6] = IISGeneralGENERAL_REDIRECTION_HANDLERTemplate(null);
+                templates[7] = IISGeneralGENERAL_DAV_HANDLERTemplate(null);
+                templates[8] = IISGeneralGENERAL_OPTIONS_HANDLERTemplate(null);
+                templates[9] = IISGeneralGENERAL_TRACE_HANDLERTemplate(null);
+                templates[10] = IISGeneralGENERAL_GET_URL_METADATATemplate(null);
+                templates[11] = IISGeneralGENERAL_CHILD_REQUEST_STARTTemplate(null);
+                templates[12] = IISGeneralGENERAL_CHILD_REQUEST_ENDTemplate(null);
+                templates[13] = IISGeneralGENERAL_SEND_CUSTOM_ERRORTemplate(null);
+                templates[14] = IISGeneralGENERAL_MAP_HANDLERTemplate(null);
+                templates[15] = IISGeneralGENERAL_FLUSH_RESPONSE_STARTTemplate(null);
+                templates[16] = IISGeneralGENERAL_FLUSH_RESPONSE_ENDTemplate(null);
+                templates[17] = IISGeneralGENERAL_READ_ENTITY_STARTTemplate(null);
+                templates[18] = IISGeneralGENERAL_READ_ENTITY_ENDTemplate(null);
+                templates[19] = IISGeneralGENERAL_FILE_CHANGE_NOTIFICATIONTemplate(null);
+                templates[20] = IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATIONTemplate(null);
+                templates[21] = IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVEDTemplate(null);
+                templates[22] = IISGeneralGENERAL_URL_CHANGEDTemplate(null);
+                templates[23] = IISGeneralGENERAL_HANDLER_CHANGEDTemplate(null);
+                templates[24] = IISGeneralGENERAL_USER_SETTemplate(null);
+                templates[25] = IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(null);
+                templates[26] = IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(null);
+                templates[27] = IISGeneralGENERAL_RESPONSE_HEADERSTemplate(null);
+                templates[28] = IISGeneralGENERAL_RESPONSE_ENTITY_FILETemplate(null);
+                templates[29] = IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERTemplate(null);
+                templates[30] = IISGeneralGENERAL_REQUEST_HEADERSTemplate(null);
+                templates[31] = IISGeneralGENERAL_REQUEST_ENTITYTemplate(null);
+                templates[32] = IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORTemplate(null);
+                templates[33] = IISGeneralGENERAL_SET_REQUEST_HEADERTemplate(null);
+                templates[34] = IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(null);
+                templates[35] = IISGeneralGENERAL_ENDPOINT_INFORMATIONTemplate(null);
+                templates[36] = IISGeneralGENERAL_SET_RESPONSE_HEADERTemplate(null);
+                templates[37] = IISAuthenticationAUTH_STARTTemplate(null);
+                templates[38] = IISAuthenticationAUTH_SUCCEEDEDTemplate(null);
+                templates[39] = IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDTemplate(null);
+                templates[40] = IISAuthenticationAUTH_INVALID_ANON_ACCOUNTTemplate(null);
+                templates[41] = IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDTemplate(null);
+                templates[42] = IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDTemplate(null);
+                templates[43] = IISAuthenticationAUTH_BAD_BASIC_HEADERTemplate(null);
+                templates[44] = IISAuthenticationAUTH_BASIC_LOGON_FAILEDTemplate(null);
+                templates[45] = IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDTemplate(null);
+                templates[46] = IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDTemplate(null);
+                templates[47] = IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDTemplate(null);
+                templates[48] = IISAuthenticationAUTH_SSPI_LOGON_FAILEDTemplate(null);
+                templates[49] = IISAuthenticationAUTH_NTLM_NULL_SESSIONTemplate(null);
+                templates[50] = IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDTemplate(null);
+                templates[51] = IISAuthenticationAUTH_KERBEROS_FAILEDTemplate(null);
+                templates[52] = IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDTemplate(null);
+                templates[53] = IISAuthenticationAUTH_REQUEST_AUTH_TYPETemplate(null);
+                templates[54] = IISAuthenticationAUTH_ENDTemplate(null);
+                templates[55] = IISSecuritySEC_ILLEGAL_SHORT_FILENAMETemplate(null);
+                templates[56] = IISSecuritySEC_REJECTED_IPTemplate(null);
+                templates[57] = IISSecuritySEC_REJECTED_HOSTNAMETemplate(null);
+                templates[58] = IISSecuritySEC_REQUIRE_SSL_128Template(null);
+                templates[59] = IISSecuritySEC_FILE_ACCESS_DENIEDTemplate(null);
+                templates[60] = IISSecuritySEC_DENIED_BY_MIMEMAPTemplate(null);
+                templates[61] = IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTIONTemplate(null);
+                templates[62] = IISSecuritySEC_DENIED_BY_CGI_RESTRICTIONTemplate(null);
+                templates[63] = IISSecuritySEC_DENIED_BY_ACCESS_FLAGSTemplate(null);
+                templates[64] = IISFilterFILTER_STARTTemplate(null);
+                templates[65] = IISFilterFILTER_ENDTemplate(null);
+                templates[66] = IISFilterFILTER_ERRORTemplate(null);
+                templates[67] = IISFilterFILTER_PREPROC_STARTTemplate(null);
+                templates[68] = IISFilterFILTER_PREPROC_ENDTemplate(null);
+                templates[69] = IISFilterFILTER_URL_MAP_STARTTemplate(null);
+                templates[70] = IISFilterFILTER_URL_MAP_ENDTemplate(null);
+                templates[71] = IISFilterFILTER_AUTHENTICATION_STARTTemplate(null);
+                templates[72] = IISFilterFILTER_AUTHENTICATION_ENDTemplate(null);
+                templates[73] = IISFilterFILTER_AUTH_COMPLETE_STARTTemplate(null);
+                templates[74] = IISFilterFILTER_AUTH_COMPLETE_ENDTemplate(null);
+                templates[75] = IISFilterFILTER_SEND_RESPONSE_STARTTemplate(null);
+                templates[76] = IISFilterFILTER_SEND_RESPONSE_ENDTemplate(null);
+                templates[77] = IISFilterFILTER_END_OF_REQUEST_STARTTemplate(null);
+                templates[78] = IISFilterFILTER_END_OF_REQUEST_ENDTemplate(null);
+                templates[79] = IISFilterFILTER_LOG_STARTTemplate(null);
+                templates[80] = IISFilterFILTER_LOG_ENDTemplate(null);
+                templates[81] = IISFilterFILTER_SEND_RAW_DATA_STARTTemplate(null);
+                templates[82] = IISFilterFILTER_SEND_RAW_DATA_ENDTemplate(null);
+                templates[83] = IISFilterFILTER_ACCESS_DENIED_STARTTemplate(null);
+                templates[84] = IISFilterFILTER_ACCESS_DENIED_ENDTemplate(null);
+                templates[85] = IISFilterFILTER_SET_REQ_HEADERTemplate(null);
+                templates[86] = IISFilterFILTER_ADD_REQ_HEADERTemplate(null);
+                templates[87] = IISFilterFILTER_SET_RESP_HEADERTemplate(null);
+                templates[88] = IISFilterFILTER_ADD_RESP_HEADERTemplate(null);
+                templates[89] = IISISAPIISAPI_STARTTemplate(null);
+                templates[90] = IISISAPIISAPI_ENDTemplate(null);
+                templates[91] = IISCGICGI_STARTTemplate(null);
+                templates[92] = IISCGICGI_ENDTemplate(null);
+                templates[93] = IISCGICGI_LAUNCHTemplate(null);
+                templates[94] = IISCGICGI_TIMEOUTTemplate(null);
+                templates[95] = IISCGICGI_PREMATURE_TERMINATIONTemplate(null);
+                templates[96] = IISCGICGI_REQUEST_ENTITY_STARTTemplate(null);
+                templates[97] = IISCGICGI_HEADERS_RECEIVEDTemplate(null);
+                templates[98] = IISFastCGICGIF_ACTIVITY_TIMEOUTTemplate(null);
+                templates[99] = IISFastCGICGIF_REQUEST_TIMEOUTTemplate(null);
+                templates[100] = IISFastCGICGIF_UNEXPECTED_EXITTemplate(null);
+                templates[101] = IISFastCGICGIF_RAPID_FAILURE_PROTECTIONTemplate(null);
+                templates[102] = IISFastCGICGIF_PATH_NOT_FOUNDTemplate(null);
+                templates[103] = IISFastCGICGIF_SCRIPT_PROCESSOR_MISSINGTemplate(null);
+                templates[104] = IISFastCGICGIF_ADD_JOB_OBJECT_FAILTemplate(null);
+                templates[105] = IISFastCGICGIF_APPMGR_SHUTDOWNTemplate(null);
+                templates[106] = IISFastCGICGIF_QUEUE_FULLTemplate(null);
+                templates[107] = IISFastCGICGIF_UNKNOWN_ERRORTemplate(null);
+                templates[108] = IISFastCGICGIF_RESPONSE_WRITTENTemplate(null);
+                templates[109] = IISFastCGICGIF_WAITING_FOR_RESPONSETemplate(null);
+                templates[110] = IISFastCGICGIF_TRACE_ERRORTemplate(null);
+                templates[111] = IISFastCGICGIF_TRACE_WARNINGTemplate(null);
+                templates[112] = IISFastCGICGIF_TRACE_INFOTemplate(null);
+                templates[113] = IISFastCGICGIF_QUEUE_REQUESTTemplate(null);
+                templates[114] = IISFastCGICGIF_ASSIGN_PROCESSTemplate(null);
+                templates[115] = IISFastCGICGIF_STARTTemplate(null);
+                templates[116] = IISFastCGICGIF_ENDTemplate(null);
+                templates[117] = IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESSTemplate(null);
+                templates[118] = IISWebSocketWEBSOCKET_STARTTemplate(null);
+                templates[119] = IISWebSocketWEBSOCKET_END_SUCCESSTemplate(null);
+                templates[120] = IISWebSocketWEBSOCKET_END_FAILURETemplate(null);
+                templates[121] = IISWebSocketWEBSOCKET_READ_FRAGMENT_STARTTemplate(null);
+                templates[122] = IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDINGTemplate(null);
+                templates[123] = IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESSTemplate(null);
+                templates[124] = IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURETemplate(null);
+                templates[125] = IISWebSocketWEBSOCKET_WRITE_FRAGMENT_STARTTemplate(null);
+                templates[126] = IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDINGTemplate(null);
+                templates[127] = IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESSTemplate(null);
+                templates[128] = IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURETemplate(null);
+                templates[129] = IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTIONTemplate(null);
+                templates[130] = IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTIONTemplate(null);
+                templates[131] = IISWebSocketWEBSOCKET_READ_IO_FAILEDTemplate(null);
+                templates[132] = IISWebSocketWEBSOCKET_WRITE_IO_FAILEDTemplate(null);
+                templates[133] = IISWebSocketWEBSOCKET_CLOSE_RECEIVEDTemplate(null);
+                templates[134] = IISWebSocketWEBSOCKET_CLOSE_SEND_STARTTemplate(null);
+                templates[135] = IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESSTemplate(null);
+                templates[136] = IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURETemplate(null);
+                templates[137] = IISCompressionSTATIC_COMPRESSION_STARTTemplate(null);
+                templates[138] = IISCompressionSTATIC_COMPRESSION_SUCCESSTemplate(null);
+                templates[139] = IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSTemplate(null);
+                templates[140] = IISCompressionSTATIC_COMPRESSION_CREATE_STARTTemplate(null);
+                templates[141] = IISCompressionSTATIC_COMPRESSION_CREATE_ENDTemplate(null);
+                templates[142] = IISCompressionDYNAMIC_COMPRESSION_STARTTemplate(null);
+                templates[143] = IISCompressionDYNAMIC_COMPRESSION_SUCCESSTemplate(null);
+                templates[144] = IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSTemplate(null);
+                templates[145] = IISCompressionDYNAMIC_COMPRESSION_DOTemplate(null);
+                templates[146] = IISCompressionDYNAMIC_COMPRESSION_ENDTemplate(null);
+                templates[147] = IISCompressionSTATIC_COMPRESSION_ENDTemplate(null);
+                templates[148] = IISCacheCACHE_FILE_CACHE_ACCESS_STARTTemplate(null);
+                templates[149] = IISCacheCACHE_FILE_CACHE_ACCESS_ENDTemplate(null);
+                templates[150] = IISCacheCACHE_URL_CACHE_ACCESS_STARTTemplate(null);
+                templates[151] = IISCacheCACHE_URL_CACHE_ACCESS_ENDTemplate(null);
+                templates[152] = IISCacheCACHE_HTTPSYS_CACHEABLETemplate(null);
+                templates[153] = IISCacheOUTPUT_CACHE_LOOKUP_STARTTemplate(null);
+                templates[154] = IISCacheOUTPUT_CACHE_LOOKUP_ENDTemplate(null);
+                templates[155] = IISCacheOUTPUT_CACHE_UPDATE_STARTTemplate(null);
+                templates[156] = IISCacheOUTPUT_CACHE_UPDATE_ENDTemplate(null);
+                templates[157] = IISCacheOUTPUT_CACHE_DISABLEDTemplate(null);
+                templates[158] = IISCacheCACHE_FILE_CACHE_CREATE_FILETemplate(null);
+                templates[159] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_STARTTemplate(null);
+                templates[160] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ENDTemplate(null);
+                templates[161] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETIONTemplate(null);
+                templates[162] = IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_STARTTemplate(null);
+                templates[163] = IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_ENDTemplate(null);
+                templates[164] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERRORTemplate(null);
+                templates[165] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(null);
+                templates[166] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSTemplate(null);
+                templates[167] = IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(null);
+                templates[168] = IISModuleEventsMODULE_EVENTS_MODULE_STARTTemplate(null);
+                templates[169] = IISModuleEventsMODULE_EVENTS_MODULE_ENDTemplate(null);
+                templates[170] = IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERRORTemplate(null);
+                templates[171] = IISModuleEventsMODULE_EVENTS_MODULE_ERRORTemplate(null);
+                templates[172] = IISModuleEventsMODULE_EVENTS_MODULE_WARNINGTemplate(null);
+                templates[173] = IISModuleEventsMODULE_EVENTS_MODULE_INFORMATIONTemplate(null);
+                templates[174] = IISModuleEventsMODULE_EVENTS_MODULE_VERBOSETemplate(null);
                 s_templates = templates;
             }
             foreach (var template in s_templates)
@@ -1848,12 +2862,12 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
 
 namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
 {
-    public sealed class IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs : TraceEvent
+    public sealed class AUTH_ANON_PASSWD_CHANGE_NEEDED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs(Action<IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_ANON_PASSWD_CHANGE_NEEDED(Action<AUTH_ANON_PASSWD_CHANGE_NEEDED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1870,7 +2884,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs>) value; }
+            set { m_target = (Action<AUTH_ANON_PASSWD_CHANGE_NEEDED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1902,15 +2916,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDEDArgs> m_target;
+        private event Action<AUTH_ANON_PASSWD_CHANGE_NEEDED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_BAD_BASIC_HEADERArgs : TraceEvent
+    public sealed class AUTH_BAD_BASIC_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_BAD_BASIC_HEADERArgs(Action<IISAuthenticationAUTH_BAD_BASIC_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_BAD_BASIC_HEADER(Action<AUTH_BAD_BASIC_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1927,7 +2941,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_BAD_BASIC_HEADERArgs>) value; }
+            set { m_target = (Action<AUTH_BAD_BASIC_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -1959,16 +2973,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_BAD_BASIC_HEADERArgs> m_target;
+        private event Action<AUTH_BAD_BASIC_HEADER> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs : TraceEvent
+    public sealed class AUTH_BASIC_LOGON_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs(Action<IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_BASIC_LOGON_FAILED(Action<AUTH_BASIC_LOGON_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -1985,7 +2999,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_BASIC_LOGON_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2020,15 +3034,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_BASIC_LOGON_FAILEDArgs> m_target;
+        private event Action<AUTH_BASIC_LOGON_FAILED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_ENDArgs : TraceEvent
+    public sealed class AUTH_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_ENDArgs(Action<IISAuthenticationAUTH_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_END(Action<AUTH_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2045,7 +3059,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_ENDArgs>) value; }
+            set { m_target = (Action<AUTH_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2077,16 +3091,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_ENDArgs> m_target;
+        private event Action<AUTH_END> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs : TraceEvent
+    public sealed class AUTH_IISDIGEST_LOGON_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs(Action<IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_IISDIGEST_LOGON_FAILED(Action<AUTH_IISDIGEST_LOGON_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2103,7 +3117,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_IISDIGEST_LOGON_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2138,16 +3152,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_IISDIGEST_LOGON_FAILEDArgs> m_target;
+        private event Action<AUTH_IISDIGEST_LOGON_FAILED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs : TraceEvent
+    public sealed class AUTH_INVALID_ANON_ACCOUNT : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs(Action<IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_INVALID_ANON_ACCOUNT(Action<AUTH_INVALID_ANON_ACCOUNT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2164,7 +3178,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs>) value; }
+            set { m_target = (Action<AUTH_INVALID_ANON_ACCOUNT>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2199,10 +3213,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_INVALID_ANON_ACCOUNTArgs> m_target;
+        private event Action<AUTH_INVALID_ANON_ACCOUNT> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_KERBEROS_FAILEDArgs : TraceEvent
+    public sealed class AUTH_KERBEROS_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public bool KMUsed { get { return GetInt32At(16) != 0; } }
@@ -2212,7 +3226,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string KerberosInfo { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(20))+4); } }
 
         #region Private
-        internal IISAuthenticationAUTH_KERBEROS_FAILEDArgs(Action<IISAuthenticationAUTH_KERBEROS_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_KERBEROS_FAILED(Action<AUTH_KERBEROS_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2229,7 +3243,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_KERBEROS_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_KERBEROS_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2276,15 +3290,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_KERBEROS_FAILEDArgs> m_target;
+        private event Action<AUTH_KERBEROS_FAILED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs : TraceEvent
+    public sealed class AUTH_NTLM_NULL_SESSION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs(Action<IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_NTLM_NULL_SESSION(Action<AUTH_NTLM_NULL_SESSION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2301,7 +3315,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs>) value; }
+            set { m_target = (Action<AUTH_NTLM_NULL_SESSION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2333,16 +3347,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_NTLM_NULL_SESSIONArgs> m_target;
+        private event Action<AUTH_NTLM_NULL_SESSION> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs : TraceEvent
+    public sealed class AUTH_PASSPORT_LOGON_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs(Action<IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_PASSPORT_LOGON_FAILED(Action<AUTH_PASSPORT_LOGON_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2359,7 +3373,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_PASSPORT_LOGON_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2394,15 +3408,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_PASSPORT_LOGON_FAILEDArgs> m_target;
+        private event Action<AUTH_PASSPORT_LOGON_FAILED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs : TraceEvent
+    public sealed class AUTH_PASSWD_CHANGE_DISABLED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs(Action<IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_PASSWD_CHANGE_DISABLED(Action<AUTH_PASSWD_CHANGE_DISABLED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2419,7 +3433,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs>) value; }
+            set { m_target = (Action<AUTH_PASSWD_CHANGE_DISABLED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2451,15 +3465,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_PASSWD_CHANGE_DISABLEDArgs> m_target;
+        private event Action<AUTH_PASSWD_CHANGE_DISABLED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs : TraceEvent
+    public sealed class AUTH_PASSWD_CHANGE_NEEDED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs(Action<IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_PASSWD_CHANGE_NEEDED(Action<AUTH_PASSWD_CHANGE_NEEDED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2476,7 +3490,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs>) value; }
+            set { m_target = (Action<AUTH_PASSWD_CHANGE_NEEDED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2508,16 +3522,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_PASSWD_CHANGE_NEEDEDArgs> m_target;
+        private event Action<AUTH_PASSWD_CHANGE_NEEDED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs : TraceEvent
+    public sealed class AUTH_REQUEST_AUTH_TYPE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3AuthRequestAuthTypeRequestAuthType RequestAuthType { get { return (W3AuthRequestAuthTypeRequestAuthType)GetInt32At(16); } }
+        public AUTH_REQUEST_AUTH_TYPERequestAuthType RequestAuthType { get { return (AUTH_REQUEST_AUTH_TYPERequestAuthType)GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs(Action<IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_REQUEST_AUTH_TYPE(Action<AUTH_REQUEST_AUTH_TYPE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2534,7 +3548,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs>) value; }
+            set { m_target = (Action<AUTH_REQUEST_AUTH_TYPE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2569,16 +3583,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_REQUEST_AUTH_TYPEArgs> m_target;
+        private event Action<AUTH_REQUEST_AUTH_TYPE> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs : TraceEvent
+    public sealed class AUTH_SSPI_CONTINUE_NEEDED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string PackageName { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs(Action<IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_SSPI_CONTINUE_NEEDED(Action<AUTH_SSPI_CONTINUE_NEEDED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2595,7 +3609,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs>) value; }
+            set { m_target = (Action<AUTH_SSPI_CONTINUE_NEEDED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2630,16 +3644,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_SSPI_CONTINUE_NEEDEDArgs> m_target;
+        private event Action<AUTH_SSPI_CONTINUE_NEEDED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs : TraceEvent
+    public sealed class AUTH_SSPI_LOGON_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs(Action<IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_SSPI_LOGON_FAILED(Action<AUTH_SSPI_LOGON_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2656,7 +3670,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_SSPI_LOGON_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2691,16 +3705,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_SSPI_LOGON_FAILEDArgs> m_target;
+        private event Action<AUTH_SSPI_LOGON_FAILED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_STARTArgs : TraceEvent
+    public sealed class AUTH_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3AuthStartAuthTypeSupported AuthTypeSupported { get { return (W3AuthStartAuthTypeSupported)GetInt32At(16); } }
+        public AUTH_STARTAuthTypeSupported AuthTypeSupported { get { return (AUTH_STARTAuthTypeSupported)GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_STARTArgs(Action<IISAuthenticationAUTH_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_START(Action<AUTH_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2717,7 +3731,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_STARTArgs>) value; }
+            set { m_target = (Action<AUTH_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2752,20 +3766,20 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_STARTArgs> m_target;
+        private event Action<AUTH_START> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_SUCCEEDEDArgs : TraceEvent
+    public sealed class AUTH_SUCCEEDED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3AuthSucceededAuthType AuthType { get { return (W3AuthSucceededAuthType)GetInt32At(16); } }
+        public AUTH_SUCCEEDEDAuthType AuthType { get { return (AUTH_SUCCEEDEDAuthType)GetInt32At(16); } }
         public bool NTLMUsed { get { return GetInt32At(20) != 0; } }
         public string RemoteUserName { get { return GetUnicodeStringAt(24); } }
         public string AuthUserName { get { return GetUnicodeStringAt(SkipUnicodeString(24)); } }
-        public W3AuthSucceededTokenImpersonationLevel TokenImpersonationLevel { get { return (W3AuthSucceededTokenImpersonationLevel)GetInt32At(SkipUnicodeString(SkipUnicodeString(24))); } }
+        public AUTH_SUCCEEDEDTokenImpersonationLevel TokenImpersonationLevel { get { return (AUTH_SUCCEEDEDTokenImpersonationLevel)GetInt32At(SkipUnicodeString(SkipUnicodeString(24))); } }
 
         #region Private
-        internal IISAuthenticationAUTH_SUCCEEDEDArgs(Action<IISAuthenticationAUTH_SUCCEEDEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_SUCCEEDED(Action<AUTH_SUCCEEDED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2782,7 +3796,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_SUCCEEDEDArgs>) value; }
+            set { m_target = (Action<AUTH_SUCCEEDED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2829,15 +3843,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_SUCCEEDEDArgs> m_target;
+        private event Action<AUTH_SUCCEEDED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs : TraceEvent
+    public sealed class AUTH_TYPE_NOT_SUPPORTED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs(Action<IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_TYPE_NOT_SUPPORTED(Action<AUTH_TYPE_NOT_SUPPORTED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2854,7 +3868,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs>) value; }
+            set { m_target = (Action<AUTH_TYPE_NOT_SUPPORTED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2886,16 +3900,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_TYPE_NOT_SUPPORTEDArgs> m_target;
+        private event Action<AUTH_TYPE_NOT_SUPPORTED> m_target;
         #endregion
     }
-    public sealed class IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs : TraceEvent
+    public sealed class AUTH_WDIGEST_LOGON_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs(Action<IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal AUTH_WDIGEST_LOGON_FAILED(Action<AUTH_WDIGEST_LOGON_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2912,7 +3926,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs>) value; }
+            set { m_target = (Action<AUTH_WDIGEST_LOGON_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -2947,10 +3961,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISAuthenticationAUTH_WDIGEST_LOGON_FAILEDArgs> m_target;
+        private event Action<AUTH_WDIGEST_LOGON_FAILED> m_target;
         #endregion
     }
-    public sealed class IISCacheFILE_CACHE_ACCESS_ENDArgs : TraceEvent
+    public sealed class CACHE_FILE_CACHE_ACCESS_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public bool Successful { get { return GetInt32At(16) != 0; } }
@@ -2962,7 +3976,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string LastModifiedTime { get { return GetUTF8StringAt(40); } }
 
         #region Private
-        internal IISCacheFILE_CACHE_ACCESS_ENDArgs(Action<IISCacheFILE_CACHE_ACCESS_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_FILE_CACHE_ACCESS_END(Action<CACHE_FILE_CACHE_ACCESS_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -2979,7 +3993,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheFILE_CACHE_ACCESS_ENDArgs>) value; }
+            set { m_target = (Action<CACHE_FILE_CACHE_ACCESS_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3032,10 +4046,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheFILE_CACHE_ACCESS_ENDArgs> m_target;
+        private event Action<CACHE_FILE_CACHE_ACCESS_END> m_target;
         #endregion
     }
-    public sealed class IISCacheFILE_CACHE_ACCESS_STARTArgs : TraceEvent
+    public sealed class CACHE_FILE_CACHE_ACCESS_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FileName { get { return GetUnicodeStringAt(16); } }
@@ -3043,7 +4057,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string DomainName { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
 
         #region Private
-        internal IISCacheFILE_CACHE_ACCESS_STARTArgs(Action<IISCacheFILE_CACHE_ACCESS_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_FILE_CACHE_ACCESS_START(Action<CACHE_FILE_CACHE_ACCESS_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3060,7 +4074,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheFILE_CACHE_ACCESS_STARTArgs>) value; }
+            set { m_target = (Action<CACHE_FILE_CACHE_ACCESS_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3101,10 +4115,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheFILE_CACHE_ACCESS_STARTArgs> m_target;
+        private event Action<CACHE_FILE_CACHE_ACCESS_START> m_target;
         #endregion
     }
-    public sealed class IISCacheFILE_CACHE_CREATE_FILEArgs : TraceEvent
+    public sealed class CACHE_FILE_CACHE_CREATE_FILE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FileName { get { return GetUnicodeStringAt(16); } }
@@ -3112,7 +4126,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string DomainName { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
 
         #region Private
-        internal IISCacheFILE_CACHE_CREATE_FILEArgs(Action<IISCacheFILE_CACHE_CREATE_FILEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_FILE_CACHE_CREATE_FILE(Action<CACHE_FILE_CACHE_CREATE_FILE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3129,7 +4143,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheFILE_CACHE_CREATE_FILEArgs>) value; }
+            set { m_target = (Action<CACHE_FILE_CACHE_CREATE_FILE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3170,19 +4184,19 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheFILE_CACHE_CREATE_FILEArgs> m_target;
+        private event Action<CACHE_FILE_CACHE_CREATE_FILE> m_target;
         #endregion
     }
-    public sealed class IISCacheHTTPSYS_CACHEABLEArgs : TraceEvent
+    public sealed class CACHE_HTTPSYS_CACHEABLE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public bool HttpsysCacheable { get { return GetInt32At(16) != 0; } }
-        public W3CacheHttpsysCacheableReason Reason { get { return (W3CacheHttpsysCacheableReason)GetInt32At(20); } }
-        public W3CacheHttpsysCacheableCachePolicy CachePolicy { get { return (W3CacheHttpsysCacheableCachePolicy)GetInt32At(24); } }
+        public CACHE_HTTPSYS_CACHEABLEReason Reason { get { return (CACHE_HTTPSYS_CACHEABLEReason)GetInt32At(20); } }
+        public CACHE_HTTPSYS_CACHEABLECachePolicy CachePolicy { get { return (CACHE_HTTPSYS_CACHEABLECachePolicy)GetInt32At(24); } }
         public int TimeToLive { get { return GetInt32At(28); } }
 
         #region Private
-        internal IISCacheHTTPSYS_CACHEABLEArgs(Action<IISCacheHTTPSYS_CACHEABLEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_HTTPSYS_CACHEABLE(Action<CACHE_HTTPSYS_CACHEABLE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3199,7 +4213,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheHTTPSYS_CACHEABLEArgs>) value; }
+            set { m_target = (Action<CACHE_HTTPSYS_CACHEABLE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3243,311 +4257,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheHTTPSYS_CACHEABLEArgs> m_target;
+        private event Action<CACHE_HTTPSYS_CACHEABLE> m_target;
         #endregion
     }
-    public sealed class IISCacheOUTPUT_CACHE_DISABLEDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-
-        #region Private
-        internal IISCacheOUTPUT_CACHE_DISABLEDArgs(Action<IISCacheOUTPUT_CACHE_DISABLEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISCacheOUTPUT_CACHE_DISABLEDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISCacheOUTPUT_CACHE_DISABLEDArgs> m_target;
-        #endregion
-    }
-    public sealed class IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3OutputCacheLookupEndResult Result { get { return (W3OutputCacheLookupEndResult)GetInt32At(16); } }
-
-        #region Private
-        internal IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs(Action<IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 20));
-            Debug.Assert(!(Version > 1 && EventDataLength < 20));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Result", Result);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Result"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Result;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISCacheOUTPUT_CACHE_LOOKUP_ENDArgs> m_target;
-        #endregion
-    }
-    public sealed class IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-
-        #region Private
-        internal IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs(Action<IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 16));
-            Debug.Assert(!(Version > 1 && EventDataLength < 16));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISCacheOUTPUT_CACHE_LOOKUP_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class IISCacheOUTPUT_CACHE_UPDATE_ENDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3OutputCacheUpdateEndResult Result { get { return (W3OutputCacheUpdateEndResult)GetInt32At(16); } }
-
-        #region Private
-        internal IISCacheOUTPUT_CACHE_UPDATE_ENDArgs(Action<IISCacheOUTPUT_CACHE_UPDATE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 20));
-            Debug.Assert(!(Version > 1 && EventDataLength < 20));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISCacheOUTPUT_CACHE_UPDATE_ENDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Result", Result);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Result"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Result;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISCacheOUTPUT_CACHE_UPDATE_ENDArgs> m_target;
-        #endregion
-    }
-    public sealed class IISCacheOUTPUT_CACHE_UPDATE_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3OutputCacheUpdateStartCachePolicy CachePolicy { get { return (W3OutputCacheUpdateStartCachePolicy)GetInt32At(16); } }
-        public int TimeToLive { get { return GetInt32At(20); } }
-
-        #region Private
-        internal IISCacheOUTPUT_CACHE_UPDATE_STARTArgs(Action<IISCacheOUTPUT_CACHE_UPDATE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != 24));
-            Debug.Assert(!(Version > 1 && EventDataLength < 24));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISCacheOUTPUT_CACHE_UPDATE_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "CachePolicy", CachePolicy);
-             XmlAttrib(sb, "TimeToLive", TimeToLive);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "CachePolicy", "TimeToLive"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return CachePolicy;
-                case 2:
-                    return TimeToLive;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISCacheOUTPUT_CACHE_UPDATE_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class IISCacheURL_CACHE_ACCESS_ENDArgs : TraceEvent
+    public sealed class CACHE_URL_CACHE_ACCESS_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string PhysicalPath { get { return GetUnicodeStringAt(16); } }
@@ -3556,7 +4269,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)+8); } }
 
         #region Private
-        internal IISCacheURL_CACHE_ACCESS_ENDArgs(Action<IISCacheURL_CACHE_ACCESS_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_URL_CACHE_ACCESS_END(Action<CACHE_URL_CACHE_ACCESS_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3573,7 +4286,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheURL_CACHE_ACCESS_ENDArgs>) value; }
+            set { m_target = (Action<CACHE_URL_CACHE_ACCESS_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3617,16 +4330,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheURL_CACHE_ACCESS_ENDArgs> m_target;
+        private event Action<CACHE_URL_CACHE_ACCESS_END> m_target;
         #endregion
     }
-    public sealed class IISCacheURL_CACHE_ACCESS_STARTArgs : TraceEvent
+    public sealed class CACHE_URL_CACHE_ACCESS_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string RequestURL { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISCacheURL_CACHE_ACCESS_STARTArgs(Action<IISCacheURL_CACHE_ACCESS_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CACHE_URL_CACHE_ACCESS_START(Action<CACHE_URL_CACHE_ACCESS_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3643,7 +4356,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCacheURL_CACHE_ACCESS_STARTArgs>) value; }
+            set { m_target = (Action<CACHE_URL_CACHE_ACCESS_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3678,17 +4391,253 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCacheURL_CACHE_ACCESS_STARTArgs> m_target;
+        private event Action<CACHE_URL_CACHE_ACCESS_START> m_target;
         #endregion
     }
-    public sealed class IISCompressionDYNAMIC_COMPRESSION_DOArgs : TraceEvent
+    public sealed class OUTPUT_CACHE_DISABLED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public int OriginalSize { get { return GetInt32At(16); } }
-        public int CompressedSize { get { return GetInt32At(20); } }
 
         #region Private
-        internal IISCompressionDYNAMIC_COMPRESSION_DOArgs(Action<IISCompressionDYNAMIC_COMPRESSION_DOArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal OUTPUT_CACHE_DISABLED(Action<OUTPUT_CACHE_DISABLED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<OUTPUT_CACHE_DISABLED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<OUTPUT_CACHE_DISABLED> m_target;
+        #endregion
+    }
+    public sealed class OUTPUT_CACHE_LOOKUP_END : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public OUTPUT_CACHE_LOOKUP_ENDResult Result { get { return (OUTPUT_CACHE_LOOKUP_ENDResult)GetInt32At(16); } }
+
+        #region Private
+        internal OUTPUT_CACHE_LOOKUP_END(Action<OUTPUT_CACHE_LOOKUP_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<OUTPUT_CACHE_LOOKUP_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Result", Result);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Result"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Result;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<OUTPUT_CACHE_LOOKUP_END> m_target;
+        #endregion
+    }
+    public sealed class OUTPUT_CACHE_LOOKUP_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal OUTPUT_CACHE_LOOKUP_START(Action<OUTPUT_CACHE_LOOKUP_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<OUTPUT_CACHE_LOOKUP_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<OUTPUT_CACHE_LOOKUP_START> m_target;
+        #endregion
+    }
+    public sealed class OUTPUT_CACHE_UPDATE_END : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public OUTPUT_CACHE_UPDATE_ENDResult Result { get { return (OUTPUT_CACHE_UPDATE_ENDResult)GetInt32At(16); } }
+
+        #region Private
+        internal OUTPUT_CACHE_UPDATE_END(Action<OUTPUT_CACHE_UPDATE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<OUTPUT_CACHE_UPDATE_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Result", Result);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Result"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Result;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<OUTPUT_CACHE_UPDATE_END> m_target;
+        #endregion
+    }
+    public sealed class OUTPUT_CACHE_UPDATE_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public OUTPUT_CACHE_UPDATE_STARTCachePolicy CachePolicy { get { return (OUTPUT_CACHE_UPDATE_STARTCachePolicy)GetInt32At(16); } }
+        public int TimeToLive { get { return GetInt32At(20); } }
+
+        #region Private
+        internal OUTPUT_CACHE_UPDATE_START(Action<OUTPUT_CACHE_UPDATE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3705,7 +4654,491 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionDYNAMIC_COMPRESSION_DOArgs>) value; }
+            set { m_target = (Action<OUTPUT_CACHE_UPDATE_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "CachePolicy", CachePolicy);
+             XmlAttrib(sb, "TimeToLive", TimeToLive);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "CachePolicy", "TimeToLive"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return CachePolicy;
+                case 2:
+                    return TimeToLive;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<OUTPUT_CACHE_UPDATE_START> m_target;
+        #endregion
+    }
+    public sealed class CGI_END : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGI_END(Action<CGI_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_END> m_target;
+        #endregion
+    }
+    public sealed class CGI_HEADERS_RECEIVED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGI_HEADERS_RECEIVED(Action<CGI_HEADERS_RECEIVED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_HEADERS_RECEIVED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_HEADERS_RECEIVED> m_target;
+        #endregion
+    }
+    public sealed class CGI_LAUNCH : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string CommandLine { get { return GetUnicodeStringAt(16); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)); } }
+        public int ProcessId { get { return GetInt32At(SkipUnicodeString(16)+4); } }
+
+        #region Private
+        internal CGI_LAUNCH(Action<CGI_LAUNCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+8));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+8));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_LAUNCH>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "CommandLine", CommandLine);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             XmlAttrib(sb, "ProcessId", ProcessId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "CommandLine", "ErrorCode", "ProcessId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return CommandLine;
+                case 2:
+                    return ErrorCode;
+                case 3:
+                    return ProcessId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_LAUNCH> m_target;
+        #endregion
+    }
+    public sealed class CGI_PREMATURE_TERMINATION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Headers { get { return GetUTF8StringAt(16); } }
+
+        #region Private
+        internal CGI_PREMATURE_TERMINATION(Action<CGI_PREMATURE_TERMINATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_PREMATURE_TERMINATION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Headers", Headers);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Headers"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Headers;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_PREMATURE_TERMINATION> m_target;
+        #endregion
+    }
+    public sealed class CGI_REQUEST_ENTITY_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGI_REQUEST_ENTITY_START(Action<CGI_REQUEST_ENTITY_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_REQUEST_ENTITY_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_REQUEST_ENTITY_START> m_target;
+        #endregion
+    }
+    public sealed class CGI_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGI_START(Action<CGI_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_START> m_target;
+        #endregion
+    }
+    public sealed class CGI_TIMEOUT : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Headers { get { return GetUTF8StringAt(16); } }
+
+        #region Private
+        internal CGI_TIMEOUT(Action<CGI_TIMEOUT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGI_TIMEOUT>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Headers", Headers);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Headers"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Headers;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGI_TIMEOUT> m_target;
+        #endregion
+    }
+    public sealed class DYNAMIC_COMPRESSION_DO : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int OriginalSize { get { return GetInt32At(16); } }
+        public int CompressedSize { get { return GetInt32At(20); } }
+
+        #region Private
+        internal DYNAMIC_COMPRESSION_DO(Action<DYNAMIC_COMPRESSION_DO> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 24));
+            Debug.Assert(!(Version > 1 && EventDataLength < 24));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<DYNAMIC_COMPRESSION_DO>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3743,15 +5176,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionDYNAMIC_COMPRESSION_DOArgs> m_target;
+        private event Action<DYNAMIC_COMPRESSION_DO> m_target;
         #endregion
     }
-    public sealed class IISCompressionDYNAMIC_COMPRESSION_ENDArgs : TraceEvent
+    public sealed class DYNAMIC_COMPRESSION_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionDYNAMIC_COMPRESSION_ENDArgs(Action<IISCompressionDYNAMIC_COMPRESSION_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal DYNAMIC_COMPRESSION_END(Action<DYNAMIC_COMPRESSION_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3768,7 +5201,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionDYNAMIC_COMPRESSION_ENDArgs>) value; }
+            set { m_target = (Action<DYNAMIC_COMPRESSION_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3800,16 +5233,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionDYNAMIC_COMPRESSION_ENDArgs> m_target;
+        private event Action<DYNAMIC_COMPRESSION_END> m_target;
         #endregion
     }
-    public sealed class IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs : TraceEvent
+    public sealed class DYNAMIC_COMPRESSION_NOT_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3DynamicCompressionNotSuccessReason Reason { get { return (W3DynamicCompressionNotSuccessReason)GetInt32At(16); } }
+        public DYNAMIC_COMPRESSION_NOT_SUCCESSReason Reason { get { return (DYNAMIC_COMPRESSION_NOT_SUCCESSReason)GetInt32At(16); } }
 
         #region Private
-        internal IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs(Action<IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal DYNAMIC_COMPRESSION_NOT_SUCCESS(Action<DYNAMIC_COMPRESSION_NOT_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3826,7 +5259,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs>) value; }
+            set { m_target = (Action<DYNAMIC_COMPRESSION_NOT_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3861,15 +5294,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESSArgs> m_target;
+        private event Action<DYNAMIC_COMPRESSION_NOT_SUCCESS> m_target;
         #endregion
     }
-    public sealed class IISCompressionDYNAMIC_COMPRESSION_STARTArgs : TraceEvent
+    public sealed class DYNAMIC_COMPRESSION_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionDYNAMIC_COMPRESSION_STARTArgs(Action<IISCompressionDYNAMIC_COMPRESSION_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal DYNAMIC_COMPRESSION_START(Action<DYNAMIC_COMPRESSION_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3886,7 +5319,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionDYNAMIC_COMPRESSION_STARTArgs>) value; }
+            set { m_target = (Action<DYNAMIC_COMPRESSION_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3918,15 +5351,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionDYNAMIC_COMPRESSION_STARTArgs> m_target;
+        private event Action<DYNAMIC_COMPRESSION_START> m_target;
         #endregion
     }
-    public sealed class IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs : TraceEvent
+    public sealed class DYNAMIC_COMPRESSION_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs(Action<IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal DYNAMIC_COMPRESSION_SUCCESS(Action<DYNAMIC_COMPRESSION_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -3943,7 +5376,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs>) value; }
+            set { m_target = (Action<DYNAMIC_COMPRESSION_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -3975,10 +5408,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionDYNAMIC_COMPRESSION_SUCCESSArgs> m_target;
+        private event Action<DYNAMIC_COMPRESSION_SUCCESS> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_CREATE_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
@@ -3988,7 +5421,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int CompressedFileSize { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(20)+4)); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs(Action<IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_CREATE_END(Action<STATIC_COMPRESSION_CREATE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4005,7 +5438,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_CREATE_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4052,16 +5485,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_CREATE_ENDArgs> m_target;
+        private event Action<STATIC_COMPRESSION_CREATE_END> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_CREATE_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string OriginalFileName { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs(Action<IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_CREATE_START(Action<STATIC_COMPRESSION_CREATE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4078,7 +5511,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_CREATE_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4113,15 +5546,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_CREATE_STARTArgs> m_target;
+        private event Action<STATIC_COMPRESSION_CREATE_START> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_ENDArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_ENDArgs(Action<IISCompressionSTATIC_COMPRESSION_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_END(Action<STATIC_COMPRESSION_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4138,7 +5571,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_ENDArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4170,16 +5603,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_ENDArgs> m_target;
+        private event Action<STATIC_COMPRESSION_END> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_NOT_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3StaticCompressionNotSuccessReason Reason { get { return (W3StaticCompressionNotSuccessReason)GetInt32At(16); } }
+        public STATIC_COMPRESSION_NOT_SUCCESSReason Reason { get { return (STATIC_COMPRESSION_NOT_SUCCESSReason)GetInt32At(16); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs(Action<IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_NOT_SUCCESS(Action<STATIC_COMPRESSION_NOT_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4196,7 +5629,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_NOT_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4231,15 +5664,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_NOT_SUCCESSArgs> m_target;
+        private event Action<STATIC_COMPRESSION_NOT_SUCCESS> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_STARTArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_STARTArgs(Action<IISCompressionSTATIC_COMPRESSION_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_START(Action<STATIC_COMPRESSION_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4256,7 +5689,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_STARTArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4288,15 +5721,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_STARTArgs> m_target;
+        private event Action<STATIC_COMPRESSION_START> m_target;
         #endregion
     }
-    public sealed class IISCompressionSTATIC_COMPRESSION_SUCCESSArgs : TraceEvent
+    public sealed class STATIC_COMPRESSION_SUCCESS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISCompressionSTATIC_COMPRESSION_SUCCESSArgs(Action<IISCompressionSTATIC_COMPRESSION_SUCCESSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal STATIC_COMPRESSION_SUCCESS(Action<STATIC_COMPRESSION_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4313,7 +5746,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISCompressionSTATIC_COMPRESSION_SUCCESSArgs>) value; }
+            set { m_target = (Action<STATIC_COMPRESSION_SUCCESS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4345,15 +5778,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISCompressionSTATIC_COMPRESSION_SUCCESSArgs> m_target;
+        private event Action<STATIC_COMPRESSION_SUCCESS> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ACCESS_DENIED_ENDArgs : TraceEvent
+    public sealed class CGIF_ACTIVITY_TIMEOUT : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_ACCESS_DENIED_ENDArgs(Action<IISFilterFILTER_ACCESS_DENIED_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal CGIF_ACTIVITY_TIMEOUT(Action<CGIF_ACTIVITY_TIMEOUT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4370,7 +5803,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ACCESS_DENIED_ENDArgs>) value; }
+            set { m_target = (Action<CGIF_ACTIVITY_TIMEOUT>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4402,10 +5835,1133 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ACCESS_DENIED_ENDArgs> m_target;
+        private event Action<CGIF_ACTIVITY_TIMEOUT> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ACCESS_DENIED_STARTArgs : TraceEvent
+    public sealed class CGIF_ADD_JOB_OBJECT_FAIL : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_ADD_JOB_OBJECT_FAIL(Action<CGIF_ADD_JOB_OBJECT_FAIL> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_ADD_JOB_OBJECT_FAIL>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_ADD_JOB_OBJECT_FAIL> m_target;
+        #endregion
+    }
+    public sealed class CGIF_APPMGR_SHUTDOWN : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_APPMGR_SHUTDOWN(Action<CGIF_APPMGR_SHUTDOWN> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_APPMGR_SHUTDOWN>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_APPMGR_SHUTDOWN> m_target;
+        #endregion
+    }
+    public sealed class CGIF_ASSIGN_PROCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string CommandLine { get { return GetUnicodeStringAt(16); } }
+        public bool IsNewProcess { get { return GetInt32At(SkipUnicodeString(16)) != 0; } }
+        public int ProcessId { get { return GetInt32At(SkipUnicodeString(16)+4); } }
+        public int RequestNumber { get { return GetInt32At(SkipUnicodeString(16)+8); } }
+
+        #region Private
+        internal CGIF_ASSIGN_PROCESS(Action<CGIF_ASSIGN_PROCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+12));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+12));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_ASSIGN_PROCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "CommandLine", CommandLine);
+             XmlAttrib(sb, "IsNewProcess", IsNewProcess);
+             XmlAttrib(sb, "ProcessId", ProcessId);
+             XmlAttrib(sb, "RequestNumber", RequestNumber);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "CommandLine", "IsNewProcess", "ProcessId", "RequestNumber"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return CommandLine;
+                case 2:
+                    return IsNewProcess;
+                case 3:
+                    return ProcessId;
+                case 4:
+                    return RequestNumber;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_ASSIGN_PROCESS> m_target;
+        #endregion
+    }
+    public sealed class CGIF_END : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_END(Action<CGIF_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_END> m_target;
+        #endregion
+    }
+    public sealed class CGIF_PATH_NOT_FOUND : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_PATH_NOT_FOUND(Action<CGIF_PATH_NOT_FOUND> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_PATH_NOT_FOUND>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_PATH_NOT_FOUND> m_target;
+        #endregion
+    }
+    public sealed class CGIF_QUEUE_FULL : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_QUEUE_FULL(Action<CGIF_QUEUE_FULL> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_QUEUE_FULL>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_QUEUE_FULL> m_target;
+        #endregion
+    }
+    public sealed class CGIF_QUEUE_REQUEST : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int PositionInQueue { get { return GetInt32At(16); } }
+        public int MaxInstances { get { return GetInt32At(20); } }
+
+        #region Private
+        internal CGIF_QUEUE_REQUEST(Action<CGIF_QUEUE_REQUEST> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 24));
+            Debug.Assert(!(Version > 1 && EventDataLength < 24));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_QUEUE_REQUEST>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "PositionInQueue", PositionInQueue);
+             XmlAttrib(sb, "MaxInstances", MaxInstances);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "PositionInQueue", "MaxInstances"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return PositionInQueue;
+                case 2:
+                    return MaxInstances;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_QUEUE_REQUEST> m_target;
+        #endregion
+    }
+    public sealed class CGIF_RAPID_FAILURE_PROTECTION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_RAPID_FAILURE_PROTECTION(Action<CGIF_RAPID_FAILURE_PROTECTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_RAPID_FAILURE_PROTECTION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_RAPID_FAILURE_PROTECTION> m_target;
+        #endregion
+    }
+    public sealed class CGIF_REQUEST_TIMEOUT : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_REQUEST_TIMEOUT(Action<CGIF_REQUEST_TIMEOUT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_REQUEST_TIMEOUT>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_REQUEST_TIMEOUT> m_target;
+        #endregion
+    }
+    public sealed class CGIF_RESPONSE_WRITTEN : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_RESPONSE_WRITTEN(Action<CGIF_RESPONSE_WRITTEN> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_RESPONSE_WRITTEN>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_RESPONSE_WRITTEN> m_target;
+        #endregion
+    }
+    public sealed class CGIF_SCRIPT_PROCESSOR_MISSING : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_SCRIPT_PROCESSOR_MISSING(Action<CGIF_SCRIPT_PROCESSOR_MISSING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_SCRIPT_PROCESSOR_MISSING>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_SCRIPT_PROCESSOR_MISSING> m_target;
+        #endregion
+    }
+    public sealed class CGIF_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_START(Action<CGIF_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_START> m_target;
+        #endregion
+    }
+    public sealed class CGIF_TRACE_ERROR : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Message { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal CGIF_TRACE_ERROR(Action<CGIF_TRACE_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_TRACE_ERROR>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Message", Message);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Message"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Message;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_TRACE_ERROR> m_target;
+        #endregion
+    }
+    public sealed class CGIF_TRACE_INFO : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Message { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal CGIF_TRACE_INFO(Action<CGIF_TRACE_INFO> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_TRACE_INFO>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Message", Message);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Message"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Message;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_TRACE_INFO> m_target;
+        #endregion
+    }
+    public sealed class CGIF_TRACE_WARNING : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Message { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal CGIF_TRACE_WARNING(Action<CGIF_TRACE_WARNING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_TRACE_WARNING>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Message", Message);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Message"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Message;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_TRACE_WARNING> m_target;
+        #endregion
+    }
+    public sealed class CGIF_UNEXPECTED_EXIT : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_UNEXPECTED_EXIT(Action<CGIF_UNEXPECTED_EXIT> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_UNEXPECTED_EXIT>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_UNEXPECTED_EXIT> m_target;
+        #endregion
+    }
+    public sealed class CGIF_UNKNOWN_ERROR : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal CGIF_UNKNOWN_ERROR(Action<CGIF_UNKNOWN_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_UNKNOWN_ERROR>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_UNKNOWN_ERROR> m_target;
+        #endregion
+    }
+    public sealed class CGIF_WAITING_FOR_RESPONSE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal CGIF_WAITING_FOR_RESPONSE(Action<CGIF_WAITING_FOR_RESPONSE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<CGIF_WAITING_FOR_RESPONSE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<CGIF_WAITING_FOR_RESPONSE> m_target;
+        #endregion
+    }
+    public sealed class FILTER_ACCESS_DENIED_END : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal FILTER_ACCESS_DENIED_END(Action<FILTER_ACCESS_DENIED_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<FILTER_ACCESS_DENIED_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<FILTER_ACCESS_DENIED_END> m_target;
+        #endregion
+    }
+    public sealed class FILTER_ACCESS_DENIED_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string RequestedURL { get { return GetUTF8StringAt(16); } }
@@ -4413,7 +6969,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int DenialReason { get { return GetInt32At(SkipUTF8String(SkipUTF8String(16))); } }
 
         #region Private
-        internal IISFilterFILTER_ACCESS_DENIED_STARTArgs(Action<IISFilterFILTER_ACCESS_DENIED_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_ACCESS_DENIED_START(Action<FILTER_ACCESS_DENIED_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4430,7 +6986,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ACCESS_DENIED_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_ACCESS_DENIED_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4471,17 +7027,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ACCESS_DENIED_STARTArgs> m_target;
+        private event Action<FILTER_ACCESS_DENIED_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ADD_REQ_HEADERArgs : TraceEvent
+    public sealed class FILTER_ADD_REQ_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
         public string HeaderValue { get { return GetUTF8StringAt(SkipUTF8String(16)); } }
 
         #region Private
-        internal IISFilterFILTER_ADD_REQ_HEADERArgs(Action<IISFilterFILTER_ADD_REQ_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_ADD_REQ_HEADER(Action<FILTER_ADD_REQ_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4498,7 +7054,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ADD_REQ_HEADERArgs>) value; }
+            set { m_target = (Action<FILTER_ADD_REQ_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4536,17 +7092,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ADD_REQ_HEADERArgs> m_target;
+        private event Action<FILTER_ADD_REQ_HEADER> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ADD_RESP_HEADERArgs : TraceEvent
+    public sealed class FILTER_ADD_RESP_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
         public string HeaderValue { get { return GetUTF8StringAt(SkipUTF8String(16)); } }
 
         #region Private
-        internal IISFilterFILTER_ADD_RESP_HEADERArgs(Action<IISFilterFILTER_ADD_RESP_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_ADD_RESP_HEADER(Action<FILTER_ADD_RESP_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4563,7 +7119,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ADD_RESP_HEADERArgs>) value; }
+            set { m_target = (Action<FILTER_ADD_RESP_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4601,15 +7157,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ADD_RESP_HEADERArgs> m_target;
+        private event Action<FILTER_ADD_RESP_HEADER> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_AUTH_COMPLETE_ENDArgs : TraceEvent
+    public sealed class FILTER_AUTH_COMPLETE_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_AUTH_COMPLETE_ENDArgs(Action<IISFilterFILTER_AUTH_COMPLETE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_AUTH_COMPLETE_END(Action<FILTER_AUTH_COMPLETE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4626,7 +7182,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_AUTH_COMPLETE_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_AUTH_COMPLETE_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4658,15 +7214,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_AUTH_COMPLETE_ENDArgs> m_target;
+        private event Action<FILTER_AUTH_COMPLETE_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_AUTH_COMPLETE_STARTArgs : TraceEvent
+    public sealed class FILTER_AUTH_COMPLETE_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_AUTH_COMPLETE_STARTArgs(Action<IISFilterFILTER_AUTH_COMPLETE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_AUTH_COMPLETE_START(Action<FILTER_AUTH_COMPLETE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4683,7 +7239,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_AUTH_COMPLETE_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_AUTH_COMPLETE_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4715,17 +7271,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_AUTH_COMPLETE_STARTArgs> m_target;
+        private event Action<FILTER_AUTH_COMPLETE_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_AUTHENTICATION_ENDArgs : TraceEvent
+    public sealed class FILTER_AUTHENTICATION_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FinalUserName { get { return GetUTF8StringAt(16); } }
         public bool PasswordChanged { get { return GetInt32At(SkipUTF8String(16)) != 0; } }
 
         #region Private
-        internal IISFilterFILTER_AUTHENTICATION_ENDArgs(Action<IISFilterFILTER_AUTHENTICATION_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_AUTHENTICATION_END(Action<FILTER_AUTHENTICATION_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4742,7 +7298,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_AUTHENTICATION_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_AUTHENTICATION_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4780,16 +7336,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_AUTHENTICATION_ENDArgs> m_target;
+        private event Action<FILTER_AUTHENTICATION_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_AUTHENTICATION_STARTArgs : TraceEvent
+    public sealed class FILTER_AUTHENTICATION_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string OrigUserName { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal IISFilterFILTER_AUTHENTICATION_STARTArgs(Action<IISFilterFILTER_AUTHENTICATION_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_AUTHENTICATION_START(Action<FILTER_AUTHENTICATION_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4806,7 +7362,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_AUTHENTICATION_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_AUTHENTICATION_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4841,16 +7397,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_AUTHENTICATION_STARTArgs> m_target;
+        private event Action<FILTER_AUTHENTICATION_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ENDArgs : TraceEvent
+    public sealed class FILTER_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3FilterEndNotificationStatus NotificationStatus { get { return (W3FilterEndNotificationStatus)GetInt32At(16); } }
+        public FILTER_ENDNotificationStatus NotificationStatus { get { return (FILTER_ENDNotificationStatus)GetInt32At(16); } }
 
         #region Private
-        internal IISFilterFILTER_ENDArgs(Action<IISFilterFILTER_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_END(Action<FILTER_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4867,7 +7423,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4902,15 +7458,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ENDArgs> m_target;
+        private event Action<FILTER_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_END_OF_REQUEST_ENDArgs : TraceEvent
+    public sealed class FILTER_END_OF_REQUEST_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_END_OF_REQUEST_ENDArgs(Action<IISFilterFILTER_END_OF_REQUEST_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_END_OF_REQUEST_END(Action<FILTER_END_OF_REQUEST_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4927,7 +7483,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_END_OF_REQUEST_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_END_OF_REQUEST_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -4959,15 +7515,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_END_OF_REQUEST_ENDArgs> m_target;
+        private event Action<FILTER_END_OF_REQUEST_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_END_OF_REQUEST_STARTArgs : TraceEvent
+    public sealed class FILTER_END_OF_REQUEST_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_END_OF_REQUEST_STARTArgs(Action<IISFilterFILTER_END_OF_REQUEST_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_END_OF_REQUEST_START(Action<FILTER_END_OF_REQUEST_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -4984,7 +7540,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_END_OF_REQUEST_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_END_OF_REQUEST_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5016,16 +7572,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_END_OF_REQUEST_STARTArgs> m_target;
+        private event Action<FILTER_END_OF_REQUEST_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_ERRORArgs : TraceEvent
+    public sealed class FILTER_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ErrorCode { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISFilterFILTER_ERRORArgs(Action<IISFilterFILTER_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_ERROR(Action<FILTER_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5042,7 +7598,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_ERRORArgs>) value; }
+            set { m_target = (Action<FILTER_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5077,10 +7633,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_ERRORArgs> m_target;
+        private event Action<FILTER_ERROR> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_LOG_ENDArgs : TraceEvent
+    public sealed class FILTER_LOG_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FinalClientHostName { get { return GetUTF8StringAt(16); } }
@@ -5093,7 +7649,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int FinalWin32Status { get { return GetInt32At(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(16))))))+4); } }
 
         #region Private
-        internal IISFilterFILTER_LOG_ENDArgs(Action<IISFilterFILTER_LOG_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_LOG_END(Action<FILTER_LOG_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5110,7 +7666,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_LOG_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_LOG_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5166,10 +7722,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_LOG_ENDArgs> m_target;
+        private event Action<FILTER_LOG_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_LOG_STARTArgs : TraceEvent
+    public sealed class FILTER_LOG_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string OrigClientHostName { get { return GetUTF8StringAt(16); } }
@@ -5182,7 +7738,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int OrigWin32Status { get { return GetInt32At(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(SkipUTF8String(16))))))+4); } }
 
         #region Private
-        internal IISFilterFILTER_LOG_STARTArgs(Action<IISFilterFILTER_LOG_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_LOG_START(Action<FILTER_LOG_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5199,7 +7755,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_LOG_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_LOG_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5255,15 +7811,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_LOG_STARTArgs> m_target;
+        private event Action<FILTER_LOG_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_PREPROC_HEADERS_ENDArgs : TraceEvent
+    public sealed class FILTER_PREPROC_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_PREPROC_HEADERS_ENDArgs(Action<IISFilterFILTER_PREPROC_HEADERS_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_PREPROC_END(Action<FILTER_PREPROC_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5280,7 +7836,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_PREPROC_HEADERS_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_PREPROC_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5312,15 +7868,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_PREPROC_HEADERS_ENDArgs> m_target;
+        private event Action<FILTER_PREPROC_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_PREPROC_HEADERS_STARTArgs : TraceEvent
+    public sealed class FILTER_PREPROC_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_PREPROC_HEADERS_STARTArgs(Action<IISFilterFILTER_PREPROC_HEADERS_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_PREPROC_START(Action<FILTER_PREPROC_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5337,7 +7893,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_PREPROC_HEADERS_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_PREPROC_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5369,15 +7925,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_PREPROC_HEADERS_STARTArgs> m_target;
+        private event Action<FILTER_PREPROC_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SEND_RAW_DATA_ENDArgs : TraceEvent
+    public sealed class FILTER_SEND_RAW_DATA_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_SEND_RAW_DATA_ENDArgs(Action<IISFilterFILTER_SEND_RAW_DATA_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SEND_RAW_DATA_END(Action<FILTER_SEND_RAW_DATA_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5394,7 +7950,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SEND_RAW_DATA_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_SEND_RAW_DATA_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5426,15 +7982,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SEND_RAW_DATA_ENDArgs> m_target;
+        private event Action<FILTER_SEND_RAW_DATA_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SEND_RAW_DATA_STARTArgs : TraceEvent
+    public sealed class FILTER_SEND_RAW_DATA_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_SEND_RAW_DATA_STARTArgs(Action<IISFilterFILTER_SEND_RAW_DATA_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SEND_RAW_DATA_START(Action<FILTER_SEND_RAW_DATA_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5451,7 +8007,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SEND_RAW_DATA_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_SEND_RAW_DATA_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5483,15 +8039,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SEND_RAW_DATA_STARTArgs> m_target;
+        private event Action<FILTER_SEND_RAW_DATA_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SEND_RESPONSE_ENDArgs : TraceEvent
+    public sealed class FILTER_SEND_RESPONSE_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISFilterFILTER_SEND_RESPONSE_ENDArgs(Action<IISFilterFILTER_SEND_RESPONSE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SEND_RESPONSE_END(Action<FILTER_SEND_RESPONSE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5508,7 +8064,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SEND_RESPONSE_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_SEND_RESPONSE_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5540,16 +8096,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SEND_RESPONSE_ENDArgs> m_target;
+        private event Action<FILTER_SEND_RESPONSE_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SEND_RESPONSE_STARTArgs : TraceEvent
+    public sealed class FILTER_SEND_RESPONSE_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int HttpStatus { get { return GetInt32At(16); } }
 
         #region Private
-        internal IISFilterFILTER_SEND_RESPONSE_STARTArgs(Action<IISFilterFILTER_SEND_RESPONSE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SEND_RESPONSE_START(Action<FILTER_SEND_RESPONSE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5566,7 +8122,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SEND_RESPONSE_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_SEND_RESPONSE_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5601,17 +8157,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SEND_RESPONSE_STARTArgs> m_target;
+        private event Action<FILTER_SEND_RESPONSE_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SET_REQ_HEADERArgs : TraceEvent
+    public sealed class FILTER_SET_REQ_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
         public string HeaderValue { get { return GetUTF8StringAt(SkipUTF8String(16)); } }
 
         #region Private
-        internal IISFilterFILTER_SET_REQ_HEADERArgs(Action<IISFilterFILTER_SET_REQ_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SET_REQ_HEADER(Action<FILTER_SET_REQ_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5628,7 +8184,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SET_REQ_HEADERArgs>) value; }
+            set { m_target = (Action<FILTER_SET_REQ_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5666,17 +8222,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SET_REQ_HEADERArgs> m_target;
+        private event Action<FILTER_SET_REQ_HEADER> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_SET_RESP_HEADERArgs : TraceEvent
+    public sealed class FILTER_SET_RESP_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
         public string HeaderValue { get { return GetUTF8StringAt(SkipUTF8String(16)); } }
 
         #region Private
-        internal IISFilterFILTER_SET_RESP_HEADERArgs(Action<IISFilterFILTER_SET_RESP_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_SET_RESP_HEADER(Action<FILTER_SET_RESP_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5693,7 +8249,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_SET_RESP_HEADERArgs>) value; }
+            set { m_target = (Action<FILTER_SET_RESP_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5731,16 +8287,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_SET_RESP_HEADERArgs> m_target;
+        private event Action<FILTER_SET_RESP_HEADER> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_STARTArgs : TraceEvent
+    public sealed class FILTER_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FilterName { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISFilterFILTER_STARTArgs(Action<IISFilterFILTER_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_START(Action<FILTER_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5757,7 +8313,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5792,10 +8348,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_STARTArgs> m_target;
+        private event Action<FILTER_START> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_URL_MAP_ENDArgs : TraceEvent
+    public sealed class FILTER_URL_MAP_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FinalURL { get { return GetUTF8StringAt(16); } }
@@ -5806,7 +8362,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string ScriptMapEntry { get { return GetUTF8StringAt(SkipUTF8String(SkipUTF8String(16))+12); } }
 
         #region Private
-        internal IISFilterFILTER_URL_MAP_ENDArgs(Action<IISFilterFILTER_URL_MAP_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_URL_MAP_END(Action<FILTER_URL_MAP_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5823,7 +8379,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_URL_MAP_ENDArgs>) value; }
+            set { m_target = (Action<FILTER_URL_MAP_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5873,10 +8429,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_URL_MAP_ENDArgs> m_target;
+        private event Action<FILTER_URL_MAP_END> m_target;
         #endregion
     }
-    public sealed class IISFilterFILTER_URL_MAP_STARTArgs : TraceEvent
+    public sealed class FILTER_URL_MAP_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string OrigURL { get { return GetUTF8StringAt(16); } }
@@ -5887,7 +8443,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string ScriptMapEntry { get { return GetUTF8StringAt(SkipUTF8String(SkipUTF8String(16))+12); } }
 
         #region Private
-        internal IISFilterFILTER_URL_MAP_STARTArgs(Action<IISFilterFILTER_URL_MAP_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal FILTER_URL_MAP_START(Action<FILTER_URL_MAP_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -5904,7 +8460,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISFilterFILTER_URL_MAP_STARTArgs>) value; }
+            set { m_target = (Action<FILTER_URL_MAP_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -5954,137 +8510,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISFilterFILTER_URL_MAP_STARTArgs> m_target;
+        private event Action<FILTER_URL_MAP_START> m_target;
         #endregion
     }
-    public sealed class IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string ConfigPath { get { return GetUnicodeStringAt(16); } }
-
-        #region Private
-        internal IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs(Action<IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ConfigPath", ConfigPath);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ConfigPath"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ConfigPath;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISGeneralCONFIG_CHANGE_NOTIFICATIONArgs> m_target;
-        #endregion
-    }
-    public sealed class IISGeneralFILE_CHANGE_NOTIFICATIONArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FilePath { get { return GetUnicodeStringAt(16); } }
-
-        #region Private
-        internal IISGeneralFILE_CHANGE_NOTIFICATIONArgs(Action<IISGeneralFILE_CHANGE_NOTIFICATIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISGeneralFILE_CHANGE_NOTIFICATIONArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "FilePath", FilePath);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "FilePath"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return FilePath;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISGeneralFILE_CHANGE_NOTIFICATIONArgs> m_target;
-        #endregion
-    }
-    public sealed class IISGeneralGENERAL_CGI_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_CGI_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_CGI_HANDLERArgs(Action<IISGeneralGENERAL_CGI_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_CGI_HANDLER(Action<GENERAL_CGI_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6101,7 +8535,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_CGI_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_CGI_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6133,10 +8567,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_CGI_HANDLERArgs> m_target;
+        private event Action<GENERAL_CGI_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_CHILD_REQUEST_ENDArgs : TraceEvent
+    public sealed class GENERAL_CHILD_REQUEST_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int BytesSent { get { return GetInt32At(16); } }
@@ -6144,7 +8578,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int HttpSubStatus { get { return GetInt16At(24); } }
 
         #region Private
-        internal IISGeneralGENERAL_CHILD_REQUEST_ENDArgs(Action<IISGeneralGENERAL_CHILD_REQUEST_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_CHILD_REQUEST_END(Action<GENERAL_CHILD_REQUEST_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6161,7 +8595,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_CHILD_REQUEST_ENDArgs>) value; }
+            set { m_target = (Action<GENERAL_CHILD_REQUEST_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6202,10 +8636,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_CHILD_REQUEST_ENDArgs> m_target;
+        private event Action<GENERAL_CHILD_REQUEST_END> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_CHILD_REQUEST_STARTArgs : TraceEvent
+    public sealed class GENERAL_CHILD_REQUEST_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int SiteId { get { return GetInt32At(16); } }
@@ -6214,7 +8648,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int RecursiveLevel { get { return GetInt32At(SkipUTF8String(SkipUnicodeString(20))); } }
 
         #region Private
-        internal IISGeneralGENERAL_CHILD_REQUEST_STARTArgs(Action<IISGeneralGENERAL_CHILD_REQUEST_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_CHILD_REQUEST_START(Action<GENERAL_CHILD_REQUEST_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6231,7 +8665,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_CHILD_REQUEST_STARTArgs>) value; }
+            set { m_target = (Action<GENERAL_CHILD_REQUEST_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6275,16 +8709,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_CHILD_REQUEST_STARTArgs> m_target;
+        private event Action<GENERAL_CHILD_REQUEST_START> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_DAV_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_CONFIG_CHANGE_NOTIFICATION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public string FileName { get { return GetUnicodeStringAt(16); } }
+        public string ConfigPath { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_DAV_HANDLERArgs(Action<IISGeneralGENERAL_DAV_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_CONFIG_CHANGE_NOTIFICATION(Action<GENERAL_CONFIG_CHANGE_NOTIFICATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6301,7 +8735,68 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_DAV_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_CONFIG_CHANGE_NOTIFICATION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ConfigPath", ConfigPath);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ConfigPath"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ConfigPath;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<GENERAL_CONFIG_CHANGE_NOTIFICATION> m_target;
+        #endregion
+    }
+    public sealed class GENERAL_DAV_HANDLER : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string FileName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal GENERAL_DAV_HANDLER(Action<GENERAL_DAV_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<GENERAL_DAV_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6336,10 +8831,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_DAV_HANDLERArgs> m_target;
+        private event Action<GENERAL_DAV_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs : TraceEvent
+    public sealed class GENERAL_ENDPOINT_INFORMATION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string RemoteAddress { get { return GetUTF8StringAt(16); } }
@@ -6348,7 +8843,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string LocalPort { get { return GetUTF8StringAt(SkipUTF8String(SkipUTF8String(SkipUTF8String(16)))); } }
 
         #region Private
-        internal IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs(Action<IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_ENDPOINT_INFORMATION(Action<GENERAL_ENDPOINT_INFORMATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6365,7 +8860,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs>) value; }
+            set { m_target = (Action<GENERAL_ENDPOINT_INFORMATION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6409,17 +8904,78 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_ENDPOINT_INFORMATIONArgs> m_target;
+        private event Action<GENERAL_ENDPOINT_INFORMATION> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs : TraceEvent
+    public sealed class GENERAL_FILE_CHANGE_NOTIFICATION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string FilePath { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal GENERAL_FILE_CHANGE_NOTIFICATION(Action<GENERAL_FILE_CHANGE_NOTIFICATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<GENERAL_FILE_CHANGE_NOTIFICATION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "FilePath", FilePath);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "FilePath"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return FilePath;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<GENERAL_FILE_CHANGE_NOTIFICATION> m_target;
+        #endregion
+    }
+    public sealed class GENERAL_FLUSH_RESPONSE_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int BytesSent { get { return GetInt32At(16); } }
         public int ErrorCode { get { return GetInt32At(20); } }
 
         #region Private
-        internal IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs(Action<IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_FLUSH_RESPONSE_END(Action<GENERAL_FLUSH_RESPONSE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6436,7 +8992,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs>) value; }
+            set { m_target = (Action<GENERAL_FLUSH_RESPONSE_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6474,15 +9030,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_FLUSH_RESPONSE_ENDArgs> m_target;
+        private event Action<GENERAL_FLUSH_RESPONSE_END> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs : TraceEvent
+    public sealed class GENERAL_FLUSH_RESPONSE_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs(Action<IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_FLUSH_RESPONSE_START(Action<GENERAL_FLUSH_RESPONSE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6499,7 +9055,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs>) value; }
+            set { m_target = (Action<GENERAL_FLUSH_RESPONSE_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6531,17 +9087,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_FLUSH_RESPONSE_STARTArgs> m_target;
+        private event Action<GENERAL_FLUSH_RESPONSE_START> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_GET_URL_METADATAArgs : TraceEvent
+    public sealed class GENERAL_GET_URL_METADATA : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string PhysicalPath { get { return GetUnicodeStringAt(16); } }
-        public W3GeneralGetURLMetadataAccessPerms AccessPerms { get { return (W3GeneralGetURLMetadataAccessPerms)GetInt32At(SkipUnicodeString(16)); } }
+        public GENERAL_GET_URL_METADATAAccessPerms AccessPerms { get { return (GENERAL_GET_URL_METADATAAccessPerms)GetInt32At(SkipUnicodeString(16)); } }
 
         #region Private
-        internal IISGeneralGENERAL_GET_URL_METADATAArgs(Action<IISGeneralGENERAL_GET_URL_METADATAArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_GET_URL_METADATA(Action<GENERAL_GET_URL_METADATA> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6558,7 +9114,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_GET_URL_METADATAArgs>) value; }
+            set { m_target = (Action<GENERAL_GET_URL_METADATA>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6596,15 +9152,157 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_GET_URL_METADATAArgs> m_target;
+        private event Action<GENERAL_GET_URL_METADATA> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_ISAPI_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_HANDLER_CHANGED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string OldHandlerName { get { return GetUnicodeStringAt(16); } }
+        public string NewHandlerName { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string NewHandlerModules { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public string NewHandlerScriptProcessor { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+        public string NewHandlerType { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16))))); } }
+
+        #region Private
+        internal GENERAL_HANDLER_CHANGED(Action<GENERAL_HANDLER_CHANGED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<GENERAL_HANDLER_CHANGED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "OldHandlerName", OldHandlerName);
+             XmlAttrib(sb, "NewHandlerName", NewHandlerName);
+             XmlAttrib(sb, "NewHandlerModules", NewHandlerModules);
+             XmlAttrib(sb, "NewHandlerScriptProcessor", NewHandlerScriptProcessor);
+             XmlAttrib(sb, "NewHandlerType", NewHandlerType);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "OldHandlerName", "NewHandlerName", "NewHandlerModules", "NewHandlerScriptProcessor", "NewHandlerType"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return OldHandlerName;
+                case 2:
+                    return NewHandlerName;
+                case 3:
+                    return NewHandlerModules;
+                case 4:
+                    return NewHandlerScriptProcessor;
+                case 5:
+                    return NewHandlerType;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<GENERAL_HANDLER_CHANGED> m_target;
+        #endregion
+    }
+    public sealed class GENERAL_HANDLER_PRECONDITION_NOT_MATCH : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Name { get { return GetUnicodeStringAt(16); } }
+        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+
+        #region Private
+        internal GENERAL_HANDLER_PRECONDITION_NOT_MATCH(Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Name", Name);
+             XmlAttrib(sb, "Precondition", Precondition);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Name;
+                case 2:
+                    return Precondition;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> m_target;
+        #endregion
+    }
+    public sealed class GENERAL_ISAPI_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_ISAPI_HANDLERArgs(Action<IISGeneralGENERAL_ISAPI_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_ISAPI_HANDLER(Action<GENERAL_ISAPI_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6621,7 +9319,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_ISAPI_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_ISAPI_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6653,15 +9351,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_ISAPI_HANDLERArgs> m_target;
+        private event Action<GENERAL_ISAPI_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_MAP_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_MAP_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_MAP_HANDLERArgs(Action<IISGeneralGENERAL_MAP_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_MAP_HANDLER(Action<GENERAL_MAP_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6678,7 +9376,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_MAP_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_MAP_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6710,17 +9408,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_MAP_HANDLERArgs> m_target;
+        private event Action<GENERAL_MAP_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs : TraceEvent
+    public sealed class GENERAL_MODULE_FACTORY_FAILED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ModuleName { get { return GetUnicodeStringAt(16); } }
         public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)); } }
 
         #region Private
-        internal IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs(Action<IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_MODULE_FACTORY_FAILED(Action<GENERAL_MODULE_FACTORY_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6737,7 +9435,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs>) value; }
+            set { m_target = (Action<GENERAL_MODULE_FACTORY_FAILED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6775,16 +9473,81 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_MODULE_FACTORY_FAILEDArgs> m_target;
+        private event Action<GENERAL_MODULE_FACTORY_FAILED> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs : TraceEvent
+    public sealed class GENERAL_MODULE_PRECONDITION_NOT_MATCH : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public W3GeneralNotSendCustomErrorReason Reason { get { return (W3GeneralNotSendCustomErrorReason)GetInt32At(16); } }
+        public string Name { get { return GetUnicodeStringAt(16); } }
+        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
 
         #region Private
-        internal IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs(Action<IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_MODULE_PRECONDITION_NOT_MATCH(Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Name", Name);
+             XmlAttrib(sb, "Precondition", Precondition);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Name;
+                case 2:
+                    return Precondition;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> m_target;
+        #endregion
+    }
+    public sealed class GENERAL_NOT_SEND_CUSTOM_ERROR : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public GENERAL_NOT_SEND_CUSTOM_ERRORReason Reason { get { return (GENERAL_NOT_SEND_CUSTOM_ERRORReason)GetInt32At(16); } }
+
+        #region Private
+        internal GENERAL_NOT_SEND_CUSTOM_ERROR(Action<GENERAL_NOT_SEND_CUSTOM_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6801,7 +9564,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs>) value; }
+            set { m_target = (Action<GENERAL_NOT_SEND_CUSTOM_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6836,10 +9599,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORArgs> m_target;
+        private event Action<GENERAL_NOT_SEND_CUSTOM_ERROR> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_OOP_ISAPI_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int ProcessId { get { return GetInt32At(16); } }
@@ -6847,7 +9610,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int CurrentReqs { get { return GetInt32At(24); } }
 
         #region Private
-        internal IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs(Action<IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_OOP_ISAPI_HANDLER(Action<GENERAL_OOP_ISAPI_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6864,7 +9627,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_OOP_ISAPI_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6905,15 +9668,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_OOP_ISAPI_HANDLERArgs> m_target;
+        private event Action<GENERAL_OOP_ISAPI_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_OPTIONS_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_OPTIONS_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_OPTIONS_HANDLERArgs(Action<IISGeneralGENERAL_OPTIONS_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_OPTIONS_HANDLER(Action<GENERAL_OPTIONS_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6930,7 +9693,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_OPTIONS_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_OPTIONS_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -6962,17 +9725,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_OPTIONS_HANDLERArgs> m_target;
+        private event Action<GENERAL_OPTIONS_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_READ_ENTITY_ENDArgs : TraceEvent
+    public sealed class GENERAL_READ_ENTITY_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int BytesReceived { get { return GetInt32At(16); } }
         public int ErrorCode { get { return GetInt32At(20); } }
 
         #region Private
-        internal IISGeneralGENERAL_READ_ENTITY_ENDArgs(Action<IISGeneralGENERAL_READ_ENTITY_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_READ_ENTITY_END(Action<GENERAL_READ_ENTITY_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -6989,7 +9752,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_READ_ENTITY_ENDArgs>) value; }
+            set { m_target = (Action<GENERAL_READ_ENTITY_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7027,15 +9790,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_READ_ENTITY_ENDArgs> m_target;
+        private event Action<GENERAL_READ_ENTITY_END> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_READ_ENTITY_STARTArgs : TraceEvent
+    public sealed class GENERAL_READ_ENTITY_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_READ_ENTITY_STARTArgs(Action<IISGeneralGENERAL_READ_ENTITY_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_READ_ENTITY_START(Action<GENERAL_READ_ENTITY_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7052,7 +9815,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_READ_ENTITY_STARTArgs>) value; }
+            set { m_target = (Action<GENERAL_READ_ENTITY_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7084,16 +9847,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_READ_ENTITY_STARTArgs> m_target;
+        private event Action<GENERAL_READ_ENTITY_START> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_REDIRECTION_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_REDIRECTION_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string RedirectedURL { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_REDIRECTION_HANDLERArgs(Action<IISGeneralGENERAL_REDIRECTION_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_REDIRECTION_HANDLER(Action<GENERAL_REDIRECTION_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7110,7 +9873,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_REDIRECTION_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_REDIRECTION_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7145,10 +9908,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_REDIRECTION_HANDLERArgs> m_target;
+        private event Action<GENERAL_REDIRECTION_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_REQUEST_ENDArgs : TraceEvent
+    public sealed class GENERAL_REQUEST_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int BytesSent { get { return GetInt32At(16); } }
@@ -7157,7 +9920,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public int HttpSubStatus { get { return GetInt16At(28); } }
 
         #region Private
-        internal IISGeneralGENERAL_REQUEST_ENDArgs(Action<IISGeneralGENERAL_REQUEST_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_REQUEST_END(Action<GENERAL_REQUEST_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7174,7 +9937,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_REQUEST_ENDArgs>) value; }
+            set { m_target = (Action<GENERAL_REQUEST_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7218,16 +9981,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_REQUEST_ENDArgs> m_target;
+        private event Action<GENERAL_REQUEST_END> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_REQUEST_ENTITYArgs : TraceEvent
+    public sealed class GENERAL_REQUEST_ENTITY : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string Buffer { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_REQUEST_ENTITYArgs(Action<IISGeneralGENERAL_REQUEST_ENTITYArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_REQUEST_ENTITY(Action<GENERAL_REQUEST_ENTITY> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7244,7 +10007,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_REQUEST_ENTITYArgs>) value; }
+            set { m_target = (Action<GENERAL_REQUEST_ENTITY>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7279,16 +10042,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_REQUEST_ENTITYArgs> m_target;
+        private event Action<GENERAL_REQUEST_ENTITY> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_REQUEST_HEADERSArgs : TraceEvent
+    public sealed class GENERAL_REQUEST_HEADERS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string Headers { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_REQUEST_HEADERSArgs(Action<IISGeneralGENERAL_REQUEST_HEADERSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_REQUEST_HEADERS(Action<GENERAL_REQUEST_HEADERS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7305,7 +10068,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_REQUEST_HEADERSArgs>) value; }
+            set { m_target = (Action<GENERAL_REQUEST_HEADERS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7340,10 +10103,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_REQUEST_HEADERSArgs> m_target;
+        private event Action<GENERAL_REQUEST_HEADERS> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_REQUEST_STARTArgs : TraceEvent
+    public sealed class GENERAL_REQUEST_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int SiteId { get { return GetInt32At(16); } }
@@ -7354,7 +10117,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string RequestVerb { get { return GetUTF8StringAt(SkipUnicodeString(SkipUnicodeString(20)+16)); } }
 
         #region Private
-        internal IISGeneralGENERAL_REQUEST_STARTArgs(Action<IISGeneralGENERAL_REQUEST_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_REQUEST_START(Action<GENERAL_REQUEST_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7371,7 +10134,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_REQUEST_STARTArgs>) value; }
+            set { m_target = (Action<GENERAL_REQUEST_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7421,16 +10184,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_REQUEST_STARTArgs> m_target;
+        private event Action<GENERAL_REQUEST_START> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs : TraceEvent
+    public sealed class GENERAL_RESPONSE_ENTITY_BUFFER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string Buffer { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs(Action<IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_RESPONSE_ENTITY_BUFFER(Action<GENERAL_RESPONSE_ENTITY_BUFFER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7447,7 +10210,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs>) value; }
+            set { m_target = (Action<GENERAL_RESPONSE_ENTITY_BUFFER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7482,10 +10245,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERArgs> m_target;
+        private event Action<GENERAL_RESPONSE_ENTITY_BUFFER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs : TraceEvent
+    public sealed class GENERAL_RESPONSE_ENTITY_FILE : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FileName { get { return GetUnicodeStringAt(16); } }
@@ -7493,7 +10256,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public long Size { get { return GetInt64At(SkipUnicodeString(16)+8); } }
 
         #region Private
-        internal IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs(Action<IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_RESPONSE_ENTITY_FILE(Action<GENERAL_RESPONSE_ENTITY_FILE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7510,7 +10273,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs>) value; }
+            set { m_target = (Action<GENERAL_RESPONSE_ENTITY_FILE>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7551,16 +10314,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_RESPONSE_ENTITY_FILEArgs> m_target;
+        private event Action<GENERAL_RESPONSE_ENTITY_FILE> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_RESPONSE_HEADERSArgs : TraceEvent
+    public sealed class GENERAL_RESPONSE_HEADERS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string Headers { get { return GetUTF8StringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_RESPONSE_HEADERSArgs(Action<IISGeneralGENERAL_RESPONSE_HEADERSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_RESPONSE_HEADERS(Action<GENERAL_RESPONSE_HEADERS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7577,7 +10340,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_RESPONSE_HEADERSArgs>) value; }
+            set { m_target = (Action<GENERAL_RESPONSE_HEADERS>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7612,10 +10375,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_RESPONSE_HEADERSArgs> m_target;
+        private event Action<GENERAL_RESPONSE_HEADERS> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs : TraceEvent
+    public sealed class GENERAL_SEND_CUSTOM_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public int HttpStatus { get { return GetInt32At(16); } }
@@ -7623,7 +10386,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public string FileNameOrURL { get { return GetUnicodeStringAt(22); } }
 
         #region Private
-        internal IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs(Action<IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_SEND_CUSTOM_ERROR(Action<GENERAL_SEND_CUSTOM_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7640,7 +10403,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs>) value; }
+            set { m_target = (Action<GENERAL_SEND_CUSTOM_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7681,10 +10444,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_SEND_CUSTOM_ERRORArgs> m_target;
+        private event Action<GENERAL_SEND_CUSTOM_ERROR> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_SET_REQUEST_HEADERArgs : TraceEvent
+    public sealed class GENERAL_SET_REQUEST_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
@@ -7692,7 +10455,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public bool Replace { get { return GetInt32At(SkipUTF8String(SkipUTF8String(16))) != 0; } }
 
         #region Private
-        internal IISGeneralGENERAL_SET_REQUEST_HEADERArgs(Action<IISGeneralGENERAL_SET_REQUEST_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_SET_REQUEST_HEADER(Action<GENERAL_SET_REQUEST_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7709,7 +10472,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_SET_REQUEST_HEADERArgs>) value; }
+            set { m_target = (Action<GENERAL_SET_REQUEST_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7750,10 +10513,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_SET_REQUEST_HEADERArgs> m_target;
+        private event Action<GENERAL_SET_REQUEST_HEADER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_SET_RESPONSE_HEADERArgs : TraceEvent
+    public sealed class GENERAL_SET_RESPONSE_HEADER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string HeaderName { get { return GetUTF8StringAt(16); } }
@@ -7761,7 +10524,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public bool Replace { get { return GetInt32At(SkipUTF8String(SkipUTF8String(16))) != 0; } }
 
         #region Private
-        internal IISGeneralGENERAL_SET_RESPONSE_HEADERArgs(Action<IISGeneralGENERAL_SET_RESPONSE_HEADERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_SET_RESPONSE_HEADER(Action<GENERAL_SET_RESPONSE_HEADER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7778,7 +10541,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_SET_RESPONSE_HEADERArgs>) value; }
+            set { m_target = (Action<GENERAL_SET_RESPONSE_HEADER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7819,16 +10582,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_SET_RESPONSE_HEADERArgs> m_target;
+        private event Action<GENERAL_SET_RESPONSE_HEADER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_STATIC_FILE_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_STATIC_FILE_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string FileName { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISGeneralGENERAL_STATIC_FILE_HANDLERArgs(Action<IISGeneralGENERAL_STATIC_FILE_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_STATIC_FILE_HANDLER(Action<GENERAL_STATIC_FILE_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7845,7 +10608,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_STATIC_FILE_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_STATIC_FILE_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7880,15 +10643,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_STATIC_FILE_HANDLERArgs> m_target;
+        private event Action<GENERAL_STATIC_FILE_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralGENERAL_TRACE_HANDLERArgs : TraceEvent
+    public sealed class GENERAL_TRACE_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISGeneralGENERAL_TRACE_HANDLERArgs(Action<IISGeneralGENERAL_TRACE_HANDLERArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_TRACE_HANDLER(Action<GENERAL_TRACE_HANDLER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -7905,7 +10668,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralGENERAL_TRACE_HANDLERArgs>) value; }
+            set { m_target = (Action<GENERAL_TRACE_HANDLER>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -7937,224 +10700,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralGENERAL_TRACE_HANDLERArgs> m_target;
+        private event Action<GENERAL_TRACE_HANDLER> m_target;
         #endregion
     }
-    public sealed class IISGeneralHANDLER_CHANGEDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string OldHandlerName { get { return GetUnicodeStringAt(16); } }
-        public string NewHandlerName { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
-        public string NewHandlerModules { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
-        public string NewHandlerScriptProcessor { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
-        public string NewHandlerType { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16))))); } }
-
-        #region Private
-        internal IISGeneralHANDLER_CHANGEDArgs(Action<IISGeneralHANDLER_CHANGEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))))));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))))));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISGeneralHANDLER_CHANGEDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "OldHandlerName", OldHandlerName);
-             XmlAttrib(sb, "NewHandlerName", NewHandlerName);
-             XmlAttrib(sb, "NewHandlerModules", NewHandlerModules);
-             XmlAttrib(sb, "NewHandlerScriptProcessor", NewHandlerScriptProcessor);
-             XmlAttrib(sb, "NewHandlerType", NewHandlerType);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "OldHandlerName", "NewHandlerName", "NewHandlerModules", "NewHandlerScriptProcessor", "NewHandlerType"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return OldHandlerName;
-                case 2:
-                    return NewHandlerName;
-                case 3:
-                    return NewHandlerModules;
-                case 4:
-                    return NewHandlerScriptProcessor;
-                case 5:
-                    return NewHandlerType;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISGeneralHANDLER_CHANGEDArgs> m_target;
-        #endregion
-    }
-    public sealed class IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Name { get { return GetUnicodeStringAt(16); } }
-        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
-
-        #region Private
-        internal IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs(Action<IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Name", Name);
-             XmlAttrib(sb, "Precondition", Precondition);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Name;
-                case 2:
-                    return Precondition;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISGeneralHANDLER_PRECONDITION_NOT_MATCHArgs> m_target;
-        #endregion
-    }
-    public sealed class IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Name { get { return GetUnicodeStringAt(16); } }
-        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
-
-        #region Private
-        internal IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs(Action<IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Name", Name);
-             XmlAttrib(sb, "Precondition", Precondition);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Name;
-                case 2:
-                    return Precondition;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISGeneralMODULE_PRECONDITION_NOT_MATCHArgs> m_target;
-        #endregion
-    }
-    public sealed class IISGeneralURL_CHANGEDArgs : TraceEvent
+    public sealed class GENERAL_URL_CHANGED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string OldUrl { get { return GetUnicodeStringAt(16); } }
         public string NewUrl { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
 
         #region Private
-        internal IISGeneralURL_CHANGEDArgs(Action<IISGeneralURL_CHANGEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_URL_CHANGED(Action<GENERAL_URL_CHANGED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8171,7 +10727,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralURL_CHANGEDArgs>) value; }
+            set { m_target = (Action<GENERAL_URL_CHANGED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8209,10 +10765,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralURL_CHANGEDArgs> m_target;
+        private event Action<GENERAL_URL_CHANGED> m_target;
         #endregion
     }
-    public sealed class IISGeneralUSER_SETArgs : TraceEvent
+    public sealed class GENERAL_USER_SET : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string AuthType { get { return GetUnicodeStringAt(16); } }
@@ -8220,7 +10776,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         public bool SupportsIsInRole { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(16))) != 0; } }
 
         #region Private
-        internal IISGeneralUSER_SETArgs(Action<IISGeneralUSER_SETArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_USER_SET(Action<GENERAL_USER_SET> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8237,7 +10793,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralUSER_SETArgs>) value; }
+            set { m_target = (Action<GENERAL_USER_SET>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8278,17 +10834,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralUSER_SETArgs> m_target;
+        private event Action<GENERAL_USER_SET> m_target;
         #endregion
     }
-    public sealed class IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs : TraceEvent
+    public sealed class GENERAL_VIRTUAL_MODULE_UNRESOLVED : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string Name { get { return GetUnicodeStringAt(16); } }
         public string Type { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
 
         #region Private
-        internal IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs(Action<IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal GENERAL_VIRTUAL_MODULE_UNRESOLVED(Action<GENERAL_VIRTUAL_MODULE_UNRESOLVED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8305,7 +10861,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs>) value; }
+            set { m_target = (Action<GENERAL_VIRTUAL_MODULE_UNRESOLVED>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8343,15 +10899,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISGeneralVIRTUAL_MODULE_UNRESOLVEDArgs> m_target;
+        private event Action<GENERAL_VIRTUAL_MODULE_UNRESOLVED> m_target;
         #endregion
     }
-    public sealed class IISISAPIISAPI_ENDArgs : TraceEvent
+    public sealed class ISAPI_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISISAPIISAPI_ENDArgs(Action<IISISAPIISAPI_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ISAPI_END(Action<ISAPI_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8368,7 +10924,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISISAPIISAPI_ENDArgs>) value; }
+            set { m_target = (Action<ISAPI_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8400,15 +10956,15 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISISAPIISAPI_ENDArgs> m_target;
+        private event Action<ISAPI_END> m_target;
         #endregion
     }
-    public sealed class IISISAPIISAPI_STARTArgs : TraceEvent
+    public sealed class ISAPI_START : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
 
         #region Private
-        internal IISISAPIISAPI_STARTArgs(Action<IISISAPIISAPI_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal ISAPI_START(Action<ISAPI_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8425,7 +10981,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISISAPIISAPI_STARTArgs>) value; }
+            set { m_target = (Action<ISAPI_START>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8457,19 +11013,19 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISISAPIISAPI_STARTArgs> m_target;
+        private event Action<ISAPI_START> m_target;
         #endregion
     }
-    public sealed class IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs : TraceEvent
+    public sealed class MODULE_EVENTS_MODULE_CRITICAL_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationEventsNotification Notification { get { return (IISRequestNotificationEventsNotification)GetInt32At(SkipUnicodeString(16)); } }
-        public int HttpStatus { get { return GetInt32At(SkipUnicodeString(16)+4); } }
-        public string HttpReason { get { return GetUTF8StringAt(SkipUnicodeString(16)+8); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
 
         #region Private
-        internal IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs(Action<IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal MODULE_EVENTS_MODULE_CRITICAL_ERROR(Action<MODULE_EVENTS_MODULE_CRITICAL_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8480,22 +11036,22 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         }
         protected override void Validate()
         {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(SkipUnicodeString(16)+8)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(SkipUnicodeString(16)+8)));
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
         }
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs>) value; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_CRITICAL_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
              Prefix(sb);
              XmlAttrib(sb, "ContextId", ContextId);
              XmlAttrib(sb, "ModuleName", ModuleName);
-             XmlAttrib(sb, "Notification", Notification);
-             XmlAttrib(sb, "HttpStatus", HttpStatus);
-             XmlAttrib(sb, "HttpReason", HttpReason);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
              sb.Append("/>");
              return sb;
         }
@@ -8505,7 +11061,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             get
             {
                 if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "HttpStatus", "HttpReason"};
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
                 return payloadNames;
             }
         }
@@ -8519,31 +11075,469 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
                 case 1:
                     return ModuleName;
                 case 2:
-                    return Notification;
+                    return Data1;
                 case 3:
-                    return HttpStatus;
+                    return Data2;
                 case 4:
-                    return HttpReason;
+                    return ErrorCode;
                 default:
                     Debug.Assert(false, "Bad field index");
                     return null;
             }
         }
 
-        private event Action<IISRequestNotificationMODULE_SET_RESPONSE_SUCCESS_STATUSArgs> m_target;
+        private event Action<MODULE_EVENTS_MODULE_CRITICAL_ERROR> m_target;
         #endregion
     }
-    public sealed class IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs : TraceEvent
+    public sealed class MODULE_EVENTS_MODULE_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationEventsNotification Notification { get { return (IISRequestNotificationEventsNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_END(Action<MODULE_EVENTS_MODULE_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_END> m_target;
+        #endregion
+    }
+    public sealed class MODULE_EVENTS_MODULE_ERROR : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_ERROR(Action<MODULE_EVENTS_MODULE_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_ERROR>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_ERROR> m_target;
+        #endregion
+    }
+    public sealed class MODULE_EVENTS_MODULE_INFORMATION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_INFORMATION(Action<MODULE_EVENTS_MODULE_INFORMATION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_INFORMATION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_INFORMATION> m_target;
+        #endregion
+    }
+    public sealed class MODULE_EVENTS_MODULE_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_START(Action<MODULE_EVENTS_MODULE_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_START> m_target;
+        #endregion
+    }
+    public sealed class MODULE_EVENTS_MODULE_VERBOSE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_VERBOSE(Action<MODULE_EVENTS_MODULE_VERBOSE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_VERBOSE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_VERBOSE> m_target;
+        #endregion
+    }
+    public sealed class MODULE_EVENTS_MODULE_WARNING : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public string Data1 { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string Data2 { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+        public int ErrorCode { get { return GetInt32At(SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))); } }
+
+        #region Private
+        internal MODULE_EVENTS_MODULE_WARNING(Action<MODULE_EVENTS_MODULE_WARNING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_EVENTS_MODULE_WARNING>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Data1", Data1);
+             XmlAttrib(sb, "Data2", Data2);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Data1", "Data2", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Data1;
+                case 3:
+                    return Data2;
+                case 4:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_EVENTS_MODULE_WARNING> m_target;
+        #endregion
+    }
+    public sealed class REQUEST_NOTIFICATION_EVENTS_COMPLETION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public REQUEST_NOTIFICATION_EVENTS_COMPLETIONNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_COMPLETIONNotification)GetInt32At(SkipUnicodeString(16)); } }
         public bool fIsPostNotificationEvent { get { return GetInt32At(SkipUnicodeString(16)+4) != 0; } }
         public int CompletionBytes { get { return GetInt32At(SkipUnicodeString(16)+8); } }
         public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)+12); } }
 
         #region Private
-        internal IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs(Action<IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal REQUEST_NOTIFICATION_EVENTS_COMPLETION(Action<REQUEST_NOTIFICATION_EVENTS_COMPLETION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8560,7 +11554,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs>) value; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_COMPLETION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8607,19 +11601,19 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISRequestNotificationNOTIFY_MODULE_COMPLETIONArgs> m_target;
+        private event Action<REQUEST_NOTIFICATION_EVENTS_COMPLETION> m_target;
         #endregion
     }
-    public sealed class IISRequestNotificationNOTIFY_MODULE_ENDArgs : TraceEvent
+    public sealed class REQUEST_NOTIFICATION_EVENTS_END : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationEventsNotification Notification { get { return (IISRequestNotificationEventsNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public REQUEST_NOTIFICATION_EVENTS_ENDNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_ENDNotification)GetInt32At(SkipUnicodeString(16)); } }
         public bool fIsPostNotificationEvent { get { return GetInt32At(SkipUnicodeString(16)+4) != 0; } }
-        public IISRequestNotificationEventsEndNotificationStatus NotificationStatus { get { return (IISRequestNotificationEventsEndNotificationStatus)GetInt32At(SkipUnicodeString(16)+8); } }
+        public REQUEST_NOTIFICATION_EVENTS_ENDNotificationStatus NotificationStatus { get { return (REQUEST_NOTIFICATION_EVENTS_ENDNotificationStatus)GetInt32At(SkipUnicodeString(16)+8); } }
 
         #region Private
-        internal IISRequestNotificationNOTIFY_MODULE_ENDArgs(Action<IISRequestNotificationNOTIFY_MODULE_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal REQUEST_NOTIFICATION_EVENTS_END(Action<REQUEST_NOTIFICATION_EVENTS_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8636,7 +11630,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationNOTIFY_MODULE_ENDArgs>) value; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_END>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8680,213 +11674,18 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISRequestNotificationNOTIFY_MODULE_ENDArgs> m_target;
+        private event Action<REQUEST_NOTIFICATION_EVENTS_END> m_target;
         #endregion
     }
-    public sealed class IISRequestNotificationNOTIFY_MODULE_STARTArgs : TraceEvent
+    public sealed class REQUEST_NOTIFICATION_EVENTS_ERROR : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationEventsNotification Notification { get { return (IISRequestNotificationEventsNotification)GetInt32At(SkipUnicodeString(16)); } }
-        public bool fIsPostNotification { get { return GetInt32At(SkipUnicodeString(16)+4) != 0; } }
-
-        #region Private
-        internal IISRequestNotificationNOTIFY_MODULE_STARTArgs(Action<IISRequestNotificationNOTIFY_MODULE_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+8));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+8));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationNOTIFY_MODULE_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ModuleName", ModuleName);
-             XmlAttrib(sb, "Notification", Notification);
-             XmlAttrib(sb, "fIsPostNotification", fIsPostNotification);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "fIsPostNotification"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ModuleName;
-                case 2:
-                    return Notification;
-                case 3:
-                    return fIsPostNotification;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISRequestNotificationNOTIFY_MODULE_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationPreBeginEndNotificationStatus NotificationStatus { get { return (IISRequestNotificationPreBeginEndNotificationStatus)GetInt32At(SkipUnicodeString(16)); } }
-
-        #region Private
-        internal IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs(Action<IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+4));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+4));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ModuleName", ModuleName);
-             XmlAttrib(sb, "NotificationStatus", NotificationStatus);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ModuleName", "NotificationStatus"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ModuleName;
-                case 2:
-                    return NotificationStatus;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISRequestNotificationPRE_BEGIN_REQUEST_ENDArgs> m_target;
-        #endregion
-    }
-    public sealed class IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string ModuleName { get { return GetUnicodeStringAt(16); } }
-
-        #region Private
-        internal IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs(Action<IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ModuleName", ModuleName);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ModuleName"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ModuleName;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<IISRequestNotificationPRE_BEGIN_REQUEST_STARTArgs> m_target;
-        #endregion
-    }
-    public sealed class IISRequestNotificationREQUEST_PROCESSING_ERRORArgs : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public IISRequestNotificationEventsNotification Notification { get { return (IISRequestNotificationEventsNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public REQUEST_NOTIFICATION_EVENTS_ERRORNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_ERRORNotification)GetInt32At(SkipUnicodeString(16)); } }
         public int ErrorCode { get { return GetInt32At(SkipUnicodeString(16)+4); } }
 
         #region Private
-        internal IISRequestNotificationREQUEST_PROCESSING_ERRORArgs(Action<IISRequestNotificationREQUEST_PROCESSING_ERRORArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal REQUEST_NOTIFICATION_EVENTS_ERROR(Action<REQUEST_NOTIFICATION_EVENTS_ERROR> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8903,7 +11702,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationREQUEST_PROCESSING_ERRORArgs>) value; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_ERROR>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -8944,16 +11743,16 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISRequestNotificationREQUEST_PROCESSING_ERRORArgs> m_target;
+        private event Action<REQUEST_NOTIFICATION_EVENTS_ERROR> m_target;
         #endregion
     }
-    public sealed class IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs : TraceEvent
+    public sealed class REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
         public string ErrorDescription { get { return GetUnicodeStringAt(16); } }
 
         #region Private
-        internal IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs(Action<IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+        internal REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
             : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
         {
             this.m_target = target;
@@ -8970,7 +11769,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         protected override Delegate Target
         {
             get { return m_target; }
-            set { m_target = (Action<IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs>) value; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION>) value; }
         }
         public override StringBuilder ToXml(StringBuilder sb)
         {
@@ -9005,81 +11804,2169 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
             }
         }
 
-        private event Action<IISRequestNotificationSET_RESPONSE_ERROR_DESCRIPTIONArgs> m_target;
+        private event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> m_target;
         #endregion
     }
-    public enum IISRequestNotificationEventsEndNotificationStatus
+    public sealed class REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS : TraceEvent
     {
-        NOTIFICATION_CONTINUE = 0x0,
-        NOTIFICATION_FINISH_REQUEST = 0x2,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public int HttpStatus { get { return GetInt32At(SkipUnicodeString(16)+4); } }
+        public string HttpReason { get { return GetUTF8StringAt(SkipUnicodeString(16)+8); } }
+        public int HttpSubStatus { get { return GetInt16At(SkipUTF8String(SkipUnicodeString(16)+8)); } }
+        public int ErrorCode { get { return GetInt32At(SkipUTF8String(SkipUnicodeString(16)+8)+2); } }
+        public string ConfigExceptionInfo { get { return GetUnicodeStringAt(SkipUTF8String(SkipUnicodeString(16)+8)+6); } }
+
+        #region Private
+        internal REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Notification", Notification);
+             XmlAttrib(sb, "HttpStatus", HttpStatus);
+             XmlAttrib(sb, "HttpReason", HttpReason);
+             XmlAttrib(sb, "HttpSubStatus", HttpSubStatus);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             XmlAttrib(sb, "ConfigExceptionInfo", ConfigExceptionInfo);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "HttpStatus", "HttpReason", "HttpSubStatus", "ErrorCode", "ConfigExceptionInfo"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Notification;
+                case 3:
+                    return HttpStatus;
+                case 4:
+                    return HttpReason;
+                case 5:
+                    return HttpSubStatus;
+                case 6:
+                    return ErrorCode;
+                case 7:
+                    return ConfigExceptionInfo;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> m_target;
+        #endregion
     }
-    public enum IISRequestNotificationEventsNotification
+    public sealed class REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS : TraceEvent
     {
-        MAP_PATH = unchecked((int)0x80000000),
-        PRE_BEGIN_REQUEST = 0x0,
-        BEGIN_REQUEST = 0x1,
-        AUTHENTICATE_REQUEST = 0x2,
-        AUTHORIZE_REQUEST = 0x4,
-        RESOLVE_REQUEST_CACHE = 0x8,
-        MAP_REQUEST_HANDLER = 0x10,
-        REQUEST_ACQUIRE_STATE = 0x20,
-        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
-        EXECUTE_REQUEST_HANDLER = 0x80,
-        RELEASE_REQUEST_STATE = 0x100,
-        UPDATE_REQUEST_CACHE = 0x200,
-        LOG_REQUEST = 0x400,
-        END_REQUEST = 0x800,
-        CUSTOM_NOTIFICATION = 0x10000000,
-        SEND_RESPONSE = 0x20000000,
-        READ_ENTITY = 0x40000000,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public int HttpStatus { get { return GetInt32At(SkipUnicodeString(16)+4); } }
+        public string HttpReason { get { return GetUTF8StringAt(SkipUnicodeString(16)+8); } }
+
+        #region Private
+        internal REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(SkipUnicodeString(16)+8)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(SkipUnicodeString(16)+8)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Notification", Notification);
+             XmlAttrib(sb, "HttpStatus", HttpStatus);
+             XmlAttrib(sb, "HttpReason", HttpReason);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "HttpStatus", "HttpReason"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Notification;
+                case 3:
+                    return HttpStatus;
+                case 4:
+                    return HttpReason;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS> m_target;
+        #endregion
     }
-    public enum IISRequestNotificationPreBeginEndNotificationStatus
+    public sealed class REQUEST_NOTIFICATION_EVENTS_START : TraceEvent
     {
-        NOTIFICATION_CONTINUE = 0x0,
-        NOTIFICATION_HANDLED = 0x1,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public REQUEST_NOTIFICATION_EVENTS_STARTNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_STARTNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public bool fIsPostNotification { get { return GetInt32At(SkipUnicodeString(16)+4) != 0; } }
+
+        #region Private
+        internal REQUEST_NOTIFICATION_EVENTS_START(Action<REQUEST_NOTIFICATION_EVENTS_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+8));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+8));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Notification", Notification);
+             XmlAttrib(sb, "fIsPostNotification", fIsPostNotification);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "fIsPostNotification"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Notification;
+                case 3:
+                    return fIsPostNotification;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<REQUEST_NOTIFICATION_EVENTS_START> m_target;
+        #endregion
     }
-    public enum W3AuthRequestAuthTypeRequestAuthType
+    public sealed class REQUEST_NOTIFICATION_PRE_BEGIN_END : TraceEvent
     {
-        Anonymous = 0x1,
-        Basic = 0x2,
-        NT = 0x4,
-        Digest = 0x10,
-        Passport = 0x40,
-        CertMap = 0x80,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public REQUEST_NOTIFICATION_PRE_BEGIN_ENDNotificationStatus NotificationStatus { get { return (REQUEST_NOTIFICATION_PRE_BEGIN_ENDNotificationStatus)GetInt32At(SkipUnicodeString(16)); } }
+
+        #region Private
+        internal REQUEST_NOTIFICATION_PRE_BEGIN_END(Action<REQUEST_NOTIFICATION_PRE_BEGIN_END> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)+4));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)+4));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_PRE_BEGIN_END>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "NotificationStatus", NotificationStatus);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "NotificationStatus"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return NotificationStatus;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<REQUEST_NOTIFICATION_PRE_BEGIN_END> m_target;
+        #endregion
     }
-    public enum W3AuthStartAuthTypeSupported
+    public sealed class REQUEST_NOTIFICATION_PRE_BEGIN_START : TraceEvent
     {
-        Anonymous = 0x1,
-        Basic = 0x2,
-        NT = 0x4,
-        Digest = 0x10,
-        Passport = 0x40,
-        MapCliCert = 0x80,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal REQUEST_NOTIFICATION_PRE_BEGIN_START(Action<REQUEST_NOTIFICATION_PRE_BEGIN_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<REQUEST_NOTIFICATION_PRE_BEGIN_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<REQUEST_NOTIFICATION_PRE_BEGIN_START> m_target;
+        #endregion
     }
-    public enum W3AuthSucceededAuthType
+    public sealed class SEC_DENIED_BY_ACCESS_FLAGS : TraceEvent
     {
-        Anonymous = 0x1,
-        Basic = 0x2,
-        NT = 0x4,
-        Digest = 0x10,
-        Passport = 0x40,
-        CertMap = 0x80,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int CurrentFlags { get { return GetInt32At(16); } }
+        public int NeededFlags { get { return GetInt32At(20); } }
+
+        #region Private
+        internal SEC_DENIED_BY_ACCESS_FLAGS(Action<SEC_DENIED_BY_ACCESS_FLAGS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 24));
+            Debug.Assert(!(Version > 1 && EventDataLength < 24));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_DENIED_BY_ACCESS_FLAGS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "CurrentFlags", CurrentFlags);
+             XmlAttrib(sb, "NeededFlags", NeededFlags);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "CurrentFlags", "NeededFlags"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return CurrentFlags;
+                case 2:
+                    return NeededFlags;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_DENIED_BY_ACCESS_FLAGS> m_target;
+        #endregion
     }
-    public enum W3AuthSucceededTokenImpersonationLevel
+    public sealed class SEC_DENIED_BY_CGI_RESTRICTION : TraceEvent
     {
-        ImpersonationAnonymous = 0x0,
-        ImpersonationIdentify = 0x1,
-        ImpersonationImpersonate = 0x2,
-        ImpersonationDelegate = 0x3,
-        ImpersonationUnknown = 0x4,
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ImageName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal SEC_DENIED_BY_CGI_RESTRICTION(Action<SEC_DENIED_BY_CGI_RESTRICTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_DENIED_BY_CGI_RESTRICTION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ImageName", ImageName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ImageName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ImageName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_DENIED_BY_CGI_RESTRICTION> m_target;
+        #endregion
     }
-    public enum W3CacheHttpsysCacheableCachePolicy
+    public sealed class SEC_DENIED_BY_ISAPI_RESTRICTION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ImageName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal SEC_DENIED_BY_ISAPI_RESTRICTION(Action<SEC_DENIED_BY_ISAPI_RESTRICTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_DENIED_BY_ISAPI_RESTRICTION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ImageName", ImageName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ImageName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ImageName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_DENIED_BY_ISAPI_RESTRICTION> m_target;
+        #endregion
+    }
+    public sealed class SEC_DENIED_BY_MIMEMAP : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string FileName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal SEC_DENIED_BY_MIMEMAP(Action<SEC_DENIED_BY_MIMEMAP> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_DENIED_BY_MIMEMAP>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "FileName", FileName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "FileName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return FileName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_DENIED_BY_MIMEMAP> m_target;
+        #endregion
+    }
+    public sealed class SEC_FILE_ACCESS_DENIED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string FileName { get { return GetUnicodeStringAt(16); } }
+        public string AccountName { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+        public string DomainName { get { return GetUnicodeStringAt(SkipUnicodeString(SkipUnicodeString(16))); } }
+
+        #region Private
+        internal SEC_FILE_ACCESS_DENIED(Action<SEC_FILE_ACCESS_DENIED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(SkipUnicodeString(16)))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_FILE_ACCESS_DENIED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "FileName", FileName);
+             XmlAttrib(sb, "AccountName", AccountName);
+             XmlAttrib(sb, "DomainName", DomainName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "FileName", "AccountName", "DomainName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return FileName;
+                case 2:
+                    return AccountName;
+                case 3:
+                    return DomainName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_FILE_ACCESS_DENIED> m_target;
+        #endregion
+    }
+    public sealed class SEC_ILLEGAL_SHORT_FILENAME : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string FileName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal SEC_ILLEGAL_SHORT_FILENAME(Action<SEC_ILLEGAL_SHORT_FILENAME> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_ILLEGAL_SHORT_FILENAME>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "FileName", FileName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "FileName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return FileName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_ILLEGAL_SHORT_FILENAME> m_target;
+        #endregion
+    }
+    public sealed class SEC_REJECTED_HOSTNAME : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string HostName { get { return GetUnicodeStringAt(16); } }
+
+        #region Private
+        internal SEC_REJECTED_HOSTNAME(Action<SEC_REJECTED_HOSTNAME> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_REJECTED_HOSTNAME>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "HostName", HostName);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "HostName"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return HostName;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_REJECTED_HOSTNAME> m_target;
+        #endregion
+    }
+    public sealed class SEC_REJECTED_IP : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string IPAddress { get { return GetUTF8StringAt(16); } }
+
+        #region Private
+        internal SEC_REJECTED_IP(Action<SEC_REJECTED_IP> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(16)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(16)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_REJECTED_IP>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "IPAddress", IPAddress);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "IPAddress"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return IPAddress;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_REJECTED_IP> m_target;
+        #endregion
+    }
+    public sealed class SEC_REQUIRE_SSL_128 : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal SEC_REQUIRE_SSL_128(Action<SEC_REQUIRE_SSL_128> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<SEC_REQUIRE_SSL_128>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<SEC_REQUIRE_SSL_128> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_APPLICATION_CLOSE_CONNECTION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_APPLICATION_CLOSE_CONNECTION(Action<WEBSOCKET_APPLICATION_CLOSE_CONNECTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_APPLICATION_CLOSE_CONNECTION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_APPLICATION_CLOSE_CONNECTION> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_CLOSE_RECEIVED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int Status { get { return GetInt32At(16); } }
+        public string Reason { get { return GetUnicodeStringAt(20); } }
+
+        #region Private
+        internal WEBSOCKET_CLOSE_RECEIVED(Action<WEBSOCKET_CLOSE_RECEIVED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(20)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(20)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_CLOSE_RECEIVED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Status", Status);
+             XmlAttrib(sb, "Reason", Reason);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Status", "Reason"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Status;
+                case 2:
+                    return Reason;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_CLOSE_RECEIVED> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_CLOSE_SEND_FAILURE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_CLOSE_SEND_FAILURE(Action<WEBSOCKET_CLOSE_SEND_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_CLOSE_SEND_FAILURE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_CLOSE_SEND_FAILURE> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_CLOSE_SEND_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int Status { get { return GetInt32At(16); } }
+        public string Reason { get { return GetUnicodeStringAt(20); } }
+
+        #region Private
+        internal WEBSOCKET_CLOSE_SEND_START(Action<WEBSOCKET_CLOSE_SEND_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(20)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(20)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_CLOSE_SEND_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Status", Status);
+             XmlAttrib(sb, "Reason", Reason);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Status", "Reason"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Status;
+                case 2:
+                    return Reason;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_CLOSE_SEND_START> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_CLOSE_SEND_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_CLOSE_SEND_SUCCESS(Action<WEBSOCKET_CLOSE_SEND_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_CLOSE_SEND_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_CLOSE_SEND_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_END_FAILURE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_END_FAILURE(Action<WEBSOCKET_END_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_END_FAILURE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_END_FAILURE> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_END_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_END_SUCCESS(Action<WEBSOCKET_END_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_END_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_END_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_INITIALIZE_NOT_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_INITIALIZE_NOT_SUCCESS(Action<WEBSOCKET_INITIALIZE_NOT_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_INITIALIZE_NOT_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_INITIALIZE_NOT_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_MODULE_CLOSE_CONNECTION : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int Reason { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_MODULE_CLOSE_CONNECTION(Action<WEBSOCKET_MODULE_CLOSE_CONNECTION> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_MODULE_CLOSE_CONNECTION>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Reason", Reason);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Reason"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Reason;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_MODULE_CLOSE_CONNECTION> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_READ_FRAGMENT_END_FAILURE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_READ_FRAGMENT_END_FAILURE(Action<WEBSOCKET_READ_FRAGMENT_END_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_READ_FRAGMENT_END_FAILURE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_READ_FRAGMENT_END_FAILURE> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_READ_FRAGMENT_END_PENDING : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_READ_FRAGMENT_END_PENDING(Action<WEBSOCKET_READ_FRAGMENT_END_PENDING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_READ_FRAGMENT_END_PENDING>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_READ_FRAGMENT_END_PENDING> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_READ_FRAGMENT_END_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int BytesReceived { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_READ_FRAGMENT_END_SUCCESS(Action<WEBSOCKET_READ_FRAGMENT_END_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_READ_FRAGMENT_END_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "BytesReceived", BytesReceived);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "BytesReceived"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return BytesReceived;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_READ_FRAGMENT_END_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_READ_FRAGMENT_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int BufferSize { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_READ_FRAGMENT_START(Action<WEBSOCKET_READ_FRAGMENT_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_READ_FRAGMENT_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "BufferSize", BufferSize);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "BufferSize"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return BufferSize;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_READ_FRAGMENT_START> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_READ_IO_FAILED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_READ_IO_FAILED(Action<WEBSOCKET_READ_IO_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_READ_IO_FAILED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_READ_IO_FAILED> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_START(Action<WEBSOCKET_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_START> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_WRITE_FRAGMENT_END_FAILURE : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_WRITE_FRAGMENT_END_FAILURE(Action<WEBSOCKET_WRITE_FRAGMENT_END_FAILURE> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_WRITE_FRAGMENT_END_FAILURE>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_WRITE_FRAGMENT_END_FAILURE> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_WRITE_FRAGMENT_END_PENDING : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+
+        #region Private
+        internal WEBSOCKET_WRITE_FRAGMENT_END_PENDING(Action<WEBSOCKET_WRITE_FRAGMENT_END_PENDING> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 16));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_WRITE_FRAGMENT_END_PENDING>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_WRITE_FRAGMENT_END_PENDING> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int BytesSent { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS(Action<WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "BytesSent", BytesSent);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "BytesSent"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return BytesSent;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_WRITE_FRAGMENT_START : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int DataType { get { return GetInt32At(16); } }
+        public int DataSize { get { return GetInt32At(20); } }
+
+        #region Private
+        internal WEBSOCKET_WRITE_FRAGMENT_START(Action<WEBSOCKET_WRITE_FRAGMENT_START> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 24));
+            Debug.Assert(!(Version > 1 && EventDataLength < 24));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_WRITE_FRAGMENT_START>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "DataType", DataType);
+             XmlAttrib(sb, "DataSize", DataSize);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "DataType", "DataSize"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return DataType;
+                case 2:
+                    return DataSize;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_WRITE_FRAGMENT_START> m_target;
+        #endregion
+    }
+    public sealed class WEBSOCKET_WRITE_IO_FAILED : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public int ErrorCode { get { return GetInt32At(16); } }
+
+        #region Private
+        internal WEBSOCKET_WRITE_IO_FAILED(Action<WEBSOCKET_WRITE_IO_FAILED> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != 20));
+            Debug.Assert(!(Version > 1 && EventDataLength < 20));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<WEBSOCKET_WRITE_IO_FAILED>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ErrorCode"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ErrorCode;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<WEBSOCKET_WRITE_IO_FAILED> m_target;
+        #endregion
+    }
+    public enum AUTH_REQUEST_AUTH_TYPERequestAuthType
+    {
+        MD_AUTH_ANONYMOUS = 0x1,
+        MD_AUTH_BASIC = 0x2,
+        MD_AUTH_NT = 0x4,
+        MD_AUTH_MD5 = 0x10,
+        MD_AUTH_PASSPORT = 0x40,
+        MD_ACCESS_MAP_CERT = 0x80,
+    }
+    public enum AUTH_STARTAuthTypeSupported
+    {
+        MD_AUTH_ANONYMOUS = 0x1,
+        MD_AUTH_BASIC = 0x2,
+        MD_AUTH_NT = 0x4,
+        MD_AUTH_MD5 = 0x10,
+        MD_AUTH_PASSPORT = 0x40,
+        MD_ACCESS_MAP_CERT = 0x80,
+    }
+    public enum AUTH_SUCCEEDEDAuthType
+    {
+        MD_AUTH_ANONYMOUS = 0x1,
+        MD_AUTH_BASIC = 0x2,
+        MD_AUTH_NT = 0x4,
+        MD_AUTH_MD5 = 0x10,
+        MD_AUTH_PASSPORT = 0x40,
+        MD_ACCESS_MAP_CERT = 0x80,
+    }
+    public enum AUTH_SUCCEEDEDTokenImpersonationLevel
+    {
+        IMPERSONATION_LEVEL_ANONYMOUS = 0x0,
+        IMPERSONATION_LEVEL_IDENTIFY = 0x1,
+        IMPERSONATION_LEVEL_IMPERSONATE = 0x2,
+        IMPERSONATION_LEVEL_DELEGATE = 0x3,
+        IMPERSONATION_LEVEL_UNKNOWN = 0x4,
+    }
+    public enum CACHE_HTTPSYS_CACHEABLECachePolicy
     {
         NO_CACHE = 0x0,
         USER_INVALIDATES = 0x1,
         TIME_TO_LIVE = 0x2,
     }
-    public enum W3CacheHttpsysCacheableReason
+    public enum CACHE_HTTPSYS_CACHEABLEReason
     {
         OK = 0x0,
         NO_METADATA = 0x1,
@@ -9108,7 +13995,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         HANDLER_CHANGED = 0x18,
         REQUEST_FILTER_RULE = 0x19,
     }
-    public enum W3DynamicCompressionNotSuccessReason
+    public enum DYNAMIC_COMPRESSION_NOT_SUCCESSReason
     {
         NO_ACCEPT_ENCODING = 0x1,
         COMPRESSION_DISABLED = 0x2,
@@ -9123,7 +14010,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         NO_COMPRESSION_RANGE = 0xb,
         NO_MATCHING_CONTENT_TYPE = 0xc,
     }
-    public enum W3FilterEndNotificationStatus
+    public enum FILTER_ENDNotificationStatus
     {
         SF_STATUS_REQ_FINISHED = 0x8000000,
         SF_STATUS_REQ_FINISHED_KEEP_CONN = 0x8000001,
@@ -9132,25 +14019,25 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         SF_STATUS_REQ_ERROR = 0x8000004,
         SF_STATUS_REQ_READ_NEXT = 0x8000005,
     }
-    public enum W3GeneralGetURLMetadataAccessPerms
+    public enum GENERAL_GET_URL_METADATAAccessPerms
     {
-        Read = 0x1,
-        Write = 0x2,
-        Exec = 0x4,
-        SSL = 0x8,
-        Source = 0x10,
-        CliCert = 0x20,
-        ReqCliCert = 0x40,
-        MapCliCert = 0x80,
-        SSL128 = 0x100,
-        Script = 0x200,
-        NoRemoteWrite = 0x400,
-        NoRemoteRead = 0x1000,
-        NoRemoteExec = 0x2000,
-        NoRemoteScript = 0x4000,
-        NoPhysicalDir = 0x8000,
+        MD_ACCESS_READ = 0x1,
+        MD_ACCESS_WRITE = 0x2,
+        MD_ACCESS_EXECUTE = 0x4,
+        MD_ACCESS_SSL = 0x8,
+        MD_ACCESS_SOURCE = 0x10,
+        MD_ACCESS_NEGO_CERT = 0x20,
+        MD_ACCESS_REQUIRE_CERT = 0x40,
+        MD_ACCESS_MAP_CERT = 0x80,
+        MD_ACCESS_SSL128 = 0x100,
+        MD_ACCESS_SCRIPT = 0x200,
+        MD_ACCESS_NO_REMOTE_WRITE = 0x400,
+        MD_ACCESS_NO_REMOTE_READ = 0x1000,
+        MD_ACCESS_NO_REMOTE_EXECUTE = 0x2000,
+        MD_ACCESS_NO_REMOTE_SCRIPT = 0x4000,
+        MD_ACCESS_NO_PHYSICAL_DIR = 0x8000,
     }
-    public enum W3GeneralNotSendCustomErrorReason
+    public enum GENERAL_NOT_SEND_CUSTOM_ERRORReason
     {
         UNKNOWN = 0x0,
         SETSTATUS_SUCCESS = 0x1,
@@ -9158,7 +14045,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         EXISTINGRESPONSE_PASSTHROUGH = 0x3,
         EXISTINGRESPONSE_AUTO = 0x4,
     }
-    public enum W3OutputCacheLookupEndResult
+    public enum OUTPUT_CACHE_LOOKUP_ENDResult
     {
         NOT_FOUND = 0x0,
         FOUND = 0x1,
@@ -9167,7 +14054,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         CACHING_DISABLED = 0x4,
         CONDITIONAL_HEADERS_PRESENT = 0x5,
     }
-    public enum W3OutputCacheUpdateEndResult
+    public enum OUTPUT_CACHE_UPDATE_ENDResult
     {
         ADDED = 0x0,
         UNKNOWN_ERROR = 0x1,
@@ -9183,13 +14070,138 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         ENTRY_EXISTS = 0xb,
         ALREADY_CACHED = 0xc,
     }
-    public enum W3OutputCacheUpdateStartCachePolicy
+    public enum OUTPUT_CACHE_UPDATE_STARTCachePolicy
     {
         NO_CACHE = 0x0,
         USER_INVALIDATES = 0x1,
         TIME_TO_LIVE = 0x2,
     }
-    public enum W3StaticCompressionNotSuccessReason
+    public enum REQUEST_NOTIFICATION_EVENTS_COMPLETIONNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_ENDNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_ENDNotificationStatus
+    {
+        NOTIFICATION_CONTINUE = 0x0,
+        NOTIFICATION_FINISH_REQUEST = 0x2,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_ERRORNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        PRE_BEGIN_REQUEST = 0x0,
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_EVENTS_STARTNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
+    public enum REQUEST_NOTIFICATION_PRE_BEGIN_ENDNotificationStatus
+    {
+        NOTIFICATION_CONTINUE = 0x0,
+        NOTIFICATION_HANDLED = 0x1,
+    }
+    public enum STATIC_COMPRESSION_NOT_SUCCESSReason
     {
         NO_ACCEPT_ENCODING = 0x1,
         COMPRESSION_DISABLED = 0x2,

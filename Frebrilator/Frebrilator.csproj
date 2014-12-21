@@ -67,7 +67,10 @@
     <None Include="packages.config" />
     <None Include="Parsers\ASP_Trace.man" />
     <None Include="Parsers\IIS_IsapiTrace.man" />
-    <None Include="Parsers\IIS_Trace.man" />
+    <None Include="Parsers\IIS_Trace.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Parsers\IIS_Trace_orig.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Diagnostics.Tracing.TraceEvent.1.0.21\build\Microsoft.Diagnostics.Tracing.TraceEvent.targets" Condition="Exists('..\packages\Microsoft.Diagnostics.Tracing.TraceEvent.1.0.21\build\Microsoft.Diagnostics.Tracing.TraceEvent.targets')" />

@@ -1,0 +1,1540 @@
+<instrumentationManifest xmlns="http://schemas.microsoft.com/win/2004/08/events">
+  <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
+    <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
+      <provider name="IIS_Trace" guid="{3a2a4e84-4c21-4981-ae10-3fda0d9b0f83}">
+        <tasks>
+          <task name="IISGeneral" value="0" eventGUID="{d42cf7ef-de92-473e-8b6c-621ea663113a}">
+            <opcode value="1" name="IISGeneral1" mofValue="1" message="GENERAL_REQUEST_START" />
+            <opcode value="2" name="IISGeneral2" mofValue="2" message="GENERAL_REQUEST_END" />
+            <opcode value="10" name="IISGeneral10" mofValue="10" message="GENERAL_STATIC_FILE_HANDLER" />
+            <opcode value="11" name="IISGeneral11" mofValue="11" message="GENERAL_CGI_HANDLER" />
+            <opcode value="12" name="IISGeneral12" mofValue="12" message="GENERAL_ISAPI_HANDLER" />
+            <opcode value="13" name="IISGeneral13" mofValue="13" message="GENERAL_OOP_ISAPI_HANDLER" />
+            <opcode value="14" name="IISGeneral14" mofValue="14" message="GENERAL_REDIRECTION_HANDLER" />
+            <opcode value="15" name="IISGeneral15" mofValue="15" message="GENERAL_DAV_HANDLER" />
+            <opcode value="16" name="IISGeneral16" mofValue="16" message="GENERAL_OPTIONS_HANDLER" />
+            <opcode value="17" name="IISGeneral17" mofValue="17" message="GENERAL_TRACE_HANDLER" />
+            <opcode value="30" name="IISGeneral30" mofValue="30" message="GENERAL_GET_URL_METADATA" />
+            <opcode value="31" name="IISGeneral31" mofValue="31" message="GENERAL_CHILD_REQUEST_START" />
+            <opcode value="32" name="IISGeneral32" mofValue="32" message="GENERAL_CHILD_REQUEST_END" />
+            <opcode value="33" name="IISGeneral33" mofValue="33" message="GENERAL_SEND_CUSTOM_ERROR" />
+            <opcode value="34" name="IISGeneral34" mofValue="34" message="GENERAL_MAP_HANDLER" />
+            <opcode value="35" name="IISGeneral35" mofValue="35" message="GENERAL_FLUSH_RESPONSE_START" />
+            <opcode value="36" name="IISGeneral36" mofValue="36" message="GENERAL_FLUSH_RESPONSE_END" />
+            <opcode value="37" name="IISGeneral37" mofValue="37" message="GENERAL_READ_ENTITY_START" />
+            <opcode value="38" name="IISGeneral38" mofValue="38" message="GENERAL_READ_ENTITY_END" />
+            <opcode value="39" name="IISGeneral39" mofValue="39" message="GENERAL_FILE_CHANGE_NOTIFICATION" />
+            <opcode value="40" name="IISGeneral40" mofValue="40" message="GENERAL_CONFIG_CHANGE_NOTIFICATION" />
+            <opcode value="41" name="IISGeneral41" mofValue="41" message="GENERAL_VIRTUAL_MODULE_UNRESOLVED" />
+            <opcode value="42" name="IISGeneral42" mofValue="42" message="GENERAL_URL_CHANGED" />
+            <opcode value="43" name="IISGeneral43" mofValue="43" message="GENERAL_HANDLER_CHANGED" />
+            <opcode value="44" name="IISGeneral44" mofValue="44" message="GENERAL_USER_SET" />
+            <opcode value="45" name="IISGeneral45" mofValue="45" message="GENERAL_MODULE_PRECONDITION_NOT_MATCH" />
+            <opcode value="46" name="IISGeneral46" mofValue="46" message="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
+            <opcode value="47" name="IISGeneral47" mofValue="47" message="GENERAL_RESPONSE_HEADERS" />
+            <opcode value="48" name="IISGeneral48" mofValue="48" message="GENERAL_RESPONSE_ENTITY_FILE" />
+            <opcode value="49" name="IISGeneral49" mofValue="49" message="GENERAL_RESPONSE_ENTITY_BUFFER" />
+            <opcode value="50" name="IISGeneral50" mofValue="50" message="GENERAL_REQUEST_HEADERS" />
+            <opcode value="51" name="IISGeneral51" mofValue="51" message="GENERAL_REQUEST_ENTITY" />
+            <opcode value="52" name="IISGeneral52" mofValue="52" message="GENERAL_NOT_SEND_CUSTOM_ERROR" />
+            <opcode value="53" name="IISGeneral53" mofValue="53" message="GENERAL_SET_REQUEST_HEADER" />
+            <opcode value="54" name="IISGeneral54" mofValue="54" message="GENERAL_MODULE_FACTORY_FAILED" />
+            <opcode value="55" name="IISGeneral55" mofValue="55" message="GENERAL_ENDPOINT_INFORMATION" />
+            <opcode value="56" name="IISGeneral56" mofValue="56" message="GENERAL_SET_RESPONSE_HEADER" />
+          </task>
+          <task name="IISAuthentication" value="1" eventGUID="{c33bbe8f-985b-4080-81e6-005f1a06b9e2}">
+            <opcode value="10" name="IISAuthentication10" mofValue="10" message="AUTH_START" />
+            <opcode value="11" name="IISAuthentication11" mofValue="11" message="AUTH_SUCCEEDED" />
+            <opcode value="12" name="IISAuthentication12" mofValue="12" message="AUTH_TYPE_NOT_SUPPORTED" />
+            <opcode value="13" name="IISAuthentication13" mofValue="13" message="AUTH_INVALID_ANON_ACCOUNT" />
+            <opcode value="14" name="IISAuthentication14" mofValue="14" message="AUTH_PASSWD_CHANGE_NEEDED" />
+            <opcode value="15" name="IISAuthentication15" mofValue="15" message="AUTH_PASSWD_CHANGE_DISABLED" />
+            <opcode value="16" name="IISAuthentication16" mofValue="16" message="AUTH_BAD_BASIC_HEADER" />
+            <opcode value="17" name="IISAuthentication17" mofValue="17" message="AUTH_BASIC_LOGON_FAILED" />
+            <opcode value="18" name="IISAuthentication18" mofValue="18" message="AUTH_WDIGEST_LOGON_FAILED" />
+            <opcode value="19" name="IISAuthentication19" mofValue="19" message="AUTH_IISDIGEST_LOGON_FAILED" />
+            <opcode value="20" name="IISAuthentication20" mofValue="20" message="AUTH_PASSPORT_LOGON_FAILED" />
+            <opcode value="21" name="IISAuthentication21" mofValue="21" message="AUTH_SSPI_LOGON_FAILED" />
+            <opcode value="22" name="IISAuthentication22" mofValue="22" message="AUTH_NTLM_NULL_SESSION" />
+            <opcode value="23" name="IISAuthentication23" mofValue="23" message="AUTH_SSPI_CONTINUE_NEEDED" />
+            <opcode value="55" name="IISAuthentication55" mofValue="55" message="AUTH_KERBEROS_FAILED" />
+            <opcode value="24" name="IISAuthentication24" mofValue="24" message="AUTH_ANON_PASSWD_CHANGE_NEEDED" />
+            <opcode value="27" name="IISAuthentication27" mofValue="27" message="AUTH_REQUEST_AUTH_TYPE" />
+            <opcode value="28" name="IISAuthentication28" mofValue="28" message="AUTH_END" />
+          </task>
+          <task name="IISSecurity" value="2" eventGUID="{29347ffb-ba48-41e6-bffd-469c5e543ca5}">
+            <opcode value="10" name="IISSecurity10" mofValue="10" message="SEC_ILLEGAL_SHORT_FILENAME" />
+            <opcode value="11" name="IISSecurity11" mofValue="11" message="SEC_REJECTED_IP" />
+            <opcode value="12" name="IISSecurity12" mofValue="12" message="SEC_REJECTED_HOSTNAME" />
+            <opcode value="13" name="IISSecurity13" mofValue="13" message="SEC_REQUIRE_SSL_128" />
+            <opcode value="14" name="IISSecurity14" mofValue="14" message="SEC_FILE_ACCESS_DENIED" />
+            <opcode value="15" name="IISSecurity15" mofValue="15" message="SEC_DENIED_BY_MIMEMAP" />
+            <opcode value="16" name="IISSecurity16" mofValue="16" message="SEC_DENIED_BY_ISAPI_RESTRICTION" />
+            <opcode value="17" name="IISSecurity17" mofValue="17" message="SEC_DENIED_BY_CGI_RESTRICTION" />
+            <opcode value="18" name="IISSecurity18" mofValue="18" message="SEC_DENIED_BY_ACCESS_FLAGS" />
+          </task>
+          <task name="IISFilter" value="3" eventGUID="{00237f0d-73eb-4bcf-a232-126693595847}">
+            <opcode value="1" name="IISFilter1" mofValue="1" message="FILTER_START" />
+            <opcode value="2" name="IISFilter2" mofValue="2" message="FILTER_END" />
+            <opcode value="12" name="IISFilter12" mofValue="12" message="FILTER_ERROR" />
+            <opcode value="13" name="IISFilter13" mofValue="13" message="FILTER_PREPROC_START" />
+            <opcode value="14" name="IISFilter14" mofValue="14" message="FILTER_PREPROC_END" />
+            <opcode value="15" name="IISFilter15" mofValue="15" message="FILTER_URL_MAP_START" />
+            <opcode value="16" name="IISFilter16" mofValue="16" message="FILTER_URL_MAP_END" />
+            <opcode value="17" name="IISFilter17" mofValue="17" message="FILTER_AUTHENTICATION_START" />
+            <opcode value="18" name="IISFilter18" mofValue="18" message="FILTER_AUTHENTICATION_END" />
+            <opcode value="19" name="IISFilter19" mofValue="19" message="FILTER_AUTH_COMPLETE_START" />
+            <opcode value="20" name="IISFilter20" mofValue="20" message="FILTER_AUTH_COMPLETE_END" />
+            <opcode value="21" name="IISFilter21" mofValue="21" message="FILTER_SEND_RESPONSE_START" />
+            <opcode value="22" name="IISFilter22" mofValue="22" message="FILTER_SEND_RESPONSE_END" />
+            <opcode value="23" name="IISFilter23" mofValue="23" message="FILTER_END_OF_REQUEST_START" />
+            <opcode value="24" name="IISFilter24" mofValue="24" message="FILTER_END_OF_REQUEST_END" />
+            <opcode value="25" name="IISFilter25" mofValue="25" message="FILTER_LOG_START" />
+            <opcode value="26" name="IISFilter26" mofValue="26" message="FILTER_LOG_END" />
+            <opcode value="27" name="IISFilter27" mofValue="27" message="FILTER_SEND_RAW_DATA_START" />
+            <opcode value="28" name="IISFilter28" mofValue="28" message="FILTER_SEND_RAW_DATA_END" />
+            <opcode value="29" name="IISFilter29" mofValue="29" message="FILTER_ACCESS_DENIED_START" />
+            <opcode value="30" name="IISFilter30" mofValue="30" message="FILTER_ACCESS_DENIED_END" />
+            <opcode value="31" name="IISFilter31" mofValue="31" message="FILTER_SET_REQ_HEADER" />
+            <opcode value="32" name="IISFilter32" mofValue="32" message="FILTER_ADD_REQ_HEADER" />
+            <opcode value="33" name="IISFilter33" mofValue="33" message="FILTER_SET_RESP_HEADER" />
+            <opcode value="34" name="IISFilter34" mofValue="34" message="FILTER_ADD_RESP_HEADER" />
+          </task>
+          <task name="IISStaticFile" value="4" eventGUID="{79b02104-0db9-4cda-a552-058d97c2ecfd}" />
+          <task name="IISISAPI" value="5" eventGUID="{2e94e6c7-eda0-4b73-9010-2529edce1c27}">
+            <opcode value="1" name="IISISAPI1" mofValue="1" message="ISAPI_START" />
+            <opcode value="2" name="IISISAPI2" mofValue="2" message="ISAPI_END" />
+          </task>
+          <task name="IISCGI" value="6" eventGUID="{e2e55403-0d2e-4609-a470-be0da04013c0}">
+            <opcode value="1" name="IISCGI1" mofValue="1" message="CGI_START" />
+            <opcode value="2" name="IISCGI2" mofValue="2" message="CGI_END" />
+            <opcode value="3" name="IISCGI3" mofValue="3" message="CGI_LAUNCH" />
+            <opcode value="4" name="IISCGI4" mofValue="4" message="CGI_TIMEOUT" />
+            <opcode value="5" name="IISCGI5" mofValue="5" message="CGI_PREMATURE_TERMINATION" />
+            <opcode value="6" name="IISCGI6" mofValue="6" message="CGI_REQUEST_ENTITY_START" />
+            <opcode value="7" name="IISCGI7" mofValue="7" message="CGI_HEADERS_RECEIVED" />
+          </task>
+          <task name="IISFastCGI" value="7" eventGUID="{e3642acc-3627-42b0-8372-867baa033b07}">
+            <opcode value="1" name="IISFastCGI1" mofValue="1" message="CGIF_ACTIVITY_TIMEOUT" />
+            <opcode value="2" name="IISFastCGI2" mofValue="2" message="CGIF_REQUEST_TIMEOUT" />
+            <opcode value="3" name="IISFastCGI3" mofValue="3" message="CGIF_UNEXPECTED_EXIT" />
+            <opcode value="4" name="IISFastCGI4" mofValue="4" message="CGIF_RAPID_FAILURE_PROTECTION" />
+            <opcode value="5" name="IISFastCGI5" mofValue="5" message="CGIF_PATH_NOT_FOUND" />
+            <opcode value="6" name="IISFastCGI6" mofValue="6" message="CGIF_SCRIPT_PROCESSOR_MISSING" />
+            <opcode value="7" name="IISFastCGI7" mofValue="7" message="CGIF_ADD_JOB_OBJECT_FAIL" />
+            <opcode value="8" name="IISFastCGI8" mofValue="8" message="CGIF_APPMGR_SHUTDOWN" />
+            <opcode value="9" name="IISFastCGI9" mofValue="9" message="CGIF_QUEUE_FULL" />
+            <opcode value="10" name="IISFastCGI10" mofValue="10" message="CGIF_UNKNOWN_ERROR" />
+            <opcode value="11" name="IISFastCGI11" mofValue="11" message="CGIF_RESPONSE_WRITTEN" />
+            <opcode value="12" name="IISFastCGI12" mofValue="12" message="CGIF_WAITING_FOR_RESPONSE" />
+            <opcode value="13" name="IISFastCGI13" mofValue="13" message="CGIF_TRACE_ERROR" />
+            <opcode value="14" name="IISFastCGI14" mofValue="14" message="CGIF_TRACE_WARNING" />
+            <opcode value="15" name="IISFastCGI15" mofValue="15" message="CGIF_TRACE_INFO" />
+            <opcode value="16" name="IISFastCGI16" mofValue="16" message="CGIF_QUEUE_REQUEST" />
+            <opcode value="17" name="IISFastCGI17" mofValue="17" message="CGIF_ASSIGN_PROCESS" />
+            <opcode value="18" name="IISFastCGI18" mofValue="18" message="CGIF_START" />
+            <opcode value="19" name="IISFastCGI19" mofValue="19" message="CGIF_END" />
+          </task>
+          <task name="IISWebSocket" value="8" eventGUID="{2ce74327-08be-425c-bfc5-1534fe7fefa6}">
+            <opcode value="1" name="IISWebSocket1" mofValue="1" message="WEBSOCKET_INITIALIZE_NOT_SUCCESS" />
+            <opcode value="2" name="IISWebSocket2" mofValue="2" message="WEBSOCKET_START" />
+            <opcode value="3" name="IISWebSocket3" mofValue="3" message="WEBSOCKET_END_SUCCESS" />
+            <opcode value="4" name="IISWebSocket4" mofValue="4" message="WEBSOCKET_END_FAILURE" />
+            <opcode value="5" name="IISWebSocket5" mofValue="5" message="WEBSOCKET_READ_FRAGMENT_START" />
+            <opcode value="6" name="IISWebSocket6" mofValue="6" message="WEBSOCKET_READ_FRAGMENT_END_PENDING" />
+            <opcode value="7" name="IISWebSocket7" mofValue="7" message="WEBSOCKET_READ_FRAGMENT_END_SUCCESS" />
+            <opcode value="8" name="IISWebSocket8" mofValue="8" message="WEBSOCKET_READ_FRAGMENT_END_FAILURE" />
+            <opcode value="9" name="IISWebSocket9" mofValue="9" message="WEBSOCKET_WRITE_FRAGMENT_START" />
+            <opcode value="10" name="IISWebSocket10" mofValue="10" message="WEBSOCKET_WRITE_FRAGMENT_END_PENDING" />
+            <opcode value="11" name="IISWebSocket11" mofValue="11" message="WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" />
+            <opcode value="12" name="IISWebSocket12" mofValue="12" message="WEBSOCKET_WRITE_FRAGMENT_END_FAILURE" />
+            <opcode value="13" name="IISWebSocket13" mofValue="13" message="WEBSOCKET_APPLICATION_CLOSE_CONNECTION" />
+            <opcode value="14" name="IISWebSocket14" mofValue="14" message="WEBSOCKET_MODULE_CLOSE_CONNECTION" />
+            <opcode value="15" name="IISWebSocket15" mofValue="15" message="WEBSOCKET_READ_IO_FAILED" />
+            <opcode value="16" name="IISWebSocket16" mofValue="16" message="WEBSOCKET_WRITE_IO_FAILED" />
+            <opcode value="17" name="IISWebSocket17" mofValue="17" message="WEBSOCKET_CLOSE_RECEIVED" />
+            <opcode value="18" name="IISWebSocket18" mofValue="18" message="WEBSOCKET_CLOSE_SEND_START" />
+            <opcode value="19" name="IISWebSocket19" mofValue="19" message="WEBSOCKET_CLOSE_SEND_SUCCESS" />
+            <opcode value="20" name="IISWebSocket20" mofValue="20" message="WEBSOCKET_CLOSE_SEND_FAILURE" />
+          </task>
+          <task name="IISCompression" value="9" eventGUID="{e60cee96-4472-448d-a13c-2170b18220ec}">
+            <opcode value="1" name="IISCompression1" mofValue="1" message="STATIC_COMPRESSION_START" />
+            <opcode value="2" name="IISCompression2" mofValue="2" message="STATIC_COMPRESSION_SUCCESS" />
+            <opcode value="3" name="IISCompression3" mofValue="3" message="STATIC_COMPRESSION_NOT_SUCCESS" />
+            <opcode value="4" name="IISCompression4" mofValue="4" message="STATIC_COMPRESSION_CREATE_START" />
+            <opcode value="5" name="IISCompression5" mofValue="5" message="STATIC_COMPRESSION_CREATE_END" />
+            <opcode value="6" name="IISCompression6" mofValue="6" message="DYNAMIC_COMPRESSION_START" />
+            <opcode value="7" name="IISCompression7" mofValue="7" message="DYNAMIC_COMPRESSION_SUCCESS" />
+            <opcode value="8" name="IISCompression8" mofValue="8" message="DYNAMIC_COMPRESSION_NOT_SUCCESS" />
+            <opcode value="9" name="IISCompression9" mofValue="9" message="DYNAMIC_COMPRESSION_DO" />
+            <opcode value="10" name="IISCompression10" mofValue="10" message="DYNAMIC_COMPRESSION_END" />
+            <opcode value="11" name="IISCompression11" mofValue="11" message="STATIC_COMPRESSION_END" />
+          </task>
+          <task name="IISCache" value="10" eventGUID="{ac1d69f1-bf33-4ca0-9313-bca13873e1dc}">
+            <opcode value="10" name="IISCache10" mofValue="10" message="CACHE_FILE_CACHE_ACCESS_START" />
+            <opcode value="11" name="IISCache11" mofValue="11" message="CACHE_FILE_CACHE_ACCESS_END" />
+            <opcode value="12" name="IISCache12" mofValue="12" message="CACHE_URL_CACHE_ACCESS_START" />
+            <opcode value="13" name="IISCache13" mofValue="13" message="CACHE_URL_CACHE_ACCESS_END" />
+            <opcode value="14" name="IISCache14" mofValue="14" message="CACHE_HTTPSYS_CACHEABLE" />
+            <opcode value="15" name="IISCache15" mofValue="15" message="OUTPUT_CACHE_LOOKUP_START" />
+            <opcode value="16" name="IISCache16" mofValue="16" message="OUTPUT_CACHE_LOOKUP_END" />
+            <opcode value="17" name="IISCache17" mofValue="17" message="OUTPUT_CACHE_UPDATE_START" />
+            <opcode value="18" name="IISCache18" mofValue="18" message="OUTPUT_CACHE_UPDATE_END" />
+            <opcode value="19" name="IISCache19" mofValue="19" message="OUTPUT_CACHE_DISABLED" />
+            <opcode value="20" name="IISCache20" mofValue="20" message="CACHE_FILE_CACHE_CREATE_FILE" />
+          </task>
+          <task name="IISRequestNotification" value="11" eventGUID="{002e91e3-e7ae-44ab-8e07-99230ffa6ade}">
+            <opcode value="1" name="IISRequestNotification1" mofValue="1" message="REQUEST_NOTIFICATION_EVENTS_START" />
+            <opcode value="2" name="IISRequestNotification2" mofValue="2" message="REQUEST_NOTIFICATION_EVENTS_END" />
+            <opcode value="3" name="IISRequestNotification3" mofValue="3" message="REQUEST_NOTIFICATION_EVENTS_COMPLETION" />
+            <opcode value="4" name="IISRequestNotification4" mofValue="4" message="REQUEST_NOTIFICATION_PRE_BEGIN_START" />
+            <opcode value="5" name="IISRequestNotification5" mofValue="5" message="REQUEST_NOTIFICATION_PRE_BEGIN_END" />
+            <opcode value="15" name="IISRequestNotification15" mofValue="15" message="REQUEST_NOTIFICATION_EVENTS_ERROR" />
+            <opcode value="16" name="IISRequestNotification16" mofValue="16" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+            <opcode value="17" name="IISRequestNotification17" mofValue="17" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
+            <opcode value="18" name="IISRequestNotification18" mofValue="18" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
+          </task>
+          <task name="IISModuleEvents" value="12" eventGUID="{d79a948e-95f1-417b-a731-b7a79dec7ae5}">
+            <opcode value="1" name="IISModuleEvents1" mofValue="1" message="MODULE_EVENTS_MODULE_START" />
+            <opcode value="2" name="IISModuleEvents2" mofValue="2" message="MODULE_EVENTS_MODULE_END" />
+            <opcode value="3" name="IISModuleEvents3" mofValue="3" message="MODULE_EVENTS_MODULE_CRITICAL_ERROR" />
+            <opcode value="4" name="IISModuleEvents4" mofValue="4" message="MODULE_EVENTS_MODULE_ERROR" />
+            <opcode value="5" name="IISModuleEvents5" mofValue="5" message="MODULE_EVENTS_MODULE_WARNING" />
+            <opcode value="6" name="IISModuleEvents6" mofValue="6" message="MODULE_EVENTS_MODULE_INFORMATION" />
+            <opcode value="7" name="IISModuleEvents7" mofValue="7" message="MODULE_EVENTS_MODULE_VERBOSE" />
+          </task>
+        </tasks>
+        <templates>
+          <template tid="GENERAL_REQUEST_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="SiteId" inType="win:UInt32" />
+            <data name="AppPoolId" inType="win:UnicodeString" />
+            <data name="ConnId" inType="win:UInt64" />
+            <data name="RawConnId" inType="win:UInt64" />
+            <data name="RequestURL" inType="win:UnicodeString" />
+            <data name="RequestVerb" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_REQUEST_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesSent" inType="win:UInt32" />
+            <data name="BytesReceived" inType="win:UInt32" />
+            <data name="HttpStatus" inType="win:UInt32" />
+            <data name="HttpSubStatus" inType="win:UInt16" />
+          </template>
+          <template tid="GENERAL_STATIC_FILE_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_CGI_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_ISAPI_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_OOP_ISAPI_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ProcessId" inType="win:UInt32" />
+            <data name="TotalReqs" inType="win:UInt32" />
+            <data name="CurrentReqs" inType="win:UInt32" />
+          </template>
+          <template tid="GENERAL_REDIRECTION_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="RedirectedURL" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_DAV_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_OPTIONS_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_TRACE_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_GET_URL_METADATA">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="PhysicalPath" inType="win:UnicodeString" />
+            <data name="AccessPerms" inType="win:UInt32" outType="win:hexInt32" map="GENERAL_GET_URL_METADATA.AccessPerms" />
+          </template>
+          <template tid="GENERAL_CHILD_REQUEST_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="SiteId" inType="win:UInt32" />
+            <data name="RequestURL" inType="win:UnicodeString" />
+            <data name="RequestVerb" inType="win:AnsiString" />
+            <data name="RecursiveLevel" inType="win:UInt32" />
+          </template>
+          <template tid="GENERAL_CHILD_REQUEST_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesSent" inType="win:UInt32" />
+            <data name="HttpStatus" inType="win:UInt32" />
+            <data name="HttpSubStatus" inType="win:UInt16" />
+          </template>
+          <template tid="GENERAL_SEND_CUSTOM_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HttpStatus" inType="win:UInt32" />
+            <data name="HttpSubStatus" inType="win:UInt16" />
+            <data name="FileNameOrURL" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_MAP_HANDLER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_FLUSH_RESPONSE_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_FLUSH_RESPONSE_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesSent" inType="win:UInt32" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="GENERAL_READ_ENTITY_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="GENERAL_READ_ENTITY_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesReceived" inType="win:UInt32" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="GENERAL_FILE_CHANGE_NOTIFICATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilePath" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_CONFIG_CHANGE_NOTIFICATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ConfigPath" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_VIRTUAL_MODULE_UNRESOLVED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Name" inType="win:UnicodeString" />
+            <data name="Type" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_URL_CHANGED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OldUrl" inType="win:UnicodeString" />
+            <data name="NewUrl" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_HANDLER_CHANGED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OldHandlerName" inType="win:UnicodeString" />
+            <data name="NewHandlerName" inType="win:UnicodeString" />
+            <data name="NewHandlerModules" inType="win:UnicodeString" />
+            <data name="NewHandlerScriptProcessor" inType="win:UnicodeString" />
+            <data name="NewHandlerType" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_USER_SET">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="AuthType" inType="win:UnicodeString" />
+            <data name="UserName" inType="win:UnicodeString" />
+            <data name="SupportsIsInRole" inType="win:Boolean" />
+          </template>
+          <template tid="GENERAL_MODULE_PRECONDITION_NOT_MATCH">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Name" inType="win:UnicodeString" />
+            <data name="Precondition" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_HANDLER_PRECONDITION_NOT_MATCH">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Name" inType="win:UnicodeString" />
+            <data name="Precondition" inType="win:UnicodeString" />
+          </template>
+          <template tid="GENERAL_RESPONSE_HEADERS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Headers" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_RESPONSE_ENTITY_FILE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+            <data name="Offset" inType="win:UInt64" />
+            <data name="Size" inType="win:UInt64" />
+          </template>
+          <template tid="GENERAL_RESPONSE_ENTITY_BUFFER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Buffer" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_REQUEST_HEADERS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Headers" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_REQUEST_ENTITY">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Buffer" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_NOT_SEND_CUSTOM_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" map="GENERAL_NOT_SEND_CUSTOM_ERROR.Reason" />
+          </template>
+          <template tid="GENERAL_SET_REQUEST_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+            <data name="Replace" inType="win:Boolean" />
+          </template>
+          <template tid="GENERAL_MODULE_FACTORY_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="GENERAL_ENDPOINT_INFORMATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="RemoteAddress" inType="win:AnsiString" />
+            <data name="RemotePort" inType="win:AnsiString" />
+            <data name="LocalAddress" inType="win:AnsiString" />
+            <data name="LocalPort" inType="win:AnsiString" />
+          </template>
+          <template tid="GENERAL_SET_RESPONSE_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+            <data name="Replace" inType="win:Boolean" />
+          </template>
+          <template tid="AUTH_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="AuthTypeSupported" inType="win:UInt32" outType="win:hexInt32" map="AUTH_START.AuthTypeSupported" />
+          </template>
+          <template tid="AUTH_SUCCEEDED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="AuthType" inType="win:UInt32" outType="win:hexInt32" map="AUTH_SUCCEEDED.AuthType" />
+            <data name="NTLMUsed" inType="win:Boolean" />
+            <data name="RemoteUserName" inType="win:UnicodeString" />
+            <data name="AuthUserName" inType="win:UnicodeString" />
+            <data name="TokenImpersonationLevel" inType="win:UInt32" outType="win:hexInt32" map="AUTH_SUCCEEDED.TokenImpersonationLevel" />
+          </template>
+          <template tid="AUTH_TYPE_NOT_SUPPORTED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_INVALID_ANON_ACCOUNT">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_PASSWD_CHANGE_NEEDED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_PASSWD_CHANGE_DISABLED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_BAD_BASIC_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_BASIC_LOGON_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_WDIGEST_LOGON_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_IISDIGEST_LOGON_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_PASSPORT_LOGON_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_SSPI_LOGON_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="AUTH_NTLM_NULL_SESSION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_SSPI_CONTINUE_NEEDED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="PackageName" inType="win:UnicodeString" />
+          </template>
+          <template tid="AUTH_KERBEROS_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="KMUsed" inType="win:Boolean" />
+            <data name="APUserName" inType="win:UnicodeString" />
+            <data name="SPNName" inType="win:UnicodeString" />
+            <data name="ADConfigIsOK" inType="win:Boolean" />
+            <data name="KerberosInfo" inType="win:UnicodeString" />
+          </template>
+          <template tid="AUTH_ANON_PASSWD_CHANGE_NEEDED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="AUTH_REQUEST_AUTH_TYPE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="RequestAuthType" inType="win:UInt32" outType="win:hexInt32" map="AUTH_REQUEST_AUTH_TYPE.RequestAuthType" />
+          </template>
+          <template tid="AUTH_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="SEC_ILLEGAL_SHORT_FILENAME">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_REJECTED_IP">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="IPAddress" inType="win:AnsiString" />
+          </template>
+          <template tid="SEC_REJECTED_HOSTNAME">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HostName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_REQUIRE_SSL_128">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="SEC_FILE_ACCESS_DENIED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+            <data name="AccountName" inType="win:UnicodeString" />
+            <data name="DomainName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_DENIED_BY_MIMEMAP">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_DENIED_BY_ISAPI_RESTRICTION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ImageName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_DENIED_BY_CGI_RESTRICTION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ImageName" inType="win:UnicodeString" />
+          </template>
+          <template tid="SEC_DENIED_BY_ACCESS_FLAGS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="CurrentFlags" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="NeededFlags" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="FILTER_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FilterName" inType="win:UnicodeString" />
+          </template>
+          <template tid="FILTER_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="NotificationStatus" inType="win:UInt32" map="FILTER_END.NotificationStatus" />
+          </template>
+          <template tid="FILTER_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="FILTER_PREPROC_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_PREPROC_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_URL_MAP_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OrigURL" inType="win:AnsiString" />
+            <data name="OrigPath" inType="win:AnsiString" />
+            <data name="AccessPerms" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="MatchingPath" inType="win:UInt32" />
+            <data name="MatchingURL" inType="win:UInt32" />
+            <data name="ScriptMapEntry" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_URL_MAP_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FinalURL" inType="win:AnsiString" />
+            <data name="FinalPath" inType="win:AnsiString" />
+            <data name="AccessPerms" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="MatchingPath" inType="win:UInt32" />
+            <data name="MatchingURL" inType="win:UInt32" />
+            <data name="ScriptMapEntry" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_AUTHENTICATION_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OrigUserName" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_AUTHENTICATION_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FinalUserName" inType="win:AnsiString" />
+            <data name="PasswordChanged" inType="win:Boolean" />
+          </template>
+          <template tid="FILTER_AUTH_COMPLETE_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_AUTH_COMPLETE_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_SEND_RESPONSE_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HttpStatus" inType="win:UInt32" />
+          </template>
+          <template tid="FILTER_SEND_RESPONSE_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_END_OF_REQUEST_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_END_OF_REQUEST_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_LOG_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OrigClientHostName" inType="win:AnsiString" />
+            <data name="OrigClientUserName" inType="win:AnsiString" />
+            <data name="OrigServerName" inType="win:AnsiString" />
+            <data name="OrigOperation" inType="win:AnsiString" />
+            <data name="OrigTarget" inType="win:AnsiString" />
+            <data name="OrigParameters" inType="win:AnsiString" />
+            <data name="OrigHttpStatus" inType="win:UInt32" />
+            <data name="OrigWin32Status" inType="win:UInt32" />
+          </template>
+          <template tid="FILTER_LOG_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FinalClientHostName" inType="win:AnsiString" />
+            <data name="FinalClientUserName" inType="win:AnsiString" />
+            <data name="FinalServerName" inType="win:AnsiString" />
+            <data name="FinalOperation" inType="win:AnsiString" />
+            <data name="FinalTarget" inType="win:AnsiString" />
+            <data name="FinalParameters" inType="win:AnsiString" />
+            <data name="FinalHttpStatus" inType="win:UInt32" />
+            <data name="FinalWin32Status" inType="win:UInt32" />
+          </template>
+          <template tid="FILTER_SEND_RAW_DATA_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_SEND_RAW_DATA_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_ACCESS_DENIED_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="RequestedURL" inType="win:AnsiString" />
+            <data name="PhysicalPath" inType="win:AnsiString" />
+            <data name="DenialReason" inType="win:UInt32" />
+          </template>
+          <template tid="FILTER_ACCESS_DENIED_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="FILTER_SET_REQ_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_ADD_REQ_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_SET_RESP_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+          </template>
+          <template tid="FILTER_ADD_RESP_HEADER">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HeaderName" inType="win:AnsiString" />
+            <data name="HeaderValue" inType="win:AnsiString" />
+          </template>
+          <template tid="ISAPI_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="ISAPI_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGI_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGI_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGI_LAUNCH">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="CommandLine" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="ProcessId" inType="win:UInt32" />
+          </template>
+          <template tid="CGI_TIMEOUT">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Headers" inType="win:AnsiString" />
+          </template>
+          <template tid="CGI_PREMATURE_TERMINATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Headers" inType="win:AnsiString" />
+          </template>
+          <template tid="CGI_REQUEST_ENTITY_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGI_HEADERS_RECEIVED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_ACTIVITY_TIMEOUT">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_REQUEST_TIMEOUT">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_UNEXPECTED_EXIT">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_RAPID_FAILURE_PROTECTION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_PATH_NOT_FOUND">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_SCRIPT_PROCESSOR_MISSING">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_ADD_JOB_OBJECT_FAIL">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_APPMGR_SHUTDOWN">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_QUEUE_FULL">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_UNKNOWN_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="CGIF_RESPONSE_WRITTEN">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_WAITING_FOR_RESPONSE">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_TRACE_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Message" inType="win:UnicodeString" />
+          </template>
+          <template tid="CGIF_TRACE_WARNING">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Message" inType="win:UnicodeString" />
+          </template>
+          <template tid="CGIF_TRACE_INFO">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Message" inType="win:UnicodeString" />
+          </template>
+          <template tid="CGIF_QUEUE_REQUEST">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="PositionInQueue" inType="win:UInt32" />
+            <data name="MaxInstances" inType="win:UInt32" />
+          </template>
+          <template tid="CGIF_ASSIGN_PROCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="CommandLine" inType="win:UnicodeString" />
+            <data name="IsNewProcess" inType="win:Boolean" />
+            <data name="ProcessId" inType="win:UInt32" />
+            <data name="RequestNumber" inType="win:UInt32" />
+          </template>
+          <template tid="CGIF_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CGIF_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_INITIALIZE_NOT_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_END_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_END_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_READ_FRAGMENT_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BufferSize" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_READ_FRAGMENT_END_PENDING">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_READ_FRAGMENT_END_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesReceived" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_READ_FRAGMENT_END_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_WRITE_FRAGMENT_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="DataType" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="DataSize" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_WRITE_FRAGMENT_END_PENDING">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="BytesSent" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_WRITE_FRAGMENT_END_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_APPLICATION_CLOSE_CONNECTION">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_MODULE_CLOSE_CONNECTION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" />
+          </template>
+          <template tid="WEBSOCKET_READ_IO_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_WRITE_IO_FAILED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="WEBSOCKET_CLOSE_RECEIVED">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Status" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="Reason" inType="win:UnicodeString" />
+          </template>
+          <template tid="WEBSOCKET_CLOSE_SEND_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Status" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="Reason" inType="win:UnicodeString" />
+          </template>
+          <template tid="WEBSOCKET_CLOSE_SEND_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="WEBSOCKET_CLOSE_SEND_FAILURE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="STATIC_COMPRESSION_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="STATIC_COMPRESSION_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="STATIC_COMPRESSION_NOT_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" map="STATIC_COMPRESSION_NOT_SUCCESS.Reason" />
+          </template>
+          <template tid="STATIC_COMPRESSION_CREATE_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OriginalFileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="STATIC_COMPRESSION_CREATE_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="OriginalFileName" inType="win:UnicodeString" />
+            <data name="OriginalFileSize" inType="win:UInt32" />
+            <data name="CompressedFileName" inType="win:UnicodeString" />
+            <data name="CompressedFileSize" inType="win:UInt32" />
+          </template>
+          <template tid="DYNAMIC_COMPRESSION_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="DYNAMIC_COMPRESSION_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="DYNAMIC_COMPRESSION_NOT_SUCCESS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Reason" inType="win:UInt32" map="DYNAMIC_COMPRESSION_NOT_SUCCESS.Reason" />
+          </template>
+          <template tid="DYNAMIC_COMPRESSION_DO">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="OriginalSize" inType="win:UInt32" />
+            <data name="CompressedSize" inType="win:UInt32" />
+          </template>
+          <template tid="DYNAMIC_COMPRESSION_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="STATIC_COMPRESSION_END">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CACHE_FILE_CACHE_ACCESS_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+            <data name="UserName" inType="win:UnicodeString" />
+            <data name="DomainName" inType="win:UnicodeString" />
+          </template>
+          <template tid="CACHE_FILE_CACHE_ACCESS_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Successful" inType="win:Boolean" />
+            <data name="FileFromCache" inType="win:Boolean" />
+            <data name="FileAddedToCache" inType="win:Boolean" />
+            <data name="FileDirmoned" inType="win:Boolean" />
+            <data name="LastModCheckErrorIgnored" inType="win:Boolean" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="LastModifiedTime" inType="win:AnsiString" />
+          </template>
+          <template tid="CACHE_URL_CACHE_ACCESS_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="RequestURL" inType="win:UnicodeString" />
+          </template>
+          <template tid="CACHE_URL_CACHE_ACCESS_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="PhysicalPath" inType="win:UnicodeString" />
+            <data name="URLInfoFromCache" inType="win:Boolean" />
+            <data name="URLInfoAddedToCache" inType="win:Boolean" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="CACHE_HTTPSYS_CACHEABLE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="HttpsysCacheable" inType="win:Boolean" />
+            <data name="Reason" inType="win:UInt32" map="CACHE_HTTPSYS_CACHEABLE.Reason" />
+            <data name="CachePolicy" inType="win:UInt32" map="CACHE_HTTPSYS_CACHEABLE.CachePolicy" />
+            <data name="TimeToLive" inType="win:UInt32" />
+          </template>
+          <template tid="OUTPUT_CACHE_LOOKUP_START">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="OUTPUT_CACHE_LOOKUP_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Result" inType="win:UInt32" map="OUTPUT_CACHE_LOOKUP_END.Result" />
+          </template>
+          <template tid="OUTPUT_CACHE_UPDATE_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="CachePolicy" inType="win:UInt32" map="OUTPUT_CACHE_UPDATE_START.CachePolicy" />
+            <data name="TimeToLive" inType="win:UInt32" />
+          </template>
+          <template tid="OUTPUT_CACHE_UPDATE_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="Result" inType="win:UInt32" map="OUTPUT_CACHE_UPDATE_END.Result" />
+          </template>
+          <template tid="OUTPUT_CACHE_DISABLED">
+            <data name="ContextId" inType="win:GUID" />
+          </template>
+          <template tid="CACHE_FILE_CACHE_CREATE_FILE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="FileName" inType="win:UnicodeString" />
+            <data name="UserName" inType="win:UnicodeString" />
+            <data name="DomainName" inType="win:UnicodeString" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_START.Notification" />
+            <data name="fIsPostNotification" inType="win:Boolean" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_END.Notification" />
+            <data name="fIsPostNotificationEvent" inType="win:Boolean" />
+            <data name="NotificationStatus" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_END.NotificationStatus" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_COMPLETION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_COMPLETION.Notification" />
+            <data name="fIsPostNotificationEvent" inType="win:Boolean" />
+            <data name="CompletionBytes" inType="win:UInt32" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_PRE_BEGIN_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_PRE_BEGIN_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="NotificationStatus" inType="win:UInt32" map="REQUEST_NOTIFICATION_PRE_BEGIN_END.NotificationStatus" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_ERROR.Notification" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS.Notification" />
+            <data name="HttpStatus" inType="win:UInt32" />
+            <data name="HttpReason" inType="win:AnsiString" />
+            <data name="HttpSubStatus" inType="win:UInt16" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+            <data name="ConfigExceptionInfo" inType="win:UnicodeString" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS.Notification" />
+            <data name="HttpStatus" inType="win:UInt32" />
+            <data name="HttpReason" inType="win:AnsiString" />
+          </template>
+          <template tid="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ErrorDescription" inType="win:UnicodeString" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_START">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_END">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_CRITICAL_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_ERROR">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_WARNING">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_INFORMATION">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="MODULE_EVENTS_MODULE_VERBOSE">
+            <data name="ContextId" inType="win:GUID" />
+            <data name="ModuleName" inType="win:UnicodeString" />
+            <data name="Data1" inType="win:UnicodeString" />
+            <data name="Data2" inType="win:UnicodeString" />
+            <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
+          </template>
+          <template tid="RECEIVE_NEW_REQUEST">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="BytesReceived" inType="win:UInt32" />
+          </template>
+          <template tid="SEND_RESPONSE">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="BytesSent" inType="win:UInt32" />
+          </template>
+          <template tid="FILE_REQUEST">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="FileName" inType="win:UnicodeString" />
+          </template>
+          <template tid="CGI_REQUEST">
+            <data name="RequestId" inType="win:UInt64" />
+          </template>
+          <template tid="ISAPI_REQUEST">
+            <data name="RequestId" inType="win:UInt64" />
+          </template>
+          <template tid="OOP_REQUEST">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="ProcessId" inType="win:UInt32" />
+            <data name="TotalReqs" inType="win:UInt32" />
+            <data name="CurrentReqs" inType="win:UInt32" />
+          </template>
+          <template tid="FILTER_TRANS_START">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="FilterName" inType="win:UnicodeString" />
+          </template>
+          <template tid="FILTER_TRANS_END">
+            <data name="RequestId" inType="win:UInt64" />
+          </template>
+          <template tid="CGI_TRANS">
+            <data name="RequestId" inType="win:UInt64" />
+          </template>
+          <template tid="ISAPI_MAP_REQUEST_ID">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="connID" inType="win:Pointer" />
+            <data name="fOop" inType="win:UInt32" />
+          </template>
+          <template tid="ISAPI_DELETE_CONTEXT">
+            <data name="RequestId" inType="win:UInt64" />
+            <data name="connID" inType="win:Pointer" />
+          </template>
+        </templates>
+        <events>
+          <event value="10000" version="1" template="GENERAL_REQUEST_START" opcode="IISGeneral1" task="IISGeneral" symbol="IISGeneralGENERAL_REQUEST_START" />
+          <event value="10001" version="1" template="GENERAL_REQUEST_END" opcode="IISGeneral2" task="IISGeneral" symbol="IISGeneralGENERAL_REQUEST_END" />
+          <event value="10002" version="1" template="GENERAL_STATIC_FILE_HANDLER" opcode="IISGeneral10" task="IISGeneral" symbol="IISGeneralGENERAL_STATIC_FILE_HANDLER" />
+          <event value="10003" version="1" template="GENERAL_CGI_HANDLER" opcode="IISGeneral11" task="IISGeneral" symbol="IISGeneralGENERAL_CGI_HANDLER" />
+          <event value="10004" version="1" template="GENERAL_ISAPI_HANDLER" opcode="IISGeneral12" task="IISGeneral" symbol="IISGeneralGENERAL_ISAPI_HANDLER" />
+          <event value="10005" version="1" template="GENERAL_OOP_ISAPI_HANDLER" opcode="IISGeneral13" task="IISGeneral" symbol="IISGeneralGENERAL_OOP_ISAPI_HANDLER" />
+          <event value="10006" version="1" template="GENERAL_REDIRECTION_HANDLER" opcode="IISGeneral14" task="IISGeneral" symbol="IISGeneralGENERAL_REDIRECTION_HANDLER" />
+          <event value="10007" version="1" template="GENERAL_DAV_HANDLER" opcode="IISGeneral15" task="IISGeneral" symbol="IISGeneralGENERAL_DAV_HANDLER" />
+          <event value="10008" version="1" template="GENERAL_OPTIONS_HANDLER" opcode="IISGeneral16" task="IISGeneral" symbol="IISGeneralGENERAL_OPTIONS_HANDLER" />
+          <event value="10009" version="1" template="GENERAL_TRACE_HANDLER" opcode="IISGeneral17" task="IISGeneral" symbol="IISGeneralGENERAL_TRACE_HANDLER" />
+          <event value="10010" version="1" template="GENERAL_GET_URL_METADATA" opcode="IISGeneral30" task="IISGeneral" symbol="IISGeneralGENERAL_GET_URL_METADATA" />
+          <event value="10011" version="1" template="GENERAL_CHILD_REQUEST_START" opcode="IISGeneral31" task="IISGeneral" symbol="IISGeneralGENERAL_CHILD_REQUEST_START" />
+          <event value="10012" version="1" template="GENERAL_CHILD_REQUEST_END" opcode="IISGeneral32" task="IISGeneral" symbol="IISGeneralGENERAL_CHILD_REQUEST_END" />
+          <event value="10013" version="1" template="GENERAL_SEND_CUSTOM_ERROR" opcode="IISGeneral33" task="IISGeneral" symbol="IISGeneralGENERAL_SEND_CUSTOM_ERROR" />
+          <event value="10014" version="1" template="GENERAL_MAP_HANDLER" opcode="IISGeneral34" task="IISGeneral" symbol="IISGeneralGENERAL_MAP_HANDLER" />
+          <event value="10015" version="1" template="GENERAL_FLUSH_RESPONSE_START" opcode="IISGeneral35" task="IISGeneral" symbol="IISGeneralGENERAL_FLUSH_RESPONSE_START" />
+          <event value="10016" version="1" template="GENERAL_FLUSH_RESPONSE_END" opcode="IISGeneral36" task="IISGeneral" symbol="IISGeneralGENERAL_FLUSH_RESPONSE_END" />
+          <event value="10017" version="1" template="GENERAL_READ_ENTITY_START" opcode="IISGeneral37" task="IISGeneral" symbol="IISGeneralGENERAL_READ_ENTITY_START" />
+          <event value="10018" version="1" template="GENERAL_READ_ENTITY_END" opcode="IISGeneral38" task="IISGeneral" symbol="IISGeneralGENERAL_READ_ENTITY_END" />
+          <event value="10019" version="1" template="GENERAL_FILE_CHANGE_NOTIFICATION" opcode="IISGeneral39" task="IISGeneral" symbol="IISGeneralGENERAL_FILE_CHANGE_NOTIFICATION" />
+          <event value="10020" version="1" template="GENERAL_CONFIG_CHANGE_NOTIFICATION" opcode="IISGeneral40" task="IISGeneral" symbol="IISGeneralGENERAL_CONFIG_CHANGE_NOTIFICATION" />
+          <event value="10021" version="1" template="GENERAL_VIRTUAL_MODULE_UNRESOLVED" opcode="IISGeneral41" task="IISGeneral" symbol="IISGeneralGENERAL_VIRTUAL_MODULE_UNRESOLVED" />
+          <event value="10022" version="1" template="GENERAL_URL_CHANGED" opcode="IISGeneral42" task="IISGeneral" symbol="IISGeneralGENERAL_URL_CHANGED" />
+          <event value="10023" version="1" template="GENERAL_HANDLER_CHANGED" opcode="IISGeneral43" task="IISGeneral" symbol="IISGeneralGENERAL_HANDLER_CHANGED" />
+          <event value="10024" version="1" template="GENERAL_USER_SET" opcode="IISGeneral44" task="IISGeneral" symbol="IISGeneralGENERAL_USER_SET" />
+          <event value="10025" version="1" template="GENERAL_MODULE_PRECONDITION_NOT_MATCH" opcode="IISGeneral45" task="IISGeneral" symbol="IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCH" />
+          <event value="10026" version="1" template="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" opcode="IISGeneral46" task="IISGeneral" symbol="IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
+          <event value="10027" version="1" template="GENERAL_RESPONSE_HEADERS" opcode="IISGeneral47" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_HEADERS" />
+          <event value="10028" version="1" template="GENERAL_RESPONSE_ENTITY_FILE" opcode="IISGeneral48" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_ENTITY_FILE" />
+          <event value="10029" version="1" template="GENERAL_RESPONSE_ENTITY_BUFFER" opcode="IISGeneral49" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_ENTITY_BUFFER" />
+          <event value="10030" version="1" template="GENERAL_REQUEST_HEADERS" opcode="IISGeneral50" task="IISGeneral" symbol="IISGeneralGENERAL_REQUEST_HEADERS" />
+          <event value="10031" version="1" template="GENERAL_REQUEST_ENTITY" opcode="IISGeneral51" task="IISGeneral" symbol="IISGeneralGENERAL_REQUEST_ENTITY" />
+          <event value="10032" version="1" template="GENERAL_NOT_SEND_CUSTOM_ERROR" opcode="IISGeneral52" task="IISGeneral" symbol="IISGeneralGENERAL_NOT_SEND_CUSTOM_ERROR" />
+          <event value="10033" version="1" template="GENERAL_SET_REQUEST_HEADER" opcode="IISGeneral53" task="IISGeneral" symbol="IISGeneralGENERAL_SET_REQUEST_HEADER" />
+          <event value="10034" version="1" template="GENERAL_MODULE_FACTORY_FAILED" opcode="IISGeneral54" task="IISGeneral" symbol="IISGeneralGENERAL_MODULE_FACTORY_FAILED" />
+          <event value="10035" version="1" template="GENERAL_ENDPOINT_INFORMATION" opcode="IISGeneral55" task="IISGeneral" symbol="IISGeneralW3GeneralEndpointInformation" />
+          <event value="10036" version="1" template="GENERAL_SET_RESPONSE_HEADER" opcode="IISGeneral56" task="IISGeneral" symbol="IISGeneralGENERAL_SET_RESPONSE_HEADER" />
+          <event value="10037" version="1" template="AUTH_START" opcode="IISAuthentication10" task="IISAuthentication" symbol="IISAuthenticationAUTH_START" />
+          <event value="10038" version="1" template="AUTH_SUCCEEDED" opcode="IISAuthentication11" task="IISAuthentication" symbol="IISAuthenticationAUTH_SUCCEEDED" />
+          <event value="10039" version="1" template="AUTH_TYPE_NOT_SUPPORTED" opcode="IISAuthentication12" task="IISAuthentication" symbol="IISAuthenticationAUTH_TYPE_NOT_SUPPORTED" />
+          <event value="10040" version="1" template="AUTH_INVALID_ANON_ACCOUNT" opcode="IISAuthentication13" task="IISAuthentication" symbol="IISAuthenticationAUTH_INVALID_ANON_ACCOUNT" />
+          <event value="10041" version="1" template="AUTH_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication14" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_NEEDED" />
+          <event value="10042" version="1" template="AUTH_PASSWD_CHANGE_DISABLED" opcode="IISAuthentication15" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_DISABLED" />
+          <event value="10043" version="1" template="AUTH_BAD_BASIC_HEADER" opcode="IISAuthentication16" task="IISAuthentication" symbol="IISAuthenticationAUTH_BAD_BASIC_HEADER" />
+          <event value="10044" version="1" template="AUTH_BASIC_LOGON_FAILED" opcode="IISAuthentication17" task="IISAuthentication" symbol="IISAuthenticationAUTH_BASIC_LOGON_FAILED" />
+          <event value="10045" version="1" template="AUTH_WDIGEST_LOGON_FAILED" opcode="IISAuthentication18" task="IISAuthentication" symbol="IISAuthenticationAUTH_WDIGEST_LOGON_FAILED" />
+          <event value="10046" version="1" template="AUTH_IISDIGEST_LOGON_FAILED" opcode="IISAuthentication19" task="IISAuthentication" symbol="IISAuthenticationAUTH_IISDIGEST_LOGON_FAILED" />
+          <event value="10047" version="1" template="AUTH_PASSPORT_LOGON_FAILED" opcode="IISAuthentication20" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSPORT_LOGON_FAILED" />
+          <event value="10048" version="1" template="AUTH_SSPI_LOGON_FAILED" opcode="IISAuthentication21" task="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_LOGON_FAILED" />
+          <event value="10049" version="1" template="AUTH_NTLM_NULL_SESSION" opcode="IISAuthentication22" task="IISAuthentication" symbol="IISAuthenticationAUTH_NTLM_NULL_SESSION" />
+          <event value="10050" version="1" template="AUTH_SSPI_CONTINUE_NEEDED" opcode="IISAuthentication23" task="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_CONTINUE_NEEDED" />
+          <event value="10051" version="1" template="AUTH_KERBEROS_FAILED" opcode="IISAuthentication55" task="IISAuthentication" symbol="IISAuthenticationAUTH_KERBEROS_FAILED" />
+          <event value="10052" version="1" template="AUTH_ANON_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication24" task="IISAuthentication" symbol="IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDED" />
+          <event value="10053" version="1" template="AUTH_REQUEST_AUTH_TYPE" opcode="IISAuthentication27" task="IISAuthentication" symbol="IISAuthenticationAUTH_REQUEST_AUTH_TYPE" />
+          <event value="10054" version="1" template="AUTH_END" opcode="IISAuthentication28" task="IISAuthentication" symbol="IISAuthenticationAUTH_END" />
+          <event value="10055" version="1" template="SEC_ILLEGAL_SHORT_FILENAME" opcode="IISSecurity10" task="IISSecurity" symbol="IISSecuritySEC_ILLEGAL_SHORT_FILENAME" />
+          <event value="10056" version="1" template="SEC_REJECTED_IP" opcode="IISSecurity11" task="IISSecurity" symbol="IISSecuritySEC_REJECTED_IP" />
+          <event value="10057" version="1" template="SEC_REJECTED_HOSTNAME" opcode="IISSecurity12" task="IISSecurity" symbol="IISSecuritySEC_REJECTED_HOSTNAME" />
+          <event value="10058" version="1" template="SEC_REQUIRE_SSL_128" opcode="IISSecurity13" task="IISSecurity" symbol="IISSecuritySEC_REQUIRE_SSL_128" />
+          <event value="10059" version="1" template="SEC_FILE_ACCESS_DENIED" opcode="IISSecurity14" task="IISSecurity" symbol="IISSecuritySEC_FILE_ACCESS_DENIED" />
+          <event value="10060" version="1" template="SEC_DENIED_BY_MIMEMAP" opcode="IISSecurity15" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_MIMEMAP" />
+          <event value="10061" version="1" template="SEC_DENIED_BY_ISAPI_RESTRICTION" opcode="IISSecurity16" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTION" />
+          <event value="10062" version="1" template="SEC_DENIED_BY_CGI_RESTRICTION" opcode="IISSecurity17" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_CGI_RESTRICTION" />
+          <event value="10063" version="1" template="SEC_DENIED_BY_ACCESS_FLAGS" opcode="IISSecurity18" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ACCESS_FLAGS" />
+          <event value="10064" version="1" template="FILTER_START" opcode="IISFilter1" task="IISFilter" symbol="IISFilterFILTER_START" />
+          <event value="10065" version="1" template="FILTER_END" opcode="IISFilter2" task="IISFilter" symbol="IISFilterFILTER_END" />
+          <event value="10066" version="1" template="FILTER_ERROR" opcode="IISFilter12" task="IISFilter" symbol="IISFilterFILTER_ERROR" />
+          <event value="10067" version="1" template="FILTER_PREPROC_START" opcode="IISFilter13" task="IISFilter" symbol="IISFilterFILTER_PREPROC_START" />
+          <event value="10068" version="1" template="FILTER_PREPROC_END" opcode="IISFilter14" task="IISFilter" symbol="IISFilterFILTER_PREPROC_END" />
+          <event value="10069" version="1" template="FILTER_URL_MAP_START" opcode="IISFilter15" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_START" />
+          <event value="10070" version="1" template="FILTER_URL_MAP_END" opcode="IISFilter16" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_END" />
+          <event value="10071" version="1" template="FILTER_AUTHENTICATION_START" opcode="IISFilter17" task="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_START" />
+          <event value="10072" version="1" template="FILTER_AUTHENTICATION_END" opcode="IISFilter18" task="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_END" />
+          <event value="10073" version="1" template="FILTER_AUTH_COMPLETE_START" opcode="IISFilter19" task="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_START" />
+          <event value="10074" version="1" template="FILTER_AUTH_COMPLETE_END" opcode="IISFilter20" task="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_END" />
+          <event value="10075" version="1" template="FILTER_SEND_RESPONSE_START" opcode="IISFilter21" task="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_START" />
+          <event value="10076" version="1" template="FILTER_SEND_RESPONSE_END" opcode="IISFilter22" task="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_END" />
+          <event value="10077" version="1" template="FILTER_END_OF_REQUEST_START" opcode="IISFilter23" task="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_START" />
+          <event value="10078" version="1" template="FILTER_END_OF_REQUEST_END" opcode="IISFilter24" task="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_END" />
+          <event value="10079" version="1" template="FILTER_LOG_START" opcode="IISFilter25" task="IISFilter" symbol="IISFilterFILTER_LOG_START" />
+          <event value="10080" version="1" template="FILTER_LOG_END" opcode="IISFilter26" task="IISFilter" symbol="IISFilterFILTER_LOG_END" />
+          <event value="10081" version="1" template="FILTER_SEND_RAW_DATA_START" opcode="IISFilter27" task="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_START" />
+          <event value="10082" version="1" template="FILTER_SEND_RAW_DATA_END" opcode="IISFilter28" task="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_END" />
+          <event value="10083" version="1" template="FILTER_ACCESS_DENIED_START" opcode="IISFilter29" task="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_START" />
+          <event value="10084" version="1" template="FILTER_ACCESS_DENIED_END" opcode="IISFilter30" task="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_END" />
+          <event value="10085" version="1" template="FILTER_SET_REQ_HEADER" opcode="IISFilter31" task="IISFilter" symbol="IISFilterFILTER_SET_REQ_HEADER" />
+          <event value="10086" version="1" template="FILTER_ADD_REQ_HEADER" opcode="IISFilter32" task="IISFilter" symbol="IISFilterFILTER_ADD_REQ_HEADER" />
+          <event value="10087" version="1" template="FILTER_SET_RESP_HEADER" opcode="IISFilter33" task="IISFilter" symbol="IISFilterFILTER_SET_RESP_HEADER" />
+          <event value="10088" version="1" template="FILTER_ADD_RESP_HEADER" opcode="IISFilter34" task="IISFilter" symbol="IISFilterFILTER_ADD_RESP_HEADER" />
+          <event value="10089" version="1" template="ISAPI_START" opcode="IISISAPI1" task="IISISAPI" symbol="IISISAPIISAPI_START" />
+          <event value="10090" version="1" template="ISAPI_END" opcode="IISISAPI2" task="IISISAPI" symbol="IISISAPIISAPI_END" />
+          <event value="10091" version="1" template="CGI_START" opcode="IISCGI1" task="IISCGI" symbol="IISCGICGI_START" />
+          <event value="10092" version="1" template="CGI_END" opcode="IISCGI2" task="IISCGI" symbol="IISCGICGI_END" />
+          <event value="10093" version="1" template="CGI_LAUNCH" opcode="IISCGI3" task="IISCGI" symbol="IISCGICGI_LAUNCH" />
+          <event value="10094" version="1" template="CGI_TIMEOUT" opcode="IISCGI4" task="IISCGI" symbol="IISCGICGI_TIMEOUT" />
+          <event value="10095" version="1" template="CGI_PREMATURE_TERMINATION" opcode="IISCGI5" task="IISCGI" symbol="IISCGICGI_PREMATURE_TERMINATION" />
+          <event value="10096" version="1" template="CGI_REQUEST_ENTITY_START" opcode="IISCGI6" task="IISCGI" symbol="IISCGICGI_REQUEST_ENTITY_START" />
+          <event value="10097" version="1" template="CGI_HEADERS_RECEIVED" opcode="IISCGI7" task="IISCGI" symbol="IISCGICGI_HEADERS_RECEIVED" />
+          <event value="10098" version="1" template="CGIF_ACTIVITY_TIMEOUT" opcode="IISFastCGI1" task="IISFastCGI" symbol="IISFastCGICGIF_ACTIVITY_TIMEOUT" />
+          <event value="10099" version="1" template="CGIF_REQUEST_TIMEOUT" opcode="IISFastCGI2" task="IISFastCGI" symbol="IISFastCGICGIF_REQUEST_TIMEOUT" />
+          <event value="10100" version="1" template="CGIF_UNEXPECTED_EXIT" opcode="IISFastCGI3" task="IISFastCGI" symbol="IISFastCGICGIF_UNEXPECTED_EXIT" />
+          <event value="10101" version="1" template="CGIF_RAPID_FAILURE_PROTECTION" opcode="IISFastCGI4" task="IISFastCGI" symbol="IISFastCGICGIF_RAPID_FAILURE_PROTECTION" />
+          <event value="10102" version="1" template="CGIF_PATH_NOT_FOUND" opcode="IISFastCGI5" task="IISFastCGI" symbol="IISFastCGICGIF_PATH_NOT_FOUND" />
+          <event value="10103" version="1" template="CGIF_SCRIPT_PROCESSOR_MISSING" opcode="IISFastCGI6" task="IISFastCGI" symbol="IISFastCGICGIF_SCRIPT_PROCESSOR_MISSING" />
+          <event value="10104" version="1" template="CGIF_ADD_JOB_OBJECT_FAIL" opcode="IISFastCGI7" task="IISFastCGI" symbol="IISFastCGICGIF_ADD_JOB_OBJECT_FAIL" />
+          <event value="10105" version="1" template="CGIF_APPMGR_SHUTDOWN" opcode="IISFastCGI8" task="IISFastCGI" symbol="IISFastCGICGIF_APPMGR_SHUTDOWN" />
+          <event value="10106" version="1" template="CGIF_QUEUE_FULL" opcode="IISFastCGI9" task="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_FULL" />
+          <event value="10107" version="1" template="CGIF_UNKNOWN_ERROR" opcode="IISFastCGI10" task="IISFastCGI" symbol="IISFastCGICGIF_UNKNOWN_ERROR" />
+          <event value="10108" version="1" template="CGIF_RESPONSE_WRITTEN" opcode="IISFastCGI11" task="IISFastCGI" symbol="IISFastCGICGIF_RESPONSE_WRITTEN" />
+          <event value="10109" version="1" template="CGIF_WAITING_FOR_RESPONSE" opcode="IISFastCGI12" task="IISFastCGI" symbol="IISFastCGICGIF_WAITING_FOR_RESPONSE" />
+          <event value="10110" version="1" template="CGIF_TRACE_ERROR" opcode="IISFastCGI13" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_ERROR" />
+          <event value="10111" version="1" template="CGIF_TRACE_WARNING" opcode="IISFastCGI14" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_WARNING" />
+          <event value="10112" version="1" template="CGIF_TRACE_INFO" opcode="IISFastCGI15" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_INFO" />
+          <event value="10113" version="1" template="CGIF_QUEUE_REQUEST" opcode="IISFastCGI16" task="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_REQUEST" />
+          <event value="10114" version="1" template="CGIF_ASSIGN_PROCESS" opcode="IISFastCGI17" task="IISFastCGI" symbol="IISFastCGICGIF_ASSIGN_PROCESS" />
+          <event value="10115" version="1" template="CGIF_START" opcode="IISFastCGI18" task="IISFastCGI" symbol="IISFastCGICGIF_START" />
+          <event value="10116" version="1" template="CGIF_END" opcode="IISFastCGI19" task="IISFastCGI" symbol="IISFastCGICGIF_END" />
+          <event value="10117" version="1" template="WEBSOCKET_INITIALIZE_NOT_SUCCESS" opcode="IISWebSocket1" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESS" />
+          <event value="10118" version="1" template="WEBSOCKET_START" opcode="IISWebSocket2" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_START" />
+          <event value="10119" version="1" template="WEBSOCKET_END_SUCCESS" opcode="IISWebSocket3" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_SUCCESS" />
+          <event value="10120" version="1" template="WEBSOCKET_END_FAILURE" opcode="IISWebSocket4" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_FAILURE" />
+          <event value="10121" version="1" template="WEBSOCKET_READ_FRAGMENT_START" opcode="IISWebSocket5" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_START" />
+          <event value="10122" version="1" template="WEBSOCKET_READ_FRAGMENT_END_PENDING" opcode="IISWebSocket6" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDING" />
+          <event value="10123" version="1" template="WEBSOCKET_READ_FRAGMENT_END_SUCCESS" opcode="IISWebSocket7" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESS" />
+          <event value="10124" version="1" template="WEBSOCKET_READ_FRAGMENT_END_FAILURE" opcode="IISWebSocket8" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURE" />
+          <event value="10125" version="1" template="WEBSOCKET_WRITE_FRAGMENT_START" opcode="IISWebSocket9" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_START" />
+          <event value="10126" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_PENDING" opcode="IISWebSocket10" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDING" />
+          <event value="10127" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" opcode="IISWebSocket11" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" />
+          <event value="10128" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_FAILURE" opcode="IISWebSocket12" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURE" />
+          <event value="10129" version="1" template="WEBSOCKET_APPLICATION_CLOSE_CONNECTION" opcode="IISWebSocket13" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTION" />
+          <event value="10130" version="1" template="WEBSOCKET_MODULE_CLOSE_CONNECTION" opcode="IISWebSocket14" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTION" />
+          <event value="10131" version="1" template="WEBSOCKET_READ_IO_FAILED" opcode="IISWebSocket15" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_IO_FAILED" />
+          <event value="10132" version="1" template="WEBSOCKET_WRITE_IO_FAILED" opcode="IISWebSocket16" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_IO_FAILED" />
+          <event value="10133" version="1" template="WEBSOCKET_CLOSE_RECEIVED" opcode="IISWebSocket17" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_RECEIVED" />
+          <event value="10134" version="1" template="WEBSOCKET_CLOSE_SEND_START" opcode="IISWebSocket18" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_START" />
+          <event value="10135" version="1" template="WEBSOCKET_CLOSE_SEND_SUCCESS" opcode="IISWebSocket19" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESS" />
+          <event value="10136" version="1" template="WEBSOCKET_CLOSE_SEND_FAILURE" opcode="IISWebSocket20" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURE" />
+          <event value="10137" version="1" template="STATIC_COMPRESSION_START" opcode="IISCompression1" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_START" />
+          <event value="10138" version="1" template="STATIC_COMPRESSION_SUCCESS" opcode="IISCompression2" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_SUCCESS" />
+          <event value="10139" version="1" template="STATIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression3" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_NOT_SUCCESS" />
+          <event value="10140" version="1" template="STATIC_COMPRESSION_CREATE_START" opcode="IISCompression4" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_START" />
+          <event value="10141" version="1" template="STATIC_COMPRESSION_CREATE_END" opcode="IISCompression5" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_END" />
+          <event value="10142" version="1" template="DYNAMIC_COMPRESSION_START" opcode="IISCompression6" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_START" />
+          <event value="10143" version="1" template="DYNAMIC_COMPRESSION_SUCCESS" opcode="IISCompression7" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_SUCCESS" />
+          <event value="10144" version="1" template="DYNAMIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression8" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESS" />
+          <event value="10145" version="1" template="DYNAMIC_COMPRESSION_DO" opcode="IISCompression9" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_DO" />
+          <event value="10146" version="1" template="DYNAMIC_COMPRESSION_END" opcode="IISCompression10" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_END" />
+          <event value="10147" version="1" template="STATIC_COMPRESSION_END" opcode="IISCompression11" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_END" />
+          <event value="10148" version="1" template="CACHE_FILE_CACHE_ACCESS_START" opcode="IISCache10" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_ACCESS_START" />
+          <event value="10149" version="1" template="CACHE_FILE_CACHE_ACCESS_END" opcode="IISCache11" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_ACCESS_END" />
+          <event value="10150" version="1" template="CACHE_URL_CACHE_ACCESS_START" opcode="IISCache12" task="IISCache" symbol="IISCacheCACHE_URL_CACHE_ACCESS_START" />
+          <event value="10151" version="1" template="CACHE_URL_CACHE_ACCESS_END" opcode="IISCache13" task="IISCache" symbol="IISCacheCACHE_URL_CACHE_ACCESS_END" />
+          <event value="10152" version="1" template="CACHE_HTTPSYS_CACHEABLE" opcode="IISCache14" task="IISCache" symbol="IISCacheCACHE_HTTPSYS_CACHEABLE" />
+          <event value="10153" version="1" template="OUTPUT_CACHE_LOOKUP_START" opcode="IISCache15" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_START" />
+          <event value="10154" version="1" template="OUTPUT_CACHE_LOOKUP_END" opcode="IISCache16" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_END" />
+          <event value="10155" version="1" template="OUTPUT_CACHE_UPDATE_START" opcode="IISCache17" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_START" />
+          <event value="10156" version="1" template="OUTPUT_CACHE_UPDATE_END" opcode="IISCache18" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_END" />
+          <event value="10157" version="1" template="OUTPUT_CACHE_DISABLED" opcode="IISCache19" task="IISCache" symbol="IISCacheOUTPUT_CACHE_DISABLED" />
+          <event value="10158" version="1" template="CACHE_FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_CREATE_FILE" />
+          <event value="10159" version="1" template="REQUEST_NOTIFICATION_EVENTS_START" opcode="IISRequestNotification1" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_START" />
+          <event value="10160" version="1" template="REQUEST_NOTIFICATION_EVENTS_END" opcode="IISRequestNotification2" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_END" />
+          <event value="10161" version="1" template="REQUEST_NOTIFICATION_EVENTS_COMPLETION" opcode="IISRequestNotification3" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETION" />
+          <event value="10162" version="1" template="REQUEST_NOTIFICATION_PRE_BEGIN_START" opcode="IISRequestNotification4" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_START" />
+          <event value="10163" version="1" template="REQUEST_NOTIFICATION_PRE_BEGIN_END" opcode="IISRequestNotification5" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_END" />
+          <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="IISRequestNotification15" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERROR" />
+          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="IISRequestNotification16" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+          <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="IISRequestNotification17" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
+          <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="IISRequestNotification18" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
+          <event value="10168" version="1" template="MODULE_EVENTS_MODULE_START" opcode="IISModuleEvents1" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_START" />
+          <event value="10169" version="1" template="MODULE_EVENTS_MODULE_END" opcode="IISModuleEvents2" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_END" />
+          <event value="10170" version="1" template="MODULE_EVENTS_MODULE_CRITICAL_ERROR" opcode="IISModuleEvents3" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERROR" />
+          <event value="10171" version="1" template="MODULE_EVENTS_MODULE_ERROR" opcode="IISModuleEvents4" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_ERROR" />
+          <event value="10172" version="1" template="MODULE_EVENTS_MODULE_WARNING" opcode="IISModuleEvents5" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_WARNING" />
+          <event value="10173" version="1" template="MODULE_EVENTS_MODULE_INFORMATION" opcode="IISModuleEvents6" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_INFORMATION" />
+          <event value="10174" version="1" template="MODULE_EVENTS_MODULE_VERBOSE" opcode="IISModuleEvents7" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_VERBOSE" />
+          <!--
+          <event value="10175" version="1" template="RECEIVE_NEW_REQUEST" opcode="1" task="IISGeneral" symbol="IISGeneralRECEIVE_NEW_REQUEST"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="2" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="16" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="17" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="18" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="19" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="20" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="21" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="22" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="23" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10176" version="1" template="SEND_RESPONSE" opcode="24" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
+          <event value="10177" version="1" template="FILE_REQUEST" opcode="10" task="IISGeneral" symbol="IISGeneralFILE_REQUEST"/>
+          <event value="10178" version="1" template="CGI_REQUEST" opcode="11" task="IISGeneral" symbol="IISGeneralCGI_REQUEST"/>
+          <event value="10179" version="1" template="ISAPI_REQUEST" opcode="12" task="IISGeneral" symbol="IISGeneralISAPI_REQUEST"/>
+          <event value="10180" version="1" template="OOP_REQUEST" opcode="13" task="IISGeneral" symbol="IISGeneralOOP_REQUEST"/>
+          <event value="10181" version="1" template="FILTER_TRANS_START" opcode="1" task="IISFilter" symbol="IISFilterFILTER_TRANS_START"/>
+          <event value="10182" version="1" template="FILTER_TRANS_END" opcode="2" task="IISFilter" symbol="IISFilterFILTER_TRANS_END"/>
+          <event value="10183" version="1" template="CGI_TRANS" opcode="1" task="IISCGI" symbol="IISCGICGI_TRANS"/>
+          <event value="10183" version="1" template="CGI_TRANS" opcode="2" task="IISCGI" symbol="IISCGICGI_TRANS"/>
+          <event value="10184" version="1" template="ISAPI_MAP_REQUEST_ID" opcode="1" task="IISISAPI" symbol="IISISAPIISAPI_MAP_REQUEST_ID"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="2" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="10" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="11" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="12" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="13" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="14" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="15" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
+          -->
+        </events>
+        <opcodes>
+          <!--
+          <opcode value="1" name="opcode1" mofValue="1" message="GENERAL_REQUEST_START" />
+        -->
+        </opcodes>
+        <maps>
+          <valueMap name="GENERAL_GET_URL_METADATA.AccessPerms">
+            <map value="0x00001" message="MD_ACCESS_READ" />
+            <map value="0x00002" message="MD_ACCESS_WRITE" />
+            <map value="0x00004" message="MD_ACCESS_EXECUTE" />
+            <map value="0x00010" message="MD_ACCESS_SOURCE" />
+            <map value="0x00200" message="MD_ACCESS_SCRIPT" />
+            <map value="0x00400" message="MD_ACCESS_NO_REMOTE_WRITE" />
+            <map value="0x01000" message="MD_ACCESS_NO_REMOTE_READ" />
+            <map value="0x02000" message="MD_ACCESS_NO_REMOTE_EXECUTE" />
+            <map value="0x04000" message="MD_ACCESS_NO_REMOTE_SCRIPT" />
+            <map value="0x08000" message="MD_ACCESS_NO_PHYSICAL_DIR" />
+            <map value="0x00008" message="MD_ACCESS_SSL" />
+            <map value="0x00020" message="MD_ACCESS_NEGO_CERT" />
+            <map value="0x00040" message="MD_ACCESS_REQUIRE_CERT" />
+            <map value="0x00080" message="MD_ACCESS_MAP_CERT" />
+            <map value="0x00100" message="MD_ACCESS_SSL128" />
+          </valueMap>
+          <valueMap name="GENERAL_NOT_SEND_CUSTOM_ERROR.Reason">
+            <map value="0" message="UNKNOWN" />
+            <map value="1" message="SETSTATUS_SUCCESS" />
+            <map value="2" message="SETSTATUS_TRYSKIP" />
+            <map value="3" message="EXISTINGRESPONSE_PASSTHROUGH" />
+            <map value="4" message="EXISTINGRESPONSE_AUTO" />
+          </valueMap>
+          <valueMap name="AUTH_START.AuthTypeSupported">
+            <map value="0x1" message="MD_AUTH_ANONYMOUS" />
+            <map value="0x2" message="MD_AUTH_BASIC" />
+            <map value="0x4" message="MD_AUTH_NT" />
+            <map value="0x10" message="MD_AUTH_MD5" />
+            <map value="0x40" message="MD_AUTH_PASSPORT" />
+            <map value="0x80" message="MD_ACCESS_MAP_CERT" />
+          </valueMap>
+          <valueMap name="AUTH_SUCCEEDED.AuthType">
+            <map value="0x1" message="MD_AUTH_ANONYMOUS" />
+            <map value="0x2" message="MD_AUTH_BASIC" />
+            <map value="0x4" message="MD_AUTH_NT" />
+            <map value="0x10" message="MD_AUTH_MD5" />
+            <map value="0x40" message="MD_AUTH_PASSPORT" />
+            <map value="0x80" message="MD_ACCESS_MAP_CERT" />
+          </valueMap>
+          <valueMap name="AUTH_SUCCEEDED.TokenImpersonationLevel">
+            <map value="0x0" message="IMPERSONATION_LEVEL_ANONYMOUS" />
+            <map value="0x1" message="IMPERSONATION_LEVEL_IDENTIFY" />
+            <map value="0x2" message="IMPERSONATION_LEVEL_IMPERSONATE" />
+            <map value="0x3" message="IMPERSONATION_LEVEL_DELEGATE" />
+            <map value="0x4" message="IMPERSONATION_LEVEL_UNKNOWN" />
+          </valueMap>
+          <valueMap name="AUTH_REQUEST_AUTH_TYPE.RequestAuthType">
+            <map value="0x1" message="MD_AUTH_ANONYMOUS" />
+            <map value="0x2" message="MD_AUTH_BASIC" />
+            <map value="0x4" message="MD_AUTH_NT" />
+            <map value="0x10" message="MD_AUTH_MD5" />
+            <map value="0x40" message="MD_AUTH_PASSPORT" />
+            <map value="0x80" message="MD_ACCESS_MAP_CERT" />
+          </valueMap>
+          <valueMap name="FILTER_END.NotificationStatus">
+            <map value="0x08000000" message="SF_STATUS_REQ_FINISHED" />
+            <map value="0x08000001" message="SF_STATUS_REQ_FINISHED_KEEP_CONN" />
+            <map value="0x08000002" message="SF_STATUS_REQ_NEXT_NOTIFICATION" />
+            <map value="0x08000003" message="SF_STATUS_REQ_HANDLED_NOTIFICATION" />
+            <map value="0x08000004" message="SF_STATUS_REQ_ERROR" />
+            <map value="0x08000005" message="SF_STATUS_REQ_READ_NEXT" />
+          </valueMap>
+          <valueMap name="WEBSOCKET_MODULE_CLOSE_CONNECTION.Reason">
+            <map value="1" message="PING_TIMEOUT" />
+          </valueMap>
+          <valueMap name="STATIC_COMPRESSION_NOT_SUCCESS.Reason">
+            <map value="1" message="NO_ACCEPT_ENCODING" />
+            <map value="2" message="COMPRESSION_DISABLED" />
+            <map value="3" message="NO_COMPRESSION_10" />
+            <map value="4" message="NO_COMPRESSION_PROXY" />
+            <map value="5" message="NO_MATCHING_SCHEME" />
+            <map value="6" message="UNKNOWN_ERROR" />
+            <map value="7" message="NO_COMPRESSION_RANGE" />
+            <map value="8" message="FILE_TOO_SMALL" />
+            <map value="9" message="FILE_ENCRYPTED" />
+            <map value="10" message="COMPRESS_FILE_NOT_FOUND" />
+            <map value="11" message="COMPRESS_FILE_STALE" />
+            <map value="12" message="NO_MATCHING_CONTENT_TYPE" />
+            <map value="13" message="FOOTER_ENABLED" />
+            <map value="14" message="NOT_FREQUENTLY_HIT" />
+            <map value="15" message="FAIL_TO_COMPRESS" />
+          </valueMap>
+          <valueMap name="DYNAMIC_COMPRESSION_NOT_SUCCESS.Reason">
+            <map value="1" message="NO_ACCEPT_ENCODING" />
+            <map value="2" message="COMPRESSION_DISABLED" />
+            <map value="3" message="NO_COMPRESSION_10" />
+            <map value="4" message="NO_COMPRESSION_PROXY" />
+            <map value="5" message="NO_MATCHING_SCHEME" />
+            <map value="6" message="UNKNOWN_ERROR" />
+            <map value="7" message="HEADERS_SENT_TWICE" />
+            <map value="8" message="NO_HEADER_SENT" />
+            <map value="9" message="NOT_SUCCESS_STATUS" />
+            <map value="10" message="ALREADY_CONTENT_ENCODING" />
+            <map value="11" message="NO_COMPRESSION_RANGE" />
+            <map value="12" message="NO_MATCHING_CONTENT_TYPE" />
+          </valueMap>
+          <valueMap name="CACHE_HTTPSYS_CACHEABLE.Reason">
+            <map value="0" message="OK" />
+            <map value="1" message="NO_METADATA" />
+            <map value="2" message="HTTPSYS_CACHE_DISABLED" />
+            <map value="3" message="FILE_COMPRESSIBLE" />
+            <map value="4" message="FOOTER_ENABLED" />
+            <map value="5" message="SUPRESSING_ENTITY" />
+            <map value="6" message="URL_CHANGE_BY_FILTER" />
+            <map value="7" message="HTTP_STATUS_NOT_OK" />
+            <map value="8" message="CHILD_REQUEST" />
+            <map value="9" message="HANDLER_HTTPSYS_UNFRIENDLY" />
+            <map value="10" message="FILTER_CACHE_UNAWARE" />
+            <map value="11" message="NON_ANONYMOUS_ACCESS" />
+            <map value="12" message="IP_RESTRICTION_SET" />
+            <map value="13" message="CUSTOM_LOGGING" />
+            <map value="14" message="SSL_RESTRICTION" />
+            <map value="15" message="ISAPI_NOT_CACHING" />
+            <map value="16" message="STATIC_REQUEST_QUERYSTRING" />
+            <map value="17" message="RESPONSE_MORE_DATA" />
+            <map value="18" message="FILE_NOT_CACHED" />
+            <map value="19" message="RESPONSE_SENDING_RAW_HEADERS" />
+            <map value="20" message="DYNAMIC_COMPRESSION_ENABLED" />
+            <map value="21" message="NO_PIPELINE_ENABLE" />
+            <map value="22" message="VERB_NOT_GET" />
+            <map value="23" message="NO_CACHE_INVALIDATOR" />
+            <map value="24" message="HANDLER_CHANGED" />
+            <map value="25" message="REQUEST_FILTER_RULE" />
+          </valueMap>
+          <valueMap name="CACHE_HTTPSYS_CACHEABLE.CachePolicy">
+            <map value="0" message="NO_CACHE" />
+            <map value="1" message="USER_INVALIDATES" />
+            <map value="2" message="TIME_TO_LIVE" />
+          </valueMap>
+          <valueMap name="OUTPUT_CACHE_LOOKUP_END.Result">
+            <map value="0" message="NOT_FOUND" />
+            <map value="1" message="FOUND" />
+            <map value="2" message="ACCEPT_NOT_MATCH" />
+            <map value="3" message="ACCEPT_ENCODING_NOT_MATCH" />
+            <map value="4" message="CACHING_DISABLED" />
+            <map value="5" message="CONDITIONAL_HEADERS_PRESENT" />
+          </valueMap>
+          <valueMap name="OUTPUT_CACHE_UPDATE_START.CachePolicy">
+            <map value="0" message="NO_CACHE" />
+            <map value="1" message="USER_INVALIDATES" />
+            <map value="2" message="TIME_TO_LIVE" />
+          </valueMap>
+          <valueMap name="OUTPUT_CACHE_UPDATE_END.Result">
+            <map value="0" message="ADDED" />
+            <map value="1" message="UNKNOWN_ERROR" />
+            <map value="2" message="NOT_FREQUENTLY_HIT" />
+            <map value="3" message="HEADERS_FLUSHED" />
+            <map value="4" message="HEADERS_SUPPRESSED" />
+            <map value="5" message="VERB_NOT_GET" />
+            <map value="6" message="STATUS_NOT_OK" />
+            <map value="7" message="CACHING_DISABLED" />
+            <map value="8" message="RESPONSE_TOO_BIG" />
+            <map value="9" message="CACHE_FULL" />
+            <map value="10" message="VARY_BY_NOT_MATCH" />
+            <map value="11" message="ENTRY_EXISTS" />
+            <map value="12" message="ALREADY_CACHED" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_START.Notification">
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_END.Notification">
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_END.NotificationStatus">
+            <map value="0" message="NOTIFICATION_CONTINUE" />
+            <map value="2" message="NOTIFICATION_FINISH_REQUEST" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_COMPLETION.Notification">
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_PRE_BEGIN_END.NotificationStatus">
+            <map value="0" message="NOTIFICATION_CONTINUE" />
+            <map value="1" message="NOTIFICATION_HANDLED" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_ERROR.Notification">
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS.Notification">
+            <map value="0x00000000" message="PRE_BEGIN_REQUEST" />
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+          <valueMap name="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS.Notification">
+            <map value="0x00000001" message="BEGIN_REQUEST" />
+            <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
+            <map value="0x00000004" message="AUTHORIZE_REQUEST" />
+            <map value="0x00000008" message="RESOLVE_REQUEST_CACHE" />
+            <map value="0x00000010" message="MAP_REQUEST_HANDLER" />
+            <map value="0x00000020" message="REQUEST_ACQUIRE_STATE" />
+            <map value="0x00000040" message="PRE_EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000080" message="EXECUTE_REQUEST_HANDLER" />
+            <map value="0x00000100" message="RELEASE_REQUEST_STATE" />
+            <map value="0x00000200" message="UPDATE_REQUEST_CACHE" />
+            <map value="0x00000400" message="LOG_REQUEST" />
+            <map value="0x00000800" message="END_REQUEST" />
+            <map value="0x10000000" message="CUSTOM_NOTIFICATION" />
+            <map value="0x20000000" message="SEND_RESPONSE" />
+            <map value="0x40000000" message="READ_ENTITY" />
+            <map value="0x80000000" message="MAP_PATH" />
+          </valueMap>
+        </maps>
+      </provider>
+    </events>
+  </instrumentation>
+</instrumentationManifest>

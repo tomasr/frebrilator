@@ -40,7 +40,7 @@ namespace Winterdom.Frebrilator {
       /*
       parser = new RegisteredTraceEventParser(eventSource);
       this.subscriptions.Add(parser.ObserveAll().Subscribe(this));
-      */
+      //*/
     }
 
     public void Dispose() {
