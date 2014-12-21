@@ -183,16 +183,16 @@
             <opcode value="19" name="IISCache19" mofValue="19" message="OUTPUT_CACHE_DISABLED" />
             <opcode value="20" name="IISCache20" mofValue="20" message="CACHE_FILE_CACHE_CREATE_FILE" />
           </task>
-          <task name="IISRequestNotification" value="11" eventGUID="{002e91e3-e7ae-44ab-8e07-99230ffa6ade}">
-            <opcode value="1" name="IISRequestNotification1" mofValue="1" message="REQUEST_NOTIFICATION_EVENTS_START" />
-            <opcode value="2" name="IISRequestNotification2" mofValue="2" message="REQUEST_NOTIFICATION_EVENTS_END" />
-            <opcode value="3" name="IISRequestNotification3" mofValue="3" message="REQUEST_NOTIFICATION_EVENTS_COMPLETION" />
-            <opcode value="4" name="IISRequestNotification4" mofValue="4" message="REQUEST_NOTIFICATION_PRE_BEGIN_START" />
-            <opcode value="5" name="IISRequestNotification5" mofValue="5" message="REQUEST_NOTIFICATION_PRE_BEGIN_END" />
-            <opcode value="15" name="IISRequestNotification15" mofValue="15" message="REQUEST_NOTIFICATION_EVENTS_ERROR" />
-            <opcode value="16" name="IISRequestNotification16" mofValue="16" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
-            <opcode value="17" name="IISRequestNotification17" mofValue="17" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
-            <opcode value="18" name="IISRequestNotification18" mofValue="18" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
+          <task name="RequestNotifications" value="11" eventGUID="{002e91e3-e7ae-44ab-8e07-99230ffa6ade}">
+            <opcode value="1" name="RequestNotifications1" mofValue="1" message="NOTIFY_MODULE_START" />
+            <opcode value="2" name="RequestNotifications2" mofValue="2" message="NOTIFY_MODULE_END" />
+            <opcode value="3" name="RequestNotifications3" mofValue="3" message="NOTIFY_MODULE_COMPLETION" />
+            <opcode value="4" name="RequestNotifications4" mofValue="4" message="PRE_BEGIN_REQUEST_START" />
+            <opcode value="5" name="RequestNotifications5" mofValue="5" message="PRE_BEGIN_REQUEST_END" />
+            <opcode value="15" name="RequestNotifications15" mofValue="15" message="REQUEST_NOTIFICATION_EVENTS_ERROR" />
+            <opcode value="16" name="RequestNotifications16" mofValue="16" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+            <opcode value="17" name="RequestNotifications17" mofValue="17" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
+            <opcode value="18" name="RequestNotifications18" mofValue="18" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
           </task>
           <task name="IISModuleEvents" value="12" eventGUID="{d79a948e-95f1-417b-a731-b7a79dec7ae5}">
             <opcode value="1" name="IISModuleEvents1" mofValue="1" message="MODULE_EVENTS_MODULE_START" />
@@ -896,35 +896,35 @@
             <data name="UserName" inType="win:UnicodeString" />
             <data name="DomainName" inType="win:UnicodeString" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_EVENTS_START">
+          <template tid="NOTIFY_MODULE_START">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
-            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_START.Notification" />
+            <data name="Notification" inType="win:UInt32" map="NOTIFY_MODULE_START.Notification" />
             <data name="fIsPostNotification" inType="win:Boolean" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_EVENTS_END">
+          <template tid="NOTIFY_MODULE_END">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
-            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_END.Notification" />
+            <data name="Notification" inType="win:UInt32" map="NOTIFY_MODULE_END.Notification" />
             <data name="fIsPostNotificationEvent" inType="win:Boolean" />
-            <data name="NotificationStatus" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_END.NotificationStatus" />
+            <data name="NotificationStatus" inType="win:UInt32" map="NOTIFY_MODULE_END.NotificationStatus" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_EVENTS_COMPLETION">
+          <template tid="NOTIFY_MODULE_COMPLETION">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
-            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_COMPLETION.Notification" />
+            <data name="Notification" inType="win:UInt32" map="NOTIFY_MODULE_COMPLETION.Notification" />
             <data name="fIsPostNotificationEvent" inType="win:Boolean" />
             <data name="CompletionBytes" inType="win:UInt32" />
             <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_PRE_BEGIN_START">
+          <template tid="PRE_BEGIN_REQUEST_START">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_PRE_BEGIN_END">
+          <template tid="PRE_BEGIN_REQUEST_END">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
-            <data name="NotificationStatus" inType="win:UInt32" map="REQUEST_NOTIFICATION_PRE_BEGIN_END.NotificationStatus" />
+            <data name="NotificationStatus" inType="win:UInt32" map="PRE_BEGIN_REQUEST_END.NotificationStatus" />
           </template>
           <template tid="REQUEST_NOTIFICATION_EVENTS_ERROR">
             <data name="ContextId" inType="win:GUID" />
@@ -1206,15 +1206,15 @@
           <event value="10156" version="1" template="OUTPUT_CACHE_UPDATE_END" opcode="IISCache18" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_END" />
           <event value="10157" version="1" template="OUTPUT_CACHE_DISABLED" opcode="IISCache19" task="IISCache" symbol="IISCacheOUTPUT_CACHE_DISABLED" />
           <event value="10158" version="1" template="CACHE_FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" symbol="IISCacheCACHE_FILE_CACHE_CREATE_FILE" />
-          <event value="10159" version="1" template="REQUEST_NOTIFICATION_EVENTS_START" opcode="IISRequestNotification1" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_START" />
-          <event value="10160" version="1" template="REQUEST_NOTIFICATION_EVENTS_END" opcode="IISRequestNotification2" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_END" />
-          <event value="10161" version="1" template="REQUEST_NOTIFICATION_EVENTS_COMPLETION" opcode="IISRequestNotification3" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_COMPLETION" />
-          <event value="10162" version="1" template="REQUEST_NOTIFICATION_PRE_BEGIN_START" opcode="IISRequestNotification4" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_START" />
-          <event value="10163" version="1" template="REQUEST_NOTIFICATION_PRE_BEGIN_END" opcode="IISRequestNotification5" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_PRE_BEGIN_END" />
-          <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="IISRequestNotification15" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_ERROR" />
-          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="IISRequestNotification16" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
-          <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="IISRequestNotification17" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
-          <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="IISRequestNotification18" task="IISRequestNotification" symbol="IISRequestNotificationREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
+          <event value="10159" version="1" template="NOTIFY_MODULE_START" opcode="RequestNotifications1" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_START" />
+          <event value="10160" version="1" template="NOTIFY_MODULE_END" opcode="RequestNotifications2" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_END" />
+          <event value="10161" version="1" template="NOTIFY_MODULE_COMPLETION" opcode="RequestNotifications3" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_COMPLETION" />
+          <event value="10162" version="1" template="PRE_BEGIN_REQUEST_START" opcode="RequestNotifications4" task="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_START" />
+          <event value="10163" version="1" template="PRE_BEGIN_REQUEST_END" opcode="RequestNotifications5" task="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_END" />
+          <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="RequestNotifications15" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_ERROR" />
+          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="RequestNotifications16" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+          <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="RequestNotifications17" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
+          <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="RequestNotifications18" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
           <event value="10168" version="1" template="MODULE_EVENTS_MODULE_START" opcode="IISModuleEvents1" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_START" />
           <event value="10169" version="1" template="MODULE_EVENTS_MODULE_END" opcode="IISModuleEvents2" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_END" />
           <event value="10170" version="1" template="MODULE_EVENTS_MODULE_CRITICAL_ERROR" opcode="IISModuleEvents3" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERROR" />
@@ -1411,7 +1411,7 @@
             <map value="11" message="ENTRY_EXISTS" />
             <map value="12" message="ALREADY_CACHED" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_EVENTS_START.Notification">
+          <valueMap name="NOTIFY_MODULE_START.Notification">
             <map value="0x00000001" message="BEGIN_REQUEST" />
             <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
             <map value="0x00000004" message="AUTHORIZE_REQUEST" />
@@ -1429,7 +1429,7 @@
             <map value="0x40000000" message="READ_ENTITY" />
             <map value="0x80000000" message="MAP_PATH" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_EVENTS_END.Notification">
+          <valueMap name="NOTIFY_MODULE_END.Notification">
             <map value="0x00000001" message="BEGIN_REQUEST" />
             <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
             <map value="0x00000004" message="AUTHORIZE_REQUEST" />
@@ -1447,11 +1447,11 @@
             <map value="0x40000000" message="READ_ENTITY" />
             <map value="0x80000000" message="MAP_PATH" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_EVENTS_END.NotificationStatus">
+          <valueMap name="NOTIFY_MODULE_END.NotificationStatus">
             <map value="0" message="NOTIFICATION_CONTINUE" />
             <map value="2" message="NOTIFICATION_FINISH_REQUEST" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_EVENTS_COMPLETION.Notification">
+          <valueMap name="NOTIFY_MODULE_COMPLETION.Notification">
             <map value="0x00000001" message="BEGIN_REQUEST" />
             <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
             <map value="0x00000004" message="AUTHORIZE_REQUEST" />
@@ -1469,7 +1469,7 @@
             <map value="0x40000000" message="READ_ENTITY" />
             <map value="0x80000000" message="MAP_PATH" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_PRE_BEGIN_END.NotificationStatus">
+          <valueMap name="PRE_BEGIN_REQUEST_END.NotificationStatus">
             <map value="0" message="NOTIFICATION_CONTINUE" />
             <map value="1" message="NOTIFICATION_HANDLED" />
           </valueMap>
