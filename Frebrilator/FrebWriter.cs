@@ -21,6 +21,7 @@ namespace Winterdom.Frebrilator {
       if ( reqStart == null ) return; // can't write it, incomplete
 
       xw.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='freb.xsl'");
+      xw.WriteComment(" saved from url=(0014)about:internet ");
       xw.WriteStartElement("failedRequest");
       xw.WriteAttributeString("url", reqStart.PayloadString(5));
       xw.WriteAttributeString("siteId", reqStart.PayloadString(1));
