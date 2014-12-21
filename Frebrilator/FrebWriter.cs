@@ -94,8 +94,13 @@ namespace Winterdom.Frebrilator {
       xw.WriteStartElement("EventData", EtwNs);
       for ( int i=0; i < traceEvent.PayloadNames.Length; i++ ) {
         xw.WriteStartElement("Data", EtwNs);
-        xw.WriteAttributeString("Name", traceEvent.PayloadNames[i]);
-        xw.WriteString(ConvertValue(traceEvent.PayloadValue(i)));
+        String name = traceEvent.PayloadNames[i];
+        xw.WriteAttributeString("Name", name);
+        if ( name == "Buffer" ) {
+          xw.WriteString(Uri.EscapeDataString(traceEvent.PayloadString(i)));
+        } else {
+          xw.WriteString(ConvertValue(traceEvent.PayloadValue(i)));
+        }
         xw.WriteEndElement();
       }
       xw.WriteEndElement();
