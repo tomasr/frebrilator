@@ -20,6 +20,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         public static Guid ProviderGuid = new Guid(unchecked((int) 0x3a2a4e84), unchecked((short) 0x4c21), unchecked((short) 0x4981), 0xae, 0x10, 0x3f, 0xda, 0x0d, 0x9b, 0x0f, 0x83);
         public enum Keywords : long
         {
+            Authentication = 0x2,
+            Security = 0x4,
+            Filter = 0x8,
+            Staticfile = 0x10,
+            Cgi = 0x20,
+            Compression = 0x40,
+            Cache = 0x80,
+            Requestnotifications = 0x100,
+            Module = 0x200,
+            Fastcgi = 0x1000,
+            Websocket = 0x4000,
         };
 
         public IIS_TraceTraceEventParser(TraceEventSource source) : base(source) {}

@@ -2,6 +2,19 @@
   <instrumentation xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:win="http://manifests.microsoft.com/win/2004/08/windows/events">
     <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
       <provider name="IIS_Trace" guid="{3a2a4e84-4c21-4981-ae10-3fda0d9b0f83}">
+        <keywords>
+          <keyword name="IISAuthentication" mask="2" message="Authentication" />
+          <keyword name="IISSecurity" mask="4" message="Security" />
+          <keyword name="IISFilter" mask="8" message="Filter" />
+          <keyword name="IISStaticFile" mask="16" message="StaticFile" />
+          <keyword name="IISCGI" mask="32" message="CGI" />
+          <keyword name="IISCompression" mask="64" message="Compression" />
+          <keyword name="IISCache" mask="128" message="Cache" />
+          <keyword name="RequestNotifications" mask="256" message="RequestNotifications" />
+          <keyword name="IISModuleEvents" mask="512" message="Module" />
+          <keyword name="IISFastCGI" mask="4096" message="FastCGI" />
+          <keyword name="IISWebSocket" mask="16384" message="WebSocket" />
+        </keywords>
         <tasks>
           <task name="IISGeneral" value="0" eventGUID="{d42cf7ef-de92-473e-8b6c-621ea663113a}">
             <opcode value="1" name="IISGeneral1" mofValue="1" message="GENERAL_REQUEST_START" />
@@ -1084,144 +1097,144 @@
           <event value="10034" version="1" template="GENERAL_MODULE_FACTORY_FAILED" opcode="IISGeneral54" task="IISGeneral" symbol="IISGeneralGENERAL_MODULE_FACTORY_FAILED" />
           <event value="10035" version="1" template="GENERAL_ENDPOINT_INFORMATION" opcode="IISGeneral55" task="IISGeneral" symbol="IISGeneralW3GeneralEndpointInformation" />
           <event value="10036" version="1" template="GENERAL_SET_RESPONSE_HEADER" opcode="IISGeneral56" task="IISGeneral" symbol="IISGeneralGENERAL_SET_RESPONSE_HEADER" />
-          <event value="10037" version="1" template="AUTH_START" opcode="IISAuthentication10" task="IISAuthentication" symbol="IISAuthenticationAUTH_START" />
-          <event value="10038" version="1" template="AUTH_SUCCEEDED" opcode="IISAuthentication11" task="IISAuthentication" symbol="IISAuthenticationAUTH_SUCCEEDED" />
-          <event value="10039" version="1" template="AUTH_TYPE_NOT_SUPPORTED" opcode="IISAuthentication12" task="IISAuthentication" symbol="IISAuthenticationAUTH_TYPE_NOT_SUPPORTED" />
-          <event value="10040" version="1" template="AUTH_INVALID_ANON_ACCOUNT" opcode="IISAuthentication13" task="IISAuthentication" symbol="IISAuthenticationAUTH_INVALID_ANON_ACCOUNT" />
-          <event value="10041" version="1" template="AUTH_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication14" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_NEEDED" />
-          <event value="10042" version="1" template="AUTH_PASSWD_CHANGE_DISABLED" opcode="IISAuthentication15" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_DISABLED" />
-          <event value="10043" version="1" template="AUTH_BAD_BASIC_HEADER" opcode="IISAuthentication16" task="IISAuthentication" symbol="IISAuthenticationAUTH_BAD_BASIC_HEADER" />
-          <event value="10044" version="1" template="AUTH_BASIC_LOGON_FAILED" opcode="IISAuthentication17" task="IISAuthentication" symbol="IISAuthenticationAUTH_BASIC_LOGON_FAILED" />
-          <event value="10045" version="1" template="AUTH_WDIGEST_LOGON_FAILED" opcode="IISAuthentication18" task="IISAuthentication" symbol="IISAuthenticationAUTH_WDIGEST_LOGON_FAILED" />
-          <event value="10046" version="1" template="AUTH_IISDIGEST_LOGON_FAILED" opcode="IISAuthentication19" task="IISAuthentication" symbol="IISAuthenticationAUTH_IISDIGEST_LOGON_FAILED" />
-          <event value="10047" version="1" template="AUTH_PASSPORT_LOGON_FAILED" opcode="IISAuthentication20" task="IISAuthentication" symbol="IISAuthenticationAUTH_PASSPORT_LOGON_FAILED" />
-          <event value="10048" version="1" template="AUTH_SSPI_LOGON_FAILED" opcode="IISAuthentication21" task="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_LOGON_FAILED" />
-          <event value="10049" version="1" template="AUTH_NTLM_NULL_SESSION" opcode="IISAuthentication22" task="IISAuthentication" symbol="IISAuthenticationAUTH_NTLM_NULL_SESSION" />
-          <event value="10050" version="1" template="AUTH_SSPI_CONTINUE_NEEDED" opcode="IISAuthentication23" task="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_CONTINUE_NEEDED" />
-          <event value="10051" version="1" template="AUTH_KERBEROS_FAILED" opcode="IISAuthentication55" task="IISAuthentication" symbol="IISAuthenticationAUTH_KERBEROS_FAILED" />
-          <event value="10052" version="1" template="AUTH_ANON_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication24" task="IISAuthentication" symbol="IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDED" />
-          <event value="10053" version="1" template="AUTH_REQUEST_AUTH_TYPE" opcode="IISAuthentication27" task="IISAuthentication" symbol="IISAuthenticationAUTH_REQUEST_AUTH_TYPE" />
-          <event value="10054" version="1" template="AUTH_END" opcode="IISAuthentication28" task="IISAuthentication" symbol="IISAuthenticationAUTH_END" />
-          <event value="10055" version="1" template="SEC_ILLEGAL_SHORT_FILENAME" opcode="IISSecurity10" task="IISSecurity" symbol="IISSecuritySEC_ILLEGAL_SHORT_FILENAME" />
-          <event value="10056" version="1" template="SEC_REJECTED_IP" opcode="IISSecurity11" task="IISSecurity" symbol="IISSecuritySEC_REJECTED_IP" />
-          <event value="10057" version="1" template="SEC_REJECTED_HOSTNAME" opcode="IISSecurity12" task="IISSecurity" symbol="IISSecuritySEC_REJECTED_HOSTNAME" />
-          <event value="10058" version="1" template="SEC_REQUIRE_SSL_128" opcode="IISSecurity13" task="IISSecurity" symbol="IISSecuritySEC_REQUIRE_SSL_128" />
-          <event value="10059" version="1" template="SEC_FILE_ACCESS_DENIED" opcode="IISSecurity14" task="IISSecurity" symbol="IISSecuritySEC_FILE_ACCESS_DENIED" />
-          <event value="10060" version="1" template="SEC_DENIED_BY_MIMEMAP" opcode="IISSecurity15" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_MIMEMAP" />
-          <event value="10061" version="1" template="SEC_DENIED_BY_ISAPI_RESTRICTION" opcode="IISSecurity16" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTION" />
-          <event value="10062" version="1" template="SEC_DENIED_BY_CGI_RESTRICTION" opcode="IISSecurity17" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_CGI_RESTRICTION" />
-          <event value="10063" version="1" template="SEC_DENIED_BY_ACCESS_FLAGS" opcode="IISSecurity18" task="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ACCESS_FLAGS" />
-          <event value="10064" version="1" template="FILTER_START" opcode="IISFilter1" task="IISFilter" symbol="IISFilterFILTER_START" />
-          <event value="10065" version="1" template="FILTER_END" opcode="IISFilter2" task="IISFilter" symbol="IISFilterFILTER_END" />
-          <event value="10066" version="1" template="FILTER_ERROR" opcode="IISFilter12" task="IISFilter" symbol="IISFilterFILTER_ERROR" />
-          <event value="10067" version="1" template="FILTER_PREPROC_HEADERS_START" opcode="IISFilter13" task="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_START" />
-          <event value="10068" version="1" template="FILTER_PREPROC_HEADERS_END" opcode="IISFilter14" task="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_END" />
-          <event value="10069" version="1" template="FILTER_URL_MAP_START" opcode="IISFilter15" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_START" />
-          <event value="10070" version="1" template="FILTER_URL_MAP_END" opcode="IISFilter16" task="IISFilter" symbol="IISFilterFILTER_URL_MAP_END" />
-          <event value="10071" version="1" template="FILTER_AUTHENTICATION_START" opcode="IISFilter17" task="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_START" />
-          <event value="10072" version="1" template="FILTER_AUTHENTICATION_END" opcode="IISFilter18" task="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_END" />
-          <event value="10073" version="1" template="FILTER_AUTH_COMPLETE_START" opcode="IISFilter19" task="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_START" />
-          <event value="10074" version="1" template="FILTER_AUTH_COMPLETE_END" opcode="IISFilter20" task="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_END" />
-          <event value="10075" version="1" template="FILTER_SEND_RESPONSE_START" opcode="IISFilter21" task="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_START" />
-          <event value="10076" version="1" template="FILTER_SEND_RESPONSE_END" opcode="IISFilter22" task="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_END" />
-          <event value="10077" version="1" template="FILTER_END_OF_REQUEST_START" opcode="IISFilter23" task="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_START" />
-          <event value="10078" version="1" template="FILTER_END_OF_REQUEST_END" opcode="IISFilter24" task="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_END" />
-          <event value="10079" version="1" template="FILTER_LOG_START" opcode="IISFilter25" task="IISFilter" symbol="IISFilterFILTER_LOG_START" />
-          <event value="10080" version="1" template="FILTER_LOG_END" opcode="IISFilter26" task="IISFilter" symbol="IISFilterFILTER_LOG_END" />
-          <event value="10081" version="1" template="FILTER_SEND_RAW_DATA_START" opcode="IISFilter27" task="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_START" />
-          <event value="10082" version="1" template="FILTER_SEND_RAW_DATA_END" opcode="IISFilter28" task="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_END" />
-          <event value="10083" version="1" template="FILTER_ACCESS_DENIED_START" opcode="IISFilter29" task="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_START" />
-          <event value="10084" version="1" template="FILTER_ACCESS_DENIED_END" opcode="IISFilter30" task="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_END" />
-          <event value="10085" version="1" template="FILTER_SET_REQ_HEADER" opcode="IISFilter31" task="IISFilter" symbol="IISFilterFILTER_SET_REQ_HEADER" />
-          <event value="10086" version="1" template="FILTER_ADD_REQ_HEADER" opcode="IISFilter32" task="IISFilter" symbol="IISFilterFILTER_ADD_REQ_HEADER" />
-          <event value="10087" version="1" template="FILTER_SET_RESP_HEADER" opcode="IISFilter33" task="IISFilter" symbol="IISFilterFILTER_SET_RESP_HEADER" />
-          <event value="10088" version="1" template="FILTER_ADD_RESP_HEADER" opcode="IISFilter34" task="IISFilter" symbol="IISFilterFILTER_ADD_RESP_HEADER" />
+          <event value="10037" version="1" template="AUTH_START" opcode="IISAuthentication10" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_START" />
+          <event value="10038" version="1" template="AUTH_SUCCEEDED" opcode="IISAuthentication11" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_SUCCEEDED" />
+          <event value="10039" version="1" template="AUTH_TYPE_NOT_SUPPORTED" opcode="IISAuthentication12" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_TYPE_NOT_SUPPORTED" />
+          <event value="10040" version="1" template="AUTH_INVALID_ANON_ACCOUNT" opcode="IISAuthentication13" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_INVALID_ANON_ACCOUNT" />
+          <event value="10041" version="1" template="AUTH_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication14" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_NEEDED" />
+          <event value="10042" version="1" template="AUTH_PASSWD_CHANGE_DISABLED" opcode="IISAuthentication15" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_PASSWD_CHANGE_DISABLED" />
+          <event value="10043" version="1" template="AUTH_BAD_BASIC_HEADER" opcode="IISAuthentication16" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_BAD_BASIC_HEADER" />
+          <event value="10044" version="1" template="AUTH_BASIC_LOGON_FAILED" opcode="IISAuthentication17" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_BASIC_LOGON_FAILED" />
+          <event value="10045" version="1" template="AUTH_WDIGEST_LOGON_FAILED" opcode="IISAuthentication18" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_WDIGEST_LOGON_FAILED" />
+          <event value="10046" version="1" template="AUTH_IISDIGEST_LOGON_FAILED" opcode="IISAuthentication19" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_IISDIGEST_LOGON_FAILED" />
+          <event value="10047" version="1" template="AUTH_PASSPORT_LOGON_FAILED" opcode="IISAuthentication20" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_PASSPORT_LOGON_FAILED" />
+          <event value="10048" version="1" template="AUTH_SSPI_LOGON_FAILED" opcode="IISAuthentication21" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_LOGON_FAILED" />
+          <event value="10049" version="1" template="AUTH_NTLM_NULL_SESSION" opcode="IISAuthentication22" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_NTLM_NULL_SESSION" />
+          <event value="10050" version="1" template="AUTH_SSPI_CONTINUE_NEEDED" opcode="IISAuthentication23" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_SSPI_CONTINUE_NEEDED" />
+          <event value="10051" version="1" template="AUTH_KERBEROS_FAILED" opcode="IISAuthentication55" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_KERBEROS_FAILED" />
+          <event value="10052" version="1" template="AUTH_ANON_PASSWD_CHANGE_NEEDED" opcode="IISAuthentication24" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_ANON_PASSWD_CHANGE_NEEDED" />
+          <event value="10053" version="1" template="AUTH_REQUEST_AUTH_TYPE" opcode="IISAuthentication27" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_REQUEST_AUTH_TYPE" />
+          <event value="10054" version="1" template="AUTH_END" opcode="IISAuthentication28" task="IISAuthentication" keyword="IISAuthentication" symbol="IISAuthenticationAUTH_END" />
+          <event value="10055" version="1" template="SEC_ILLEGAL_SHORT_FILENAME" opcode="IISSecurity10" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_ILLEGAL_SHORT_FILENAME" />
+          <event value="10056" version="1" template="SEC_REJECTED_IP" opcode="IISSecurity11" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_REJECTED_IP" />
+          <event value="10057" version="1" template="SEC_REJECTED_HOSTNAME" opcode="IISSecurity12" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_REJECTED_HOSTNAME" />
+          <event value="10058" version="1" template="SEC_REQUIRE_SSL_128" opcode="IISSecurity13" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_REQUIRE_SSL_128" />
+          <event value="10059" version="1" template="SEC_FILE_ACCESS_DENIED" opcode="IISSecurity14" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_FILE_ACCESS_DENIED" />
+          <event value="10060" version="1" template="SEC_DENIED_BY_MIMEMAP" opcode="IISSecurity15" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_MIMEMAP" />
+          <event value="10061" version="1" template="SEC_DENIED_BY_ISAPI_RESTRICTION" opcode="IISSecurity16" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ISAPI_RESTRICTION" />
+          <event value="10062" version="1" template="SEC_DENIED_BY_CGI_RESTRICTION" opcode="IISSecurity17" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_CGI_RESTRICTION" />
+          <event value="10063" version="1" template="SEC_DENIED_BY_ACCESS_FLAGS" opcode="IISSecurity18" task="IISSecurity" keyword="IISSecurity" symbol="IISSecuritySEC_DENIED_BY_ACCESS_FLAGS" />
+          <event value="10064" version="1" template="FILTER_START" opcode="IISFilter1" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_START" />
+          <event value="10065" version="1" template="FILTER_END" opcode="IISFilter2" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_END" />
+          <event value="10066" version="1" template="FILTER_ERROR" opcode="IISFilter12" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_ERROR" />
+          <event value="10067" version="1" template="FILTER_PREPROC_HEADERS_START" opcode="IISFilter13" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_START" />
+          <event value="10068" version="1" template="FILTER_PREPROC_HEADERS_END" opcode="IISFilter14" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_PREPROC_HEADERS_END" />
+          <event value="10069" version="1" template="FILTER_URL_MAP_START" opcode="IISFilter15" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_URL_MAP_START" />
+          <event value="10070" version="1" template="FILTER_URL_MAP_END" opcode="IISFilter16" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_URL_MAP_END" />
+          <event value="10071" version="1" template="FILTER_AUTHENTICATION_START" opcode="IISFilter17" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_START" />
+          <event value="10072" version="1" template="FILTER_AUTHENTICATION_END" opcode="IISFilter18" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_AUTHENTICATION_END" />
+          <event value="10073" version="1" template="FILTER_AUTH_COMPLETE_START" opcode="IISFilter19" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_START" />
+          <event value="10074" version="1" template="FILTER_AUTH_COMPLETE_END" opcode="IISFilter20" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_AUTH_COMPLETE_END" />
+          <event value="10075" version="1" template="FILTER_SEND_RESPONSE_START" opcode="IISFilter21" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_START" />
+          <event value="10076" version="1" template="FILTER_SEND_RESPONSE_END" opcode="IISFilter22" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SEND_RESPONSE_END" />
+          <event value="10077" version="1" template="FILTER_END_OF_REQUEST_START" opcode="IISFilter23" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_START" />
+          <event value="10078" version="1" template="FILTER_END_OF_REQUEST_END" opcode="IISFilter24" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_END_OF_REQUEST_END" />
+          <event value="10079" version="1" template="FILTER_LOG_START" opcode="IISFilter25" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_LOG_START" />
+          <event value="10080" version="1" template="FILTER_LOG_END" opcode="IISFilter26" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_LOG_END" />
+          <event value="10081" version="1" template="FILTER_SEND_RAW_DATA_START" opcode="IISFilter27" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_START" />
+          <event value="10082" version="1" template="FILTER_SEND_RAW_DATA_END" opcode="IISFilter28" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SEND_RAW_DATA_END" />
+          <event value="10083" version="1" template="FILTER_ACCESS_DENIED_START" opcode="IISFilter29" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_START" />
+          <event value="10084" version="1" template="FILTER_ACCESS_DENIED_END" opcode="IISFilter30" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_ACCESS_DENIED_END" />
+          <event value="10085" version="1" template="FILTER_SET_REQ_HEADER" opcode="IISFilter31" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SET_REQ_HEADER" />
+          <event value="10086" version="1" template="FILTER_ADD_REQ_HEADER" opcode="IISFilter32" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_ADD_REQ_HEADER" />
+          <event value="10087" version="1" template="FILTER_SET_RESP_HEADER" opcode="IISFilter33" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_SET_RESP_HEADER" />
+          <event value="10088" version="1" template="FILTER_ADD_RESP_HEADER" opcode="IISFilter34" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_ADD_RESP_HEADER" />
           <event value="10089" version="1" template="ISAPI_START" opcode="IISISAPI1" task="IISISAPI" symbol="IISISAPIISAPI_START" />
           <event value="10090" version="1" template="ISAPI_END" opcode="IISISAPI2" task="IISISAPI" symbol="IISISAPIISAPI_END" />
-          <event value="10091" version="1" template="CGI_START" opcode="IISCGI1" task="IISCGI" symbol="IISCGICGI_START" />
-          <event value="10092" version="1" template="CGI_END" opcode="IISCGI2" task="IISCGI" symbol="IISCGICGI_END" />
-          <event value="10093" version="1" template="CGI_LAUNCH" opcode="IISCGI3" task="IISCGI" symbol="IISCGICGI_LAUNCH" />
-          <event value="10094" version="1" template="CGI_TIMEOUT" opcode="IISCGI4" task="IISCGI" symbol="IISCGICGI_TIMEOUT" />
-          <event value="10095" version="1" template="CGI_PREMATURE_TERMINATION" opcode="IISCGI5" task="IISCGI" symbol="IISCGICGI_PREMATURE_TERMINATION" />
-          <event value="10096" version="1" template="CGI_REQUEST_ENTITY_START" opcode="IISCGI6" task="IISCGI" symbol="IISCGICGI_REQUEST_ENTITY_START" />
-          <event value="10097" version="1" template="CGI_HEADERS_RECEIVED" opcode="IISCGI7" task="IISCGI" symbol="IISCGICGI_HEADERS_RECEIVED" />
-          <event value="10098" version="1" template="CGIF_ACTIVITY_TIMEOUT" opcode="IISFastCGI1" task="IISFastCGI" symbol="IISFastCGICGIF_ACTIVITY_TIMEOUT" />
-          <event value="10099" version="1" template="CGIF_REQUEST_TIMEOUT" opcode="IISFastCGI2" task="IISFastCGI" symbol="IISFastCGICGIF_REQUEST_TIMEOUT" />
-          <event value="10100" version="1" template="CGIF_UNEXPECTED_EXIT" opcode="IISFastCGI3" task="IISFastCGI" symbol="IISFastCGICGIF_UNEXPECTED_EXIT" />
-          <event value="10101" version="1" template="CGIF_RAPID_FAILURE_PROTECTION" opcode="IISFastCGI4" task="IISFastCGI" symbol="IISFastCGICGIF_RAPID_FAILURE_PROTECTION" />
-          <event value="10102" version="1" template="CGIF_PATH_NOT_FOUND" opcode="IISFastCGI5" task="IISFastCGI" symbol="IISFastCGICGIF_PATH_NOT_FOUND" />
-          <event value="10103" version="1" template="CGIF_SCRIPT_PROCESSOR_MISSING" opcode="IISFastCGI6" task="IISFastCGI" symbol="IISFastCGICGIF_SCRIPT_PROCESSOR_MISSING" />
-          <event value="10104" version="1" template="CGIF_ADD_JOB_OBJECT_FAIL" opcode="IISFastCGI7" task="IISFastCGI" symbol="IISFastCGICGIF_ADD_JOB_OBJECT_FAIL" />
-          <event value="10105" version="1" template="CGIF_APPMGR_SHUTDOWN" opcode="IISFastCGI8" task="IISFastCGI" symbol="IISFastCGICGIF_APPMGR_SHUTDOWN" />
-          <event value="10106" version="1" template="CGIF_QUEUE_FULL" opcode="IISFastCGI9" task="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_FULL" />
-          <event value="10107" version="1" template="CGIF_UNKNOWN_ERROR" opcode="IISFastCGI10" task="IISFastCGI" symbol="IISFastCGICGIF_UNKNOWN_ERROR" />
-          <event value="10108" version="1" template="CGIF_RESPONSE_WRITTEN" opcode="IISFastCGI11" task="IISFastCGI" symbol="IISFastCGICGIF_RESPONSE_WRITTEN" />
-          <event value="10109" version="1" template="CGIF_WAITING_FOR_RESPONSE" opcode="IISFastCGI12" task="IISFastCGI" symbol="IISFastCGICGIF_WAITING_FOR_RESPONSE" />
-          <event value="10110" version="1" template="CGIF_TRACE_ERROR" opcode="IISFastCGI13" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_ERROR" />
-          <event value="10111" version="1" template="CGIF_TRACE_WARNING" opcode="IISFastCGI14" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_WARNING" />
-          <event value="10112" version="1" template="CGIF_TRACE_INFO" opcode="IISFastCGI15" task="IISFastCGI" symbol="IISFastCGICGIF_TRACE_INFO" />
-          <event value="10113" version="1" template="CGIF_QUEUE_REQUEST" opcode="IISFastCGI16" task="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_REQUEST" />
-          <event value="10114" version="1" template="CGIF_ASSIGN_PROCESS" opcode="IISFastCGI17" task="IISFastCGI" symbol="IISFastCGICGIF_ASSIGN_PROCESS" />
-          <event value="10115" version="1" template="CGIF_START" opcode="IISFastCGI18" task="IISFastCGI" symbol="IISFastCGICGIF_START" />
-          <event value="10116" version="1" template="CGIF_END" opcode="IISFastCGI19" task="IISFastCGI" symbol="IISFastCGICGIF_END" />
-          <event value="10117" version="1" template="WEBSOCKET_INITIALIZE_NOT_SUCCESS" opcode="IISWebSocket1" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESS" />
-          <event value="10118" version="1" template="WEBSOCKET_START" opcode="IISWebSocket2" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_START" />
-          <event value="10119" version="1" template="WEBSOCKET_END_SUCCESS" opcode="IISWebSocket3" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_SUCCESS" />
-          <event value="10120" version="1" template="WEBSOCKET_END_FAILURE" opcode="IISWebSocket4" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_FAILURE" />
-          <event value="10121" version="1" template="WEBSOCKET_READ_FRAGMENT_START" opcode="IISWebSocket5" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_START" />
-          <event value="10122" version="1" template="WEBSOCKET_READ_FRAGMENT_END_PENDING" opcode="IISWebSocket6" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDING" />
-          <event value="10123" version="1" template="WEBSOCKET_READ_FRAGMENT_END_SUCCESS" opcode="IISWebSocket7" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESS" />
-          <event value="10124" version="1" template="WEBSOCKET_READ_FRAGMENT_END_FAILURE" opcode="IISWebSocket8" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURE" />
-          <event value="10125" version="1" template="WEBSOCKET_WRITE_FRAGMENT_START" opcode="IISWebSocket9" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_START" />
-          <event value="10126" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_PENDING" opcode="IISWebSocket10" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDING" />
-          <event value="10127" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" opcode="IISWebSocket11" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" />
-          <event value="10128" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_FAILURE" opcode="IISWebSocket12" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURE" />
-          <event value="10129" version="1" template="WEBSOCKET_APPLICATION_CLOSE_CONNECTION" opcode="IISWebSocket13" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTION" />
-          <event value="10130" version="1" template="WEBSOCKET_MODULE_CLOSE_CONNECTION" opcode="IISWebSocket14" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTION" />
-          <event value="10131" version="1" template="WEBSOCKET_READ_IO_FAILED" opcode="IISWebSocket15" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_IO_FAILED" />
-          <event value="10132" version="1" template="WEBSOCKET_WRITE_IO_FAILED" opcode="IISWebSocket16" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_IO_FAILED" />
-          <event value="10133" version="1" template="WEBSOCKET_CLOSE_RECEIVED" opcode="IISWebSocket17" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_RECEIVED" />
-          <event value="10134" version="1" template="WEBSOCKET_CLOSE_SEND_START" opcode="IISWebSocket18" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_START" />
-          <event value="10135" version="1" template="WEBSOCKET_CLOSE_SEND_SUCCESS" opcode="IISWebSocket19" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESS" />
-          <event value="10136" version="1" template="WEBSOCKET_CLOSE_SEND_FAILURE" opcode="IISWebSocket20" task="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURE" />
-          <event value="10137" version="1" template="STATIC_COMPRESSION_START" opcode="IISCompression1" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_START" />
-          <event value="10138" version="1" template="STATIC_COMPRESSION_SUCCESS" opcode="IISCompression2" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_SUCCESS" />
-          <event value="10139" version="1" template="STATIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression3" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_NOT_SUCCESS" />
-          <event value="10140" version="1" template="STATIC_COMPRESSION_CREATE_START" opcode="IISCompression4" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_START" />
-          <event value="10141" version="1" template="STATIC_COMPRESSION_CREATE_END" opcode="IISCompression5" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_END" />
-          <event value="10142" version="1" template="DYNAMIC_COMPRESSION_START" opcode="IISCompression6" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_START" />
-          <event value="10143" version="1" template="DYNAMIC_COMPRESSION_SUCCESS" opcode="IISCompression7" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_SUCCESS" />
-          <event value="10144" version="1" template="DYNAMIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression8" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESS" />
-          <event value="10145" version="1" template="DYNAMIC_COMPRESSION_DO" opcode="IISCompression9" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_DO" />
-          <event value="10146" version="1" template="DYNAMIC_COMPRESSION_END" opcode="IISCompression10" task="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_END" />
-          <event value="10147" version="1" template="STATIC_COMPRESSION_END" opcode="IISCompression11" task="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_END" />
-          <event value="10148" version="1" template="FILE_CACHE_ACCESS_START" opcode="IISCache10" task="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_START" />
-          <event value="10149" version="1" template="FILE_CACHE_ACCESS_END" opcode="IISCache11" task="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_END" />
-          <event value="10150" version="1" template="URL_CACHE_ACCESS_START" opcode="IISCache12" task="IISCache" symbol="IISCacheURL_CACHE_ACCESS_START" />
-          <event value="10151" version="1" template="URL_CACHE_ACCESS_END" opcode="IISCache13" task="IISCache" symbol="IISCacheURL_CACHE_ACCESS_END" />
-          <event value="10152" version="1" template="HTTPSYS_CACHEABLE" opcode="IISCache14" task="IISCache" symbol="IISCacheHTTPSYS_CACHEABLE" />
-          <event value="10153" version="1" template="OUTPUT_CACHE_LOOKUP_START" opcode="IISCache15" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_START" />
-          <event value="10154" version="1" template="OUTPUT_CACHE_LOOKUP_END" opcode="IISCache16" task="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_END" />
-          <event value="10155" version="1" template="OUTPUT_CACHE_UPDATE_START" opcode="IISCache17" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_START" />
-          <event value="10156" version="1" template="OUTPUT_CACHE_UPDATE_END" opcode="IISCache18" task="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_END" />
-          <event value="10157" version="1" template="OUTPUT_CACHE_DISABLED" opcode="IISCache19" task="IISCache" symbol="IISCacheOUTPUT_CACHE_DISABLED" />
-          <event value="10158" version="1" template="FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" symbol="IISCacheFILE_CACHE_CREATE_FILE" />
-          <event value="10159" version="1" template="NOTIFY_MODULE_START" opcode="RequestNotifications1" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_START" />
-          <event value="10160" version="1" template="NOTIFY_MODULE_END" opcode="RequestNotifications2" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_END" />
-          <event value="10161" version="1" template="NOTIFY_MODULE_COMPLETION" opcode="RequestNotifications3" task="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_COMPLETION" />
-          <event value="10162" version="1" template="PRE_BEGIN_REQUEST_START" opcode="RequestNotifications4" task="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_START" />
-          <event value="10163" version="1" template="PRE_BEGIN_REQUEST_END" opcode="RequestNotifications5" task="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_END" />
-          <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="RequestNotifications15" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_ERROR" />
-          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="RequestNotifications16" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
-          <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="RequestNotifications17" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
-          <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="RequestNotifications18" task="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
-          <event value="10168" version="1" template="MODULE_EVENTS_MODULE_START" opcode="IISModuleEvents1" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_START" />
-          <event value="10169" version="1" template="MODULE_EVENTS_MODULE_END" opcode="IISModuleEvents2" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_END" />
-          <event value="10170" version="1" template="MODULE_EVENTS_MODULE_CRITICAL_ERROR" opcode="IISModuleEvents3" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERROR" />
-          <event value="10171" version="1" template="MODULE_EVENTS_MODULE_ERROR" opcode="IISModuleEvents4" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_ERROR" />
-          <event value="10172" version="1" template="MODULE_EVENTS_MODULE_WARNING" opcode="IISModuleEvents5" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_WARNING" />
-          <event value="10173" version="1" template="MODULE_EVENTS_MODULE_INFORMATION" opcode="IISModuleEvents6" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_INFORMATION" />
-          <event value="10174" version="1" template="MODULE_EVENTS_MODULE_VERBOSE" opcode="IISModuleEvents7" task="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_VERBOSE" />
+          <event value="10091" version="1" template="CGI_START" opcode="IISCGI1" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_START" />
+          <event value="10092" version="1" template="CGI_END" opcode="IISCGI2" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_END" />
+          <event value="10093" version="1" template="CGI_LAUNCH" opcode="IISCGI3" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_LAUNCH" />
+          <event value="10094" version="1" template="CGI_TIMEOUT" opcode="IISCGI4" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_TIMEOUT" />
+          <event value="10095" version="1" template="CGI_PREMATURE_TERMINATION" opcode="IISCGI5" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_PREMATURE_TERMINATION" />
+          <event value="10096" version="1" template="CGI_REQUEST_ENTITY_START" opcode="IISCGI6" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_REQUEST_ENTITY_START" />
+          <event value="10097" version="1" template="CGI_HEADERS_RECEIVED" opcode="IISCGI7" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_HEADERS_RECEIVED" />
+          <event value="10098" version="1" template="CGIF_ACTIVITY_TIMEOUT" opcode="IISFastCGI1" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_ACTIVITY_TIMEOUT" />
+          <event value="10099" version="1" template="CGIF_REQUEST_TIMEOUT" opcode="IISFastCGI2" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_REQUEST_TIMEOUT" />
+          <event value="10100" version="1" template="CGIF_UNEXPECTED_EXIT" opcode="IISFastCGI3" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_UNEXPECTED_EXIT" />
+          <event value="10101" version="1" template="CGIF_RAPID_FAILURE_PROTECTION" opcode="IISFastCGI4" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_RAPID_FAILURE_PROTECTION" />
+          <event value="10102" version="1" template="CGIF_PATH_NOT_FOUND" opcode="IISFastCGI5" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_PATH_NOT_FOUND" />
+          <event value="10103" version="1" template="CGIF_SCRIPT_PROCESSOR_MISSING" opcode="IISFastCGI6" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_SCRIPT_PROCESSOR_MISSING" />
+          <event value="10104" version="1" template="CGIF_ADD_JOB_OBJECT_FAIL" opcode="IISFastCGI7" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_ADD_JOB_OBJECT_FAIL" />
+          <event value="10105" version="1" template="CGIF_APPMGR_SHUTDOWN" opcode="IISFastCGI8" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_APPMGR_SHUTDOWN" />
+          <event value="10106" version="1" template="CGIF_QUEUE_FULL" opcode="IISFastCGI9" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_FULL" />
+          <event value="10107" version="1" template="CGIF_UNKNOWN_ERROR" opcode="IISFastCGI10" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_UNKNOWN_ERROR" />
+          <event value="10108" version="1" template="CGIF_RESPONSE_WRITTEN" opcode="IISFastCGI11" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_RESPONSE_WRITTEN" />
+          <event value="10109" version="1" template="CGIF_WAITING_FOR_RESPONSE" opcode="IISFastCGI12" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_WAITING_FOR_RESPONSE" />
+          <event value="10110" version="1" template="CGIF_TRACE_ERROR" opcode="IISFastCGI13" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_TRACE_ERROR" />
+          <event value="10111" version="1" template="CGIF_TRACE_WARNING" opcode="IISFastCGI14" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_TRACE_WARNING" />
+          <event value="10112" version="1" template="CGIF_TRACE_INFO" opcode="IISFastCGI15" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_TRACE_INFO" />
+          <event value="10113" version="1" template="CGIF_QUEUE_REQUEST" opcode="IISFastCGI16" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_QUEUE_REQUEST" />
+          <event value="10114" version="1" template="CGIF_ASSIGN_PROCESS" opcode="IISFastCGI17" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_ASSIGN_PROCESS" />
+          <event value="10115" version="1" template="CGIF_START" opcode="IISFastCGI18" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_START" />
+          <event value="10116" version="1" template="CGIF_END" opcode="IISFastCGI19" task="IISFastCGI" keyword="IISFastCGI" symbol="IISFastCGICGIF_END" />
+          <event value="10117" version="1" template="WEBSOCKET_INITIALIZE_NOT_SUCCESS" opcode="IISWebSocket1" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_INITIALIZE_NOT_SUCCESS" />
+          <event value="10118" version="1" template="WEBSOCKET_START" opcode="IISWebSocket2" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_START" />
+          <event value="10119" version="1" template="WEBSOCKET_END_SUCCESS" opcode="IISWebSocket3" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_SUCCESS" />
+          <event value="10120" version="1" template="WEBSOCKET_END_FAILURE" opcode="IISWebSocket4" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_END_FAILURE" />
+          <event value="10121" version="1" template="WEBSOCKET_READ_FRAGMENT_START" opcode="IISWebSocket5" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_START" />
+          <event value="10122" version="1" template="WEBSOCKET_READ_FRAGMENT_END_PENDING" opcode="IISWebSocket6" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_PENDING" />
+          <event value="10123" version="1" template="WEBSOCKET_READ_FRAGMENT_END_SUCCESS" opcode="IISWebSocket7" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_SUCCESS" />
+          <event value="10124" version="1" template="WEBSOCKET_READ_FRAGMENT_END_FAILURE" opcode="IISWebSocket8" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_FRAGMENT_END_FAILURE" />
+          <event value="10125" version="1" template="WEBSOCKET_WRITE_FRAGMENT_START" opcode="IISWebSocket9" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_START" />
+          <event value="10126" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_PENDING" opcode="IISWebSocket10" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_PENDING" />
+          <event value="10127" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" opcode="IISWebSocket11" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_SUCCESS" />
+          <event value="10128" version="1" template="WEBSOCKET_WRITE_FRAGMENT_END_FAILURE" opcode="IISWebSocket12" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_FRAGMENT_END_FAILURE" />
+          <event value="10129" version="1" template="WEBSOCKET_APPLICATION_CLOSE_CONNECTION" opcode="IISWebSocket13" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_APPLICATION_CLOSE_CONNECTION" />
+          <event value="10130" version="1" template="WEBSOCKET_MODULE_CLOSE_CONNECTION" opcode="IISWebSocket14" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_MODULE_CLOSE_CONNECTION" />
+          <event value="10131" version="1" template="WEBSOCKET_READ_IO_FAILED" opcode="IISWebSocket15" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_READ_IO_FAILED" />
+          <event value="10132" version="1" template="WEBSOCKET_WRITE_IO_FAILED" opcode="IISWebSocket16" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_WRITE_IO_FAILED" />
+          <event value="10133" version="1" template="WEBSOCKET_CLOSE_RECEIVED" opcode="IISWebSocket17" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_RECEIVED" />
+          <event value="10134" version="1" template="WEBSOCKET_CLOSE_SEND_START" opcode="IISWebSocket18" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_START" />
+          <event value="10135" version="1" template="WEBSOCKET_CLOSE_SEND_SUCCESS" opcode="IISWebSocket19" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_SUCCESS" />
+          <event value="10136" version="1" template="WEBSOCKET_CLOSE_SEND_FAILURE" opcode="IISWebSocket20" task="IISWebSocket" keyword="IISWebSocket" symbol="IISWebSocketWEBSOCKET_CLOSE_SEND_FAILURE" />
+          <event value="10137" version="1" template="STATIC_COMPRESSION_START" opcode="IISCompression1" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_START" />
+          <event value="10138" version="1" template="STATIC_COMPRESSION_SUCCESS" opcode="IISCompression2" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_SUCCESS" />
+          <event value="10139" version="1" template="STATIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression3" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_NOT_SUCCESS" />
+          <event value="10140" version="1" template="STATIC_COMPRESSION_CREATE_START" opcode="IISCompression4" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_START" />
+          <event value="10141" version="1" template="STATIC_COMPRESSION_CREATE_END" opcode="IISCompression5" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_CREATE_END" />
+          <event value="10142" version="1" template="DYNAMIC_COMPRESSION_START" opcode="IISCompression6" task="IISCompression" keyword="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_START" />
+          <event value="10143" version="1" template="DYNAMIC_COMPRESSION_SUCCESS" opcode="IISCompression7" task="IISCompression" keyword="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_SUCCESS" />
+          <event value="10144" version="1" template="DYNAMIC_COMPRESSION_NOT_SUCCESS" opcode="IISCompression8" task="IISCompression" keyword="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_NOT_SUCCESS" />
+          <event value="10145" version="1" template="DYNAMIC_COMPRESSION_DO" opcode="IISCompression9" task="IISCompression" keyword="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_DO" />
+          <event value="10146" version="1" template="DYNAMIC_COMPRESSION_END" opcode="IISCompression10" task="IISCompression" keyword="IISCompression" symbol="IISCompressionDYNAMIC_COMPRESSION_END" />
+          <event value="10147" version="1" template="STATIC_COMPRESSION_END" opcode="IISCompression11" task="IISCompression" keyword="IISCompression" symbol="IISCompressionSTATIC_COMPRESSION_END" />
+          <event value="10148" version="1" template="FILE_CACHE_ACCESS_START" opcode="IISCache10" task="IISCache" keyword="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_START" />
+          <event value="10149" version="1" template="FILE_CACHE_ACCESS_END" opcode="IISCache11" task="IISCache" keyword="IISCache" symbol="IISCacheFILE_CACHE_ACCESS_END" />
+          <event value="10150" version="1" template="URL_CACHE_ACCESS_START" opcode="IISCache12" task="IISCache" keyword="IISCache" symbol="IISCacheURL_CACHE_ACCESS_START" />
+          <event value="10151" version="1" template="URL_CACHE_ACCESS_END" opcode="IISCache13" task="IISCache" keyword="IISCache" symbol="IISCacheURL_CACHE_ACCESS_END" />
+          <event value="10152" version="1" template="HTTPSYS_CACHEABLE" opcode="IISCache14" task="IISCache" keyword="IISCache" symbol="IISCacheHTTPSYS_CACHEABLE" />
+          <event value="10153" version="1" template="OUTPUT_CACHE_LOOKUP_START" opcode="IISCache15" task="IISCache" keyword="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_START" />
+          <event value="10154" version="1" template="OUTPUT_CACHE_LOOKUP_END" opcode="IISCache16" task="IISCache" keyword="IISCache" symbol="IISCacheOUTPUT_CACHE_LOOKUP_END" />
+          <event value="10155" version="1" template="OUTPUT_CACHE_UPDATE_START" opcode="IISCache17" task="IISCache" keyword="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_START" />
+          <event value="10156" version="1" template="OUTPUT_CACHE_UPDATE_END" opcode="IISCache18" task="IISCache" keyword="IISCache" symbol="IISCacheOUTPUT_CACHE_UPDATE_END" />
+          <event value="10157" version="1" template="OUTPUT_CACHE_DISABLED" opcode="IISCache19" task="IISCache" keyword="IISCache" symbol="IISCacheOUTPUT_CACHE_DISABLED" />
+          <event value="10158" version="1" template="FILE_CACHE_CREATE_FILE" opcode="IISCache20" task="IISCache" keyword="IISCache" symbol="IISCacheFILE_CACHE_CREATE_FILE" />
+          <event value="10159" version="1" template="NOTIFY_MODULE_START" opcode="RequestNotifications1" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_START" />
+          <event value="10160" version="1" template="NOTIFY_MODULE_END" opcode="RequestNotifications2" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_END" />
+          <event value="10161" version="1" template="NOTIFY_MODULE_COMPLETION" opcode="RequestNotifications3" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsNOTIFY_MODULE_COMPLETION" />
+          <event value="10162" version="1" template="PRE_BEGIN_REQUEST_START" opcode="RequestNotifications4" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_START" />
+          <event value="10163" version="1" template="PRE_BEGIN_REQUEST_END" opcode="RequestNotifications5" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_END" />
+          <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="RequestNotifications15" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_ERROR" />
+          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="RequestNotifications16" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+          <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="RequestNotifications17" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
+          <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="RequestNotifications18" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
+          <event value="10168" version="1" template="MODULE_EVENTS_MODULE_START" opcode="IISModuleEvents1" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_START" />
+          <event value="10169" version="1" template="MODULE_EVENTS_MODULE_END" opcode="IISModuleEvents2" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_END" />
+          <event value="10170" version="1" template="MODULE_EVENTS_MODULE_CRITICAL_ERROR" opcode="IISModuleEvents3" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_CRITICAL_ERROR" />
+          <event value="10171" version="1" template="MODULE_EVENTS_MODULE_ERROR" opcode="IISModuleEvents4" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_ERROR" />
+          <event value="10172" version="1" template="MODULE_EVENTS_MODULE_WARNING" opcode="IISModuleEvents5" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_WARNING" />
+          <event value="10173" version="1" template="MODULE_EVENTS_MODULE_INFORMATION" opcode="IISModuleEvents6" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_INFORMATION" />
+          <event value="10174" version="1" template="MODULE_EVENTS_MODULE_VERBOSE" opcode="IISModuleEvents7" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_VERBOSE" />
           <!--
           <event value="10175" version="1" template="RECEIVE_NEW_REQUEST" opcode="1" task="IISGeneral" symbol="IISGeneralRECEIVE_NEW_REQUEST"/>
           <event value="10176" version="1" template="SEND_RESPONSE" opcode="2" task="IISGeneral" symbol="IISGeneralSEND_RESPONSE"/>
@@ -1238,10 +1251,10 @@
           <event value="10178" version="1" template="CGI_REQUEST" opcode="11" task="IISGeneral" symbol="IISGeneralCGI_REQUEST"/>
           <event value="10179" version="1" template="ISAPI_REQUEST" opcode="12" task="IISGeneral" symbol="IISGeneralISAPI_REQUEST"/>
           <event value="10180" version="1" template="OOP_REQUEST" opcode="13" task="IISGeneral" symbol="IISGeneralOOP_REQUEST"/>
-          <event value="10181" version="1" template="FILTER_TRANS_START" opcode="1" task="IISFilter" symbol="IISFilterFILTER_TRANS_START"/>
-          <event value="10182" version="1" template="FILTER_TRANS_END" opcode="2" task="IISFilter" symbol="IISFilterFILTER_TRANS_END"/>
-          <event value="10183" version="1" template="CGI_TRANS" opcode="1" task="IISCGI" symbol="IISCGICGI_TRANS"/>
-          <event value="10183" version="1" template="CGI_TRANS" opcode="2" task="IISCGI" symbol="IISCGICGI_TRANS"/>
+          <event value="10181" version="1" template="FILTER_TRANS_START" opcode="1" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_TRANS_START"/>
+          <event value="10182" version="1" template="FILTER_TRANS_END" opcode="2" task="IISFilter" keyword="IISFilter" symbol="IISFilterFILTER_TRANS_END"/>
+          <event value="10183" version="1" template="CGI_TRANS" opcode="1" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_TRANS"/>
+          <event value="10183" version="1" template="CGI_TRANS" opcode="2" task="IISCGI" keyword="IISCGI" symbol="IISCGICGI_TRANS"/>
           <event value="10184" version="1" template="ISAPI_MAP_REQUEST_ID" opcode="1" task="IISISAPI" symbol="IISISAPIISAPI_MAP_REQUEST_ID"/>
           <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="2" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
           <event value="10185" version="1" template="ISAPI_DELETE_CONTEXT" opcode="10" task="IISISAPI" symbol="IISISAPIISAPI_DELETE_CONTEXT"/>
