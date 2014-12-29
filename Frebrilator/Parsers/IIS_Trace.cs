@@ -1160,17 +1160,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
-        public event Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCH
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
         public event Action<GENERAL_ISAPI_HANDLER> IISGeneralGENERAL_ISAPI_HANDLER
         {
             add
@@ -1198,17 +1187,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             add
             {
                 source.RegisterEventTemplate(IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCH
-        {
-            add
-            {
-                source.RegisterEventTemplate(IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(value));
             }
             remove
             {
@@ -1440,6 +1418,28 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             add
             {
                 source.RegisterEventTemplate(IISGeneralHANDLER_CHANGEDTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<HANDLER_PRECONDITION_NOT_MATCH> IISGeneralHANDLER_PRECONDITION_NOT_MATCH
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
+        public event Action<MODULE_PRECONDITION_NOT_MATCH> IISGeneralMODULE_PRECONDITION_NOT_MATCH
+        {
+            add
+            {
+                source.RegisterEventTemplate(IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(value));
             }
             remove
             {
@@ -1875,6 +1875,17 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 source.UnregisterEventTemplate(value, 65535, ProviderGuid);
             }
         }
+        public event Action<MODULE_SET_RESPONSE_ERROR_STATUS> RequestNotificationsMODULE_SET_RESPONSE_ERROR_STATUS
+        {
+            add
+            {
+                source.RegisterEventTemplate(RequestNotificationsMODULE_SET_RESPONSE_ERROR_STATUSTemplate(value));
+            }
+            remove
+            {
+                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
+            }
+        }
         public event Action<NOTIFY_MODULE_COMPLETION> RequestNotificationsNOTIFY_MODULE_COMPLETION
         {
             add
@@ -1946,17 +1957,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
             add
             {
                 source.RegisterEventTemplate(RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(value));
-            }
-            remove
-            {
-                source.UnregisterEventTemplate(value, 65535, ProviderGuid);
-            }
-        }
-        public event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS
-        {
-            add
-            {
-                source.RegisterEventTemplate(RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(value));
             }
             remove
             {
@@ -2382,10 +2382,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new GENERAL_GET_URL_METADATA(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 30, "GENERAL_GET_URL_METADATA", ProviderGuid, ProviderName );
         }
-        static private GENERAL_HANDLER_PRECONDITION_NOT_MATCH IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new GENERAL_HANDLER_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 46, "GENERAL_HANDLER_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
-        }
         static private GENERAL_ISAPI_HANDLER IISGeneralGENERAL_ISAPI_HANDLERTemplate(Action<GENERAL_ISAPI_HANDLER> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new GENERAL_ISAPI_HANDLER(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 12, "GENERAL_ISAPI_HANDLER", ProviderGuid, ProviderName );
@@ -2397,10 +2393,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         static private GENERAL_MODULE_FACTORY_FAILED IISGeneralGENERAL_MODULE_FACTORY_FAILEDTemplate(Action<GENERAL_MODULE_FACTORY_FAILED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new GENERAL_MODULE_FACTORY_FAILED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 54, "GENERAL_MODULE_FACTORY_FAILED", ProviderGuid, ProviderName );
-        }
-        static private GENERAL_MODULE_PRECONDITION_NOT_MATCH IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new GENERAL_MODULE_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 45, "GENERAL_MODULE_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
         }
         static private GENERAL_NOT_SEND_CUSTOM_ERROR IISGeneralGENERAL_NOT_SEND_CUSTOM_ERRORTemplate(Action<GENERAL_NOT_SEND_CUSTOM_ERROR> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
@@ -2485,6 +2477,14 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         static private HANDLER_CHANGED IISGeneralHANDLER_CHANGEDTemplate(Action<HANDLER_CHANGED> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new HANDLER_CHANGED(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 43, "HANDLER_CHANGED", ProviderGuid, ProviderName );
+        }
+        static private HANDLER_PRECONDITION_NOT_MATCH IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(Action<HANDLER_PRECONDITION_NOT_MATCH> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new HANDLER_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 46, "HANDLER_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
+        }
+        static private MODULE_PRECONDITION_NOT_MATCH IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(Action<MODULE_PRECONDITION_NOT_MATCH> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_PRECONDITION_NOT_MATCH(action, 65535, 0, "IISGeneral", IISGeneralTaskGuid, 45, "MODULE_PRECONDITION_NOT_MATCH", ProviderGuid, ProviderName );
         }
         static private USER_SET IISGeneralUSER_SETTemplate(Action<USER_SET> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
@@ -2642,6 +2642,10 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new WEBSOCKET_WRITE_IO_FAILED(action, 65535, 8, "IISWebSocket", IISWebSocketTaskGuid, 16, "WEBSOCKET_WRITE_IO_FAILED", ProviderGuid, ProviderName );
         }
+        static private MODULE_SET_RESPONSE_ERROR_STATUS RequestNotificationsMODULE_SET_RESPONSE_ERROR_STATUSTemplate(Action<MODULE_SET_RESPONSE_ERROR_STATUS> action)
+        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
+            return new MODULE_SET_RESPONSE_ERROR_STATUS(action, 65535, 11, "RequestNotifications", RequestNotificationsTaskGuid, 16, "MODULE_SET_RESPONSE_ERROR_STATUS", ProviderGuid, ProviderName );
+        }
         static private NOTIFY_MODULE_COMPLETION RequestNotificationsNOTIFY_MODULE_COMPLETIONTemplate(Action<NOTIFY_MODULE_COMPLETION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new NOTIFY_MODULE_COMPLETION(action, 65535, 11, "RequestNotifications", RequestNotificationsTaskGuid, 3, "NOTIFY_MODULE_COMPLETION", ProviderGuid, ProviderName );
@@ -2669,10 +2673,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
         static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
             return new REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION(action, 65535, 11, "RequestNotifications", RequestNotificationsTaskGuid, 18, "REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION", ProviderGuid, ProviderName );
-        }
-        static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> action)
-        {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
-            return new REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS(action, 65535, 11, "RequestNotifications", RequestNotificationsTaskGuid, 16, "REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS", ProviderGuid, ProviderName );
         }
         static private REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSTemplate(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS> action)
         {                  // action, eventid, taskid, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName
@@ -2710,8 +2710,8 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 templates[22] = IISGeneralGENERAL_URL_CHANGEDTemplate(null);
                 templates[23] = IISGeneralHANDLER_CHANGEDTemplate(null);
                 templates[24] = IISGeneralUSER_SETTemplate(null);
-                templates[25] = IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCHTemplate(null);
-                templates[26] = IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCHTemplate(null);
+                templates[25] = IISGeneralMODULE_PRECONDITION_NOT_MATCHTemplate(null);
+                templates[26] = IISGeneralHANDLER_PRECONDITION_NOT_MATCHTemplate(null);
                 templates[27] = IISGeneralGENERAL_RESPONSE_HEADERSTemplate(null);
                 templates[28] = IISGeneralGENERAL_RESPONSE_ENTITY_FILETemplate(null);
                 templates[29] = IISGeneralGENERAL_RESPONSE_ENTITY_BUFFERTemplate(null);
@@ -2850,7 +2850,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers
                 templates[162] = RequestNotificationsPRE_BEGIN_REQUEST_STARTTemplate(null);
                 templates[163] = RequestNotificationsPRE_BEGIN_REQUEST_ENDTemplate(null);
                 templates[164] = RequestNotificationsREQUEST_NOTIFICATION_EVENTS_ERRORTemplate(null);
-                templates[165] = RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSTemplate(null);
+                templates[165] = RequestNotificationsMODULE_SET_RESPONSE_ERROR_STATUSTemplate(null);
                 templates[166] = RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUSTemplate(null);
                 templates[167] = RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTIONTemplate(null);
                 templates[168] = IISModuleEventsMODULE_EVENTS_MODULE_STARTTemplate(null);
@@ -9166,71 +9166,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         private event Action<GENERAL_GET_URL_METADATA> m_target;
         #endregion
     }
-    public sealed class GENERAL_HANDLER_PRECONDITION_NOT_MATCH : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Name { get { return GetUnicodeStringAt(16); } }
-        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
-
-        #region Private
-        internal GENERAL_HANDLER_PRECONDITION_NOT_MATCH(Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Name", Name);
-             XmlAttrib(sb, "Precondition", Precondition);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Name;
-                case 2:
-                    return Precondition;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<GENERAL_HANDLER_PRECONDITION_NOT_MATCH> m_target;
-        #endregion
-    }
     public sealed class GENERAL_ISAPI_HANDLER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
@@ -9408,71 +9343,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         }
 
         private event Action<GENERAL_MODULE_FACTORY_FAILED> m_target;
-        #endregion
-    }
-    public sealed class GENERAL_MODULE_PRECONDITION_NOT_MATCH : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Name { get { return GetUnicodeStringAt(16); } }
-        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
-
-        #region Private
-        internal GENERAL_MODULE_PRECONDITION_NOT_MATCH(Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Name", Name);
-             XmlAttrib(sb, "Precondition", Precondition);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return Name;
-                case 2:
-                    return Precondition;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<GENERAL_MODULE_PRECONDITION_NOT_MATCH> m_target;
         #endregion
     }
     public sealed class GENERAL_NOT_SEND_CUSTOM_ERROR : TraceEvent
@@ -10842,6 +10712,136 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         }
 
         private event Action<HANDLER_CHANGED> m_target;
+        #endregion
+    }
+    public sealed class HANDLER_PRECONDITION_NOT_MATCH : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Name { get { return GetUnicodeStringAt(16); } }
+        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+
+        #region Private
+        internal HANDLER_PRECONDITION_NOT_MATCH(Action<HANDLER_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<HANDLER_PRECONDITION_NOT_MATCH>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Name", Name);
+             XmlAttrib(sb, "Precondition", Precondition);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Name;
+                case 2:
+                    return Precondition;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<HANDLER_PRECONDITION_NOT_MATCH> m_target;
+        #endregion
+    }
+    public sealed class MODULE_PRECONDITION_NOT_MATCH : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string Name { get { return GetUnicodeStringAt(16); } }
+        public string Precondition { get { return GetUnicodeStringAt(SkipUnicodeString(16)); } }
+
+        #region Private
+        internal MODULE_PRECONDITION_NOT_MATCH(Action<MODULE_PRECONDITION_NOT_MATCH> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUnicodeString(16))));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUnicodeString(16))));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_PRECONDITION_NOT_MATCH>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "Name", Name);
+             XmlAttrib(sb, "Precondition", Precondition);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "Name", "Precondition"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return Name;
+                case 2:
+                    return Precondition;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_PRECONDITION_NOT_MATCH> m_target;
         #endregion
     }
     public sealed class USER_SET : TraceEvent
@@ -13303,6 +13303,91 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         private event Action<WEBSOCKET_WRITE_IO_FAILED> m_target;
         #endregion
     }
+    public sealed class MODULE_SET_RESPONSE_ERROR_STATUS : TraceEvent
+    {
+        public Guid ContextId { get { return GetGuidAt(0); } }
+        public string ModuleName { get { return GetUnicodeStringAt(16); } }
+        public MODULE_SET_RESPONSE_ERROR_STATUSNotification Notification { get { return (MODULE_SET_RESPONSE_ERROR_STATUSNotification)GetInt32At(SkipUnicodeString(16)); } }
+        public int HttpStatus { get { return GetInt32At(SkipUnicodeString(16)+4); } }
+        public string HttpReason { get { return GetUTF8StringAt(SkipUnicodeString(16)+8); } }
+        public int HttpSubStatus { get { return GetInt16At(SkipUTF8String(SkipUnicodeString(16)+8)); } }
+        public int ErrorCode { get { return GetInt32At(SkipUTF8String(SkipUnicodeString(16)+8)+2); } }
+        public string ConfigExceptionInfo { get { return GetUnicodeStringAt(SkipUTF8String(SkipUnicodeString(16)+8)+6); } }
+
+        #region Private
+        internal MODULE_SET_RESPONSE_ERROR_STATUS(Action<MODULE_SET_RESPONSE_ERROR_STATUS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
+            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
+        {
+            this.m_target = target;
+        }
+        protected override void Dispatch()
+        {
+            m_target(this);
+        }
+        protected override void Validate()
+        {
+            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
+            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
+        }
+        protected override Delegate Target
+        {
+            get { return m_target; }
+            set { m_target = (Action<MODULE_SET_RESPONSE_ERROR_STATUS>) value; }
+        }
+        public override StringBuilder ToXml(StringBuilder sb)
+        {
+             Prefix(sb);
+             XmlAttrib(sb, "ContextId", ContextId);
+             XmlAttrib(sb, "ModuleName", ModuleName);
+             XmlAttrib(sb, "Notification", Notification);
+             XmlAttrib(sb, "HttpStatus", HttpStatus);
+             XmlAttrib(sb, "HttpReason", HttpReason);
+             XmlAttrib(sb, "HttpSubStatus", HttpSubStatus);
+             XmlAttrib(sb, "ErrorCode", ErrorCode);
+             XmlAttrib(sb, "ConfigExceptionInfo", ConfigExceptionInfo);
+             sb.Append("/>");
+             return sb;
+        }
+
+        public override string[] PayloadNames
+        {
+            get
+            {
+                if (payloadNames == null)
+                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "HttpStatus", "HttpReason", "HttpSubStatus", "ErrorCode", "ConfigExceptionInfo"};
+                return payloadNames;
+            }
+        }
+
+        public override object PayloadValue(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    return ContextId;
+                case 1:
+                    return ModuleName;
+                case 2:
+                    return Notification;
+                case 3:
+                    return HttpStatus;
+                case 4:
+                    return HttpReason;
+                case 5:
+                    return HttpSubStatus;
+                case 6:
+                    return ErrorCode;
+                case 7:
+                    return ConfigExceptionInfo;
+                default:
+                    Debug.Assert(false, "Bad field index");
+                    return null;
+            }
+        }
+
+        private event Action<MODULE_SET_RESPONSE_ERROR_STATUS> m_target;
+        #endregion
+    }
     public sealed class NOTIFY_MODULE_COMPLETION : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
@@ -13778,91 +13863,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         private event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION> m_target;
         #endregion
     }
-    public sealed class REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS : TraceEvent
-    {
-        public Guid ContextId { get { return GetGuidAt(0); } }
-        public string ModuleName { get { return GetUnicodeStringAt(16); } }
-        public REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification Notification { get { return (REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification)GetInt32At(SkipUnicodeString(16)); } }
-        public int HttpStatus { get { return GetInt32At(SkipUnicodeString(16)+4); } }
-        public string HttpReason { get { return GetUTF8StringAt(SkipUnicodeString(16)+8); } }
-        public int HttpSubStatus { get { return GetInt16At(SkipUTF8String(SkipUnicodeString(16)+8)); } }
-        public int ErrorCode { get { return GetInt32At(SkipUTF8String(SkipUnicodeString(16)+8)+2); } }
-        public string ConfigExceptionInfo { get { return GetUnicodeStringAt(SkipUTF8String(SkipUnicodeString(16)+8)+6); } }
-
-        #region Private
-        internal REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS(Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
-            : base(eventID, task, taskName, taskGuid, opcode, opcodeName, providerGuid, providerName)
-        {
-            this.m_target = target;
-        }
-        protected override void Dispatch()
-        {
-            m_target(this);
-        }
-        protected override void Validate()
-        {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUnicodeString(SkipUTF8String(SkipUnicodeString(16)+8)+6)));
-        }
-        protected override Delegate Target
-        {
-            get { return m_target; }
-            set { m_target = (Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS>) value; }
-        }
-        public override StringBuilder ToXml(StringBuilder sb)
-        {
-             Prefix(sb);
-             XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "ModuleName", ModuleName);
-             XmlAttrib(sb, "Notification", Notification);
-             XmlAttrib(sb, "HttpStatus", HttpStatus);
-             XmlAttrib(sb, "HttpReason", HttpReason);
-             XmlAttrib(sb, "HttpSubStatus", HttpSubStatus);
-             XmlAttrib(sb, "ErrorCode", ErrorCode);
-             XmlAttrib(sb, "ConfigExceptionInfo", ConfigExceptionInfo);
-             sb.Append("/>");
-             return sb;
-        }
-
-        public override string[] PayloadNames
-        {
-            get
-            {
-                if (payloadNames == null)
-                    payloadNames = new string[] { "ContextId", "ModuleName", "Notification", "HttpStatus", "HttpReason", "HttpSubStatus", "ErrorCode", "ConfigExceptionInfo"};
-                return payloadNames;
-            }
-        }
-
-        public override object PayloadValue(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    return ContextId;
-                case 1:
-                    return ModuleName;
-                case 2:
-                    return Notification;
-                case 3:
-                    return HttpStatus;
-                case 4:
-                    return HttpReason;
-                case 5:
-                    return HttpSubStatus;
-                case 6:
-                    return ErrorCode;
-                case 7:
-                    return ConfigExceptionInfo;
-                default:
-                    Debug.Assert(false, "Bad field index");
-                    return null;
-            }
-        }
-
-        private event Action<REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS> m_target;
-        #endregion
-    }
     public sealed class REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
@@ -14056,6 +14056,26 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         HANDLER_CHANGED = 0x18,
         REQUEST_FILTER_RULE = 0x19,
     }
+    public enum MODULE_SET_RESPONSE_ERROR_STATUSNotification
+    {
+        MAP_PATH = unchecked((int)0x80000000),
+        PRE_BEGIN_REQUEST = 0x0,
+        BEGIN_REQUEST = 0x1,
+        AUTHENTICATE_REQUEST = 0x2,
+        AUTHORIZE_REQUEST = 0x4,
+        RESOLVE_REQUEST_CACHE = 0x8,
+        MAP_REQUEST_HANDLER = 0x10,
+        REQUEST_ACQUIRE_STATE = 0x20,
+        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
+        EXECUTE_REQUEST_HANDLER = 0x80,
+        RELEASE_REQUEST_STATE = 0x100,
+        UPDATE_REQUEST_CACHE = 0x200,
+        LOG_REQUEST = 0x400,
+        END_REQUEST = 0x800,
+        CUSTOM_NOTIFICATION = 0x10000000,
+        SEND_RESPONSE = 0x20000000,
+        READ_ENTITY = 0x40000000,
+    }
     public enum NOTIFY_MODULE_COMPLETIONNotification
     {
         MAP_PATH = unchecked((int)0x80000000),
@@ -14157,26 +14177,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     public enum REQUEST_NOTIFICATION_EVENTS_ERRORNotification
     {
         MAP_PATH = unchecked((int)0x80000000),
-        BEGIN_REQUEST = 0x1,
-        AUTHENTICATE_REQUEST = 0x2,
-        AUTHORIZE_REQUEST = 0x4,
-        RESOLVE_REQUEST_CACHE = 0x8,
-        MAP_REQUEST_HANDLER = 0x10,
-        REQUEST_ACQUIRE_STATE = 0x20,
-        PRE_EXECUTE_REQUEST_HANDLER = 0x40,
-        EXECUTE_REQUEST_HANDLER = 0x80,
-        RELEASE_REQUEST_STATE = 0x100,
-        UPDATE_REQUEST_CACHE = 0x200,
-        LOG_REQUEST = 0x400,
-        END_REQUEST = 0x800,
-        CUSTOM_NOTIFICATION = 0x10000000,
-        SEND_RESPONSE = 0x20000000,
-        READ_ENTITY = 0x40000000,
-    }
-    public enum REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUSNotification
-    {
-        MAP_PATH = unchecked((int)0x80000000),
-        PRE_BEGIN_REQUEST = 0x0,
         BEGIN_REQUEST = 0x1,
         AUTHENTICATE_REQUEST = 0x2,
         AUTHORIZE_REQUEST = 0x4,

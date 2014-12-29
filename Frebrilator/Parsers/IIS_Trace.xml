@@ -42,8 +42,8 @@
             <opcode value="42" name="IISGeneral42" mofValue="42" message="GENERAL_URL_CHANGED" />
             <opcode value="43" name="IISGeneral43" mofValue="43" message="HANDLER_CHANGED" />
             <opcode value="44" name="IISGeneral44" mofValue="44" message="USER_SET" />
-            <opcode value="45" name="IISGeneral45" mofValue="45" message="GENERAL_MODULE_PRECONDITION_NOT_MATCH" />
-            <opcode value="46" name="IISGeneral46" mofValue="46" message="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
+            <opcode value="45" name="IISGeneral45" mofValue="45" message="MODULE_PRECONDITION_NOT_MATCH" />
+            <opcode value="46" name="IISGeneral46" mofValue="46" message="HANDLER_PRECONDITION_NOT_MATCH" />
             <opcode value="47" name="IISGeneral47" mofValue="47" message="GENERAL_RESPONSE_HEADERS" />
             <opcode value="48" name="IISGeneral48" mofValue="48" message="GENERAL_RESPONSE_ENTITY_FILE" />
             <opcode value="49" name="IISGeneral49" mofValue="49" message="GENERAL_RESPONSE_ENTITY_BUFFER" />
@@ -203,7 +203,7 @@
             <opcode value="4" name="RequestNotifications4" mofValue="4" message="PRE_BEGIN_REQUEST_START" />
             <opcode value="5" name="RequestNotifications5" mofValue="5" message="PRE_BEGIN_REQUEST_END" />
             <opcode value="15" name="RequestNotifications15" mofValue="15" message="REQUEST_NOTIFICATION_EVENTS_ERROR" />
-            <opcode value="16" name="RequestNotifications16" mofValue="16" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+            <opcode value="16" name="RequestNotifications16" mofValue="16" message="MODULE_SET_RESPONSE_ERROR_STATUS" />
             <opcode value="17" name="RequestNotifications17" mofValue="17" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
             <opcode value="18" name="RequestNotifications18" mofValue="18" message="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
           </task>
@@ -339,12 +339,12 @@
             <data name="UserName" inType="win:UnicodeString" />
             <data name="SupportsIsInRole" inType="win:Boolean" />
           </template>
-          <template tid="GENERAL_MODULE_PRECONDITION_NOT_MATCH">
+          <template tid="MODULE_PRECONDITION_NOT_MATCH">
             <data name="ContextId" inType="win:GUID" />
             <data name="Name" inType="win:UnicodeString" />
             <data name="Precondition" inType="win:UnicodeString" />
           </template>
-          <template tid="GENERAL_HANDLER_PRECONDITION_NOT_MATCH">
+          <template tid="HANDLER_PRECONDITION_NOT_MATCH">
             <data name="ContextId" inType="win:GUID" />
             <data name="Name" inType="win:UnicodeString" />
             <data name="Precondition" inType="win:UnicodeString" />
@@ -945,10 +945,10 @@
             <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_ERROR.Notification" />
             <data name="ErrorCode" inType="win:UInt32" outType="win:hexInt32" />
           </template>
-          <template tid="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS">
+          <template tid="MODULE_SET_RESPONSE_ERROR_STATUS">
             <data name="ContextId" inType="win:GUID" />
             <data name="ModuleName" inType="win:UnicodeString" />
-            <data name="Notification" inType="win:UInt32" map="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS.Notification" />
+            <data name="Notification" inType="win:UInt32" map="MODULE_SET_RESPONSE_ERROR_STATUS.Notification" />
             <data name="HttpStatus" inType="win:UInt32" />
             <data name="HttpReason" inType="win:AnsiString" />
             <data name="HttpSubStatus" inType="win:UInt16" />
@@ -1085,8 +1085,8 @@
           <event value="10022" version="1" template="GENERAL_URL_CHANGED" opcode="IISGeneral42" task="IISGeneral" symbol="IISGeneralGENERAL_URL_CHANGED" />
           <event value="10023" version="1" template="HANDLER_CHANGED" opcode="IISGeneral43" task="IISGeneral" symbol="IISGeneralHANDLER_CHANGED" />
           <event value="10024" version="1" template="USER_SET" opcode="IISGeneral44" task="IISGeneral" symbol="IISGeneralUSER_SET" />
-          <event value="10025" version="1" template="GENERAL_MODULE_PRECONDITION_NOT_MATCH" opcode="IISGeneral45" task="IISGeneral" symbol="IISGeneralGENERAL_MODULE_PRECONDITION_NOT_MATCH" />
-          <event value="10026" version="1" template="GENERAL_HANDLER_PRECONDITION_NOT_MATCH" opcode="IISGeneral46" task="IISGeneral" symbol="IISGeneralGENERAL_HANDLER_PRECONDITION_NOT_MATCH" />
+          <event value="10025" version="1" template="MODULE_PRECONDITION_NOT_MATCH" opcode="IISGeneral45" task="IISGeneral" symbol="IISGeneralMODULE_PRECONDITION_NOT_MATCH" />
+          <event value="10026" version="1" template="HANDLER_PRECONDITION_NOT_MATCH" opcode="IISGeneral46" task="IISGeneral" symbol="IISGeneralHANDLER_PRECONDITION_NOT_MATCH" />
           <event value="10027" version="1" template="GENERAL_RESPONSE_HEADERS" opcode="IISGeneral47" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_HEADERS" />
           <event value="10028" version="1" template="GENERAL_RESPONSE_ENTITY_FILE" opcode="IISGeneral48" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_ENTITY_FILE" />
           <event value="10029" version="1" template="GENERAL_RESPONSE_ENTITY_BUFFER" opcode="IISGeneral49" task="IISGeneral" symbol="IISGeneralGENERAL_RESPONSE_ENTITY_BUFFER" />
@@ -1225,7 +1225,7 @@
           <event value="10162" version="1" template="PRE_BEGIN_REQUEST_START" opcode="RequestNotifications4" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_START" />
           <event value="10163" version="1" template="PRE_BEGIN_REQUEST_END" opcode="RequestNotifications5" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsPRE_BEGIN_REQUEST_END" />
           <event value="10164" version="1" template="REQUEST_NOTIFICATION_EVENTS_ERROR" opcode="RequestNotifications15" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_ERROR" />
-          <event value="10165" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" opcode="RequestNotifications16" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS" />
+          <event value="10165" version="1" template="MODULE_SET_RESPONSE_ERROR_STATUS" opcode="RequestNotifications16" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsMODULE_SET_RESPONSE_ERROR_STATUS" />
           <event value="10166" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" opcode="RequestNotifications17" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_SUCCESS_STATUS" />
           <event value="10167" version="1" template="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" opcode="RequestNotifications18" task="RequestNotifications" keyword="RequestNotifications" symbol="RequestNotificationsREQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_DESCRIPTION" />
           <event value="10168" version="1" template="MODULE_EVENTS_MODULE_START" opcode="IISModuleEvents1" task="IISModuleEvents" keyword="IISModuleEvents" symbol="IISModuleEventsMODULE_EVENTS_MODULE_START" />
@@ -1504,7 +1504,7 @@
             <map value="0x40000000" message="READ_ENTITY" />
             <map value="0x80000000" message="MAP_PATH" />
           </valueMap>
-          <valueMap name="REQUEST_NOTIFICATION_EVENTS_RESPONSE_ERROR_STATUS.Notification">
+          <valueMap name="MODULE_SET_RESPONSE_ERROR_STATUS.Notification">
             <map value="0x00000000" message="PRE_BEGIN_REQUEST" />
             <map value="0x00000001" message="BEGIN_REQUEST" />
             <map value="0x00000002" message="AUTHENTICATE_REQUEST" />
