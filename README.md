@@ -8,6 +8,8 @@ One of my favorite features in IIS 7.X/8.X is [Failed Request Event Buffering](h
 
 Any of these will require the application to be restarted. While not usually a problem it can be... inconvenient at times.
 
+Frebrilator is just some *sample code I've been putting together* to scratch an itch I've been having for a while: Capturing FREB-like traces without using the normal means in IIS to do so.
+
 ## FREB and ETW
 
 FREB is built on top of the ETW (Event Tracing for Windows) infrastructure, around the following providers:
