@@ -32,7 +32,7 @@ namespace Frebrilator.Tests {
       Assert.Equal("0", root.Element(freb+"EventID").Value);
       Assert.Equal("1", root.Element(freb+"Version").Value);
       Assert.Equal("0", root.Element(freb+"Level").Value);
-      Assert.Equal("1", root.Element(freb+"OpCode").Value);
+      Assert.Equal("1", root.Element(freb+"Opcode").Value);
       Assert.Equal("0x0", root.Element(freb+"Keywords").Value);
       Assert.Equal("2014-12-08T02:49:38.306Z", root.Element(freb + "TimeCreated").Attribute("SystemTime").Value);
       Assert.Equal(activityId.ToString("B"), root.Element(freb + "Correlation").Attribute("ActivityID").Value);
@@ -92,7 +92,7 @@ namespace Frebrilator.Tests {
 
       Assert.Equal(freb + "RenderingInfo", root.Name);
       Assert.Equal("en-US", root.Attribute("Culture").Value);
-      Assert.Equal("GENERAL_REQUEST_START", root.Element(freb + "OpCode").Value);
+      Assert.Equal("GENERAL_REQUEST_START", root.Element(freb + "Opcode").Value);
     }
 
     [Fact(Skip="No TaskGuid available")]
