@@ -43,3 +43,7 @@ There is still a lot of work that needs to be done to make this entirely useful:
 * Work needs to be done to map certain fields used in the traces properly so that they match exactly what is produced by IIS natively.
 * Currently, all generated XML files will contain as the machine name that of the computer where the ETL file is processed, rather than where it was captured (the ETL file itself doesn't contain that info).
 * Need to add a command line option to capture a trace and produce the FREB files in real-time, instead of having to use an intermediate 
+
+## Final notes
+
+This is all just sample code. There are lots of things untested and working not quite right. All has been put together from looking over the IIS configuration files and generated FREB traces. Also would like to thank Vance Morrison for answering some questions regarding the TraceEvent library and ETW providers.
