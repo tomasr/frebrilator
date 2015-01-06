@@ -22,9 +22,9 @@
           </template>
         </templates>
         <events>
-          <event value="10000" version="1" template="ISAPI_CALL_EXTENSION" opcode="W3Isapi1" task="W3Isapi" symbol="W3IsapiISAPI_CALL_EXTENSION" />
-          <event value="10001" version="1" template="ISAPI_NOTIFY_COMPLETION" opcode="W3Isapi3" task="W3Isapi" symbol="W3IsapiISAPI_NOTIFY_COMPLETION" />
-          <event value="10002" version="1" template="ISAPI_EXTENSION_DONE" opcode="W3Isapi2" task="W3Isapi" symbol="W3IsapiISAPI_EXTENSION_DONE" />
+          <event value="10000" version="1" level="win:Always" template="ISAPI_CALL_EXTENSION" opcode="W3Isapi1" task="W3Isapi" symbol="W3IsapiISAPI_CALL_EXTENSION" />
+          <event value="10001" version="1" level="win:Always" template="ISAPI_NOTIFY_COMPLETION" opcode="W3Isapi3" task="W3Isapi" symbol="W3IsapiISAPI_NOTIFY_COMPLETION" />
+          <event value="10002" version="1" level="win:Always" template="ISAPI_EXTENSION_DONE" opcode="W3Isapi2" task="W3Isapi" symbol="W3IsapiISAPI_EXTENSION_DONE" />
         </events>
         <maps>
         </maps>

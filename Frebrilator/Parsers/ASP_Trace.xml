@@ -234,58 +234,58 @@
           <event value="10000" version="0" template="AspRequest" opcode="1" task="AspReq" symbol="AspReqAspRequest"/>
           <event value="10000" version="0" template="AspRequest" opcode="2" task="AspReq" symbol="AspReqAspRequest"/>
           -->
-          <event value="10001" version="1" template="ASP_START_REQUEST" opcode="AspReq10" task="AspReq" symbol="AspReqASP_START_REQUEST" />
-          <event value="10002" version="1" template="ASP_END_REQUEST" opcode="AspReq11" task="AspReq" symbol="AspReqASP_END_REQUEST" />
-          <event value="10003" version="1" template="ASP_FIRST_REQUEST" opcode="AspReq12" task="AspReq" symbol="AspReqASP_FIRST_REQUEST" />
-          <event value="10004" version="1" template="ASP_INIT_FAILURE" opcode="AspReq13" task="AspReq" symbol="AspReqASP_INIT_FAILURE" />
-          <event value="10005" version="1" template="ASP_UNHEALTHY_FAILURE" opcode="AspReq14" task="AspReq" symbol="AspReqASP_UNHEALTHY_FAILURE" />
-          <event value="10006" version="1" template="ASP_FIRST_REQUEST_FOR_APPLICATION" opcode="AspReq15" task="AspReq" symbol="AspReqASP_FIRST_REQUEST_FOR_APPLICATION" />
-          <event value="10007" version="1" template="ASP_START_GLOBALASA_CHECK" opcode="AspReq16" task="AspReq" symbol="AspReqASP_START_GLOBALASA_CHECK" />
-          <event value="10008" version="1" template="ASP_END_GLOBALASA_CHECK" opcode="AspReq17" task="AspReq" symbol="AspReqASP_END_GLOBALASA_CHECK" />
-          <event value="10009" version="1" template="ASP_GLOBALASA_DOES_NOT_EXIST" opcode="AspReq18" task="AspReq" symbol="AspReqASP_GLOBALASA_DOES_NOT_EXIST" />
-          <event value="10010" version="1" template="ASP_GLOBALASA_ACCESS_DENIED" opcode="AspReq19" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_DENIED" />
-          <event value="10011" version="1" template="ASP_GLOBALASA_ACCESS_SUCCESS" opcode="AspReq20" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_SUCCESS" />
-          <event value="10012" version="1" template="ASP_NEW_SESSION" opcode="AspReq21" task="AspReq" symbol="AspReqASP_NEW_SESSION" />
-          <event value="10013" version="1" template="ASP_SECURE_SESSIONID" opcode="AspReq22" task="AspReq" symbol="AspReqASP_SECURE_SESSIONID" />
-          <event value="10014" version="1" template="ASP_START_SCRIPTLESS_SEND" opcode="AspReq23" task="AspReq" symbol="AspReqASP_START_SCRIPTLESS_SEND" />
-          <event value="10015" version="1" template="ASP_END_SCRIPTLESS_SEND" opcode="AspReq24" task="AspReq" symbol="AspReqASP_END_SCRIPTLESS_SEND" />
-          <event value="10016" version="1" template="ASP_SERVER_TOO_BUSY" opcode="AspReq25" task="AspReq" symbol="AspReqASP_SERVER_TOO_BUSY" />
-          <event value="10017" version="1" template="ASP_QUEUE_REQUEST" opcode="AspReq26" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST" />
-          <event value="10018" version="1" template="ASP_DEQUEUE_REQUEST" opcode="AspReq1" task="AspReq" symbol="AspReqASP_DEQUEUE_REQUEST" />
-          <event value="10019" version="1" template="ASP_QUEUE_REQUEST_FAILED" opcode="AspReq28" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST_FAILED" />
-          <event value="10020" version="1" template="ASP_CLIENT_CONNECTION_DISCONNECTION" opcode="AspReq29" task="AspReq" symbol="AspReqASP_CLIENT_CONNECTION_DISCONNECTION" />
-          <event value="10021" version="1" template="ASP_REQUEST_TIMEOUT" opcode="AspReq30" task="AspReq" symbol="AspReqASP_REQUEST_TIMEOUT" />
-          <event value="10022" version="1" template="ASP_FILE_ACCESS_DENIED" opcode="AspReq31" task="AspReq" symbol="AspReqASP_FILE_ACCESS_DENIED" />
-          <event value="10023" version="1" template="ASP_FILE_NOT_FOUND" opcode="AspReq32" task="AspReq" symbol="AspReqASP_FILE_NOT_FOUND" />
-          <event value="10024" version="1" template="ASP_READ_FILE" opcode="AspReq33" task="AspReq" symbol="AspReqASP_READ_FILE" />
-          <event value="10025" version="1" template="ASP_COMPILED_FAILED" opcode="AspReq34" task="AspReq" symbol="AspReqASP_COMPILED_FAILED" />
-          <event value="10026" version="1" template="ASP_START_APPLICATION_ON_START" opcode="AspReq35" task="AspReq" symbol="AspReqASP_START_APPLICATION_ON_START" />
-          <event value="10027" version="1" template="ASP_END_APPLICATION_ON_START" opcode="AspReq36" task="AspReq" symbol="AspReqASP_END_APPLICATION_ON_START" />
-          <event value="10028" version="1" template="ASP_APPLICATION_ON_START_SUCCESS" opcode="AspReq38" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_SUCCESS" />
-          <event value="10029" version="1" template="ASP_APPLICATION_ON_START_ERROR" opcode="AspReq37" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_ERROR" />
-          <event value="10030" version="1" template="ASP_START_SESSION_ON_START" opcode="AspReq39" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START" />
-          <event value="10031" version="1" template="ASP_END_SESSION_ON_START" opcode="AspReq40" task="AspReq" symbol="AspReqASP_END_SESSION_ON_START" />
-          <event value="10032" version="1" template="ASP_START_SESSION_ON_START_SUCCESS" opcode="AspReq42" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_SUCCESS" />
-          <event value="10033" version="1" template="ASP_START_SESSION_ON_START_ERROR" opcode="AspReq41" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_ERROR" />
-          <event value="10034" version="1" template="ASP_START_SCRIPT_EXECUTION" opcode="AspReq43" task="AspReq" symbol="AspReqASP_START_SCRIPT_EXECUTION" />
-          <event value="10035" version="1" template="ASP_END_SCRIPT_EXECUTION" opcode="AspReq44" task="AspReq" symbol="AspReqASP_END_SCRIPT_EXECUTION" />
-          <event value="10036" version="1" template="ASP_TRANSACTION_ABORTED" opcode="AspReq45" task="AspReq" symbol="AspReqASP_TRANSACTION_ABORTED" />
-          <event value="10037" version="1" template="ASP_TRANSACTION_COMMITED" opcode="AspReq46" task="AspReq" symbol="AspReqASP_TRANSACTION_COMMITED" />
-          <event value="10038" version="1" template="ASP_START_COMPILE" opcode="AspReq47" task="AspReq" symbol="AspReqAspStartCompile" />
-          <event value="10039" version="1" template="ASP_END_COMPILE" opcode="AspReq48" task="AspReq" symbol="AspReqAspEndCompile" />
-          <event value="10040" version="1" template="ASP_START_CACHE_ACCESS" opcode="AspReq49" task="AspReq" symbol="AspReqASP_START_CACHE_ACCESS" />
-          <event value="10041" version="1" template="ASP_END_CACHE_ACCESS" opcode="AspReq50" task="AspReq" symbol="AspReqASP_END_CACHE_ACCESS" />
-          <event value="10042" version="1" template="ASP_CURRENT_SESSION" opcode="AspReq51" task="AspReq" symbol="AspReqASP_CURRENT_SESSION" />
-          <event value="10043" version="1" template="ASP_DONE_PROCESSING" opcode="AspReq2" task="AspReq" symbol="AspReqASP_DONE_PROCESSING" />
-          <event value="10044" version="1" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq52" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
-          <event value="10044" version="1" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq53" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq54" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq55" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq56" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq57" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq58" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10045" version="1" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq59" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
-          <event value="10046" version="1" template="ASP_LOG_ERROR" opcode="AspReq60" task="AspReq" symbol="AspReqASP_LOG_ERROR" />
+          <event value="10001" version="1" level="win:Always" template="ASP_START_REQUEST" opcode="AspReq10" task="AspReq" symbol="AspReqASP_START_REQUEST" />
+          <event value="10002" version="1" level="win:Always" template="ASP_END_REQUEST" opcode="AspReq11" task="AspReq" symbol="AspReqASP_END_REQUEST" />
+          <event value="10003" version="1" level="win:Informational" template="ASP_FIRST_REQUEST" opcode="AspReq12" task="AspReq" symbol="AspReqASP_FIRST_REQUEST" />
+          <event value="10004" version="1" level="win:Error" template="ASP_INIT_FAILURE" opcode="AspReq13" task="AspReq" symbol="AspReqASP_INIT_FAILURE" />
+          <event value="10005" version="1" level="win:Error" template="ASP_UNHEALTHY_FAILURE" opcode="AspReq14" task="AspReq" symbol="AspReqASP_UNHEALTHY_FAILURE" />
+          <event value="10006" version="1" level="win:Informational" template="ASP_FIRST_REQUEST_FOR_APPLICATION" opcode="AspReq15" task="AspReq" symbol="AspReqASP_FIRST_REQUEST_FOR_APPLICATION" />
+          <event value="10007" version="1" level="win:Informational" template="ASP_START_GLOBALASA_CHECK" opcode="AspReq16" task="AspReq" symbol="AspReqASP_START_GLOBALASA_CHECK" />
+          <event value="10008" version="1" level="win:Informational" template="ASP_END_GLOBALASA_CHECK" opcode="AspReq17" task="AspReq" symbol="AspReqASP_END_GLOBALASA_CHECK" />
+          <event value="10009" version="1" level="win:Informational" template="ASP_GLOBALASA_DOES_NOT_EXIST" opcode="AspReq18" task="AspReq" symbol="AspReqASP_GLOBALASA_DOES_NOT_EXIST" />
+          <event value="10010" version="1" level="win:Error" template="ASP_GLOBALASA_ACCESS_DENIED" opcode="AspReq19" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_DENIED" />
+          <event value="10011" version="1" level="win:Informational" template="ASP_GLOBALASA_ACCESS_SUCCESS" opcode="AspReq20" task="AspReq" symbol="AspReqASP_GLOBALASA_ACCESS_SUCCESS" />
+          <event value="10012" version="1" level="win:Informational" template="ASP_NEW_SESSION" opcode="AspReq21" task="AspReq" symbol="AspReqASP_NEW_SESSION" />
+          <event value="10013" version="1" level="win:Informational" template="ASP_SECURE_SESSIONID" opcode="AspReq22" task="AspReq" symbol="AspReqASP_SECURE_SESSIONID" />
+          <event value="10014" version="1" level="win:Informational" template="ASP_START_SCRIPTLESS_SEND" opcode="AspReq23" task="AspReq" symbol="AspReqASP_START_SCRIPTLESS_SEND" />
+          <event value="10015" version="1" level="win:Informational" template="ASP_END_SCRIPTLESS_SEND" opcode="AspReq24" task="AspReq" symbol="AspReqASP_END_SCRIPTLESS_SEND" />
+          <event value="10016" version="1" level="win:Error" template="ASP_SERVER_TOO_BUSY" opcode="AspReq25" task="AspReq" symbol="AspReqASP_SERVER_TOO_BUSY" />
+          <event value="10017" version="1" level="win:Informational" template="ASP_QUEUE_REQUEST" opcode="AspReq26" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST" />
+          <event value="10018" version="1" level="win:Always" template="ASP_DEQUEUE_REQUEST" opcode="AspReq1" task="AspReq" symbol="AspReqASP_DEQUEUE_REQUEST" />
+          <event value="10019" version="1" level="win:Error" template="ASP_QUEUE_REQUEST_FAILED" opcode="AspReq28" task="AspReq" symbol="AspReqASP_QUEUE_REQUEST_FAILED" />
+          <event value="10020" version="1" level="win:Error" template="ASP_CLIENT_CONNECTION_DISCONNECTION" opcode="AspReq29" task="AspReq" symbol="AspReqASP_CLIENT_CONNECTION_DISCONNECTION" />
+          <event value="10021" version="1" level="win:Error" template="ASP_REQUEST_TIMEOUT" opcode="AspReq30" task="AspReq" symbol="AspReqASP_REQUEST_TIMEOUT" />
+          <event value="10022" version="1" level="win:Error" template="ASP_FILE_ACCESS_DENIED" opcode="AspReq31" task="AspReq" symbol="AspReqASP_FILE_ACCESS_DENIED" />
+          <event value="10023" version="1" level="win:Error" template="ASP_FILE_NOT_FOUND" opcode="AspReq32" task="AspReq" symbol="AspReqASP_FILE_NOT_FOUND" />
+          <event value="10024" version="1" level="win:Informational" template="ASP_READ_FILE" opcode="AspReq33" task="AspReq" symbol="AspReqASP_READ_FILE" />
+          <event value="10025" version="1" level="win:Error" template="ASP_COMPILED_FAILED" opcode="AspReq34" task="AspReq" symbol="AspReqASP_COMPILED_FAILED" />
+          <event value="10026" version="1" level="win:Informational" template="ASP_START_APPLICATION_ON_START" opcode="AspReq35" task="AspReq" symbol="AspReqASP_START_APPLICATION_ON_START" />
+          <event value="10027" version="1" level="win:Informational" template="ASP_END_APPLICATION_ON_START" opcode="AspReq36" task="AspReq" symbol="AspReqASP_END_APPLICATION_ON_START" />
+          <event value="10028" version="1" level="win:Informational" template="ASP_APPLICATION_ON_START_SUCCESS" opcode="AspReq38" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_SUCCESS" />
+          <event value="10029" version="1" level="win:Error" template="ASP_APPLICATION_ON_START_ERROR" opcode="AspReq37" task="AspReq" symbol="AspReqASP_APPLICATION_ON_START_ERROR" />
+          <event value="10030" version="1" level="win:Informational" template="ASP_START_SESSION_ON_START" opcode="AspReq39" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START" />
+          <event value="10031" version="1" level="win:Informational" template="ASP_END_SESSION_ON_START" opcode="AspReq40" task="AspReq" symbol="AspReqASP_END_SESSION_ON_START" />
+          <event value="10032" version="1" level="win:Informational" template="ASP_START_SESSION_ON_START_SUCCESS" opcode="AspReq42" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_SUCCESS" />
+          <event value="10033" version="1" level="win:Error" template="ASP_START_SESSION_ON_START_ERROR" opcode="AspReq41" task="AspReq" symbol="AspReqASP_START_SESSION_ON_START_ERROR" />
+          <event value="10034" version="1" level="win:Informational" template="ASP_START_SCRIPT_EXECUTION" opcode="AspReq43" task="AspReq" symbol="AspReqASP_START_SCRIPT_EXECUTION" />
+          <event value="10035" version="1" level="win:Informational" template="ASP_END_SCRIPT_EXECUTION" opcode="AspReq44" task="AspReq" symbol="AspReqASP_END_SCRIPT_EXECUTION" />
+          <event value="10036" version="1" level="win:Error" template="ASP_TRANSACTION_ABORTED" opcode="AspReq45" task="AspReq" symbol="AspReqASP_TRANSACTION_ABORTED" />
+          <event value="10037" version="1" level="win:Informational" template="ASP_TRANSACTION_COMMITED" opcode="AspReq46" task="AspReq" symbol="AspReqASP_TRANSACTION_COMMITED" />
+          <event value="10038" version="1" level="win:Informational" template="ASP_START_COMPILE" opcode="AspReq47" task="AspReq" symbol="AspReqAspStartCompile" />
+          <event value="10039" version="1" level="win:Informational" template="ASP_END_COMPILE" opcode="AspReq48" task="AspReq" symbol="AspReqAspEndCompile" />
+          <event value="10040" version="1" level="win:Informational" template="ASP_START_CACHE_ACCESS" opcode="AspReq49" task="AspReq" symbol="AspReqASP_START_CACHE_ACCESS" />
+          <event value="10041" version="1" level="win:Informational" template="ASP_END_CACHE_ACCESS" opcode="AspReq50" task="AspReq" symbol="AspReqASP_END_CACHE_ACCESS" />
+          <event value="10042" version="1" level="win:Informational" template="ASP_CURRENT_SESSION" opcode="AspReq51" task="AspReq" symbol="AspReqASP_CURRENT_SESSION" />
+          <event value="10043" version="1" level="win:Always" template="ASP_DONE_PROCESSING" opcode="AspReq2" task="AspReq" symbol="AspReqASP_DONE_PROCESSING" />
+          <event value="10044" version="1" level="win:Verbose" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq52" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
+          <event value="10044" version="1" level="win:Verbose" template="ASP_SCRIPT_TRACE_INFO" opcode="AspReq53" task="AspReq" symbol="AspReqASP_SCRIPT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq54" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq55" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq56" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq57" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq58" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10045" version="1" level="win:Verbose" template="ASP_SCRIPT_OBJECT_TRACE_INFO" opcode="AspReq59" task="AspReq" symbol="AspReqASP_SCRIPT_OBJECT_TRACE_INFO" />
+          <event value="10046" version="1" level="win:Error" template="ASP_LOG_ERROR" opcode="AspReq60" task="AspReq" symbol="AspReqASP_LOG_ERROR" />
         </events>
         <maps>
           <valueMap name="ASP_INIT_FAILURE.Reason">
