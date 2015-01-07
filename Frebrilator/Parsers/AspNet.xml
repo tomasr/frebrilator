@@ -3,72 +3,72 @@
     <events xmlns="http://schemas.microsoft.com/win/2004/08/events">
       <provider name="AspNetTrace" guid="{AFF081FE-0247-4275-9C4E-021F3DC1DA35}">
         <tasks>
-          <task name="AspNetTraceEvent" value="0" eventGUID="{06A01367-79D3-4594-8EB3-C721603C4679}">
-            <opcode value="1" name="AspNetTraceEvent1" mofValue="1" message="AspNetStart" />
-            <opcode value="2" name="AspNetTraceEvent2" mofValue="2" message="AspNetStop" />
-            <opcode value="3" name="AspNetTraceEvent3" mofValue="3" message="AspNetRequestQueued" />
-            <opcode value="4" name="AspNetTraceEvent4" mofValue="4" message="AspNetRequestDequeued" />
-            <opcode value="5" name="AspNetTraceEvent5" mofValue="5" message="AspNetGetAppDomainEnter" />
-            <opcode value="6" name="AspNetTraceEvent6" mofValue="6" message="AspNetGetAppDomainLeave" />
-            <opcode value="7" name="AspNetTraceEvent7" mofValue="7" message="AspNetAppDomainEnter" />
-            <opcode value="8" name="AspNetTraceEvent8" mofValue="8" message="AspNetStartHandler" />
-            <opcode value="9" name="AspNetTraceEvent9" mofValue="9" message="AspNetEndHandler" />
-            <opcode value="10" name="AspNetTraceEvent10" mofValue="10" message="AspNetPipelineModuleEnter" />
-            <opcode value="11" name="AspNetTraceEvent11" mofValue="11" message="AspNetPipelineModuleLeave" />
-            <opcode value="12" name="AspNetTraceEvent12" mofValue="12" message="AspNetMapHandlerEnter" />
-            <opcode value="13" name="AspNetTraceEvent13" mofValue="13" message="AspNetMapHandlerLeave" />
-            <opcode value="14" name="AspNetTraceEvent14" mofValue="14" message="AspNetParseEnter" />
-            <opcode value="15" name="AspNetTraceEvent15" mofValue="15" message="AspNetParseLeave" />
-            <opcode value="16" name="AspNetTraceEvent16" mofValue="16" message="AspNetCompileEnter" />
-            <opcode value="17" name="AspNetTraceEvent17" mofValue="17" message="AspNetCompileLeave" />
-            <opcode value="18" name="AspNetTraceEvent18" mofValue="18" message="AspNetHttpHandlerEnter" />
-            <opcode value="19" name="AspNetTraceEvent19" mofValue="19" message="AspNetHttpHandlerLeave" />
-            <opcode value="20" name="AspNetTraceEvent20" mofValue="20" message="AspNetSessionStatePartitionStart" />
-            <opcode value="21" name="AspNetTraceEvent21" mofValue="21" message="AspNetSessionStatePartitionEnd" />
-            <opcode value="22" name="AspNetTraceEvent22" mofValue="22" message="AspNetPagePreInitEnter" />
-            <opcode value="23" name="AspNetTraceEvent23" mofValue="23" message="AspNetPagePreInitLeave" />
-            <opcode value="24" name="AspNetTraceEvent24" mofValue="24" message="AspNetPageInitEnter" />
-            <opcode value="25" name="AspNetTraceEvent25" mofValue="25" message="AspNetPageInitLeave" />
-            <opcode value="26" name="AspNetTraceEvent26" mofValue="26" message="AspNetPageLoadViewstateEnter" />
-            <opcode value="27" name="AspNetTraceEvent27" mofValue="27" message="AspNetPageLoadViewstateLeave" />
-            <opcode value="28" name="AspNetTraceEvent28" mofValue="28" message="AspNetPageLoadPostDataEnter" />
-            <opcode value="29" name="AspNetTraceEvent29" mofValue="29" message="AspNetPageLoadPostDataLeave" />
-            <opcode value="30" name="AspNetTraceEvent30" mofValue="30" message="AspNetPageLoadEnter" />
-            <opcode value="31" name="AspNetTraceEvent31" mofValue="31" message="AspNetPageLoadLeave" />
-            <opcode value="32" name="AspNetTraceEvent32" mofValue="32" message="AspNetPagePostDataChangedEnter" />
-            <opcode value="33" name="AspNetTraceEvent33" mofValue="33" message="AspNetPagePostDataChangedLeave" />
-            <opcode value="34" name="AspNetTraceEvent34" mofValue="34" message="AspNetPageRaisePostbackEnter" />
-            <opcode value="35" name="AspNetTraceEvent35" mofValue="35" message="AspNetPageRaisePostbackLeave" />
-            <opcode value="36" name="AspNetTraceEvent36" mofValue="36" message="AspNetPagePreRenderEnter" />
-            <opcode value="37" name="AspNetTraceEvent37" mofValue="37" message="AspNetPagePreRenderLeave" />
-            <opcode value="38" name="AspNetTraceEvent38" mofValue="38" message="AspNetPageSaveViewstateEnter" />
-            <opcode value="39" name="AspNetTraceEvent39" mofValue="39" message="AspNetPageSaveViewstateLeave" />
-            <opcode value="40" name="AspNetTraceEvent40" mofValue="40" message="AspNetPageRenderEnter" />
-            <opcode value="41" name="AspNetTraceEvent41" mofValue="41" message="AspNetPageRenderLeave" />
-            <opcode value="42" name="AspNetTraceEvent42" mofValue="42" message="" />
-            <opcode value="43" name="AspNetTraceEvent43" mofValue="43" message="AspNetAcquireSessionEnd" />
-            <opcode value="44" name="AspNetTraceEvent44" mofValue="44" message="AspNetProfileBegin" />
-            <opcode value="45" name="AspNetTraceEvent45" mofValue="45" message="AspNetProfileEnd" />
-            <opcode value="46" name="AspNetTraceEvent46" mofValue="46" message="AspNetRoleManagerIsUserInRole" />
-            <opcode value="47" name="AspNetTraceEvent47" mofValue="47" message="AspNetRoleManagerGetUserRoles" />
-            <opcode value="48" name="AspNetTraceEvent48" mofValue="48" message="AspNetRoleManagerBegin" />
-            <opcode value="49" name="AspNetTraceEvent49" mofValue="49" message="AspNetRoleManagerEnd" />
-            <opcode value="50" name="AspNetTraceEvent50" mofValue="50" message="AspNetWebEventRaiseStart" />
-            <opcode value="51" name="AspNetTraceEvent51" mofValue="51" message="AspNetWebEventRaiseEnd" />
-            <opcode value="52" name="AspNetTraceEvent52" mofValue="52" message="AspNetWebEventDeliverStart" />
-            <opcode value="53" name="AspNetTraceEvent53" mofValue="53" message="AspNetWebEventDeliverEnd" />
-            <opcode value="59" name="AspNetTraceEvent59" mofValue="59" message="AspNetPageTraceWarnEvent" />
-            <opcode value="60" name="AspNetTraceEvent60" mofValue="60" message="AspNetPageTraceWriteEvent" />
-            <opcode value="61" name="AspNetTraceEvent61" mofValue="61" message="AspNetModuleDiagCriticalEvent" />
-            <opcode value="62" name="AspNetTraceEvent62" mofValue="62" message="AspNetModuleDiagErrorEvent" />
-            <opcode value="63" name="AspNetTraceEvent63" mofValue="63" message="AspNetModuleDiagWarningEvent" />
-            <opcode value="64" name="AspNetTraceEvent64" mofValue="64" message="AspNetModuleDiagInfoEvent" />
-            <opcode value="65" name="AspNetTraceEvent65" mofValue="65" message="AspNetModuleDiagVerboseEvent" />
-            <opcode value="66" name="AspNetTraceEvent66" mofValue="66" message="AspNetModuleDiagStartEvent" />
-            <opcode value="67" name="AspNetTraceEvent67" mofValue="67" message="AspNetModuleDiagStopEvent" />
-            <opcode value="68" name="AspNetTraceEvent68" mofValue="68" message="AspNetModuleDiagSuspendEvent" />
-            <opcode value="69" name="AspNetTraceEvent69" mofValue="69" message="AspNetModuleDiagResumeEvent" />
-            <opcode value="70" name="AspNetTraceEvent70" mofValue="70" message="AspNetModuleDiagTransferEvent" />
+          <task name="AspNetReq" value="0" eventGUID="{06A01367-79D3-4594-8EB3-C721603C4679}">
+            <opcode value="1" name="AspNetTraceEvent1" mofValue="1" message="Start" />
+            <opcode value="2" name="AspNetTraceEvent2" mofValue="2" message="Stop" />
+            <opcode value="3" name="AspNetTraceEvent3" mofValue="3" message="RequestQueued" />
+            <opcode value="4" name="AspNetTraceEvent4" mofValue="4" message="RequestDequeued" />
+            <opcode value="5" name="AspNetTraceEvent5" mofValue="5" message="GetAppDomainEnter" />
+            <opcode value="6" name="AspNetTraceEvent6" mofValue="6" message="GetAppDomainLeave" />
+            <opcode value="7" name="AspNetTraceEvent7" mofValue="7" message="AppDomainEnter" />
+            <opcode value="8" name="AspNetTraceEvent8" mofValue="8" message="StartHandler" />
+            <opcode value="9" name="AspNetTraceEvent9" mofValue="9" message="EndHandler" />
+            <opcode value="10" name="AspNetTraceEvent10" mofValue="10" message="PipelineModuleEnter" />
+            <opcode value="11" name="AspNetTraceEvent11" mofValue="11" message="PipelineModuleLeave" />
+            <opcode value="12" name="AspNetTraceEvent12" mofValue="12" message="MapHandlerEnter" />
+            <opcode value="13" name="AspNetTraceEvent13" mofValue="13" message="MapHandlerLeave" />
+            <opcode value="14" name="AspNetTraceEvent14" mofValue="14" message="ParseEnter" />
+            <opcode value="15" name="AspNetTraceEvent15" mofValue="15" message="ParseLeave" />
+            <opcode value="16" name="AspNetTraceEvent16" mofValue="16" message="CompileEnter" />
+            <opcode value="17" name="AspNetTraceEvent17" mofValue="17" message="CompileLeave" />
+            <opcode value="18" name="AspNetTraceEvent18" mofValue="18" message="HttpHandlerEnter" />
+            <opcode value="19" name="AspNetTraceEvent19" mofValue="19" message="HttpHandlerLeave" />
+            <opcode value="20" name="AspNetTraceEvent20" mofValue="20" message="SessionStatePartitionStart" />
+            <opcode value="21" name="AspNetTraceEvent21" mofValue="21" message="SessionStatePartitionEnd" />
+            <opcode value="22" name="AspNetTraceEvent22" mofValue="22" message="PagePreInitEnter" />
+            <opcode value="23" name="AspNetTraceEvent23" mofValue="23" message="PagePreInitLeave" />
+            <opcode value="24" name="AspNetTraceEvent24" mofValue="24" message="PageInitEnter" />
+            <opcode value="25" name="AspNetTraceEvent25" mofValue="25" message="PageInitLeave" />
+            <opcode value="26" name="AspNetTraceEvent26" mofValue="26" message="PageLoadViewstateEnter" />
+            <opcode value="27" name="AspNetTraceEvent27" mofValue="27" message="PageLoadViewstateLeave" />
+            <opcode value="28" name="AspNetTraceEvent28" mofValue="28" message="PageLoadPostDataEnter" />
+            <opcode value="29" name="AspNetTraceEvent29" mofValue="29" message="PageLoadPostDataLeave" />
+            <opcode value="30" name="AspNetTraceEvent30" mofValue="30" message="PageLoadEnter" />
+            <opcode value="31" name="AspNetTraceEvent31" mofValue="31" message="PageLoadLeave" />
+            <opcode value="32" name="AspNetTraceEvent32" mofValue="32" message="PagePostDataChangedEnter" />
+            <opcode value="33" name="AspNetTraceEvent33" mofValue="33" message="PagePostDataChangedLeave" />
+            <opcode value="34" name="AspNetTraceEvent34" mofValue="34" message="PageRaisePostbackEnter" />
+            <opcode value="35" name="AspNetTraceEvent35" mofValue="35" message="PageRaisePostbackLeave" />
+            <opcode value="36" name="AspNetTraceEvent36" mofValue="36" message="PagePreRenderEnter" />
+            <opcode value="37" name="AspNetTraceEvent37" mofValue="37" message="PagePreRenderLeave" />
+            <opcode value="38" name="AspNetTraceEvent38" mofValue="38" message="PageSaveViewstateEnter" />
+            <opcode value="39" name="AspNetTraceEvent39" mofValue="39" message="PageSaveViewstateLeave" />
+            <opcode value="40" name="AspNetTraceEvent40" mofValue="40" message="PageRenderEnter" />
+            <opcode value="41" name="AspNetTraceEvent41" mofValue="41" message="PageRenderLeave" />
+            <opcode value="42" name="AspNetTraceEvent42" mofValue="42" message="SessionDataBegin" />
+            <opcode value="43" name="AspNetTraceEvent43" mofValue="43" message="SessionDataEnd" />
+            <opcode value="44" name="AspNetTraceEvent44" mofValue="44" message="ProfileBegin" />
+            <opcode value="45" name="AspNetTraceEvent45" mofValue="45" message="ProfileEnd" />
+            <opcode value="46" name="AspNetTraceEvent46" mofValue="46" message="RoleManagerIsUserInRole" />
+            <opcode value="47" name="AspNetTraceEvent47" mofValue="47" message="RoleManagerGetUserRoles" />
+            <opcode value="48" name="AspNetTraceEvent48" mofValue="48" message="RoleManagerBegin" />
+            <opcode value="49" name="AspNetTraceEvent49" mofValue="49" message="RoleManagerEnd" />
+            <opcode value="50" name="AspNetTraceEvent50" mofValue="50" message="WebEventRaiseStart" />
+            <opcode value="51" name="AspNetTraceEvent51" mofValue="51" message="WebEventRaiseEnd" />
+            <opcode value="52" name="AspNetTraceEvent52" mofValue="52" message="WebEventDeliverStart" />
+            <opcode value="53" name="AspNetTraceEvent53" mofValue="53" message="WebEventDeliverEnd" />
+            <opcode value="59" name="AspNetTraceEvent59" mofValue="59" message="TraceContextWarning" />
+            <opcode value="60" name="AspNetTraceEvent60" mofValue="60" message="TraceContextWrite" />
+            <opcode value="61" name="AspNetTraceEvent61" mofValue="61" message="DiagnosticTraceCritical" />
+            <opcode value="62" name="AspNetTraceEvent62" mofValue="62" message="DiagnosticTraceError" />
+            <opcode value="63" name="AspNetTraceEvent63" mofValue="63" message="DiagnosticTraceWarning" />
+            <opcode value="64" name="AspNetTraceEvent64" mofValue="64" message="DiagnosticTraceInfo" />
+            <opcode value="65" name="AspNetTraceEvent65" mofValue="65" message="DiagnosticTraceVerbose" />
+            <opcode value="66" name="AspNetTraceEvent66" mofValue="66" message="DiagnosticTraceStart" />
+            <opcode value="67" name="AspNetTraceEvent67" mofValue="67" message="DiagnosticTraceStop" />
+            <opcode value="68" name="AspNetTraceEvent68" mofValue="68" message="DiagnosticTraceSuspend" />
+            <opcode value="69" name="AspNetTraceEvent69" mofValue="69" message="DiagnosticTraceResume" />
+            <opcode value="70" name="AspNetTraceEvent70" mofValue="70" message="DiagnosticTraceTransfer" />
           </task>
         </tasks>
         <templates>
@@ -375,71 +375,71 @@
           </template>
         </templates>
         <events>
-          <event value="10000" version="0" level="win:Always" template="AspNetStart" opcode="AspNetTraceEvent1" task="AspNetTraceEvent" symbol="AspNetTraceEventStart" />
-          <event value="10001" version="0" level="win:Always" template="AspNetStop" opcode="AspNetTraceEvent2" task="AspNetTraceEvent" symbol="AspNetTraceEventEnd" />
-          <event value="10002" version="0" level="win:Informational" template="AspNetRequestQueued" opcode="AspNetTraceEvent3" task="AspNetTraceEvent" symbol="AspNetTraceEventRequestQueued" />
-          <event value="10003" version="0" level="win:Informational" template="AspNetRequestDequeued" opcode="AspNetTraceEvent4" task="AspNetTraceEvent" symbol="AspNetTraceEventRequestDequeued" />
-          <event value="10004" version="0" level="win:Verbose" template="AspNetGetAppDomainEnter" opcode="AspNetTraceEvent5" task="AspNetTraceEvent" symbol="AspNetTraceEventGetAppDomainEnter" />
-          <event value="10005" version="0" level="win:Verbose" template="AspNetGetAppDomainLeave" opcode="AspNetTraceEvent6" task="AspNetTraceEvent" symbol="AspNetTraceEventGetAppDomainLeave" />
-          <event value="10006" version="0" level="win:Verbose" template="AspNetAppDomainEnter" opcode="AspNetTraceEvent7" task="AspNetTraceEvent" symbol="AspNetTraceEventAppDomainEnter" />
-          <event value="10007" version="0" level="win:Verbose" template="AspNetStartHandler" opcode="AspNetTraceEvent8" task="AspNetTraceEvent" symbol="AspNetTraceEventStartHandler" />
-          <event value="10008" version="0" level="win:Verbose" template="AspNetEndHandler" opcode="AspNetTraceEvent9" task="AspNetTraceEvent" symbol="AspNetTraceEventEndHandler" />
-          <event value="10009" version="0" level="win:Verbose" template="AspNetPipelineModuleEnter" opcode="AspNetTraceEvent10" task="AspNetTraceEvent" symbol="AspNetTraceEventPipelineModuleEnter" />
-          <event value="10010" version="0" level="win:Verbose" template="AspNetPipelineModuleLeave" opcode="AspNetTraceEvent11" task="AspNetTraceEvent" symbol="AspNetTraceEventPipelineModuleLeave" />
-          <event value="10011" version="0" level="win:Verbose" template="AspNetMapHandlerEnter" opcode="AspNetTraceEvent12" task="AspNetTraceEvent" symbol="AspNetTraceEventMapHandlerEnter" />
-          <event value="10012" version="0" level="win:Verbose" template="AspNetMapHandlerLeave" opcode="AspNetTraceEvent13" task="AspNetTraceEvent" symbol="AspNetTraceEventMapHandlerLeave" />
-          <event value="10013" version="0" level="win:Verbose" template="AspNetParseEnter" opcode="AspNetTraceEvent14" task="AspNetTraceEvent" symbol="AspNetTraceEventParseEnter" />
-          <event value="10014" version="0" level="win:Verbose" template="AspNetParseLeave" opcode="AspNetTraceEvent15" task="AspNetTraceEvent" symbol="AspNetTraceEventParseLeave" />
-          <event value="10015" version="0" level="win:Verbose" template="AspNetCompileEnter" opcode="AspNetTraceEvent16" task="AspNetTraceEvent" symbol="AspNetTraceEventCompileEnter" />
-          <event value="10016" version="0" level="win:Verbose" template="AspNetCompileLeave" opcode="AspNetTraceEvent17" task="AspNetTraceEvent" symbol="AspNetTraceEventCompileLeave" />
-          <event value="10017" version="0" level="win:Informational" template="AspNetHttpHandlerEnter" opcode="AspNetTraceEvent18" task="AspNetTraceEvent" symbol="AspNetTraceEventHttpHandlerEnter" />
-          <event value="10018" version="0" level="win:Informational" template="AspNetHttpHandlerLeave" opcode="AspNetTraceEvent19" task="AspNetTraceEvent" symbol="AspNetTraceEventHttpHandlerLeave" />
-          <event value="10019" version="0" level="win:Verbose" template="AspNetSessionStatePartitionStart" opcode="AspNetTraceEvent20" task="AspNetTraceEvent" symbol="AspNetTraceEventSessionStatePartitionStart" />
-          <event value="10020" version="0" level="win:Verbose" template="AspNetSessionStatePartitionEnd" opcode="AspNetTraceEvent21" task="AspNetTraceEvent" symbol="AspNetTraceEventSessionStatePartitionEnd" />
-          <event value="10021" version="0" level="win:Verbose" template="AspNetPagePreInitEnter" opcode="AspNetTraceEvent22" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePreInitEnter" />
-          <event value="10022" version="0" level="win:Verbose" template="AspNetPagePreInitLeave" opcode="AspNetTraceEvent23" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePreInitLeave" />
-          <event value="10023" version="0" level="win:Verbose" template="AspNetPageInitEnter" opcode="AspNetTraceEvent24" task="AspNetTraceEvent" symbol="AspNetTraceEventPageInitEnter" />
-          <event value="10024" version="0" level="win:Verbose" template="AspNetPageInitLeave" opcode="AspNetTraceEvent25" task="AspNetTraceEvent" symbol="AspNetTraceEventPageInitLeave" />
-          <event value="10025" version="0" level="win:Verbose" template="AspNetPageLoadViewstateEnter" opcode="AspNetTraceEvent26" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadViewstateEnter" />
-          <event value="10026" version="0" level="win:Verbose" template="AspNetPageLoadViewstateLeave" opcode="AspNetTraceEvent27" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadViewstateLeave" />
-          <event value="10027" version="0" level="win:Verbose" template="AspNetPageLoadPostDataEnter" opcode="AspNetTraceEvent28" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadPostDataEnter" />
-          <event value="10028" version="0" level="win:Verbose" template="AspNetPageLoadPostDataLeave" opcode="AspNetTraceEvent29" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadPostDataLeave" />
-          <event value="10029" version="0" level="win:Verbose" template="AspNetPageLoadEnter" opcode="AspNetTraceEvent30" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadEnter" />
-          <event value="10030" version="0" level="win:Verbose" template="AspNetPageLoadLeave" opcode="AspNetTraceEvent31" task="AspNetTraceEvent" symbol="AspNetTraceEventPageLoadLeave" />
-          <event value="10031" version="0" level="win:Verbose" template="AspNetPagePostDataChangedEnter" opcode="AspNetTraceEvent32" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePostDataChangedEnter" />
-          <event value="10032" version="0" level="win:Verbose" template="AspNetPagePostDataChangedLeave" opcode="AspNetTraceEvent33" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePostDataChangedLeave" />
-          <event value="10033" version="0" level="win:Verbose" template="AspNetPageRaisePostbackEnter" opcode="AspNetTraceEvent34" task="AspNetTraceEvent" symbol="AspNetTraceEventPageRaisePostbackEnter" />
-          <event value="10034" version="0" level="win:Verbose" template="AspNetPageRaisePostbackLeave" opcode="AspNetTraceEvent35" task="AspNetTraceEvent" symbol="AspNetTraceEventPageRaisePostbackLeave" />
-          <event value="10035" version="0" level="win:Verbose" template="AspNetPagePreRenderEnter" opcode="AspNetTraceEvent36" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePreRenderEnter" />
-          <event value="10036" version="0" level="win:Verbose" template="AspNetPagePreRenderLeave" opcode="AspNetTraceEvent37" task="AspNetTraceEvent" symbol="AspNetTraceEventPagePreRenderLeave" />
-          <event value="10037" version="0" level="win:Verbose" template="AspNetPageSaveViewstateEnter" opcode="AspNetTraceEvent38" task="AspNetTraceEvent" symbol="AspNetTraceEventPageSaveViewstateEnter" />
-          <event value="10038" version="0" level="win:Verbose" template="AspNetPageSaveViewstateLeave" opcode="AspNetTraceEvent39" task="AspNetTraceEvent" symbol="AspNetTraceEventPageSaveViewstateLeave" />
-          <event value="10039" version="0" level="win:Verbose" template="AspNetPageRenderEnter" opcode="AspNetTraceEvent40" task="AspNetTraceEvent" symbol="AspNetTraceEventPageRenderEnter" />
-          <event value="10040" version="0" level="win:Verbose" template="AspNetPageRenderLeave" opcode="AspNetTraceEvent41" task="AspNetTraceEvent" symbol="AspNetTraceEventPageRenderLeave" />
-          <event value="10041" version="0" level="win:Informational" emplate="AspNetAcquireSessionBegin" opcode="AspNetTraceEvent42" task="AspNetTraceEvent" symbol="AspNetTraceEventSessionDataBegin" />
-          <event value="10042" version="0" level="win:Informational" template="AspNetAcquireSessionEnd" opcode="AspNetTraceEvent43" task="AspNetTraceEvent" symbol="AspNetTraceEventSessionDataEnd" />
-          <event value="10043" version="0" level="win:Informational" template="AspNetProfileBegin" opcode="AspNetTraceEvent44" task="AspNetTraceEvent" symbol="AspNetTraceEventProfileBegin" />
-          <event value="10044" version="0" level="win:Informational" template="AspNetProfileEnd" opcode="AspNetTraceEvent45" task="AspNetTraceEvent" symbol="AspNetTraceEventProfileEnd" />
-          <event value="10045" version="0" level="win:Informational" template="AspNetRoleManagerIsUserInRole" opcode="AspNetTraceEvent46" task="AspNetTraceEvent" symbol="AspNetTraceEventRoleManagerIsUserInRole" />
-          <event value="10046" version="0" level="win:Informational" template="AspNetRoleManagerGetUserRoles" opcode="AspNetTraceEvent47" task="AspNetTraceEvent" symbol="AspNetTraceEventRoleManagerGetUserRoles" />
-          <event value="10047" version="0" level="win:Informational" template="AspNetRoleManagerBegin" opcode="AspNetTraceEvent48" task="AspNetTraceEvent" symbol="AspNetTraceEventRoleManagerBegin" />
-          <event value="10048" version="0" level="win:Informational" template="AspNetRoleManagerEnd" opcode="AspNetTraceEvent49" task="AspNetTraceEvent" symbol="AspNetTraceEventRoleManagerEnd" />
-          <event value="10049" version="0" level="win:Verbose" template="AspNetWebEventRaiseStart" opcode="AspNetTraceEvent50" task="AspNetTraceEvent" symbol="AspNetTraceEventWebEventRaiseStart" />
-          <event value="10050" version="0" level="win:Verbose" template="AspNetWebEventRaiseEnd" opcode="AspNetTraceEvent51" task="AspNetTraceEvent" symbol="AspNetTraceEventWebEventRaiseEnd" />
-          <event value="10051" version="0" level="win:Verbose" template="AspNetWebEventDeliverStart" opcode="AspNetTraceEvent52" task="AspNetTraceEvent" symbol="AspNetTraceEventWebEventDeliverStart" />
-          <event value="10052" version="0" level="win:Verbose" template="AspNetWebEventDeliverEnd" opcode="AspNetTraceEvent53" task="AspNetTraceEvent" symbol="AspNetTraceEventWebEventDeliverEnd" />
-          <event value="10053" version="0" level="win:Warning" template="AspNetPageTraceWarnEvent" opcode="AspNetTraceEvent59" task="AspNetTraceEvent" symbol="AspNetTraceEventTraceContextWarning" />
-          <event value="10054" version="0" level="win:Verbose" template="AspNetPageTraceWriteEvent" opcode="AspNetTraceEvent60" task="AspNetTraceEvent" symbol="AspNetTraceEventTraceContextWrite" />
-          <event value="10055" version="0" level="win:Critical" template="AspNetModuleDiagCriticalEvent" opcode="AspNetTraceEvent61" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceCritical" />
-          <event value="10056" version="0" level="win:Warning" template="AspNetModuleDiagErrorEvent" opcode="AspNetTraceEvent62" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceError" />
-          <event value="10057" version="0" level="win:Warning" template="AspNetModuleDiagWarningEvent" opcode="AspNetTraceEvent63" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceWarning" />
-          <event value="10058" version="0" level="win:Informational" template="AspNetModuleDiagInfoEvent" opcode="AspNetTraceEvent64" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceInfo" />
-          <event value="10059" version="0" level="win:Verbose" template="AspNetModuleDiagVerboseEvent" opcode="AspNetTraceEvent65" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceVerbose" />
-          <event value="10060" version="0" level="win:Verbose" template="AspNetModuleDiagStartEvent" opcode="AspNetTraceEvent66" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceStart" />
-          <event value="10061" version="0" level="win:Verbose" template="AspNetModuleDiagStopEvent" opcode="AspNetTraceEvent67" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceStop" />
-          <event value="10062" version="0" level="win:Verbose" template="AspNetModuleDiagSuspendEvent" opcode="AspNetTraceEvent68" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceSuspend" />
-          <event value="10063" version="0" level="win:Verbose" template="AspNetModuleDiagResumeEvent" opcode="AspNetTraceEvent69" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceResume" />
-          <event value="10064" version="0" level="win:Verbose" template="AspNetModuleDiagTransferEvent" opcode="AspNetTraceEvent70" task="AspNetTraceEvent" symbol="AspNetTraceEventDiagnosticTraceTransfer" />
+          <event value="10000" version="0" level="win:Always" template="AspNetStart" opcode="AspNetTraceEvent1" task="AspNetReq" symbol="AspNetTraceEventStart" />
+          <event value="10001" version="0" level="win:Always" template="AspNetStop" opcode="AspNetTraceEvent2" task="AspNetReq" symbol="AspNetTraceEventEnd" />
+          <event value="10002" version="0" level="win:Informational" template="AspNetRequestQueued" opcode="AspNetTraceEvent3" task="AspNetReq" symbol="AspNetTraceEventRequestQueued" />
+          <event value="10003" version="0" level="win:Informational" template="AspNetRequestDequeued" opcode="AspNetTraceEvent4" task="AspNetReq" symbol="AspNetTraceEventRequestDequeued" />
+          <event value="10004" version="0" level="win:Verbose" template="AspNetGetAppDomainEnter" opcode="AspNetTraceEvent5" task="AspNetReq" symbol="AspNetTraceEventGetAppDomainEnter" />
+          <event value="10005" version="0" level="win:Verbose" template="AspNetGetAppDomainLeave" opcode="AspNetTraceEvent6" task="AspNetReq" symbol="AspNetTraceEventGetAppDomainLeave" />
+          <event value="10006" version="0" level="win:Verbose" template="AspNetAppDomainEnter" opcode="AspNetTraceEvent7" task="AspNetReq" symbol="AspNetTraceEventAppDomainEnter" />
+          <event value="10007" version="0" level="win:Verbose" template="AspNetStartHandler" opcode="AspNetTraceEvent8" task="AspNetReq" symbol="AspNetTraceEventStartHandler" />
+          <event value="10008" version="0" level="win:Verbose" template="AspNetEndHandler" opcode="AspNetTraceEvent9" task="AspNetReq" symbol="AspNetTraceEventEndHandler" />
+          <event value="10009" version="0" level="win:Verbose" template="AspNetPipelineModuleEnter" opcode="AspNetTraceEvent10" task="AspNetReq" symbol="AspNetTraceEventPipelineModuleEnter" />
+          <event value="10010" version="0" level="win:Verbose" template="AspNetPipelineModuleLeave" opcode="AspNetTraceEvent11" task="AspNetReq" symbol="AspNetTraceEventPipelineModuleLeave" />
+          <event value="10011" version="0" level="win:Verbose" template="AspNetMapHandlerEnter" opcode="AspNetTraceEvent12" task="AspNetReq" symbol="AspNetTraceEventMapHandlerEnter" />
+          <event value="10012" version="0" level="win:Verbose" template="AspNetMapHandlerLeave" opcode="AspNetTraceEvent13" task="AspNetReq" symbol="AspNetTraceEventMapHandlerLeave" />
+          <event value="10013" version="0" level="win:Verbose" template="AspNetParseEnter" opcode="AspNetTraceEvent14" task="AspNetReq" symbol="AspNetTraceEventParseEnter" />
+          <event value="10014" version="0" level="win:Verbose" template="AspNetParseLeave" opcode="AspNetTraceEvent15" task="AspNetReq" symbol="AspNetTraceEventParseLeave" />
+          <event value="10015" version="0" level="win:Verbose" template="AspNetCompileEnter" opcode="AspNetTraceEvent16" task="AspNetReq" symbol="AspNetTraceEventCompileEnter" />
+          <event value="10016" version="0" level="win:Verbose" template="AspNetCompileLeave" opcode="AspNetTraceEvent17" task="AspNetReq" symbol="AspNetTraceEventCompileLeave" />
+          <event value="10017" version="0" level="win:Informational" template="AspNetHttpHandlerEnter" opcode="AspNetTraceEvent18" task="AspNetReq" symbol="AspNetTraceEventHttpHandlerEnter" />
+          <event value="10018" version="0" level="win:Informational" template="AspNetHttpHandlerLeave" opcode="AspNetTraceEvent19" task="AspNetReq" symbol="AspNetTraceEventHttpHandlerLeave" />
+          <event value="10019" version="0" level="win:Verbose" template="AspNetSessionStatePartitionStart" opcode="AspNetTraceEvent20" task="AspNetReq" symbol="AspNetTraceEventSessionStatePartitionStart" />
+          <event value="10020" version="0" level="win:Verbose" template="AspNetSessionStatePartitionEnd" opcode="AspNetTraceEvent21" task="AspNetReq" symbol="AspNetTraceEventSessionStatePartitionEnd" />
+          <event value="10021" version="0" level="win:Verbose" template="AspNetPagePreInitEnter" opcode="AspNetTraceEvent22" task="AspNetReq" symbol="AspNetTraceEventPagePreInitEnter" />
+          <event value="10022" version="0" level="win:Verbose" template="AspNetPagePreInitLeave" opcode="AspNetTraceEvent23" task="AspNetReq" symbol="AspNetTraceEventPagePreInitLeave" />
+          <event value="10023" version="0" level="win:Verbose" template="AspNetPageInitEnter" opcode="AspNetTraceEvent24" task="AspNetReq" symbol="AspNetTraceEventPageInitEnter" />
+          <event value="10024" version="0" level="win:Verbose" template="AspNetPageInitLeave" opcode="AspNetTraceEvent25" task="AspNetReq" symbol="AspNetTraceEventPageInitLeave" />
+          <event value="10025" version="0" level="win:Verbose" template="AspNetPageLoadViewstateEnter" opcode="AspNetTraceEvent26" task="AspNetReq" symbol="AspNetTraceEventPageLoadViewstateEnter" />
+          <event value="10026" version="0" level="win:Verbose" template="AspNetPageLoadViewstateLeave" opcode="AspNetTraceEvent27" task="AspNetReq" symbol="AspNetTraceEventPageLoadViewstateLeave" />
+          <event value="10027" version="0" level="win:Verbose" template="AspNetPageLoadPostDataEnter" opcode="AspNetTraceEvent28" task="AspNetReq" symbol="AspNetTraceEventPageLoadPostDataEnter" />
+          <event value="10028" version="0" level="win:Verbose" template="AspNetPageLoadPostDataLeave" opcode="AspNetTraceEvent29" task="AspNetReq" symbol="AspNetTraceEventPageLoadPostDataLeave" />
+          <event value="10029" version="0" level="win:Verbose" template="AspNetPageLoadEnter" opcode="AspNetTraceEvent30" task="AspNetReq" symbol="AspNetTraceEventPageLoadEnter" />
+          <event value="10030" version="0" level="win:Verbose" template="AspNetPageLoadLeave" opcode="AspNetTraceEvent31" task="AspNetReq" symbol="AspNetTraceEventPageLoadLeave" />
+          <event value="10031" version="0" level="win:Verbose" template="AspNetPagePostDataChangedEnter" opcode="AspNetTraceEvent32" task="AspNetReq" symbol="AspNetTraceEventPagePostDataChangedEnter" />
+          <event value="10032" version="0" level="win:Verbose" template="AspNetPagePostDataChangedLeave" opcode="AspNetTraceEvent33" task="AspNetReq" symbol="AspNetTraceEventPagePostDataChangedLeave" />
+          <event value="10033" version="0" level="win:Verbose" template="AspNetPageRaisePostbackEnter" opcode="AspNetTraceEvent34" task="AspNetReq" symbol="AspNetTraceEventPageRaisePostbackEnter" />
+          <event value="10034" version="0" level="win:Verbose" template="AspNetPageRaisePostbackLeave" opcode="AspNetTraceEvent35" task="AspNetReq" symbol="AspNetTraceEventPageRaisePostbackLeave" />
+          <event value="10035" version="0" level="win:Verbose" template="AspNetPagePreRenderEnter" opcode="AspNetTraceEvent36" task="AspNetReq" symbol="AspNetTraceEventPagePreRenderEnter" />
+          <event value="10036" version="0" level="win:Verbose" template="AspNetPagePreRenderLeave" opcode="AspNetTraceEvent37" task="AspNetReq" symbol="AspNetTraceEventPagePreRenderLeave" />
+          <event value="10037" version="0" level="win:Verbose" template="AspNetPageSaveViewstateEnter" opcode="AspNetTraceEvent38" task="AspNetReq" symbol="AspNetTraceEventPageSaveViewstateEnter" />
+          <event value="10038" version="0" level="win:Verbose" template="AspNetPageSaveViewstateLeave" opcode="AspNetTraceEvent39" task="AspNetReq" symbol="AspNetTraceEventPageSaveViewstateLeave" />
+          <event value="10039" version="0" level="win:Verbose" template="AspNetPageRenderEnter" opcode="AspNetTraceEvent40" task="AspNetReq" symbol="AspNetTraceEventPageRenderEnter" />
+          <event value="10040" version="0" level="win:Verbose" template="AspNetPageRenderLeave" opcode="AspNetTraceEvent41" task="AspNetReq" symbol="AspNetTraceEventPageRenderLeave" />
+          <event value="10041" version="0" level="win:Informational" emplate="AspNetAcquireSessionBegin" opcode="AspNetTraceEvent42" task="AspNetReq" symbol="AspNetTraceEventSessionDataBegin" />
+          <event value="10042" version="0" level="win:Informational" template="AspNetAcquireSessionEnd" opcode="AspNetTraceEvent43" task="AspNetReq" symbol="AspNetTraceEventSessionDataEnd" />
+          <event value="10043" version="0" level="win:Informational" template="AspNetProfileBegin" opcode="AspNetTraceEvent44" task="AspNetReq" symbol="AspNetTraceEventProfileBegin" />
+          <event value="10044" version="0" level="win:Informational" template="AspNetProfileEnd" opcode="AspNetTraceEvent45" task="AspNetReq" symbol="AspNetTraceEventProfileEnd" />
+          <event value="10045" version="0" level="win:Informational" template="AspNetRoleManagerIsUserInRole" opcode="AspNetTraceEvent46" task="AspNetReq" symbol="AspNetTraceEventRoleManagerIsUserInRole" />
+          <event value="10046" version="0" level="win:Informational" template="AspNetRoleManagerGetUserRoles" opcode="AspNetTraceEvent47" task="AspNetReq" symbol="AspNetTraceEventRoleManagerGetUserRoles" />
+          <event value="10047" version="0" level="win:Informational" template="AspNetRoleManagerBegin" opcode="AspNetTraceEvent48" task="AspNetReq" symbol="AspNetTraceEventRoleManagerBegin" />
+          <event value="10048" version="0" level="win:Informational" template="AspNetRoleManagerEnd" opcode="AspNetTraceEvent49" task="AspNetReq" symbol="AspNetTraceEventRoleManagerEnd" />
+          <event value="10049" version="0" level="win:Verbose" template="AspNetWebEventRaiseStart" opcode="AspNetTraceEvent50" task="AspNetReq" symbol="AspNetTraceEventWebEventRaiseStart" />
+          <event value="10050" version="0" level="win:Verbose" template="AspNetWebEventRaiseEnd" opcode="AspNetTraceEvent51" task="AspNetReq" symbol="AspNetTraceEventWebEventRaiseEnd" />
+          <event value="10051" version="0" level="win:Verbose" template="AspNetWebEventDeliverStart" opcode="AspNetTraceEvent52" task="AspNetReq" symbol="AspNetTraceEventWebEventDeliverStart" />
+          <event value="10052" version="0" level="win:Verbose" template="AspNetWebEventDeliverEnd" opcode="AspNetTraceEvent53" task="AspNetReq" symbol="AspNetTraceEventWebEventDeliverEnd" />
+          <event value="10053" version="0" level="win:Warning" template="AspNetPageTraceWarnEvent" opcode="AspNetTraceEvent59" task="AspNetReq" symbol="AspNetTraceEventTraceContextWarning" />
+          <event value="10054" version="0" level="win:Verbose" template="AspNetPageTraceWriteEvent" opcode="AspNetTraceEvent60" task="AspNetReq" symbol="AspNetTraceEventTraceContextWrite" />
+          <event value="10055" version="0" level="win:Critical" template="AspNetModuleDiagCriticalEvent" opcode="AspNetTraceEvent61" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceCritical" />
+          <event value="10056" version="0" level="win:Warning" template="AspNetModuleDiagErrorEvent" opcode="AspNetTraceEvent62" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceError" />
+          <event value="10057" version="0" level="win:Warning" template="AspNetModuleDiagWarningEvent" opcode="AspNetTraceEvent63" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceWarning" />
+          <event value="10058" version="0" level="win:Informational" template="AspNetModuleDiagInfoEvent" opcode="AspNetTraceEvent64" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceInfo" />
+          <event value="10059" version="0" level="win:Verbose" template="AspNetModuleDiagVerboseEvent" opcode="AspNetTraceEvent65" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceVerbose" />
+          <event value="10060" version="0" level="win:Verbose" template="AspNetModuleDiagStartEvent" opcode="AspNetTraceEvent66" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceStart" />
+          <event value="10061" version="0" level="win:Verbose" template="AspNetModuleDiagStopEvent" opcode="AspNetTraceEvent67" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceStop" />
+          <event value="10062" version="0" level="win:Verbose" template="AspNetModuleDiagSuspendEvent" opcode="AspNetTraceEvent68" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceSuspend" />
+          <event value="10063" version="0" level="win:Verbose" template="AspNetModuleDiagResumeEvent" opcode="AspNetTraceEvent69" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceResume" />
+          <event value="10064" version="0" level="win:Verbose" template="AspNetModuleDiagTransferEvent" opcode="AspNetTraceEvent70" task="AspNetReq" symbol="AspNetTraceEventDiagnosticTraceTransfer" />
         </events>
         <maps>
         </maps>

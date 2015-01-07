@@ -62,9 +62,10 @@ get-childitem $folder -filter *.xml | ForEach-Object {
     $opcode = Find-Opcode $task $opcodeName
 
     $obj = new-object PSObject -property @{
-      'OpcodeName'=$opcodeName;
+      'OpcodeName'=$opcode.message;
       'Opcode'=$opcode.value;
       'Task'=$task.eventGUID;
+      'TaskName'=$task.name;
       'Level'=$level
     }
     $allEvents += $obj
@@ -78,15 +79,15 @@ using Microsoft.Diagnostics.Tracing;
 
 namespace Winterdom.Frebrilator {
   public static class EventLevelMap {
-    private static Dictionary<Tuple<Guid,int>, TraceEventLevel> map = 
-      new Dictionary<Tuple<Guid,int>, TraceEventLevel>();
+    private static Dictionary<String, TraceEventLevel> map = 
+      new Dictionary<String, TraceEventLevel>();
 
-    private static void Add(Guid task, int opcode, TraceEventLevel level) {
-      map.Add(new Tuple<Guid,int>(task, opcode), level);
+    private static void Add(String eventName, int opcode, TraceEventLevel level) {
+      map.Add(eventName+opcode, level);
     }
 
     public static TraceEventLevel Resolve(TraceEvent e) {
-      return map[new Tuple<Guid, int>(e.ProviderGuid, (int)e.Opcode)];
+      return map[e.EventName+(int)e.Opcode];
     }
 
     static EventLevelMap() {
@@ -94,7 +95,7 @@ namespace Winterdom.Frebrilator {
 
 $allEvents | %{
   $text += "`r`n"
-  $text += "      Add(" + (Guid-Literal $_.Task) + ", $($_.Opcode), " + (Level-Literal $_.Level) + ");"
+  $text += '      Add("' + $_.TaskName +  '/' + $_.OpcodeName + '", ' + $_.Opcode + ', ' + (Level-Literal $_.Level) + ");"
 }
 
 $text += "`r`n"

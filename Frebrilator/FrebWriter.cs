@@ -70,7 +70,8 @@ namespace Winterdom.Frebrilator {
 
       xw.WriteElementString("EventID", traceEvent.ID == TraceEventID.Illegal ? "0" : traceEvent.ID.ToString("d"));
       xw.WriteElementString("Version", traceEvent.Version.ToString());
-      xw.WriteElementString("Level", traceEvent.Level.ToString("d"));
+      TraceEventLevel level = EventLevelMap.Resolve(traceEvent);
+      xw.WriteElementString("Level", level.ToString("d"));
       xw.WriteElementString("Opcode", traceEvent.Opcode.ToString("d"));
       xw.WriteElementString("Keywords", AsHex((long)traceEvent.Keywords));
 		  //<TimeCreated SystemTime="2014-12-07T21:49:33.268706800Z" />
