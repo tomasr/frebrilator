@@ -38,7 +38,7 @@ The code is good enough to generate FREB files in XML format that can be visuali
 
 There is still a lot of work that needs to be done to make this entirely useful:
 
-* ETW traces don't appear to contain the original Level of the event (info, error, warning, etc.). Because of this, certain features of the *freb.xsl* stylesheet don't work (such as clearly highlighting errors). I have some ideas of how to work around this, but haven't found the time to implement it yet.
+* ETW traces don't appear to contain the original Level of the event (info, error, warning, etc.). Because of this, certain features of the *freb.xsl* stylesheet don't work (such as clearly highlighting errors). **Note:** I've now implemented a work-around for this using a static map, but there are chances events are missing or with the wrong name.
 * There is data that will always be missing from the generated traces. For example, there is no way to resolve the authentication tokenUserName property, because only IIS at runtime has that information and it is not part of the captured ETW events.
 * Work needs to be done to map certain fields used in the traces properly so that they match exactly what is produced by IIS natively.
 * Currently, all generated XML files will contain as the machine name that of the computer where the ETL file is processed, rather than where it was captured (the ETL file itself doesn't contain that info).
