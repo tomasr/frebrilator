@@ -361,7 +361,7 @@
           </template>
           <template tid="GENERAL_RESPONSE_ENTITY_BUFFER">
             <data name="ContextId" inType="win:GUID" />
-            <data name="Buffer" inType="win:AnsiString" />
+            <data name="Buffer" inType="win:Binary" count="EventDataLength-16"/>
           </template>
           <template tid="GENERAL_REQUEST_HEADERS">
             <data name="ContextId" inType="win:GUID" />
@@ -369,7 +369,7 @@
           </template>
           <template tid="GENERAL_REQUEST_ENTITY">
             <data name="ContextId" inType="win:GUID" />
-            <data name="Buffer" inType="win:AnsiString" />
+            <data name="Buffer" inType="win:Binary" count="EventDataLength-16"/>
           </template>
           <template tid="GENERAL_NOT_SEND_CUSTOM_ERROR">
             <data name="ContextId" inType="win:GUID" />
@@ -1307,11 +1307,11 @@
             <map value='0x80' message='CertMap'/>
           </valueMap>
           <valueMap name="AUTH_SUCCEEDED.TokenImpersonationLevel">
-            <map value="0x0" message="IMPERSONATION_LEVEL_ANONYMOUS" />
-            <map value="0x1" message="IMPERSONATION_LEVEL_IDENTIFY" />
-            <map value="0x2" message="IMPERSONATION_LEVEL_IMPERSONATE" />
-            <map value="0x3" message="IMPERSONATION_LEVEL_DELEGATE" />
-            <map value="0x4" message="IMPERSONATION_LEVEL_UNKNOWN" />
+            <map value="0x0" message="ImpersonationAnonymous" />
+            <map value="0x1" message="ImpersonationIdentify" />
+            <map value="0x2" message="ImpersonationImpersonate" />
+            <map value="0x3" message="ImpersonationDelegate" />
+            <map value="0x4" message="ImpersonationUnknown" />
           </valueMap>
           <valueMap name="AUTH_REQUEST_AUTH_TYPE.RequestAuthType">
             <map value='0x1' message='Anonymous'/>

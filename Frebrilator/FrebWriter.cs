@@ -98,15 +98,17 @@ namespace Winterdom.Frebrilator {
         xw.WriteStartElement("Data", EtwNs);
         String name = traceEvent.PayloadNames[i];
         xw.WriteAttributeString("Name", name);
-        if ( name == "Buffer" ) {
-          xw.WriteString(Uri.EscapeDataString(traceEvent.PayloadString(i)));
+        object value = traceEvent.PayloadValue(i);
+        if ( value is byte[] ) {
+          xw.WriteString(FormatBuffer((byte[])value));
         } else {
-          xw.WriteString(ConvertValue(traceEvent.PayloadValue(i)));
+          xw.WriteString(ConvertValue(value));
         }
         xw.WriteEndElement();
       }
       xw.WriteEndElement();
     }
+
     public static void WriteRenderingInfo(XmlWriter xw, TraceEvent traceEvent) {
       xw.WriteStartElement("RenderingInfo", EtwNs);
       xw.WriteAttributeString("Culture", "en-US");
@@ -166,6 +168,9 @@ namespace Winterdom.Frebrilator {
       if ( type == typeof(Guid) ) {
         return ((Guid)value).ToString("B");
       }
+      if ( type == typeof(bool) ) {
+        return ((bool)value) ? "true" : "false";
+      }
       return Convert.ToString(value);
     }
 
@@ -175,8 +180,14 @@ namespace Winterdom.Frebrilator {
     }
 
 
-    private static string AsHex(long value) {
+    private static String AsHex(long value) {
       return String.Format("0x{0:x}", value);
+    }
+
+    private static String FormatBuffer(byte[] value) {
+      return Encoding.UTF8.GetString(value);
+      // Ugly hack:  UTF-8 and UTF-16 BOMs and use that
+      // else assume it is binary
     }
 
 

@@ -9791,7 +9791,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     public sealed class GENERAL_REQUEST_ENTITY : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Buffer { get { return GetUTF8StringAt(16); } }
+        public byte[] Buffer { get { return GetByteArrayAt(16, EventDataLength-16); } }
 
         #region Private
         internal GENERAL_REQUEST_ENTITY(Action<GENERAL_REQUEST_ENTITY> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
@@ -9805,8 +9805,8 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         }
         protected override void Validate()
         {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(16)));
+            Debug.Assert(!(Version == 1 && EventDataLength != 0+ (EventDataLength-16*1)+16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 0+ (EventDataLength-16*1)+16));
         }
         protected override Delegate Target
         {
@@ -9817,7 +9817,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         {
              Prefix(sb);
              XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Buffer", Buffer);
              sb.Append("/>");
              return sb;
         }
@@ -9994,7 +9993,7 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     public sealed class GENERAL_RESPONSE_ENTITY_BUFFER : TraceEvent
     {
         public Guid ContextId { get { return GetGuidAt(0); } }
-        public string Buffer { get { return GetUTF8StringAt(16); } }
+        public byte[] Buffer { get { return GetByteArrayAt(16, EventDataLength-16); } }
 
         #region Private
         internal GENERAL_RESPONSE_ENTITY_BUFFER(Action<GENERAL_RESPONSE_ENTITY_BUFFER> target, int eventID, int task, string taskName, Guid taskGuid, int opcode, string opcodeName, Guid providerGuid, string providerName)
@@ -10008,8 +10007,8 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         }
         protected override void Validate()
         {
-            Debug.Assert(!(Version == 1 && EventDataLength != SkipUTF8String(16)));
-            Debug.Assert(!(Version > 1 && EventDataLength < SkipUTF8String(16)));
+            Debug.Assert(!(Version == 1 && EventDataLength != 0+ (EventDataLength-16*1)+16));
+            Debug.Assert(!(Version > 1 && EventDataLength < 0+ (EventDataLength-16*1)+16));
         }
         protected override Delegate Target
         {
@@ -10020,7 +10019,6 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
         {
              Prefix(sb);
              XmlAttrib(sb, "ContextId", ContextId);
-             XmlAttrib(sb, "Buffer", Buffer);
              sb.Append("/>");
              return sb;
         }
@@ -13965,11 +13963,11 @@ namespace Microsoft.Diagnostics.Tracing.Parsers.IIS_Trace
     }
     public enum AUTH_SUCCEEDEDTokenImpersonationLevel
     {
-        IMPERSONATION_LEVEL_ANONYMOUS = 0x0,
-        IMPERSONATION_LEVEL_IDENTIFY = 0x1,
-        IMPERSONATION_LEVEL_IMPERSONATE = 0x2,
-        IMPERSONATION_LEVEL_DELEGATE = 0x3,
-        IMPERSONATION_LEVEL_UNKNOWN = 0x4,
+        ImpersonationAnonymous = 0x0,
+        ImpersonationIdentify = 0x1,
+        ImpersonationImpersonate = 0x2,
+        ImpersonationDelegate = 0x3,
+        ImpersonationUnknown = 0x4,
     }
     public enum DYNAMIC_COMPRESSION_NOT_SUCCESSReason
     {
