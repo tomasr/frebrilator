@@ -9,147 +9,231 @@ using System.Threading.Tasks;
 using System.Xml;
 
 namespace Winterdom.Frebrilator {
-  public static class FrebWriter {
+  public class FrebWriter {
     public const String EtwNs = "http://schemas.microsoft.com/win/2004/08/events/event";
     public const String EtwTraceNs = "http://schemas.microsoft.com/win/2004/08/events/trace";
     public const String FrebNs = "http://schemas.microsoft.com/win/2006/06/iis/freb";
 
-    public static void WriteFrebStream(XmlWriter xw, Guid activityId, String computerName, IEnumerable<TraceEvent> trace) {
+    private XmlWriter writer;
+    public String ComputerName { get; set; }
+    private Encoding requestEncoding;
+    private bool requestIsBinary;
+    private Encoding responseEncoding;
+    private bool responseIsBinary;
+
+    public FrebWriter(XmlWriter xw) {
+      this.writer = xw;
+      this.requestEncoding = Encoding.UTF8;
+      this.requestIsBinary = true;
+      this.responseEncoding = Encoding.UTF8;
+      this.responseIsBinary = true;
+    }
+
+    public void WriteFrebStream(Guid activityId, IEnumerable<TraceEvent> trace) {
       TraceEvent reqStart = trace.SingleOrDefault(t => IsRequestStart(t));
       TraceEvent reqEnd = trace.SingleOrDefault(t => IsRequestEnd(t));
       TraceEvent reqAuth = trace.SingleOrDefault(t => IsAuthSucceeded(t));
       if ( reqStart == null ) return; // can't write it, incomplete
 
-      xw.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='freb.xsl'");
-      xw.WriteComment(" saved from url=(0014)about:internet ");
-      xw.WriteStartElement("failedRequest");
-      xw.WriteAttributeString("url", reqStart.PayloadString(5));
-      xw.WriteAttributeString("siteId", reqStart.PayloadString(1));
-      xw.WriteAttributeString("appPoolId", reqStart.PayloadString(2));
-      xw.WriteAttributeString("processId", ConvertValue(reqStart.ProcessID));
-      xw.WriteAttributeString("verb", reqStart.PayloadString(6));
+      writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='freb.xsl'");
+      writer.WriteComment(" saved from url=(0014)about:internet ");
+      writer.WriteStartElement("failedRequest");
+      writer.WriteAttributeString("url", reqStart.PayloadString(5));
+      writer.WriteAttributeString("siteId", reqStart.PayloadString(1));
+      writer.WriteAttributeString("appPoolId", reqStart.PayloadString(2));
+      writer.WriteAttributeString("processId", ConvertValue(reqStart.ProcessID));
+      writer.WriteAttributeString("verb", reqStart.PayloadString(6));
 
-      xw.WriteAttributeString("remoteUserName", reqAuth != null ? reqAuth.PayloadString(3) : "");
-      xw.WriteAttributeString("userName", reqAuth != null ? reqAuth.PayloadString(4) : "");
+      writer.WriteAttributeString("remoteUserName", reqAuth != null ? reqAuth.PayloadString(3) : "");
+      writer.WriteAttributeString("userName", reqAuth != null ? reqAuth.PayloadString(4) : "");
       // We just don't have this information in the trace
-      xw.WriteAttributeString("tokenUserName", ""); 
+      writer.WriteAttributeString("tokenUserName", ""); 
       // Needs conversion
-      xw.WriteAttributeString("authenticationType", reqAuth != null ? reqAuth.PayloadString(1) : "");
+      writer.WriteAttributeString("authenticationType", reqAuth != null ? reqAuth.PayloadString(1) : "");
 
-      xw.WriteAttributeString("activityId", ConvertValue(activityId));
-      xw.WriteAttributeString("failureReason", "STATUS_CODE");
+      writer.WriteAttributeString("activityId", ConvertValue(activityId));
+      writer.WriteAttributeString("failureReason", "STATUS_CODE");
 
-      xw.WriteAttributeString("statusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
-      xw.WriteAttributeString("triggerStatusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
-      xw.WriteAttributeString("timeTaken", reqEnd != null ? 
+      writer.WriteAttributeString("statusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
+      writer.WriteAttributeString("triggerStatusCode", reqEnd != null ? ConvertValue(reqEnd.PayloadValue(3)) : "");
+      writer.WriteAttributeString("timeTaken", reqEnd != null ? 
         ((long)(reqEnd.TimeStamp - reqStart.TimeStamp).TotalMilliseconds).ToString() : "");
 
-      xw.WriteAttributeString("xmlns", "freb", "", FrebNs);
-      foreach ( var e in trace ) {
-        WriteEvent(xw, activityId, e, computerName);
-      }
-      xw.WriteEndElement();
+      writer.WriteAttributeString("xmlns", "freb", "", FrebNs);
+      ProcessEvents(activityId, trace);
+      writer.WriteEndElement();
     }
 
-    public static void WriteEvent(XmlWriter xw, Guid activityId, TraceEvent traceEvent, String computerName) {
-      xw.WriteStartElement("Event", EtwNs);
-      WriteHeader(xw, activityId, traceEvent, computerName);
-      WriteEventData(xw, traceEvent);
-      WriteRenderingInfo(xw, traceEvent);
-      WriteExtendedTracingInfo(xw, traceEvent);
-      xw.WriteEndElement();
+    public void WriteEvent(Guid activityId, TraceEvent traceEvent) {
+      writer.WriteStartElement("Event", EtwNs);
+      WriteHeader(activityId, traceEvent);
+      WriteEventData(traceEvent);
+      WriteRenderingInfo(traceEvent);
+      WriteExtendedTracingInfo(traceEvent);
+      writer.WriteEndElement();
     }
 
-    public static void WriteHeader(XmlWriter xw, Guid activityId, TraceEvent traceEvent, String computerName) {
-      xw.WriteStartElement("System", EtwNs);
+    public void WriteHeader(Guid activityId, TraceEvent traceEvent) {
+      writer.WriteStartElement("System", EtwNs);
       // <Provider Name="WWW Server" Guid="{3A2A4E84-4C21-4981-AE10-3FDA0D9B0F83}"/>
-      xw.WriteStartElement("Provider", EtwNs);
-      xw.WriteAttributeString("Name", MapProviderName(traceEvent.ProviderGuid));
-      xw.WriteAttributeString("Guid", traceEvent.ProviderGuid.ToString("B"));
-      xw.WriteEndElement();
+      writer.WriteStartElement("Provider", EtwNs);
+      writer.WriteAttributeString("Name", MapProviderName(traceEvent.ProviderGuid));
+      writer.WriteAttributeString("Guid", traceEvent.ProviderGuid.ToString("B"));
+      writer.WriteEndElement();
 
-      xw.WriteElementString("EventID", traceEvent.ID == TraceEventID.Illegal ? "0" : traceEvent.ID.ToString("d"));
-      xw.WriteElementString("Version", traceEvent.Version.ToString());
+      writer.WriteElementString("EventID", traceEvent.ID == TraceEventID.Illegal ? "0" : traceEvent.ID.ToString("d"));
+      writer.WriteElementString("Version", traceEvent.Version.ToString());
       TraceEventLevel level = EventLevelMap.Resolve(traceEvent);
-      xw.WriteElementString("Level", level.ToString("d"));
-      xw.WriteElementString("Opcode", traceEvent.Opcode.ToString("d"));
-      xw.WriteElementString("Keywords", AsHex((long)traceEvent.Keywords));
+      writer.WriteElementString("Level", level.ToString("d"));
+      writer.WriteElementString("Opcode", traceEvent.Opcode.ToString("d"));
+      writer.WriteElementString("Keywords", AsHex((long)traceEvent.Keywords));
 		  //<TimeCreated SystemTime="2014-12-07T21:49:33.268706800Z" />
-      xw.WriteStartElement("TimeCreated", EtwNs);
-      xw.WriteAttributeString("SystemTime", FormatDate(traceEvent.TimeStamp));
-      xw.WriteEndElement();
+      writer.WriteStartElement("TimeCreated", EtwNs);
+      writer.WriteAttributeString("SystemTime", FormatDate(traceEvent.TimeStamp));
+      writer.WriteEndElement();
 		  // <Correlation ActivityID="{800000a9-0001-b100-b63f-84710c7967bb}" />
-      xw.WriteStartElement("Correlation", EtwNs);
-      xw.WriteAttributeString("ActivityID", activityId.ToString("B"));
-      xw.WriteEndElement();
+      writer.WriteStartElement("Correlation", EtwNs);
+      writer.WriteAttributeString("ActivityID", activityId.ToString("B"));
+      writer.WriteEndElement();
       // <Execution ProcessID="8588" ThreadID="5168" />
-      xw.WriteStartElement("Execution", EtwNs);
-      xw.WriteAttributeString("ProcessID", traceEvent.ProcessID.ToString());
-      xw.WriteAttributeString("ThreadID", traceEvent.ThreadID.ToString());
-      xw.WriteEndElement();
-      xw.WriteElementString("Computer", EtwNs, String.IsNullOrEmpty(computerName) ? Environment.MachineName : computerName);
+      writer.WriteStartElement("Execution", EtwNs);
+      writer.WriteAttributeString("ProcessID", traceEvent.ProcessID.ToString());
+      writer.WriteAttributeString("ThreadID", traceEvent.ThreadID.ToString());
+      writer.WriteEndElement();
+      writer.WriteElementString("Computer", EtwNs,
+        String.IsNullOrEmpty(ComputerName) ?
+        Environment.MachineName : ComputerName);
 
-      xw.WriteEndElement();
+      writer.WriteEndElement();
     }
 
-    public static void WriteEventData(XmlWriter xw, TraceEvent traceEvent) {
-      xw.WriteStartElement("EventData", EtwNs);
+    public void WriteEventData(TraceEvent traceEvent) {
+      writer.WriteStartElement("EventData", EtwNs);
       for ( int i=0; i < traceEvent.PayloadNames.Length; i++ ) {
-        xw.WriteStartElement("Data", EtwNs);
+        writer.WriteStartElement("Data", EtwNs);
         String name = traceEvent.PayloadNames[i];
-        xw.WriteAttributeString("Name", name);
+        writer.WriteAttributeString("Name", name);
         object value = traceEvent.PayloadValue(i);
         if ( value is byte[] ) {
-          xw.WriteString(FormatBuffer((byte[])value));
+          WriteBufferContents(traceEvent, value);
         } else {
-          xw.WriteString(ConvertValue(value));
+          writer.WriteString(ConvertValue(value));
         }
-        xw.WriteEndElement();
+        writer.WriteEndElement();
       }
-      xw.WriteEndElement();
+      writer.WriteEndElement();
     }
 
-    public static void WriteRenderingInfo(XmlWriter xw, TraceEvent traceEvent) {
-      xw.WriteStartElement("RenderingInfo", EtwNs);
-      xw.WriteAttributeString("Culture", "en-US");
-      xw.WriteElementString("Opcode", EtwNs, traceEvent.OpcodeName);
+    public void WriteRenderingInfo(TraceEvent traceEvent) {
+      writer.WriteStartElement("RenderingInfo", EtwNs);
+      writer.WriteAttributeString("Culture", "en-US");
+      writer.WriteElementString("Opcode", EtwNs, traceEvent.OpcodeName);
 
       if ( traceEvent.Keywords != TraceEventKeyword.None ) {
-        xw.WriteStartElement("Keywords");
-        xw.WriteEndElement();
+        writer.WriteStartElement("Keywords");
+        writer.WriteEndElement();
       }
-      TranslateFields(xw, traceEvent);
-      xw.WriteEndElement();
+      TranslateFields(traceEvent);
+      writer.WriteEndElement();
     }
 
-    public static void WriteExtendedTracingInfo(XmlWriter xw, TraceEvent traceEvent) {
+    public void WriteExtendedTracingInfo(TraceEvent traceEvent) {
       // We cannot implement this properly at this time
       // because we cannot get at the TaskGuid.
       // Fortunately, this isn't used by the FREB xsl
-      xw.WriteStartElement("ExtendedTracingInfo", EtwTraceNs);
-      xw.WriteElementString("EventGuid", EtwTraceNs, traceEvent.TaskName);
-      xw.WriteEndElement();
+      writer.WriteStartElement("ExtendedTracingInfo", EtwTraceNs);
+      writer.WriteElementString("EventGuid", EtwTraceNs, traceEvent.TaskName);
+      writer.WriteEndElement();
     }
 
-    private static void TranslateFields(XmlWriter xw, TraceEvent traceEvent) {
+    private void ProcessEvents(Guid activityId, IEnumerable<TraceEvent> trace) {
+      foreach ( var e in trace ) {
+        if ( IsRequestHeaders(e) ) {
+          OnRequestHeaders(e);
+        } else if ( IsResponseHeaders(e) ) {
+          OnResponseHeaders(e);
+        }
+        WriteEvent(activityId, e);
+      }
+    }
+
+    private void OnRequestHeaders(TraceEvent e) {
+      String headers = e.PayloadString(1);
+      // TODO: parse the headers properly
+      if ( headers.Contains("Content-Type: text/") ) {
+        this.requestIsBinary = false;
+      } else if ( headers.Contains("charset=") ) {
+        this.requestIsBinary = false;
+      } else {
+        this.requestIsBinary = true;
+      }
+      if ( headers.Contains("Content-Encoding: gzip") ) {
+        this.requestIsBinary = true;
+      }
+    }
+    private void OnResponseHeaders(TraceEvent e) {
+      String headers = e.PayloadString(1);
+      // TODO: parse the headers properly
+      if ( headers.Contains("Content-Type: text/") ) {
+        this.responseIsBinary = false;
+      } else if ( headers.Contains("charset=") ) {
+        this.responseIsBinary = false;
+      } else {
+        this.responseIsBinary = true;
+      }
+      if ( headers.Contains("Content-Encoding: gzip") ) {
+        this.responseIsBinary = true;
+      }
+    }
+
+    private void WriteBufferContents(TraceEvent traceEvent, object value) {
+      byte[] data = value as byte[];
+      bool isRequest = traceEvent.EventName.Contains("REQUEST");
+      bool isBinary = false;
+      Encoding encoding = Encoding.UTF8;
+      if ( isRequest ) {
+        isBinary = this.requestIsBinary;
+        encoding = this.requestEncoding;
+      } else {
+        isBinary = this.responseIsBinary;
+        encoding = this.responseEncoding;
+      }
+      // the buffer is null terminated, so always
+      // skip the last byte
+      String bufferContent =
+        isBinary ? UrlEncode(data, 0, data.Length-1)
+                 : encoding.GetString(data, 0, data.Length-1);
+
+      this.writer.WriteString(bufferContent);
+    }
+
+    private String UrlEncode(byte[] data, int offset, int length) {
+      StringBuilder buffer = new StringBuilder();
+      for ( int i = offset; i < length; i++ ) {
+        buffer.AppendFormat("%{0:x2}", data[i]);
+      }
+      return buffer.ToString();
+    }
+
+    private void TranslateFields(TraceEvent traceEvent) {
       String[] names = traceEvent.PayloadNames;
       for ( int i = 0; i < names.Length; i++ ) {
         if ( names[i] == "ErrorCode" ) {
-          WriteExtraData(xw, names[i], Native.FormatMessage((int)traceEvent.PayloadValue(i)));
+          WriteExtraData(names[i], Native.FormatMessage((int)traceEvent.PayloadValue(i)));
           return;
         }
         object value = traceEvent.PayloadValue(i);
         if ( value != null && value.GetType().IsEnum ) {
-          WriteExtraData(xw, names[i], traceEvent.PayloadString(i));
+          WriteExtraData(names[i], traceEvent.PayloadString(i));
         }
       }
     }
 
-    private static void WriteExtraData(XmlWriter xw, String name, String value) {
-      xw.WriteStartElement("freb", "Description", FrebNs);
-      xw.WriteAttributeString("Data", name);
-      xw.WriteString(value);
-      xw.WriteEndElement();
+    private void WriteExtraData(String name, String value) {
+      writer.WriteStartElement("freb", "Description", FrebNs);
+      writer.WriteAttributeString("Data", name);
+      writer.WriteString(value);
+      writer.WriteEndElement();
     }
 
     private static String ConvertValue(object value) {
@@ -184,13 +268,6 @@ namespace Winterdom.Frebrilator {
       return String.Format("0x{0:x}", value);
     }
 
-    private static String FormatBuffer(byte[] value) {
-      return Encoding.UTF8.GetString(value);
-      // Ugly hack:  UTF-8 and UTF-16 BOMs and use that
-      // else assume it is binary
-    }
-
-
     public static bool IsRequestStart(TraceEvent e) {
       return e.ProviderGuid == Providers.IIS_Trace
           && e.OpcodeName == "GENERAL_REQUEST_START";
@@ -203,6 +280,15 @@ namespace Winterdom.Frebrilator {
       return e.ProviderGuid == Providers.IIS_Trace
           && e.OpcodeName == "AUTH_SUCCEEDED";
     }
+    private static bool IsRequestHeaders(TraceEvent e) {
+      return e.ProviderGuid == Providers.IIS_Trace
+          && e.OpcodeName == "GENERAL_REQUEST_HEADERS";
+    }
+    private static bool IsResponseHeaders(TraceEvent e) {
+      return e.ProviderGuid == Providers.IIS_Trace
+          && e.OpcodeName == "GENERAL_RESPONSE_HEADERS";
+    }
+
     public static String MapProviderName(Guid provider) {
       if ( provider == Providers.IIS_Trace ) {
         return "WWW Server";

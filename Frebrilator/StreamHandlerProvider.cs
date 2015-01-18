@@ -38,7 +38,7 @@ namespace Winterdom.Frebrilator {
         settings.CheckCharacters = false;
         String path = Path.Combine(outputPath, String.Format("{0}.xml", activityId));
         using ( XmlWriter xw = XmlWriter.Create(path, settings) ) {
-          FrebWriter.WriteFrebStream(xw, activityId, null, handler.Stream);
+          new FrebWriter(xw).WriteFrebStream(activityId, handler.Stream);
         }
       }
     }

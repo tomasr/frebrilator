@@ -20,7 +20,9 @@ namespace Frebrilator.Tests {
 
       StringWriter sw = new StringWriter();
       using ( XmlWriter xw = XmlWriter.Create(sw) ) {
-        FrebWriter.WriteHeader(xw, activityId, e, "DOMINION");
+        var writer = new FrebWriter(xw);
+        writer.ComputerName = "DOMINION";
+        writer.WriteHeader(activityId, e);
       }
 
       XDocument doc = XDocument.Parse(sw.ToString());
@@ -51,7 +53,7 @@ namespace Frebrilator.Tests {
 
       StringWriter sw = new StringWriter();
       using ( XmlWriter xw = XmlWriter.Create(sw) ) {
-        FrebWriter.WriteEventData(xw, e);
+        new FrebWriter(xw).WriteEventData(e);
       }
 
       XDocument doc = XDocument.Parse(sw.ToString());
@@ -83,7 +85,7 @@ namespace Frebrilator.Tests {
 
       StringWriter sw = new StringWriter();
       using ( XmlWriter xw = XmlWriter.Create(sw) ) {
-        FrebWriter.WriteRenderingInfo(xw, e);
+        new FrebWriter(xw).WriteRenderingInfo(e);
       }
 
       XDocument doc = XDocument.Parse(sw.ToString());
@@ -103,7 +105,7 @@ namespace Frebrilator.Tests {
 
       StringWriter sw = new StringWriter();
       using ( XmlWriter xw = XmlWriter.Create(sw) ) {
-        FrebWriter.WriteExtendedTracingInfo(xw, e);
+        new FrebWriter(xw).WriteExtendedTracingInfo(e);
       }
 
       XDocument doc = XDocument.Parse(sw.ToString());
@@ -123,7 +125,9 @@ namespace Frebrilator.Tests {
 
       StringWriter sw = new StringWriter();
       using ( XmlWriter xw = XmlWriter.Create(sw) ) {
-        FrebWriter.WriteEvent(xw, activityId, e, "DOMINION");
+        var writer = new FrebWriter(xw);
+        writer.ComputerName = "DOMINION";
+        writer.WriteEvent(activityId, e);
       }
 
       XDocument doc = XDocument.Parse(sw.ToString());
